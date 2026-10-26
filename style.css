@@ -395,3 +395,6 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 
 /* Document illustration beside the school-event form link. */
 .quick-actions>.form-link-illustration{display:block;width:96px;max-width:96px;height:auto;flex:0 0 96px;object-fit:contain}
+
+.event-form-actions{gap:20px}
+@media(max-width:559px){.event-form-actions{align-items:center;justify-content:center;gap:16px}}
