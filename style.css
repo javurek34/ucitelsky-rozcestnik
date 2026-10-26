@@ -232,8 +232,8 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 @media(max-width:899px){.card-subpage .page-illustration{width:150px}.has-painting>section:first-of-type{min-height:180px}}
 @media(max-width:559px){.card-subpage .page-illustration{width:140px;margin:20px auto 0}.card-subpage .page-illustration img{max-height:160px}.has-painting>section:first-of-type{min-height:0}.card-subpage .pending-illustration{position:static;width:150px;align-self:center;margin:20px auto 0}.pending-illustration img{max-height:160px}#pending-dialog[data-has-illustration=true] .pending-copy{max-width:none}}
 
-/* Consistent typography for every return-to-directory button. */
-.card-subpage :is(.content-actions,.dialog-actions)>button.primary{font-family:'katarine-web',sans-serif;font-size:20px;font-weight:600;line-height:1.35;letter-spacing:-.025em}
+/* Shared typography for all blue action links and buttons. */
+:root .card-subpage :is(a,button).primary{font-family:'katarine-web',sans-serif;font-size:20px;font-style:normal;font-weight:400;line-height:1.35;letter-spacing:-.025em;text-transform:uppercase}
 
 /* Neulis Cursive card labels, including their animated transition copy. */
 .card-title,.tunnel-title{font-family:'katarine-web',sans-serif;font-style:normal;font-weight:600;letter-spacing:-.055em;text-transform:uppercase}
