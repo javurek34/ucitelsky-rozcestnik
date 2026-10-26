@@ -393,6 +393,16 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 
 .card-title.ipad-wordmark,.tunnel-title.ipad-wordmark{text-transform:none}
 
+/* Enlarge the original reading-page artwork in the right margin on desktop. */
+@media(min-width:900px){
+ .card-subpage .content-body.has-painting{padding-right:292px}
+ .card-subpage .page-illustration{width:260px}
+ .card-subpage .page-illustration img{max-height:300px}
+ .card-subpage .pending-illustration{width:260px}
+ .card-subpage .pending-illustration img{max-height:300px}
+ #pending-dialog[data-has-illustration=true] .pending-copy{max-width:calc(100% - 300px)}
+}
+
 /* One illustration before each main external action. */
 .illustrated-action{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin:20px 0}
 .illustrated-action>.action-illustration{display:block;width:96px;max-width:96px;height:auto;max-height:110px;flex:0 0 96px;object-fit:contain}
