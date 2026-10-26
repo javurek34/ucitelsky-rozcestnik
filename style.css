@@ -1,0 +1,394 @@
+
+:root{--blue:#2258A5;--text:#172B49;--muted:#566880;--bg:#F7F9FC;--surface:#FFFFFF;--line:#dce4ef;--soft:#EAF1FA;--radius:10px;font-family:'panel-sans',sans-serif;letter-spacing:-.02em;background:var(--bg);color:var(--text);font-synthesis:none;color-scheme:light}
+:root[data-theme=dark]{--blue:#8DB7F4;--text:#E5EDF9;--muted:#A7B5C9;--bg:#101927;--surface:#172335;--line:#324258;--soft:#223751;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg)}button{font:inherit;cursor:pointer;color:inherit;border:0;background:none}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.sprite,.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.skip{position:fixed;left:16px;top:-80px;background:var(--text);color:var(--bg);padding:14px;border-radius:var(--radius);z-index:10}.skip:focus{top:12px}
+.workspace{width:100%;max-width:1180px;margin:0 auto;padding:0 40px}.topbar{min-height:100px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:block;width:210px;padding:0;flex-shrink:0}.brand img{display:block;width:100%;height:auto}:root[data-theme=dark] .brand img{filter:brightness(0) saturate(100%) invert(77%) sepia(22%) saturate(1022%) hue-rotate(183deg) brightness(103%) contrast(91%)}.theme-switch{display:flex;background:var(--surface);border:1px solid var(--line);padding:4px;border-radius:var(--radius);gap:3px}.theme-switch button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:9px 12px;font-size:11px;white-space:nowrap;border-radius:7px;color:var(--muted);transition:background .16s,color .16s}.theme-switch button svg{width:16px;height:16px}.theme-switch button[aria-pressed=true]{background:var(--soft);color:var(--blue)}.theme-switch button:hover{color:var(--blue)}
+main{padding-top:28px}.intro{display:flex;justify-content:space-between;align-items:center;gap:36px;min-height:205px}.intro-copy{min-width:0;max-width:690px;padding:8px 0}h1{font-size:clamp(31px,3.8vw,49px);line-height:1.16;letter-spacing:-1.8px;font-weight:600;margin:0 0 18px;overflow-wrap:break-word}.intro-copy p{font-size:14px;line-height:1.85;color:var(--muted);margin:0}.signpost{width:24%;max-width:210px;display:flex;justify-content:center;align-items:center;margin:0;padding:0;flex-shrink:0}.signpost img{width:100%;height:205px;max-width:175px;object-fit:contain;display:block}
+.directory{margin-top:25px}.link-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.link-card{background:transparent;color:var(--text);border:1px solid #2258A5;border-radius:10px;position:relative;min-width:0;min-height:130px;display:flex;flex-direction:column;transition:box-shadow .18s,border-color .18s}.link-card:hover{box-shadow:0 4px 14px #172b4910}.card-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:8px 14px;color:var(--text);text-align:center;border-radius:10px;gap:6px}.card-main:focus-visible{outline:3px solid var(--blue);outline-offset:-6px}.card-top{width:100%;min-height:64px;display:flex;align-items:center;justify-content:center;position:relative}.card-visual,.card-visual.brand-visual{width:64px;height:64px;min-width:64px;flex:0 0 64px;display:flex;align-items:center;justify-content:center;border-radius:50%;clip-path:circle(50%);overflow:hidden;background:var(--soft);padding:0;color:var(--blue)}.card-visual>svg{width:32px;height:32px;stroke-width:1.5;color:var(--blue)}.card-visual.brand-visual{background:#fff}.card-visual img{display:block;width:42px;height:42px;max-width:100%;object-fit:contain}.card-visual[data-brand=canva] img,.card-visual[data-brand=ai-detem] img,.card-visual[data-brand=umimeto] img{width:64px;height:64px;object-fit:cover}.card-title{display:flex;align-items:center;justify-content:center;min-height:40px;width:100%;font-size:14px;line-height:1.45;font-weight:600;letter-spacing:-.15px;text-align:center;color:var(--text);overflow-wrap:anywhere}
+footer{display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:10px;margin-top:28px;padding:21px 0;border-top:1px solid var(--line)}footer>span:first-child{color:var(--text)}dialog{border:1px solid var(--line);border-radius:10px;padding:28px;max-width:460px;max-height:calc(100dvh - 32px);overflow-y:auto;width:calc(100% - 32px);box-shadow:0 30px 100px #00000035;color:var(--text);background:var(--surface)}dialog::backdrop{background:#07111e80;backdrop-filter:blur(3px)}.dialog-header{display:flex;align-items:center;justify-content:space-between;gap:16px}h2{font-size:18px;letter-spacing:-.4px;font-weight:600;margin:0}.dialog-header h2{font-size:22px}.icon-button{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;flex-shrink:0;color:var(--muted)}.icon-button:hover{background:var(--soft);color:var(--blue)}.icon-button svg{width:18px;height:18px}.dialog-actions{display:flex;justify-content:flex-end;align-items:center;gap:10px}.primary{background:#2258A5;color:#fff;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:13px 18px;font-size:12px;font-weight:600;transition:background .16s,transform .16s;white-space:nowrap}.primary:hover{background:#194987}:root[data-theme=dark] .primary{background:#8DB7F4;color:#101927}:root[data-theme=dark] .primary:hover{background:#a9caf8}.pending-label{display:inline-block;color:var(--blue);font-size:9px;letter-spacing:1px;background:var(--soft);padding:7px 10px;border-radius:10px;margin-top:20px}.pending-copy{font-size:13px;color:var(--muted);line-height:1.8;margin:20px 0 28px}[hidden]{display:none!important}
+/* Four columns on computers, three on tablets, two on phones. */
+@media(max-width:999px){.workspace{padding:0 30px}.link-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.intro{gap:28px}.theme-switch button{font-size:11px;padding:8px 10px}.intro-copy p{font-size:13px}}
+@media(max-width:719px){.workspace{padding:0 24px}.link-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.topbar{min-height:90px;gap:16px}.brand{width:175px}.theme-switch button{font-size:10px;gap:5px;padding:8px}.theme-switch button svg{width:14px;height:14px}.intro{min-height:180px;gap:20px}h1{font-size:36px;letter-spacing:-1.4px}.signpost{width:28%}.signpost img{height:180px}.directory{margin-top:22px}}
+@media(max-width:559px){.workspace{padding:0 18px}.topbar{padding:20px 0 16px;flex-wrap:wrap;gap:16px}.brand{width:185px}.theme-switch{width:100%;display:grid;grid-template-columns:1fr 1fr}.theme-switch button{font-size:11px;gap:7px;min-height:40px}.theme-switch button svg{width:16px;height:16px}main{padding-top:22px}.intro{min-height:165px;gap:12px}.intro-copy{flex:1;padding:0}h1{font-size:31px;letter-spacing:-1.2px;margin-bottom:12px}.intro-copy p{font-size:12px;line-height:1.75}.intro-copy p br{display:none}.signpost{width:29%}.signpost img{height:160px}.link-grid{gap:10px}.link-card{min-height:122px}.card-main{padding:9px 11px;gap:6px}.card-top{min-height:56px}.card-visual,.card-visual.brand-visual{width:56px;height:56px;min-width:56px;flex-basis:56px}.card-visual img{width:38px;height:38px}.card-visual[data-brand=canva] img,.card-visual[data-brand=ai-detem] img,.card-visual[data-brand=umimeto] img{width:48px;height:48px}.card-visual>svg{width:28px;height:28px}.card-title{font-size:13px;min-height:38px}footer{margin-top:24px;padding:18px 0;font-size:9px;gap:15px;flex-wrap:wrap}dialog{padding:22px}.dialog-header h2{font-size:20px}}
+@media(max-width:359px){.workspace{padding:0 14px}.link-grid{grid-template-columns:1fr}.link-card{min-height:118px}.card-title{min-height:24px}.signpost{width:27%}.signpost img{height:140px}h1{font-size:28px}.theme-switch button{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Center the visible icon and title together, without an empty title row. */
+.card-main{align-items:center;justify-content:center}.card-title{min-height:0}.card-visual[data-brand=canva] img,.card-visual[data-brand=ai-detem] img,.card-visual[data-brand=umimeto] img{width:100%;height:100%}
+h1{font-size:clamp(40.32px,4.896vw,61.92px);letter-spacing:-1px;text-transform:uppercase;animation:heading-enter .75s cubic-bezier(.2,.7,.2,1) both;transform-origin:left center}
+@keyframes heading-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:719px){h1{font-size:46.08px;letter-spacing:-.7px}}
+@media(max-width:559px){h1{font-size:38.88px;letter-spacing:-.5px}}
+@media(max-width:359px){h1{font-size:34.56px}}
+@media(prefers-reduced-motion:reduce){h1{animation:none;opacity:1;transform:none;filter:none}}
+
+/* Full school guidance, with a persistent close control and a scrollable body. */
+dialog.content-dialog{width:min(840px,calc(100% - 32px));max-width:840px;max-height:min(88dvh,900px);padding:0;overflow:hidden}.content-dialog[open]{display:flex;flex-direction:column}.content-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 28px;border-bottom:1px solid var(--line);flex-shrink:0}.content-header h2{font-size:23px;line-height:1.3;letter-spacing:-.5px}.content-header h2:focus{outline:none}.content-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 28px;scrollbar-gutter:stable}.content-body section{margin:26px 0}.content-body h3{font-size:14px;font-weight:600;letter-spacing:.7px;color:var(--blue);margin:0 0 13px}.content-body ul{padding-left:21px;margin:0}.content-body li{font-size:14px;line-height:1.75;padding-left:5px;margin:10px 0;color:var(--text);overflow-wrap:break-word}.content-body li::marker{color:var(--blue)}.content-actions{border-top:1px solid var(--line);display:flex;justify-content:flex-end;padding:16px 28px;flex-shrink:0;background:var(--surface)}@media(max-width:559px){dialog.content-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}.content-header{padding:15px 18px;gap:10px}.content-header h2{font-size:20px}.content-body{padding:0 18px}.content-body section{margin:21px 0}.content-body li{font-size:13px;line-height:1.8;margin:11px 0}.content-actions{padding:13px 18px}}
+
+/* A compact fan of four cards per row, inspired by the supplied interaction. */
+.card-row{display:contents}.link-card{background:var(--bg);isolation:isolate}.card-main{position:relative;z-index:1}
+@media(min-width:1000px) and (hover:hover) and (pointer:fine){
+ .link-grid{grid-template-columns:1fr;gap:13px;padding:0}.card-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:16px 28px 13px;isolation:isolate;position:relative}
+ .link-card{--angle:0deg;--lift:0px;min-height:138px;width:calc(100% + 12px);margin-left:-6px;transform-origin:50% 110%;transform:translateY(var(--lift)) rotate(var(--angle));z-index:1;box-shadow:0 4px 12px #172b490b;transition:transform .38s cubic-bezier(.2,.75,.25,1),box-shadow .38s,border-color .25s,background .25s;will-change:transform}
+ .link-card:nth-child(4n+1){z-index:1}.link-card:nth-child(4n+2){z-index:2}.link-card:nth-child(4n+3){z-index:3}.link-card:nth-child(4n){z-index:4}
+ .card-row[data-active] .link-card[data-fan=before]{transform:translateX(-9px) translateY(var(--lift)) rotate(var(--angle))}.card-row[data-active] .link-card[data-fan=after]{transform:translateX(9px) translateY(var(--lift)) rotate(var(--angle))}
+ .card-row[data-active] .link-card[data-fan=active]{z-index:20;transform:translateY(-11px) rotate(0deg) scale(1.035);background:var(--card-color);border-color:#172b4930;box-shadow:0 14px 30px #172b4930}
+ .card-main:focus-visible{outline-offset:-5px}.link-card[data-fan=active] .card-visual{transform:translateY(-1px)}
+}
+.card-visual{transition:transform .3s cubic-bezier(.2,.75,.25,1)}
+@media(max-width:999px),(hover:none),(pointer:coarse){.link-card{background:transparent;box-shadow:none}.link-card:hover{box-shadow:0 4px 14px #172b4910;transform:none}}
+@media(prefers-reduced-motion:reduce){.link-card,.card-visual{transform:none!important;will-change:auto}.card-row[data-active] .link-card[data-fan=active]{box-shadow:0 4px 12px #172b4914}.link-card{transition:none!important}}
+
+/* Portrait cards with the warm paper colors of the supplied reference. */
+.link-grid{max-width:960px;margin-inline:auto}.link-card{aspect-ratio:3/4;min-height:0;background:var(--card-color,#F0F0E8);color:#1B211F;border-color:#1b211f16;box-shadow:0 4px 12px #172b490c}.card-main{padding:23px 17px;gap:18px;color:#1B211F}.card-title{font-size:17px;line-height:1.4;font-weight:600;letter-spacing:-.3px;color:#1B211F}.card-visual{background:#ffffff80;color:#2258A5}.card-visual>svg{color:#2258A5}.card-visual.brand-visual{background:#fff}.card-main:focus-visible{outline:3px solid #172B49;outline-offset:-6px}
+@media(max-width:999px),(hover:none),(pointer:coarse){.link-card{background:var(--card-color,#F0F0E8);box-shadow:0 3px 9px #172b490a}}
+@media(min-width:1000px) and (hover:hover) and (pointer:fine){.card-row{padding:20px 28px 18px}.link-grid{gap:18px}.card-row[data-active] .link-card[data-fan=active]{background:var(--card-color);border-color:#1b211f30}}
+@media(max-width:719px){.card-title{font-size:16px}.card-main{padding:20px 15px;gap:16px}}
+@media(max-width:559px){.card-main{padding:17px 12px;gap:15px}.card-title{font-size:14px;letter-spacing:-.2px}}
+@media(max-width:359px){.link-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card-main{padding:14px 8px;gap:12px}.card-title{font-size:12px}.card-top{min-height:52px}.card-visual,.card-visual.brand-visual{width:52px;height:52px;min-width:52px;flex-basis:52px}}
+
+@font-face{font-family:'Loved by the King';font-style:normal;font-weight:400;font-display:swap;src:url('assets/loved-by-the-king.ttf') format('truetype')}
+#page-title{font-family:'Loved by the King','panel-sans',sans-serif;font-weight:400;letter-spacing:.01em}
+
+@font-face{font-family:'Yomogi';font-style:normal;font-weight:400;font-display:swap;src:url('assets/yomogi-latin.ttf') format('truetype')}
+.intro-copy>p{font-family:'Yomogi','panel-sans',sans-serif;font-weight:400;font-size:24px;line-height:1.8;letter-spacing:0}@media(max-width:559px){.intro-copy>p{font-size:21px}}
+
+@font-face{font-family:'Yuyu';font-style:normal;font-weight:400;font-display:swap;src:url('assets/yuyu.ttf') format('truetype')}
+.intro-copy>p{font-family:'Yuyu','panel-sans',sans-serif;font-weight:400}
+
+
+.card-main,.card-title{font-family:'neulis-cursive','panel-sans',sans-serif;font-weight:500}.card-title{font-size:25px;font-weight:500;line-height:1.2;letter-spacing:-.3px;min-height:0;overflow-wrap:anywhere}
+
+/* Tighter typography; the injury explanation replaces only the title. */
+.intro-copy>p{letter-spacing:-.02em}.card-title{letter-spacing:-.025em}.has-hover-copy .card-title{display:block}
+.card-hover-copy{display:none;color:#1B211F;font-family:'neulis-cursive','panel-sans',sans-serif;font-size:16px;font-weight:500;line-height:1.4;letter-spacing:-.015em;text-align:center;overflow-wrap:break-word;animation:copy-enter .18s ease both}
+.has-hover-copy:focus-within .card-default-copy{display:block}.has-hover-copy:focus-within .card-hover-copy{display:block}
+@media(hover:hover) and (pointer:fine){.has-hover-copy:hover .card-default-copy{display:block}.has-hover-copy:hover .card-hover-copy{display:block}}
+@keyframes copy-enter{from{opacity:0}to{opacity:1}}
+@media(max-width:559px){.card-hover-copy{font-size:15px;line-height:1.35}.has-hover-copy:focus-within .card-main{padding-top:10px;padding-bottom:10px;gap:10px}}
+@media(max-width:359px){.card-hover-copy{font-size:13px;line-height:1.3}.has-hover-copy:focus-within .card-main{padding:8px;gap:8px}}
+
+
+.card-title{font-weight:600}
+
+@font-face{font-family:'Special Gothic Condensed One';font-style:normal;font-weight:400;font-display:swap;src:url('assets/special-gothic-condensed-one.ttf') format('truetype')}
+#page-title{font-family:'Special Gothic Condensed One','panel-sans',sans-serif;font-weight:400}
+
+
+.intro-copy{flex:1;container-type:inline-size}
+#page-title{--heading-size:clamp(40.32px,4.896vw,61.92px);font-family:'neulis-cursive','panel-sans',sans-serif;font-size:var(--heading-size);font-size:min(var(--heading-size),15cqi);font-weight:500;letter-spacing:-.05em;line-height:1.06;text-transform:uppercase;overflow-wrap:normal}
+#page-title>span{display:block;white-space:nowrap}#page-title .heading-main{font-size:.94993em;font-weight:500;letter-spacing:-.05em}#page-title .heading-secondary{font-weight:300}
+@media(max-width:719px){#page-title{--heading-size:46.08px}}@media(max-width:559px){#page-title{--heading-size:38.88px}}@media(max-width:359px){#page-title{--heading-size:34.56px}}
+
+/* Injury guidance: move the icon toward the top and give the copy more room. */
+.has-hover-copy .card-main{display:grid;grid-template-rows:minmax(0,1fr) auto auto minmax(0,1fr);gap:0;transition:grid-template-rows .3s ease,padding .3s ease}
+.has-hover-copy .card-top{grid-row:2}
+.has-hover-copy .card-title{grid-row:3;padding-top:18px}
+.card-hover-copy{font-size:19px;line-height:1.3}
+.has-hover-copy:focus-within .card-main{grid-template-rows:minmax(0,0fr) auto auto minmax(0,1fr);padding-top:14px;padding-bottom:14px;gap:0}
+.has-hover-copy:focus-within .card-title{padding-top:12px}
+@media(hover:hover) and (pointer:fine){.has-hover-copy:hover .card-main{grid-template-rows:minmax(0,0fr) auto auto minmax(0,1fr);padding-top:14px;padding-bottom:14px;gap:0}.has-hover-copy:hover .card-title{padding-top:12px}}
+@media(max-width:559px){.card-hover-copy{font-size:17px}.has-hover-copy .card-title{padding-top:15px}}
+@media(max-width:359px){.card-hover-copy{font-size:15px}.has-hover-copy .card-title{padding-top:12px}}
+@media(prefers-reduced-motion:reduce){.has-hover-copy .card-main{transition:none}.card-hover-copy{animation:none}}
+
+/* Let the subtitle wrap only when its available width requires it. */
+.intro-copy>p{line-height:.9;white-space:normal;text-transform:uppercase}
+
+/* Keep the card heading visible above the revealed guidance. */
+.has-hover-copy .card-default-copy{font-weight:600}
+.has-hover-copy .card-hover-copy{margin-top:10px}
+
+/* 70px first line; preserve equal widths and fit narrow screens. */
+#page-title{--heading-size:73.68964029px;font-size:min(var(--heading-size),18cqi)}
+
+/* Heading font assets and matched line widths. */
+
+#page-title{--heading-size:97.683749788px}
+#page-title .heading-main{font-family:'Yuyu','panel-sans',sans-serif;font-weight:400;font-size:2.047423450em}
+
+/* One gentle marker stroke on load; cloned backgrounds follow wrapped lines. */
+.subtitle-highlight{--marker-ink:#DFFF00D9;box-decoration-break:clone;-webkit-box-decoration-break:clone;background-image:linear-gradient(178deg,transparent 33%,var(--marker-ink) 36%,var(--marker-ink) 87%,transparent 91%);background-repeat:no-repeat;background-position:left center;background-size:100% 100%;animation:subtitle-marker 1.15s cubic-bezier(.25,.65,.35,1) .65s both}
+:root[data-theme=dark] .subtitle-highlight{--marker-ink:#DFFF003D;color:var(--text)}
+@keyframes subtitle-marker{from{background-size:0% 100%}to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.subtitle-highlight{animation:none;background-size:100% 100%}}
+
+/* Fragment assembly inspired by the UNIT-11 reference; plays once on entry. */
+#page-title{animation:none;opacity:1;transform:none;filter:none}
+.title-glyph{display:inline-block;transform-origin:50% 75%;animation:title-assemble .85s cubic-bezier(.2,.75,.25,1) calc(.12s + var(--glyph-index)*.065s) both}
+@keyframes title-assemble{
+ 0%{opacity:0;clip-path:inset(35% 48% 45% 44%);transform:translate(var(--glyph-x),var(--glyph-y)) rotate(var(--glyph-angle)) scaleX(.35)}
+ 22%{opacity:1;clip-path:inset(0 44% 0 35%)}
+ 55%{clip-path:inset(0 12% 0 16%);transform:translate(0,-.025em) rotate(0deg) scaleX(.95)}
+ 80%,100%{opacity:1;clip-path:inset(-15% -10%);transform:translate(0,0) rotate(0deg) scaleX(1)}
+}
+#page-title .heading-secondary{animation:teacher-line-enter .6s cubic-bezier(.2,.75,.25,1) .95s both}
+@keyframes teacher-line-enter{from{opacity:0;clip-path:inset(0 100% 0 0);transform:translateY(.1em)}to{opacity:1;clip-path:inset(-15% -10%);transform:translateY(0)}}
+.subtitle-highlight{animation-delay:1.55s}
+@media(prefers-reduced-motion:reduce){.title-glyph,#page-title .heading-secondary{animation:none;opacity:1;clip-path:none;transform:none}}
+
+/* Stable card geometry: move the heading first, reveal the independent copy next. */
+.has-hover-copy{--injury-icon-size:64px}
+.has-hover-copy .card-main{display:block;padding:14px 12px;transition:none}
+.has-hover-copy .injury-heading{position:absolute;left:12px;right:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:18px;transition:top .5s cubic-bezier(.22,.68,.25,1),transform .5s cubic-bezier(.22,.68,.25,1),gap .5s cubic-bezier(.22,.68,.25,1)}
+.has-hover-copy .injury-heading .card-top{min-height:var(--injury-icon-size);height:var(--injury-icon-size)}
+.has-hover-copy .injury-heading .card-title{padding:0;min-height:30px;line-height:1.2}
+.has-hover-copy .card-hover-copy{display:block;position:absolute;left:12px;right:12px;top:calc(14px + var(--injury-icon-size) + 12px + 30px + 12px);bottom:14px;margin:0;opacity:0;visibility:hidden;transform:translateY(7px);overflow-y:auto;overscroll-behavior:contain;animation:none;transition:opacity .14s ease,transform .14s ease,visibility 0s .14s}
+.has-hover-copy:focus-within .injury-heading{top:14px;transform:translateY(0);gap:12px}
+.has-hover-copy:focus-within .card-hover-copy{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .28s ease .52s,transform .28s ease .52s,visibility 0s .52s}
+@media(hover:hover) and (pointer:fine){.has-hover-copy:hover .injury-heading{top:14px;transform:translateY(0);gap:12px}.has-hover-copy:hover .card-hover-copy{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .28s ease .52s,transform .28s ease .52s,visibility 0s .52s}}
+@media(max-width:559px){.has-hover-copy{--injury-icon-size:56px}}
+@media(max-width:359px){.has-hover-copy{--injury-icon-size:52px}}
+@media(prefers-reduced-motion:reduce){.has-hover-copy .injury-heading,.has-hover-copy .card-hover-copy{transition:none!important}}
+
+/* Full-page internal reading surfaces, reached through the originating card. */
+:root{scrollbar-gutter:stable}.card-page-open{overflow:hidden}
+dialog.card-subpage{position:fixed;inset:0;margin:0;border:0;border-radius:0;padding:0;width:100%;max-width:none;height:100dvh;max-height:none;overflow:hidden;background:transparent;box-shadow:none}
+dialog.card-subpage[open]{display:block}
+dialog.card-subpage::backdrop{background:transparent;backdrop-filter:none}
+.page-surface{position:absolute;inset:0;background:var(--bg);z-index:0;pointer-events:none}
+.page-shell{position:relative;z-index:1;display:flex;flex-direction:column;width:100%;max-width:1040px;height:100%;margin:0 auto;padding:46px 48px 24px;overflow-y:auto;overscroll-behavior:contain}
+.card-subpage .content-header,.card-subpage .dialog-header{padding:0 0 24px;border-bottom:1px solid var(--line);gap:20px;flex-shrink:0;align-items:center}
+.page-heading{display:flex;align-items:center;gap:20px;min-width:0}.page-icon{display:flex;flex-shrink:0}.page-icon .card-visual{background:var(--page-accent);width:56px;height:56px;min-width:56px;flex-basis:56px}.page-icon .card-visual svg{width:28px;height:28px}
+.card-subpage h2{font-family:inherit;font-size:clamp(28px,4vw,44px);font-weight:600;letter-spacing:-.04em;line-height:1.15;color:var(--text)}
+.card-subpage .content-body{padding:0;scrollbar-gutter:stable;flex:1;min-height:0;overflow-y:auto}.card-subpage .content-body section{margin:32px 0}.card-subpage .content-body h3{font-size:14px}.card-subpage .content-body li{font-size:16px;line-height:1.75;margin:12px 0}
+.card-subpage .content-actions,.card-subpage .dialog-actions{padding:20px 0 0;border-top:1px solid var(--line);background:transparent;flex-shrink:0}
+.card-subpage .pending-label{align-self:flex-start;margin-top:32px;font-size:11px}.card-subpage .pending-copy{font-size:18px;max-width:650px;line-height:1.75;margin:24px 0 40px}.card-subpage .dialog-actions{margin-top:auto}
+.tunnel-card{position:fixed;z-index:3;border:1px solid #172b4916;border-radius:10px;transform-origin:center;pointer-events:none;contain:layout paint;will-change:transform,opacity}
+.tunnel-card-contents{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;width:100%;height:100%;padding:18px;color:#1B211F;text-align:center}.tunnel-title{font-family:'neulis-cursive','panel-sans',sans-serif;font-size:25px;font-weight:500;line-height:1.2;letter-spacing:-.025em}
+@media(max-width:559px){.page-shell{padding:24px 20px 18px}.page-heading{gap:12px}.page-icon .card-visual{width:44px;height:44px;min-width:44px;flex-basis:44px}.page-icon .card-visual svg{width:24px;height:24px}.card-subpage .content-header,.card-subpage .dialog-header{gap:12px;padding-bottom:20px}.card-subpage .content-body li{font-size:15px}.card-subpage .pending-copy{font-size:16px}.card-subpage .content-actions,.card-subpage .dialog-actions{padding-top:16px}}
+
+/* Each reading page inherits its mother card's exact paper color. */
+dialog.card-subpage{--text:#172B49;--muted:#344563;--blue:#2258A5;--line:#172b4926;--soft:#ffffff70;--surface:transparent;color:var(--text);color-scheme:light}
+.card-subpage .page-surface{background:var(--page-accent)}
+.card-subpage .page-icon .card-visual{background:#ffffff80}
+:root .card-subpage .primary{background:#2258A5;color:#fff}:root .card-subpage .primary:hover{background:#194987}
+
+/* Freeze the landing geometry until the opaque cover has handed back to the card. */
+.card-returning .link-card{transition:none!important}
+.card-returning .has-hover-copy .injury-heading{top:50%!important;transform:translateY(-50%)!important;gap:18px!important;transition:none!important}
+.card-returning .has-hover-copy .card-hover-copy{opacity:0!important;visibility:hidden!important;transition:none!important}
+.tunnel-return-shield{position:fixed;inset:0;z-index:10000;background:transparent;touch-action:none}
+
+/* A real two-sided card: front = icon/title, back = the page's paper color. */
+.tunnel-flip-card{background:transparent;border:0;contain:layout;overflow:visible;perspective:1000px}
+.tunnel-turner{position:absolute;inset:0;transform-style:preserve-3d;border-radius:inherit;transform:rotateY(0deg)}
+.tunnel-face{position:absolute;inset:0;background:var(--turn-color);border-radius:inherit;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.tunnel-front{border:1px solid #172b4916;transform:rotateY(0deg)}
+.tunnel-back{transform:rotateY(180deg)}
+
+.card-subpage .content-body .prose{max-width:72ch}.card-subpage .prose p{font-size:18px;line-height:1.75;margin:0 0 22px}.content-link{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;overflow-wrap:anywhere}.content-link:hover{text-decoration-thickness:2px}.content-link:focus-visible{outline:3px solid var(--blue);outline-offset:4px;border-radius:3px}@media(max-width:559px){.card-subpage .prose p{font-size:16px;margin-bottom:18px}}
+
+.card-subpage .prose ol{padding-left:24px}.card-subpage .prose .content-note{font-size:14px;line-height:1.6;padding:12px 16px;border-left:3px solid var(--blue);border-radius:10px;background:#ffffff45}
+
+
+
+
+
+
+/* One continuous page scroll: no nested reading pane or pinned footer. */
+dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
+.card-subpage .page-surface{position:fixed;inset:0}
+.card-subpage .page-shell{height:auto;min-height:100%;overflow:visible}
+.card-subpage .content-body{flex:none;min-height:auto;overflow:visible;scrollbar-gutter:auto}
+
+/* Panel Sans for reading; Neulis Cursive Medium for page headings. */
+.card-subpage,.card-subpage :is(p,ul,ol,li,strong,b,a,button,figcaption,.pending-label){font-family:'panel-sans',sans-serif;letter-spacing:-.02em}
+.card-subpage{font-weight:400}
+.card-subpage :is(strong,b){font-weight:600}
+.card-subpage :is(h2,h3,h4,h5,h6){font-family:'neulis-cursive',sans-serif;font-style:normal;font-weight:500}
+.card-subpage .content-body h3{font-size:24px;line-height:1.3;letter-spacing:-.02em;margin-bottom:18px}
+.card-subpage .content-body :is(p,li){font-size:18px;line-height:1.7;letter-spacing:-.02em}
+.card-subpage .pending-copy{line-height:1.7}
+.card-subpage .primary{font-weight:600;letter-spacing:-.02em}
+@media(max-width:559px){.card-subpage .content-body h3{font-size:21px}.card-subpage .content-body :is(p,li){font-size:16px}}
+
+/* Pale red headings on the injury page. */
+#uraz-dialog :is(h2,h3){color:#FFF2F0}
+
+/* A subtle resting shadow on all cards, including touch layouts. */
+:root{--directory-card-shadow:0 3px 8px #172b491a,0 10px 24px #172b492b}
+:root[data-theme=dark]{--directory-card-shadow:0 3px 9px #00000038,0 12px 28px #00000059}
+.link-card{box-shadow:var(--directory-card-shadow)}
+
+/* Quick navigation stays within the Umíme to reading page, preserving card history. */
+.umime-shortcuts{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}.umime-shortcuts button{font:inherit;font-size:15px;font-weight:600;color:inherit;background:#ffffff40;border:1px solid #172b4940;border-radius:10px;padding:10px 14px;cursor:pointer;transition:background .2s}.umime-shortcuts button:hover{background:#ffffff80}.umime-shortcuts button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}#umimeto-dialog section[id]{scroll-margin-top:28px}#umimeto-dialog h3:focus{outline:none}
+
+/* Textured pencil illustrations occupy the outer reading margin. */
+.card-subpage .content-body.has-painting{position:relative;padding-right:212px}
+.card-subpage .page-illustration{position:absolute;right:0;top:28px;width:180px;margin:0;pointer-events:none;user-select:none}
+.page-illustration img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+@media(max-width:899px){.card-subpage .content-body.has-painting{padding-right:0}.card-subpage .page-illustration{position:static;float:right;width:160px;margin:28px 0 16px 24px}.has-painting>section:first-of-type{min-height:144px}}
+@media(max-width:559px){.card-subpage .page-illustration{float:none;width:150px;margin:20px auto 0}.has-painting>section:first-of-type{min-height:0}}
+
+/* Different portrait and landscape sketches keep their original proportions. */
+.card-subpage .page-illustration img{max-height:220px;object-position:top center}
+.card-subpage .pending-illustration{position:absolute;top:150px;right:48px;width:190px;margin:0;pointer-events:none;user-select:none}
+.pending-illustration[hidden]{display:none}
+.pending-illustration img{display:block;width:100%;height:auto;max-height:220px;object-fit:contain}
+#pending-dialog[data-has-illustration=true] .pending-copy{max-width:calc(100% - 240px)}
+#hodnoty-dialog .content-actions{align-items:center;gap:12px}
+.values-illustration{display:block;width:42px;height:60px;object-fit:contain;pointer-events:none;user-select:none}
+@media(max-width:899px){.card-subpage .page-illustration{width:150px}.has-painting>section:first-of-type{min-height:180px}}
+@media(max-width:559px){.card-subpage .page-illustration{width:140px;margin:20px auto 0}.card-subpage .page-illustration img{max-height:160px}.has-painting>section:first-of-type{min-height:0}.card-subpage .pending-illustration{position:static;width:150px;align-self:center;margin:20px auto 0}.pending-illustration img{max-height:160px}#pending-dialog[data-has-illustration=true] .pending-copy{max-width:none}}
+
+/* Consistent typography for every return-to-directory button. */
+.card-subpage :is(.content-actions,.dialog-actions)>button.primary{font-family:'neulis-cursive',sans-serif;font-weight:600;letter-spacing:-.025em}
+
+/* Neulis Cursive card labels, including their animated transition copy. */
+.card-title,.tunnel-title{font-family:'katarine-web',sans-serif;font-style:normal;font-weight:600;letter-spacing:-.055em;text-transform:uppercase}
+
+/* Calm editorial hierarchy for the directory heading. */
+.intro{min-height:260px;padding:26px 0 18px;gap:40px;align-items:center}
+.intro-copy{max-width:760px;text-align:left}
+#page-title{font-family:'neulis-cursive','panel-sans',sans-serif;font-size:50px;font-weight:500;line-height:1.02;letter-spacing:-.055em;text-transform:none;margin:0 0 24px;color:var(--text);animation:directory-heading-in .5s ease-out both;transform-origin:left center}
+#page-title .heading-main{font-family:'neulis-cursive',sans-serif;font-style:normal;font-size:1em;font-weight:500;letter-spacing:-.025em;line-height:1.02}
+#page-title .heading-secondary{font-family:inherit;font-size:.43em;font-weight:500;letter-spacing:-.035em;line-height:1.25;margin-top:8px;animation:none;clip-path:none;transform:none}
+.heading-accent{position:relative;isolation:isolate;white-space:nowrap}
+.heading-accent::after{content:'';position:absolute;z-index:-1;left:-.035em;right:-.035em;bottom:.05em;height:.22em;border-radius:2px;background:#DFFF00;transform:rotate(-1deg)}
+:root[data-theme=dark] .heading-accent::after{background:#DFFF0052}
+.intro-copy>p{font-family:'panel-sans',sans-serif;font-size:16px;font-weight:400;line-height:1.65;letter-spacing:-.02em;text-transform:none;max-width:540px;text-wrap:pretty;color:var(--muted)}
+@keyframes directory-heading-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:999px){.intro{gap:28px;min-height:230px}.intro-copy>p{font-size:15px}}
+@media(max-width:559px){.intro{min-height:190px;gap:16px;padding:18px 0 12px}.signpost{width:21%;max-width:80px}.signpost img{height:130px}#page-title{font-size:min(50px,17cqi);margin-bottom:16px}#page-title .heading-secondary{font-size:.5em;margin-top:6px}.intro-copy>p{font-size:13px;line-height:1.6}}
+@media(prefers-reduced-motion:reduce){#page-title{animation:none;opacity:1;transform:none}}
+
+/* Restore the animated highlighter stroke beneath the complete subtitle. */
+.subtitle-highlight{animation-delay:.55s}
+
+/* Compact heading rhythm; the animated marker follows the main word. */
+#page-title{margin-bottom:12px}
+#page-title .heading-secondary{margin-top:2px;line-height:1.15}
+#page-title .subtitle-highlight{padding:0 .035em;margin:0 -.035em}
+@media(max-width:559px){#page-title{margin-bottom:10px}#page-title .heading-secondary{margin-top:2px}}
+
+/* Handwritten secondary title, hosted locally. */
+@font-face{font-family:'Cedarville Cursive';font-style:normal;font-weight:400;font-display:swap;src:url('assets/cedarville-cursive.ttf') format('truetype')}
+#page-title .heading-secondary{font-family:'Cedarville Cursive',cursive;font-weight:400;letter-spacing:0;line-height:1.3}
+
+/* Skolacek CE for the handwritten secondary title, including Czech diacritics. */
+@font-face{font-family:'Skolacek CE';font-style:normal;font-weight:400;font-display:swap;src:url('assets/skolacek-ce.otf') format('opentype')}
+#page-title .heading-secondary{font-family:'learning-curve',cursive;font-style:normal;font-weight:400;letter-spacing:0}
+
+/* A subtle static rightward slant for the handwritten subtitle. */
+#page-title .heading-secondary{font-size:40px;width:fit-content;transform:none;transform-origin:left bottom}
+
+/* Leave room for the pen stroke below the main title. */
+#page-title .heading-main{line-height:.95}
+#page-title .heading-secondary{margin-top:8px;line-height:1.1}
+@media(max-width:559px){#page-title .heading-secondary{margin-top:6px}}
+
+/* The handwritten subtitle anchors its oval. */
+#page-title .heading-secondary{position:relative}
+
+/* Share one visual centre across the title and handwritten second line. */
+.intro-copy{text-align:center}
+#page-title{text-align:center}
+#page-title .heading-secondary{margin-inline:auto;transform-origin:center bottom}
+.intro-copy>p{margin-inline:auto}
+
+/* Draw a loose pen oval after the highlighter has finished. */
+#page-title .subtitle-circle{position:absolute;left:-.43em;top:-.38em;width:calc(100% + .86em);height:1.9em;overflow:hidden;pointer-events:none;transform:skewX(-3deg) rotate(-.7deg);fill:none;color:#E87961}
+#page-title .subtitle-circle .brush-ink{fill:currentColor;stroke:currentColor;stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:.88}
+#page-title .subtitle-circle .brush-reveal{fill:none;stroke:#fff;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0}
+#page-title .subtitle-circle.is-waiting .brush-reveal{stroke-dashoffset:1;opacity:0}
+#page-title .subtitle-circle.is-drawing .brush-reveal{animation:subtitle-circle-draw .72s linear .12s both}
+@keyframes subtitle-circle-draw{0%{stroke-dashoffset:1;opacity:0}10%{stroke-dashoffset:.98;opacity:1}85%{stroke-dashoffset:.08;opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@media(prefers-reduced-motion:reduce){#page-title .subtitle-circle .brush-reveal{animation:none!important;stroke-dashoffset:0!important;opacity:1!important}}
+
+/* Immediate next steps, before the explanatory copy and illustrations. */
+.card-subpage .content-body .quick-start{max-width:72ch;margin:24px 0 32px;padding:22px 24px;border:1px solid #172b4929;border-radius:10px;background:#ffffff45}
+.card-subpage .quick-start h3{margin-top:0}
+.card-subpage .quick-start p:last-child{margin-bottom:0}
+.quick-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:16px 0}
+.quick-actions:last-child{margin-bottom:0}
+.card-subpage :is(.primary,.secondary-action){min-height:44px;max-width:100%;white-space:normal;text-align:center;line-height:1.35}
+.secondary-action,.page-back{font-family:'neulis-cursive',sans-serif;font-weight:600;font-size:15px;letter-spacing:-.02em;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 16px;border:1px solid #172b4966;border-radius:10px;color:#172B49;background:#ffffff40}
+.secondary-action:hover,.page-back:hover{background:#ffffff75}
+.page-back{align-self:flex-start;margin:0 0 20px;gap:8px}
+.card-subpage .icon-button{width:44px;height:44px;min-width:44px}
+.card-subpage .page-heading{flex:1;min-width:0}
+.card-subpage :is(h2,h3,h4,p,li,a){overflow-wrap:anywhere}
+.card-subpage h2{hyphens:auto}
+.card-subpage section[id]{scroll-margin-top:24px}
+.card-subpage h3:focus{outline:none}
+.card-touch-note{display:none}
+@media(max-width:719px),(hover:none),(pointer:coarse){
+ .has-hover-copy .card-main,.has-hover-copy:focus-within .card-main{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding:17px 12px}
+ .has-hover-copy .injury-heading,.has-hover-copy:focus-within .injury-heading{position:static;transform:none!important;gap:10px!important}
+ .has-hover-copy .card-hover-copy{display:none!important}
+ .card-touch-note{display:block;color:#1B211F;font-family:'panel-sans',sans-serif;letter-spacing:-.02em;font-size:13px;font-weight:400;line-height:1.35;text-align:center;max-width:100%}
+}
+@media(max-width:559px){
+ .card-subpage .page-shell{padding:20px 18px calc(20px + env(safe-area-inset-bottom))}
+ .card-subpage .content-header,.card-subpage .dialog-header{align-items:flex-start;gap:10px}
+ .card-subpage .page-heading{align-items:flex-start;gap:10px}
+ .card-subpage h2{font-size:26px;line-height:1.2}
+ .card-subpage .content-body .quick-start{padding:18px 16px;margin:20px 0 24px}
+ .quick-actions{align-items:stretch;gap:10px}
+ .quick-actions>*{width:100%}
+ .card-subpage .content-actions>.primary{width:100%}
+ .page-back{font-size:14px;margin-bottom:16px}
+ .card-title{font-size:clamp(18px,5.5vw,23px);line-height:1.2;overflow-wrap:normal;hyphens:auto}
+ .card-touch-note{font-size:12px}
+ #page-title .heading-secondary{font-size:40px;margin-top:6px}
+}
+
+/* The new action summary remains legible on the injury card's coral paper. */
+#uraz-dialog .quick-start h3{color:#172B49}
+.card-subpage :is(.secondary-action,.page-back){font-family:'neulis-cursive',sans-serif;font-weight:600}
+
+/* Touch controls retain a usable hit area, including the theme switch. */
+.card-subpage button,.umime-shortcuts button{min-height:44px}
+@media(max-width:719px),(hover:none),(pointer:coarse){.theme-switch button{min-height:44px}}
+
+/* A loose oval with a lighter follow-through, inspired by the selected reference. */
+#page-title .subtitle-circle .brush-ink-return{opacity:.62}
+#page-title .subtitle-circle.is-drawing .brush-reveal-return{animation:subtitle-circle-draw .42s linear .82s both}
+@media(prefers-reduced-motion:reduce){#page-title .subtitle-circle.is-drawing .brush-reveal-return{animation:none!important;stroke-dashoffset:0!important;opacity:1!important}}
+
+/* Návrat přes stejný obrázek rozcestníku jako na úvodní stránce. */
+.card-subpage .page-back{width:64px;min-height:72px;padding:4px;border:0;background:transparent;border-radius:10px;cursor:pointer}
+.card-subpage .page-back:hover{background:#ffffff30}
+.card-subpage .page-back:focus-visible{outline:2px solid #172B49;outline-offset:4px}
+.card-subpage .page-back img{display:block;width:56px;height:64px;object-fit:contain}
+
+/* Jednotný kurzor na celém webu včetně podstránek a ovládacích prvků. */
+@media(hover:hover) and (pointer:fine){
+ html,body,body *,body *::before,body *::after{cursor:url("assets/card-cursor.svg") 5 3,default!important}
+}
+
+/* Vyrovnání přirozeného sklonu Learning Curve pouze u písma. */
+#page-title .subtitle-text{display:inline-block;transform:none}
+
+/* Jednořádkový titulek: Katarine Semibold + Regular, tracking −0,04 em. */
+#page-title{display:flex;flex-wrap:nowrap;align-items:baseline;justify-content:center;gap:.75em;white-space:nowrap;font-family:'katarine-web',sans-serif;font-size:min(50px,8.5cqi);text-transform:uppercase;font-style:normal;font-weight:600;letter-spacing:-.04em;line-height:1.1}
+#page-title .heading-main{display:block;font-family:'katarine-web',sans-serif;font-size:1em;font-style:normal;font-weight:600;letter-spacing:-.04em;line-height:1.1}
+#page-title .heading-secondary{display:block;flex:none;width:auto;margin:0;font-family:'katarine-web',sans-serif;font-size:1em;font-style:normal;font-weight:400;letter-spacing:-.04em;line-height:1.1;transform:none}
+
+/* Tabulka Gemini zůstává součástí stránky bez vlastního posouvání. */
+#gemini-dialog .content-body h4{font-size:21px;line-height:1.3;letter-spacing:-.02em;margin:30px 0 14px}
+.gemini-comparison{width:100%;table-layout:fixed;border-collapse:collapse;font-family:'panel-sans',sans-serif;letter-spacing:-.02em;font-size:17px;line-height:1.55;margin:20px 0}
+.gemini-comparison :is(th,td){padding:14px 12px;border-bottom:1px solid #172B4933;text-align:left;vertical-align:top;overflow-wrap:anywhere;hyphens:auto}
+.gemini-comparison th{font-weight:600;background:#ffffff35}
+@media(max-width:559px){.gemini-comparison{font-size:15px}.gemini-comparison :is(th,td){padding:12px 8px}#gemini-dialog .content-body h4{font-size:19px}}
+
+/* Jemný lehce nepravidelný tah propisky namísto oválu. */
+#page-title .subtitle-circle .pen-frame-ink{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:.9}
+
+/* Čtyři samostatně načrtnuté hrany s přesahy a opakovanými tahy. */
+#page-title .subtitle-circle .frame-scratch{fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.65}
+#page-title .subtitle-circle.is-drawing .brush-reveal[class*=frame-]{animation-duration:.24s;animation-timing-function:linear}
+#page-title .subtitle-circle.is-drawing .frame-top{animation-delay:.9s}
+#page-title .subtitle-circle.is-drawing .frame-right{animation-delay:.64s}
+#page-title .subtitle-circle.is-drawing .frame-bottom{animation-delay:.38s}
+#page-title .subtitle-circle.is-drawing .frame-left{animation-delay:.12s}
+@media(prefers-reduced-motion:reduce){#page-title .subtitle-circle.is-drawing .brush-reveal[class*=frame-]{animation:none!important;stroke-dashoffset:0!important;opacity:1!important}}
+
+/* Praktická zadání lze přímo označit a zkopírovat. */
+#gemini-dialog .gemini-prompt{margin:18px 0 24px;padding:10px 18px;border-left:3px solid #2258A580;background:#ffffff30}
+#gemini-dialog .gemini-prompt p{margin:4px 0;font-size:17px;line-height:1.65}
+#gemini-dialog .gemini-sources p{font-size:14px;line-height:1.6}
+@media(max-width:559px){#gemini-dialog .gemini-prompt{padding:8px 12px}#gemini-dialog .gemini-prompt p{font-size:16px}}
+
+.card-title.ipad-wordmark,.tunnel-title.ipad-wordmark{text-transform:none}
