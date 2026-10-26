@@ -11,3 +11,17 @@ https://registry.npmjs.org/react-undraw-illustrations/-/react-undraw-illustratio
 The npm archive SHA-512 integrity was verified before use. Converted from the
 SVG React component to standalone SVG, with accent color set to #2258A5.
 No runtime package dependency was added.
+
+## Additional action illustrations
+
+The following unDraw illustrations were retrieved from the same verified archive
+and converted to standalone SVG with blue #2258A5 accents (calendar secondary
+accent #80CBA9):
+
+- `undraw-chat.svg`: **Chat**, component `UndrawChat`.
+- `undraw-team-spirit.svg`: **TeamSpirit**, component `UndrawTeamSpirit`.
+- `undraw-together.svg`: **Together**, component `UndrawTogether`.
+- `undraw-calendar.svg`: **Calendar**, component `UndrawCalendar`.
+- `undraw-book-lover.svg`: **BookLover**, component `UndrawBookLover`.
+- `undraw-design-tools.svg`: **DesignTools**, component `UndrawDesignTools`.
+- `undraw-artificial-intelligence.svg`: **ArtificialIntelligence**, component `UndrawArtificialIntelligence`.
