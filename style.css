@@ -392,3 +392,6 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 @media(max-width:559px){#gemini-dialog .gemini-prompt{padding:8px 12px}#gemini-dialog .gemini-prompt p{font-size:16px}}
 
 .card-title.ipad-wordmark,.tunnel-title.ipad-wordmark{text-transform:none}
+
+/* Document illustration beside the school-event form link. */
+.quick-actions>.form-link-illustration{display:block;width:96px;max-width:96px;height:auto;flex:0 0 96px;object-fit:contain}
