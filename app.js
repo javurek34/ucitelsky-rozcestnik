@@ -8,7 +8,7 @@ const base=[
 {id:'ai-detem',title:'AI dětem',icon:'book',url:'https://aidetem.cz/'},
 {id:'gemini',title:'Gemini',icon:'tool',url:null,content:'gemini'},
 {id:'canva',title:'Canva',icon:'tool',url:null,content:'canva'},
-{id:'formulare',title:'Formuláře',icon:'file',url:null},
+{id:'formulare',title:'Formuláře',icon:'file',url:null,content:'formulare'},
 {id:'umimeto',title:'umimeto.org',icon:'book',url:null,content:'umimeto'},
 {id:'akce',title:'Akce a exkurze',icon:'calendar',url:null,content:'akce'},
 {id:'ruzne',title:'Různé',icon:'misc',url:null,content:'ruzne'}
@@ -43,6 +43,7 @@ function render(){
  main.append(top,title);if(item.id==='uraz'){card.classList.add('has-hover-copy');const copy=document.createElement('span');copy.className='card-hover-copy';copy.id='uraz-hover-copy';copy.textContent='Jak postupovat při úrazu žáka, co, jak a kam psát? Kdy se úraz posílá na ČŠI? Je škola pojištěna?';main.setAttribute('aria-describedby',copy.id);const name=document.createElement('span');name.className='card-default-copy';name.textContent=item.title;title.replaceChildren(name);const heading=document.createElement('span');heading.className='injury-heading';heading.append(top,title);const touchNote=document.createElement('span');touchNote.className='card-touch-note';touchNote.textContent='Postup a evidence úrazů';touchNote.setAttribute('aria-hidden','true');main.replaceChildren(heading,touchNote,copy);}card.append(main);owner.append(card);card.addEventListener('pointerenter',event=>{if(event.pointerType!=='touch')activateFan(owner,card);});card.addEventListener('focusin',()=>activateFan(owner,card));
  });
 }
+$('#close-formulare').onclick=$('#formulare-ok').onclick=cardPages.requestClose;
 $('#close-pending').onclick=$('#pending-ok').onclick=cardPages.requestClose;
 $('#close-dohledy').onclick=$('#dohledy-ok').onclick=cardPages.requestClose;
 $('#close-akce').onclick=$('#akce-ok').onclick=cardPages.requestClose;
