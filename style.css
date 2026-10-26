@@ -1,5 +1,5 @@
 
-:root{--blue:#2258A5;--text:#172B49;--muted:#566880;--bg:#F7F9FC;--surface:#FFFFFF;--line:#dce4ef;--soft:#EAF1FA;--radius:10px;font-family:'panel-sans',sans-serif;letter-spacing:-.02em;background:var(--bg);color:var(--text);font-synthesis:none;color-scheme:light}
+:root{--blue:#2258A5;--text:#172B49;--muted:#566880;--bg:#F7F9FC;--surface:#FFFFFF;--line:#dce4ef;--soft:#EAF1FA;--radius:10px;font-family:'adapter-pe-variable',sans-serif;letter-spacing:-.02em;background:var(--bg);color:var(--text);font-synthesis:none;color-scheme:light}
 :root[data-theme=dark]{--blue:#8DB7F4;--text:#E5EDF9;--muted:#A7B5C9;--bg:#101927;--surface:#172335;--line:#324258;--soft:#223751;color-scheme:dark}
 *{box-sizing:border-box}body{margin:0;background:var(--bg)}button{font:inherit;cursor:pointer;color:inherit;border:0;background:none}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.sprite,.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.skip{position:fixed;left:16px;top:-80px;background:var(--text);color:var(--bg);padding:14px;border-radius:var(--radius);z-index:10}.skip:focus{top:12px}
 .workspace{width:100%;max-width:1180px;margin:0 auto;padding:0 40px}.topbar{min-height:100px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:block;width:210px;padding:0;flex-shrink:0}.brand img{display:block;width:100%;height:auto}:root[data-theme=dark] .brand img{filter:brightness(0) saturate(100%) invert(77%) sepia(22%) saturate(1022%) hue-rotate(183deg) brightness(103%) contrast(91%)}.theme-switch{display:flex;background:var(--surface);border:1px solid var(--line);padding:4px;border-radius:var(--radius);gap:3px}.theme-switch button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:9px 12px;font-size:11px;white-space:nowrap;border-radius:7px;color:var(--muted);transition:background .16s,color .16s}.theme-switch button svg{width:16px;height:16px}.theme-switch button[aria-pressed=true]{background:var(--soft);color:var(--blue)}.theme-switch button:hover{color:var(--blue)}
@@ -48,20 +48,20 @@ dialog.content-dialog{width:min(840px,calc(100% - 32px));max-width:840px;max-hei
 @media(max-width:359px){.link-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card-main{padding:14px 8px;gap:12px}.card-title{font-size:12px}.card-top{min-height:52px}.card-visual,.card-visual.brand-visual{width:52px;height:52px;min-width:52px;flex-basis:52px}}
 
 @font-face{font-family:'Loved by the King';font-style:normal;font-weight:400;font-display:swap;src:url('assets/loved-by-the-king.ttf') format('truetype')}
-#page-title{font-family:'Loved by the King','panel-sans',sans-serif;font-weight:400;letter-spacing:.01em}
+#page-title{font-family:'Loved by the King','adapter-pe-variable',sans-serif;font-weight:400;letter-spacing:.01em}
 
 @font-face{font-family:'Yomogi';font-style:normal;font-weight:400;font-display:swap;src:url('assets/yomogi-latin.ttf') format('truetype')}
-.intro-copy>p{font-family:'Yomogi','panel-sans',sans-serif;font-weight:400;font-size:24px;line-height:1.8;letter-spacing:0}@media(max-width:559px){.intro-copy>p{font-size:21px}}
+.intro-copy>p{font-family:'Yomogi','adapter-pe-variable',sans-serif;font-weight:400;font-size:24px;line-height:1.8;letter-spacing:0}@media(max-width:559px){.intro-copy>p{font-size:21px}}
 
 @font-face{font-family:'Yuyu';font-style:normal;font-weight:400;font-display:swap;src:url('assets/yuyu.ttf') format('truetype')}
-.intro-copy>p{font-family:'Yuyu','panel-sans',sans-serif;font-weight:400}
+.intro-copy>p{font-family:'Yuyu','adapter-pe-variable',sans-serif;font-weight:400}
 
 
-.card-main,.card-title{font-family:'neulis-cursive','panel-sans',sans-serif;font-weight:500}.card-title{font-size:25px;font-weight:500;line-height:1.2;letter-spacing:-.3px;min-height:0;overflow-wrap:anywhere}
+.card-main,.card-title{font-family:'neulis-cursive','adapter-pe-variable',sans-serif;font-weight:500}.card-title{font-size:25px;font-weight:500;line-height:1.2;letter-spacing:-.3px;min-height:0;overflow-wrap:anywhere}
 
 /* Tighter typography; the injury explanation replaces only the title. */
 .intro-copy>p{letter-spacing:-.02em}.card-title{letter-spacing:-.025em}.has-hover-copy .card-title{display:block}
-.card-hover-copy{display:none;color:#1B211F;font-family:'neulis-cursive','panel-sans',sans-serif;font-size:16px;font-weight:500;line-height:1.4;letter-spacing:-.015em;text-align:center;overflow-wrap:break-word;animation:copy-enter .18s ease both}
+.card-hover-copy{display:none;color:#1B211F;font-family:'neulis-cursive','adapter-pe-variable',sans-serif;font-size:16px;font-weight:500;line-height:1.4;letter-spacing:-.015em;text-align:center;overflow-wrap:break-word;animation:copy-enter .18s ease both}
 .has-hover-copy:focus-within .card-default-copy{display:block}.has-hover-copy:focus-within .card-hover-copy{display:block}
 @media(hover:hover) and (pointer:fine){.has-hover-copy:hover .card-default-copy{display:block}.has-hover-copy:hover .card-hover-copy{display:block}}
 @keyframes copy-enter{from{opacity:0}to{opacity:1}}
@@ -72,11 +72,11 @@ dialog.content-dialog{width:min(840px,calc(100% - 32px));max-width:840px;max-hei
 .card-title{font-weight:600}
 
 @font-face{font-family:'Special Gothic Condensed One';font-style:normal;font-weight:400;font-display:swap;src:url('assets/special-gothic-condensed-one.ttf') format('truetype')}
-#page-title{font-family:'Special Gothic Condensed One','panel-sans',sans-serif;font-weight:400}
+#page-title{font-family:'Special Gothic Condensed One','adapter-pe-variable',sans-serif;font-weight:400}
 
 
 .intro-copy{flex:1;container-type:inline-size}
-#page-title{--heading-size:clamp(40.32px,4.896vw,61.92px);font-family:'neulis-cursive','panel-sans',sans-serif;font-size:var(--heading-size);font-size:min(var(--heading-size),15cqi);font-weight:500;letter-spacing:-.05em;line-height:1.06;text-transform:uppercase;overflow-wrap:normal}
+#page-title{--heading-size:clamp(40.32px,4.896vw,61.92px);font-family:'neulis-cursive','adapter-pe-variable',sans-serif;font-size:var(--heading-size);font-size:min(var(--heading-size),15cqi);font-weight:500;letter-spacing:-.05em;line-height:1.06;text-transform:uppercase;overflow-wrap:normal}
 #page-title>span{display:block;white-space:nowrap}#page-title .heading-main{font-size:.94993em;font-weight:500;letter-spacing:-.05em}#page-title .heading-secondary{font-weight:300}
 @media(max-width:719px){#page-title{--heading-size:46.08px}}@media(max-width:559px){#page-title{--heading-size:38.88px}}@media(max-width:359px){#page-title{--heading-size:34.56px}}
 
@@ -105,7 +105,7 @@ dialog.content-dialog{width:min(840px,calc(100% - 32px));max-width:840px;max-hei
 /* Heading font assets and matched line widths. */
 
 #page-title{--heading-size:97.683749788px}
-#page-title .heading-main{font-family:'Yuyu','panel-sans',sans-serif;font-weight:400;font-size:2.047423450em}
+#page-title .heading-main{font-family:'Yuyu','adapter-pe-variable',sans-serif;font-weight:400;font-size:2.047423450em}
 
 /* One gentle marker stroke on load; cloned backgrounds follow wrapped lines. */
 .subtitle-highlight{--marker-ink:#DFFF00D9;box-decoration-break:clone;-webkit-box-decoration-break:clone;background-image:linear-gradient(178deg,transparent 33%,var(--marker-ink) 36%,var(--marker-ink) 87%,transparent 91%);background-repeat:no-repeat;background-position:left center;background-size:100% 100%;animation:subtitle-marker 1.15s cubic-bezier(.25,.65,.35,1) .65s both}
@@ -155,7 +155,7 @@ dialog.card-subpage::backdrop{background:transparent;backdrop-filter:none}
 .card-subpage .content-actions,.card-subpage .dialog-actions{padding:20px 0 0;border-top:1px solid var(--line);background:transparent;flex-shrink:0}
 .card-subpage .pending-label{align-self:flex-start;margin-top:32px;font-size:11px}.card-subpage .pending-copy{font-size:18px;max-width:650px;line-height:1.75;margin:24px 0 40px}.card-subpage .dialog-actions{margin-top:auto}
 .tunnel-card{position:fixed;z-index:3;border:1px solid #172b4916;border-radius:10px;transform-origin:center;pointer-events:none;contain:layout paint;will-change:transform,opacity}
-.tunnel-card-contents{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;width:100%;height:100%;padding:18px;color:#1B211F;text-align:center}.tunnel-title{font-family:'neulis-cursive','panel-sans',sans-serif;font-size:25px;font-weight:500;line-height:1.2;letter-spacing:-.025em}
+.tunnel-card-contents{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;width:100%;height:100%;padding:18px;color:#1B211F;text-align:center}.tunnel-title{font-family:'neulis-cursive','adapter-pe-variable',sans-serif;font-size:25px;font-weight:500;line-height:1.2;letter-spacing:-.025em}
 @media(max-width:559px){.page-shell{padding:24px 20px 18px}.page-heading{gap:12px}.page-icon .card-visual{width:44px;height:44px;min-width:44px;flex-basis:44px}.page-icon .card-visual svg{width:24px;height:24px}.card-subpage .content-header,.card-subpage .dialog-header{gap:12px;padding-bottom:20px}.card-subpage .content-body li{font-size:15px}.card-subpage .pending-copy{font-size:16px}.card-subpage .content-actions,.card-subpage .dialog-actions{padding-top:16px}}
 
 /* Each reading page inherits its mother card's exact paper color. */
@@ -193,7 +193,7 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 .card-subpage .content-body{flex:none;min-height:auto;overflow:visible;scrollbar-gutter:auto}
 
 /* Panel Sans for reading; Neulis Cursive Medium for page headings. */
-.card-subpage,.card-subpage :is(p,ul,ol,li,strong,b,a,button,figcaption,.pending-label){font-family:'panel-sans',sans-serif;letter-spacing:-.02em}
+.card-subpage,.card-subpage :is(p,ul,ol,li,strong,b,a,button,figcaption,.pending-label){font-family:'adapter-pe-variable',sans-serif;letter-spacing:-.02em}
 .card-subpage{font-weight:400}
 .card-subpage :is(strong,b){font-weight:600}
 .card-subpage :is(h2,h3,h4,h5,h6){font-family:'neulis-cursive',sans-serif;font-style:normal;font-weight:500}
@@ -241,13 +241,13 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 /* Calm editorial hierarchy for the directory heading. */
 .intro{min-height:260px;padding:26px 0 18px;gap:40px;align-items:center}
 .intro-copy{max-width:760px;text-align:left}
-#page-title{font-family:'neulis-cursive','panel-sans',sans-serif;font-size:50px;font-weight:500;line-height:1.02;letter-spacing:-.055em;text-transform:none;margin:0 0 24px;color:var(--text);animation:directory-heading-in .5s ease-out both;transform-origin:left center}
+#page-title{font-family:'neulis-cursive','adapter-pe-variable',sans-serif;font-size:50px;font-weight:500;line-height:1.02;letter-spacing:-.055em;text-transform:none;margin:0 0 24px;color:var(--text);animation:directory-heading-in .5s ease-out both;transform-origin:left center}
 #page-title .heading-main{font-family:'neulis-cursive',sans-serif;font-style:normal;font-size:1em;font-weight:500;letter-spacing:-.025em;line-height:1.02}
 #page-title .heading-secondary{font-family:inherit;font-size:.43em;font-weight:500;letter-spacing:-.035em;line-height:1.25;margin-top:8px;animation:none;clip-path:none;transform:none}
 .heading-accent{position:relative;isolation:isolate;white-space:nowrap}
 .heading-accent::after{content:'';position:absolute;z-index:-1;left:-.035em;right:-.035em;bottom:.05em;height:.22em;border-radius:2px;background:#DFFF00;transform:rotate(-1deg)}
 :root[data-theme=dark] .heading-accent::after{background:#DFFF0052}
-.intro-copy>p{font-family:'panel-sans',sans-serif;font-size:16px;font-weight:400;line-height:1.65;letter-spacing:-.02em;text-transform:none;max-width:540px;text-wrap:pretty;color:var(--muted)}
+.intro-copy>p{font-family:'adapter-pe-variable',sans-serif;font-size:16px;font-weight:400;line-height:1.65;letter-spacing:-.02em;text-transform:none;max-width:540px;text-wrap:pretty;color:var(--muted)}
 @keyframes directory-heading-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:999px){.intro{gap:28px;min-height:230px}.intro-copy>p{font-size:15px}}
 @media(max-width:559px){.intro{min-height:190px;gap:16px;padding:18px 0 12px}.signpost{width:21%;max-width:80px}.signpost img{height:130px}#page-title{font-size:min(50px,17cqi);margin-bottom:16px}#page-title .heading-secondary{font-size:.5em;margin-top:6px}.intro-copy>p{font-size:13px;line-height:1.6}}
@@ -317,7 +317,7 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
  .has-hover-copy .card-main,.has-hover-copy:focus-within .card-main{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding:17px 12px}
  .has-hover-copy .injury-heading,.has-hover-copy:focus-within .injury-heading{position:static;transform:none!important;gap:10px!important}
  .has-hover-copy .card-hover-copy{display:none!important}
- .card-touch-note{display:block;color:#1B211F;font-family:'panel-sans',sans-serif;letter-spacing:-.02em;font-size:13px;font-weight:400;line-height:1.35;text-align:center;max-width:100%}
+ .card-touch-note{display:block;color:#1B211F;font-family:'adapter-pe-variable',sans-serif;letter-spacing:-.02em;font-size:13px;font-weight:400;line-height:1.35;text-align:center;max-width:100%}
 }
 @media(max-width:559px){
  .card-subpage .page-shell{padding:20px 18px calc(20px + env(safe-area-inset-bottom))}
@@ -368,7 +368,7 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 
 /* Tabulka Gemini zůstává součástí stránky bez vlastního posouvání. */
 #gemini-dialog .content-body h4{font-size:21px;line-height:1.3;letter-spacing:-.02em;margin:30px 0 14px}
-.gemini-comparison{width:100%;table-layout:fixed;border-collapse:collapse;font-family:'panel-sans',sans-serif;letter-spacing:-.02em;font-size:17px;line-height:1.55;margin:20px 0}
+.gemini-comparison{width:100%;table-layout:fixed;border-collapse:collapse;font-family:'adapter-pe-variable',sans-serif;letter-spacing:-.02em;font-size:17px;line-height:1.55;margin:20px 0}
 .gemini-comparison :is(th,td){padding:14px 12px;border-bottom:1px solid #172B4933;text-align:left;vertical-align:top;overflow-wrap:anywhere;hyphens:auto}
 .gemini-comparison th{font-weight:600;background:#ffffff35}
 @media(max-width:559px){.gemini-comparison{font-size:15px}.gemini-comparison :is(th,td){padding:12px 8px}#gemini-dialog .content-body h4{font-size:19px}}
