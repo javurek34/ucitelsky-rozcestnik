@@ -48,7 +48,6 @@ accent #80CBA9):
 - `logos/faceup.svg`: FaceUp brand symbol, unchanged, from a FaceUp engineer’s
   work history: https://github.com/KubqoA/jakubarbet.me/blob/b8245651e62a0c60d2c87b9d5a1beeb4f9ce3037/src/assets/faceup-light.svg
   Brand owner: https://www.faceup.com/
-- CEDU: externally hosted logo from CEDU’s provider profile in DVPP.info:
-  https://www.dvpp.info/vzdelavatele/?v=260
-  https://www.dvpp.info/wp/wp-content/uploads/dvpp/logo/260.png
-  This image requires access to www.dvpp.info; it is not stored locally.
+- CEDU: externally hosted logo supplied by the user, from SKAV:
+  https://skav.cz/wp-content/uploads/2025/09/cedu-1.jpg
+  This image requires access to skav.cz; it is not stored locally.
