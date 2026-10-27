@@ -39,3 +39,16 @@ accent #80CBA9):
   from the organisation’s downloadable media assets:
   https://www.societyforall.cz/pro-media
   https://www.societyforall.cz/file/049cbc9721a6561510207c68299ce44753ef7351.svg
+
+## Additional service logos in Různé
+
+- `logos/wordwall.png`: Wordwall brand symbol, sourced from a saved resource
+  credit asset: https://github.com/juancuellar030/portafolio_digital/blob/7c4510313a3459eedd1855ddddf5dad3eb3fffef/assets/creditos/wordwall.png
+  Brand owner: https://wordwall.net/
+- `logos/faceup.svg`: FaceUp brand symbol, unchanged, from a FaceUp engineer’s
+  work history: https://github.com/KubqoA/jakubarbet.me/blob/b8245651e62a0c60d2c87b9d5a1beeb4f9ce3037/src/assets/faceup-light.svg
+  Brand owner: https://www.faceup.com/
+- CEDU: externally hosted logo from CEDU’s provider profile in DVPP.info:
+  https://www.dvpp.info/vzdelavatele/?v=260
+  https://www.dvpp.info/wp/wp-content/uploads/dvpp/logo/260.png
+  This image requires access to www.dvpp.info; it is not stored locally.
