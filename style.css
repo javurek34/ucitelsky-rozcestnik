@@ -415,4 +415,4 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
  .card-subpage .content-body.has-painting>section:first-of-type{grid-column:1;grid-row:1}
  .card-subpage .content-body.has-painting>.page-illustration{position:static;grid-column:2;grid-row:1;width:260px;margin:28px 0 0}
 }
-@media(min-width:1000px){.link-card{aspect-ratio:1 / 1.12}}
+@media(min-width:1000px){.link-card{aspect-ratio:3 / 4}}
