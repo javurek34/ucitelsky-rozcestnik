@@ -441,3 +441,24 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
  #ruzne-dialog .mosaic-copy{padding:28px 24px 36px}
  #ruzne-dialog .mosaic-copy h3{font-size:26px;margin-bottom:20px}
 }
+
+/* Equal mosaic tiles with concise, consistently sized reading copy. */
+#ruzne-dialog .content-body>.mosaic-row{height:400px;grid-template-rows:minmax(0,1fr)}
+#ruzne-dialog .mosaic-visual{min-height:0;padding:40px}
+#ruzne-dialog .mosaic-copy{padding:28px 36px}
+#ruzne-dialog .mosaic-copy h3{font-size:26px;margin-bottom:18px}
+#ruzne-dialog .mosaic-copy :is(p,li,a){font-size:14px;line-height:1.55}
+#ruzne-dialog .mosaic-copy p{margin:0 0 14px}
+#ruzne-dialog .mosaic-copy .primary{padding:10px 14px}
+#ruzne-dialog .mosaic-copy>:last-child{margin-bottom:0}
+@media(min-width:720px) and (max-width:999px){
+ #ruzne-dialog .content-body>.mosaic-row{height:460px}
+ #ruzne-dialog .mosaic-copy{padding:24px}
+ #ruzne-dialog .mosaic-copy h3{font-size:24px}
+}
+@media(max-width:719px){
+ #ruzne-dialog .content-body>.mosaic-row{height:640px;grid-template-rows:240px 400px}
+ #ruzne-dialog .mosaic-visual{padding:30px}
+ #ruzne-dialog .mosaic-copy{padding:24px}
+ #ruzne-dialog .mosaic-copy h3{font-size:24px}
+}
