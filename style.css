@@ -416,3 +416,12 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
  .card-subpage .content-body.has-painting>.page-illustration{position:static;grid-column:2;grid-row:1;width:260px;margin:28px 0 0}
 }
 @media(min-width:1000px){.link-card{aspect-ratio:3 / 4}}
+
+/* Small visual cues for the existing Různé section headings. */
+#ruzne-dialog .prose>h3{display:flex;align-items:center;gap:12px}
+#ruzne-dialog .prose>h3>span{min-width:0}
+#ruzne-dialog .ruzne-heading-icon,#ruzne-dialog .ruzne-heading-logo{display:block;flex:0 0 40px;width:40px;height:40px}
+#ruzne-dialog .ruzne-heading-icon{padding:8px;border-radius:10px;background:var(--surface);color:var(--text);fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#ruzne-dialog .ruzne-heading-logo{object-fit:contain;padding:3px;border-radius:10px;background:#fff}
+#ruzne-dialog .ruzne-heading-logo[src$="vividbooks.svg"]{background:#172B49}
+@media(max-width:559px){#ruzne-dialog .prose>h3{gap:10px}#ruzne-dialog .ruzne-heading-icon,#ruzne-dialog .ruzne-heading-logo{flex-basis:36px;width:36px;height:36px}}

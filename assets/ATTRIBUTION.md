@@ -25,3 +25,12 @@ accent #80CBA9):
 - `undraw-book-lover.svg`: **BookLover**, component `UndrawBookLover`.
 - `undraw-design-tools.svg`: **DesignTools**, component `UndrawDesignTools`.
 - `undraw-artificial-intelligence.svg`: **ArtificialIntelligence**, component `UndrawArtificialIntelligence`.
+
+## Různé heading marks
+
+- `logos/umimeto.svg`: existing Umíme to brand asset, reused without modification.
+- `logos/vividbooks.svg`: Vividbooks logo, retrieved without modification from the
+  official Vividbooks repository:
+  https://github.com/vividbooks/periodickatabulka/blob/3f398be491c5a199ea64bba94def41cf31c8ff43/public/vividbooks-logo.svg
+- Other Různé heading icons: original inline SVGs matching the site's existing
+  outline icons; these are topic illustrations, not service logos.
