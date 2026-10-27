@@ -34,3 +34,8 @@ accent #80CBA9):
   https://github.com/vividbooks/periodickatabulka/blob/3f398be491c5a199ea64bba94def41cf31c8ff43/public/vividbooks-logo.svg
 - Other Různé heading icons: original inline SVGs matching the site's existing
   outline icons; these are topic illustrations, not service logos.
+
+- `logos/society-for-all.svg`: official SOFA (Society for All) logo, unmodified,
+  from the organisation’s downloadable media assets:
+  https://www.societyforall.cz/pro-media
+  https://www.societyforall.cz/file/049cbc9721a6561510207c68299ce44753ef7351.svg
