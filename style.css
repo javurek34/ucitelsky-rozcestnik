@@ -492,7 +492,7 @@ dialog.content-dialog.card-subpage{--text:#172B49;--muted:#52617A;--blue:#2258A5
 .content-dialog.card-subpage .content-body.reading-panels>.reading-box{grid-column:span 6;display:flex;flex-direction:column;gap:24px;min-width:0;max-width:none;margin:0;padding:32px;border:1px solid var(--box-line);border-radius:28px;background:var(--box-bg);height:auto;overflow:visible}
 .content-dialog.card-subpage .reading-panels>.reading-box:first-child{grid-column:span 7}
 .content-dialog.card-subpage .reading-panels>.reading-box:nth-child(2){grid-column:span 5}
-.content-dialog.card-subpage .reading-panels>.reading-box:last-child:nth-child(odd),.content-dialog.card-subpage .reading-panels>.reading-wide{grid-column:1 / -1}
+.content-dialog.card-subpage .reading-panels>.reading-wide{grid-column:1 / -1}
 .reading-art{display:flex;align-items:center;justify-content:center;width:88px;height:88px;flex:0 0 auto;border-radius:22px;background:color-mix(in srgb,var(--art-tint,var(--art-bg)) 45%,var(--box-bg));color:var(--blue)}
 .reading-art>svg{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.5}
 .reading-art>img{display:block;width:64px;height:64px;object-fit:contain}
@@ -537,3 +537,18 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #ruzne-dialog .reading-subsection>.reading-box{grid-column:span 6;display:flex;flex-direction:column;gap:24px;min-width:0;max-width:none;margin:0;padding:32px;border:1px solid var(--box-line);border-radius:28px;background:var(--box-bg)}
 @media(max-width:899px){#ruzne-dialog .reading-subsection>.reading-box{grid-column:1 / -1;padding:26px}}
 @media(max-width:559px){#ruzne-dialog .reading-subsection{gap:16px}#ruzne-dialog .reading-subsection>h3{font-size:28px}#ruzne-dialog .reading-subsection>.reading-box{padding:24px;border-radius:24px}}
+/* Variable panel widths and compact rows follow the amount of content. */
+@media(min-width:900px){
+ .content-dialog.card-subpage .content-body.reading-panels,#ruzne-dialog .reading-subsection{grid-auto-rows:8px;grid-auto-flow:row dense;align-items:start;gap:20px}
+ .content-dialog.card-subpage .reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{align-self:start;grid-column:span 6}
+ .content-dialog.card-subpage .reading-panels>.reading-box[data-reading-size=small],#ruzne-dialog .reading-subsection>.reading-box[data-reading-size=small]{grid-column:span 4}
+ .content-dialog.card-subpage .reading-panels>.reading-box[data-reading-size=large],#ruzne-dialog .reading-subsection>.reading-box[data-reading-size=large]{grid-column:span 8}
+ .content-dialog.card-subpage .reading-panels>.reading-quick{grid-column:span 8}
+ .content-dialog.card-subpage .reading-panels>.reading-wide,#ruzne-dialog .reading-panels>#ruzne-doporuceni{grid-column:1 / -1}
+ #ruzne-dialog .reading-subsection{grid-row-end:auto;grid-auto-rows:8px}
+ #ruzne-dialog .reading-subsection>h3{grid-row-end:span 3;margin:8px 0 0}
+ .content-dialog.card-subpage .reading-box[data-reading-size=small]{padding:28px;gap:20px}
+ .content-dialog.card-subpage .reading-box[data-reading-size=small] .reading-art{width:68px;height:68px;border-radius:18px}
+ .content-dialog.card-subpage .reading-box[data-reading-size=small] .reading-art>svg{width:36px;height:36px}
+ .content-dialog.card-subpage .reading-box[data-reading-size=small] .reading-copy :is(h3,h4){font-size:22px}
+}

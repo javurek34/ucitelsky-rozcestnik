@@ -9,7 +9,7 @@ function prepareReadingPanels(){
   const body=dialog.querySelector('.content-body');if(!body)return;
   body.classList.add('reading-panels');
   const illustration=body.querySelector(':scope>.page-illustration');
-  const sections=[...body.querySelectorAll(':scope>section.prose,:scope>.reading-subsection>section.prose')];
+  const sections=[...body.querySelectorAll(':scope>section:not(.reading-subsection),:scope>.reading-subsection>section.prose')];
   sections.forEach((original,index)=>{
    const keepTogether=Boolean(original.dataset.readingLayout);
    const copy=original.querySelector(':scope>.mosaic-copy')||original;
@@ -50,10 +50,29 @@ function prepareReadingPanels(){
     else art.append(makeIcon(iconFor(group.find(n=>n.matches?.('h3,h4'))?.textContent||topic)));
     if(dialog.id==='ruzne-dialog'&&original.id==='ruzne-vividbooks')art.classList.add('reading-art-dark');
     const text=document.createElement('div');text.className='reading-copy';group.forEach(node=>{text.append(node,document.createTextNode('\n'));});box.append(art,text);
+    const copyLength=text.textContent.trim().length;
+    box.dataset.readingSize=copyLength<360?'small':copyLength>620?'large':'medium';
     if(group.some(n=>n.nodeType===1&&n.matches('table,.gemini-comparison')))box.classList.add('reading-wide');
     original.parentElement.insertBefore(box,original);
    });original.remove();
   });
   illustration?.remove();body.classList.remove('has-painting');
+  // Fit each independent panel to its content instead of stretching a whole row.
+  const fitPanels=()=>{
+   [...body.querySelectorAll('.reading-subsection'),body].forEach(grid=>{
+    const style=getComputedStyle(grid),unit=parseFloat(style.gridAutoRows),gap=parseFloat(style.rowGap)||0;
+    const masonry=matchMedia('(min-width:900px)').matches&&Number.isFinite(unit);
+    [...grid.children].filter(node=>node.matches('.reading-box,.reading-subsection')).forEach(box=>{
+     if(masonry){const rows=Math.ceil((box.getBoundingClientRect().height+gap)/(unit+gap));const span='span '+rows;if(box.style.gridRowEnd!==span)box.style.gridRowEnd=span;}
+     else box.style.removeProperty('grid-row-end');
+    });
+   });
+  };
+  let frame;const schedule=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(fitPanels);};
+  const observer=new ResizeObserver(schedule);observer.observe(body);
+  body.querySelectorAll('.reading-box,.reading-subsection').forEach(box=>observer.observe(box));
+  dialog.addEventListener('toggle',schedule);addEventListener('resize',schedule);
+  document.fonts?.ready.then(schedule);
+
  });
 }
