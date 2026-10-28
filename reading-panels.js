@@ -9,8 +9,9 @@ function prepareReadingPanels(){
   const body=dialog.querySelector('.content-body');if(!body)return;
   body.classList.add('reading-panels');
   const illustration=body.querySelector(':scope>.page-illustration');
-  const sections=[...body.querySelectorAll(':scope>section')];
+  const sections=[...body.querySelectorAll(':scope>section.prose,:scope>.reading-subsection>section.prose')];
   sections.forEach((original,index)=>{
+   const keepTogether=Boolean(original.dataset.readingLayout);
    const copy=original.querySelector(':scope>.mosaic-copy')||original;
    const visual=original.querySelector(':scope>.mosaic-visual');
    const heading=copy.querySelector('h3,h4');
@@ -18,7 +19,7 @@ function prepareReadingPanels(){
    let nodes=[...copy.childNodes].filter(n=>n.nodeType===1||n.textContent.trim());
    // Lists stay lists; split long ones at item boundaries, preserving numbering.
    nodes=nodes.flatMap(node=>{
-    if(node.nodeType!==1||!node.matches('ol,ul')||node.children.length<5)return [node];
+    if(keepTogether||node.nodeType!==1||!node.matches('ol,ul')||node.children.length<5)return [node];
     const result=[];let list=null;
     [...node.children].forEach((li,i)=>{
      if(i%3===0){list=node.cloneNode(false);if(result.length)list.removeAttribute('id');if(node.matches('ol'))list.start=(Number(node.getAttribute('start'))||1)+i;result.push(list);}
@@ -36,8 +37,10 @@ function prepareReadingPanels(){
     }
     current.push(node);length+=size;
    });if(current.length)groups.push(current);
+   if(keepTogether)groups.splice(0,groups.length,nodes);
    groups.forEach((group,part)=>{
     const box=document.createElement('section');box.className='prose reading-box';
+    if(original.dataset.readingLayout==='wide')box.classList.add('reading-wide');
     if(part===0&&original.id)box.id=original.id;
     if(original.classList.contains('quick-start'))box.classList.add('reading-quick');
     if(part>0)box.setAttribute('aria-label',topic+' – pokračování');
@@ -48,7 +51,7 @@ function prepareReadingPanels(){
     if(dialog.id==='ruzne-dialog'&&original.id==='ruzne-vividbooks')art.classList.add('reading-art-dark');
     const text=document.createElement('div');text.className='reading-copy';group.forEach(node=>{text.append(node,document.createTextNode('\n'));});box.append(art,text);
     if(group.some(n=>n.nodeType===1&&n.matches('table,.gemini-comparison')))box.classList.add('reading-wide');
-    body.insertBefore(box,original);
+    original.parentElement.insertBefore(box,original);
    });original.remove();
   });
   illustration?.remove();body.classList.remove('has-painting');
