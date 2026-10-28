@@ -50,6 +50,9 @@ function prepareReadingPanels(){
     else art.append(makeIcon(iconFor(group.find(n=>n.matches?.('h3,h4'))?.textContent||topic)));
     if(dialog.id==='ruzne-dialog'&&original.id==='ruzne-vividbooks')art.classList.add('reading-art-dark');
     const text=document.createElement('div');text.className='reading-copy';group.forEach(node=>{text.append(node,document.createTextNode('\n'));});box.append(art,text);
+    const title=text.querySelector(':scope>h3,:scope>h4');
+    if(title){const header=document.createElement('div');header.className='reading-box-header';header.append(art,title);box.prepend(header);}
+    else box.classList.add('reading-box-inline');
     const copyLength=text.textContent.trim().length;
     box.dataset.readingSize=copyLength<360?'small':copyLength>620?'large':'medium';
     if(group.some(n=>n.nodeType===1&&n.matches('table,.gemini-comparison')))box.classList.add('reading-wide');
