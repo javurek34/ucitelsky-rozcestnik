@@ -647,3 +647,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .content-dialog.card-subpage .reading-box-inline>.reading-copy{grid-column:2;grid-row:1}
 .content-dialog.card-subpage .reading-box-inline>.reading-art{grid-column:1;grid-row:1}
 .content-dialog.card-subpage .reading-box-inline>.reading-illustration+.reading-copy{grid-column:1 / -1}
+/* A heading row is not the old narrow illustration column, including on tablets. */
+.content-dialog.card-subpage .reading-box-header{width:100%}
+.content-dialog.card-subpage .reading-box-header :is(h3,h4){flex:1;min-width:0}
+@media(min-width:560px) and (max-width:899px){.content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.reading-box-inline){display:flex;flex-direction:column}}
