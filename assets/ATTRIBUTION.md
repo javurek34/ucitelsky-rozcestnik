@@ -74,3 +74,8 @@ Images are loaded externally from the providers’ image CDNs. Crops are set in 
   https://unsplash.com/photos/PGnqT0rXWLs
 
 Other Unsplash images above are listed under the Unsplash License on their pages.
+
+## Vividbooks photo
+
+User-supplied Vividbooks photograph, loaded externally and cropped with CSS:
+https://uploads-ssl.webflow.com/5dfa34b974e1f6fab1ef33cd/65e1b905486763544318e6e3_vividbook_slavik_2_01_S.jpg

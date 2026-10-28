@@ -610,3 +610,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #ruzne-dialog .support-pair .reading-copy{text-align:left}
 #ruzne-dialog .spp-team{text-align:center}
 @media(min-width:900px){#ruzne-dialog .reading-panels>#ruzne-vividbooks{grid-column:1 / span 6}#ruzne-dialog .reading-panels>#ruzne-spp{grid-column:7 / span 6}}
+
+/* Crop the supplied Vividbooks photograph below its explanatory text. */
+#ruzne-vividbooks .vividbooks-photo{width:100%;height:190px;margin:20px 0 0;overflow:hidden;border-radius:16px;background:var(--art-bg)}
+#ruzne-vividbooks .vividbooks-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+@media(max-width:559px){#ruzne-vividbooks .vividbooks-photo{height:180px;margin-top:16px}}
