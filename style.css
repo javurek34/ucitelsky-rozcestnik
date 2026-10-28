@@ -488,7 +488,7 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 /* Soft, illustrated content boxes across all information pages. */
 dialog.content-dialog.card-subpage{--text:#172B49;--muted:#52617A;--blue:#2258A5;--line:#dce4ef;--surface:#fff;--box-bg:#fff;--box-line:#e2e7ef;--art-bg:#eef2f8;color-scheme:light}
 .content-dialog.card-subpage .page-surface{background:color-mix(in srgb,var(--page-accent) 10%,#f3f5f9)}
-.content-dialog.card-subpage .content-body.reading-panels{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-content:start;gap:22px;padding:28px 0;overflow-x:hidden}
+.content-dialog.card-subpage .content-body.reading-panels{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-content:start;gap:22px;padding:28px 0;overflow:visible}
 .content-dialog.card-subpage .content-body.reading-panels>.reading-box{grid-column:span 6;display:flex;flex-direction:column;gap:24px;min-width:0;max-width:none;margin:0;padding:32px;border:1px solid var(--box-line);border-radius:28px;background:var(--box-bg);height:auto;overflow:visible}
 .content-dialog.card-subpage .reading-panels>.reading-box:first-child{grid-column:span 7}
 .content-dialog.card-subpage .reading-panels>.reading-box:nth-child(2){grid-column:span 5}
@@ -524,3 +524,8 @@ dialog.content-dialog.card-subpage{--text:#172B49;--muted:#52617A;--blue:#2258A5
 :root[data-theme=dark] .workspace .folder-button::before{border-color:#ffffff42;background:linear-gradient(130deg,#ffffff30,#ffffff08 55%,#ffffff20),color-mix(in srgb,var(--card-color) 20%,#172335b0);box-shadow:inset 0 1px 0 #ffffff60,inset 0 -1px 0 #ffffff14,0 10px 30px #00000018}
 :root[data-theme=dark] .workspace .folder-button::after{background:#ffffff55}
 @supports not (backdrop-filter:blur(1px)){.workspace .folder-button::before{background:color-mix(in srgb,var(--card-color) 25%,#f6f8fb)}:root[data-theme=dark] .workspace .folder-button::before{background:color-mix(in srgb,var(--card-color) 18%,#1b2738)}}
+
+/* The full-screen detail page is the only scrolling surface. */
+dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
+.card-subpage .page-shell{height:auto;min-height:100%;max-height:none;overflow:visible;overscroll-behavior:auto}
+.card-subpage .content-body,.content-dialog.card-subpage .content-body.reading-panels{height:auto;max-height:none;min-height:0;flex:none;overflow:visible;overscroll-behavior:auto;scrollbar-gutter:auto}
