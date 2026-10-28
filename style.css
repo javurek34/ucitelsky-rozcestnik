@@ -685,3 +685,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #umimeto-dialog .reading-panels>.reading-box:nth-child(6){grid-column:span 5}
  #umimeto-dialog .reading-panels>.reading-box:last-child{grid-column:1 / -1}
 }
+/* Values retain their dark photo cards in both page themes. */
+:root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{--text:#e5edf9;--muted:#b0bdd0;--blue:#9fc4fa;color:var(--text);color-scheme:dark;background:#15223580;border-color:#ffffff38;box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff36,inset 1px 0 0 #ffffff12}
+:root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#152235E8,#152235D9 55%,#152235B8)}
