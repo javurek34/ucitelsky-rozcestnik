@@ -17,30 +17,29 @@ const base=[
 const cardColors=['#EFD45A','#EF5848','#80CBA9','#B8DEEC','#C9A2DF','#FFB284','#F0F0E8','#EFD45A','#C9EE73','#B8DEEC','#FFB284','#C9A2DF'];
 const brandLogos={'ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
-function clearFan(row){delete row.dataset.active;row.querySelectorAll('.link-card').forEach(card=>delete card.dataset.fan);}
-function activateFan(row,active){row.dataset.active='true';let after=false;row.querySelectorAll('.link-card').forEach(card=>{card.dataset.fan=card===active?'active':after?'after':'before';if(card===active)after=true;});}
-// Shuffle a varied set once per page load; keep each card steady during navigation.
-function createCardPoses(){
- const angles=[-4.2,3.1,-1.6,4.5,.8,-3.3,2.1,-4.7,3.8,-.9,1.5,-2.5];
- for(let i=angles.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[angles[i],angles[j]]=[angles[j],angles[i]];}
- const poses=angles.map(angle=>({angle:(angle+(Math.random()-.5)*.4).toFixed(2)+'deg',lift:((Math.random()-.5)*6).toFixed(1)+'px'}));
- // These neighbouring cards lean in opposite directions on every page load.
- poses[base.findIndex(item=>item.id==='dohledy')].angle=(-2.8+(Math.random()-.5)*.6).toFixed(2)+'deg';
- poses[base.findIndex(item=>item.id==='ipady')].angle=(1.6+(Math.random()-.5)*.6).toFixed(2)+'deg';
- return poses;
-}
-const cardPoses=createCardPoses();
+const folderGroups=[
+ {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['hodnoty','uraz','dohledy','ipady']},
+ {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ai-detem','gemini','canva']},
+ {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['formulare','umimeto','akce','ruzne']}
+];
 function render(){
  const root=$('#results');root.replaceChildren();
- let row;
- base.forEach((item,index)=>{
- if(index%4===0){row=document.createElement('div');row.className='card-row';root.append(row);const current=row;current.addEventListener('pointerleave',()=>{const focused=document.activeElement?.closest('.link-card');if(focused&&current.contains(focused))activateFan(current,focused);else clearFan(current);});current.addEventListener('focusout',event=>{if(!current.contains(event.relatedTarget))clearFan(current);});}
- const owner=row;
- const card=document.createElement('article');card.dataset.cardId=item.id;card.className='link-card'+(item.content?'':' pending');card.style.setProperty('--card-color',cardColors[index]);card.style.setProperty('--angle',cardPoses[index].angle);card.style.setProperty('--lift',cardPoses[index].lift);
- const main=document.createElement('button');main.className='card-main';main.type='button';main.setAttribute('aria-haspopup','dialog');main.setAttribute('aria-label',item.title+(item.content?'':' – připravujeme'));main.onclick=()=>cardPages.open(item,card);
- const top=document.createElement('span');top.className='card-top';const visual=document.createElement('span');visual.className='card-visual';if(brandLogos[item.id]){visual.classList.add('brand-visual');visual.dataset.brand=item.id;const image=document.createElement('img');image.src='assets/logos/'+brandLogos[item.id];image.alt='';image.width=64;image.height=64;image.decoding='async';visual.append(image);}else{visual.append(icon(item.icon));}top.append(visual);
- const title=document.createElement('span');title.className='card-title';title.textContent=item.title;if(item.id==='ipady'){title.classList.add('ipad-wordmark');title.textContent='iPADY';}
- main.append(top,title);card.append(main);owner.append(card);card.addEventListener('pointerenter',event=>{if(event.pointerType!=='touch')activateFan(owner,card);});card.addEventListener('focusin',()=>activateFan(owner,card));
+ folderGroups.forEach(group=>{
+  const stack=document.createElement('section');stack.className='folder-stack';
+  const heading=document.createElement('h2');heading.className='folder-group-title';heading.textContent=group.title;
+  const note=document.createElement('p');note.className='folder-group-note';note.textContent=group.note;
+  const files=document.createElement('div');files.className='folder-files';stack.append(heading,note,files);root.append(stack);
+  group.ids.forEach((id,position)=>{
+   const item=base.find(item=>item.id===id),index=base.indexOf(item);
+   const folder=document.createElement('article');folder.className='link-card folder-entry'+(item.content?'':' pending');folder.dataset.cardId=item.id;
+   folder.style.setProperty('--card-color',cardColors[index]);folder.style.setProperty('--folder-order',position);
+   const button=document.createElement('button');button.type='button';button.className='card-main folder-button';button.setAttribute('aria-haspopup','dialog');button.setAttribute('aria-label',item.title+(item.content?'':' – připravujeme'));button.onclick=()=>cardPages.open(item,folder);
+   const visual=document.createElement('span');visual.className='card-visual folder-symbol';visual.setAttribute('aria-hidden','true');
+   if(brandLogos[id]){const img=document.createElement('img');img.src='assets/logos/'+brandLogos[id];img.alt='';img.width=32;img.height=32;visual.append(img);}else visual.append(icon(item.icon));
+   const title=document.createElement('span');title.className='card-title folder-title';title.textContent=item.title;
+   const arrow=document.createElement('span');arrow.className='folder-arrow';arrow.setAttribute('aria-hidden','true');arrow.append(icon('arrow'));
+   button.append(visual,title,arrow);folder.append(button);files.append(folder);
+  });
  });
 }
 $('#close-formulare').onclick=$('#formulare-ok').onclick=cardPages.requestClose;

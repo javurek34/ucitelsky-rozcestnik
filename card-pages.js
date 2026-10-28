@@ -26,7 +26,7 @@ const cardPages=(()=>{
  }
  async function enter(ctx){
   const {dialog,shell,surface}=ctx;
-  if(!reduced()&&typeof dialog.animate==='function'){
+  if(!ctx.card.classList.contains('folder-entry')&&!reduced()&&typeof dialog.animate==='function'){
    const tunnel=makeTunnel(ctx);ctx.card.style.visibility='hidden';
    await play(ctx,tunnel.turner,[{transform:'rotateY(0deg)'},{transform:'rotateY(180deg)'}],{duration:420,easing:'cubic-bezier(.4,0,.2,1)'});
    tunnel.turner.style.transform='rotateY(180deg)';
@@ -72,7 +72,7 @@ const cardPages=(()=>{
    let cover=null,shield=null;
    const frame=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
    try{
-    if(!reduced()&&typeof ctx.dialog.animate==='function'){
+    if(!ctx.card.classList.contains('folder-entry')&&!reduced()&&typeof ctx.dialog.animate==='function'){
      document.documentElement.classList.add('card-returning');
      // The return is a colored-back collapse followed by a flip to the front.
      cover=document.createElement('div');cover.className='tunnel-card';cover.setAttribute('aria-hidden','true');

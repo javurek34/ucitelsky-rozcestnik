@@ -441,3 +441,47 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
  #ruzne-dialog .mosaic-copy{padding:28px 24px 36px}
  #ruzne-dialog .mosaic-copy h3{font-size:26px;margin-bottom:20px}
 }
+
+/* Frosted filing folders replace the home-page card grid. */
+.workspace{position:relative;isolation:isolate}
+.workspace::before{content:'';position:absolute;z-index:-1;inset:110px -5% 40px;pointer-events:none;background:radial-gradient(ellipse at 12% 55%,#c6dcec85,transparent 48%),radial-gradient(ellipse at 80% 65%,#e5d1ec80,transparent 45%),radial-gradient(ellipse at 45% 90%,#f4e0b568,transparent 42%);filter:blur(24px)}
+.workspace .intro{min-height:210px;padding:38px 0 24px;justify-content:center}
+.workspace .intro-copy{flex:1;text-align:center}
+.workspace .signpost{display:none}
+.workspace .intro-copy>p{max-width:none;margin-inline:auto}
+.workspace .directory{padding:12px 0 60px}
+.workspace #results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;perspective:none}
+.folder-stack{min-width:0;padding:0 4px}
+.folder-group-title{font-size:22px;line-height:1.2;font-weight:600;letter-spacing:-.035em;margin:0 0 8px;color:var(--text)}
+.folder-group-note{font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 32px}
+.folder-files{position:relative;padding-bottom:8px;filter:drop-shadow(0 22px 18px #172b4912)}
+.workspace .folder-entry{position:relative;display:block;isolation:isolate;z-index:auto;width:100%;height:174px;min-height:0;aspect-ratio:auto;margin:0;border:0;border-radius:0;background:none;box-shadow:none;transform:none;overflow:visible;transition:transform .24s ease}
+.workspace .folder-entry+.folder-entry{margin-top:-94px}
+.workspace .folder-entry::before,.workspace .folder-entry::after{display:none}
+.workspace .folder-entry .folder-button{position:relative;display:flex;align-items:flex-start;justify-content:flex-start;gap:12px;width:100%;height:100%;min-height:0;padding:18px 22px;border:0;border-radius:0;background:none;transform:none;overflow:visible;text-align:left;cursor:pointer;color:#172B49;isolation:isolate}
+.folder-button::before{content:'';position:absolute;inset:0;z-index:-1;clip-path:polygon(0 12px,12px 0,72% 0,78% 30px,97% 30px,100% 42px,100% 94%,97% 100%,3% 100%,0 94%);background:linear-gradient(125deg,#ffffffb0,#ffffff24 55%,#ffffff55),color-mix(in srgb,var(--card-color) 35%,#ffffff55);backdrop-filter:blur(18px) saturate(135%);-webkit-backdrop-filter:blur(18px) saturate(135%);box-shadow:inset 0 1px 1px #fff,inset 1px 0 1px #ffffffcc,inset 0 -1px 1px #172b4920}
+.folder-button::after{content:'';position:absolute;z-index:-1;inset:34px 1px 1px;border:1px solid #ffffff85;border-radius:0 12px 12px 12px;background:linear-gradient(115deg,#ffffff28,transparent 55%);pointer-events:none}
+.workspace .folder-entry .folder-symbol{display:flex;align-items:center;justify-content:center;flex:0 0 28px;width:28px;height:28px;min-width:28px;margin:0;padding:0;background:none;border-radius:0}
+.workspace .folder-symbol svg,.workspace .folder-symbol img{width:27px;height:27px;object-fit:contain}
+.workspace .folder-entry .folder-title{display:block;min-height:0;margin:0;padding:2px 0 0;font:600 20px/1.2 'atyp-bl-variable',sans-serif;letter-spacing:-.03em;text-align:left;color:inherit;transform:none}
+.folder-arrow{display:flex;margin:5px 0 0 auto;opacity:.5}
+.folder-arrow svg{width:19px;height:19px}
+.workspace .folder-entry:focus-within{transform:translateY(-12px)}
+.workspace .folder-button:focus-visible{outline:3px solid var(--blue);outline-offset:5px;border-radius:12px}
+@media(hover:hover) and (pointer:fine){.workspace .folder-entry:hover{transform:translateY(-12px)}.folder-entry:hover .folder-arrow{opacity:1}}
+:root[data-theme=dark] .workspace::before{opacity:.4}
+:root[data-theme=dark] .folder-button::before{background:linear-gradient(125deg,#ffffff24,#ffffff08 60%,#ffffff18),color-mix(in srgb,var(--card-color) 23%,#172335dd)}
+:root[data-theme=dark] .workspace .folder-entry .folder-button{color:#f2f6ff}
+:root[data-theme=dark] .folder-button::after{border-color:#ffffff30}
+@media(min-width:1500px){.workspace #results{gap:56px}}
+@media(min-width:720px) and (max-width:1099px){.workspace #results{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}.folder-stack:last-child{grid-column:1 / -1;width:calc(50% - 18px);justify-self:center}}
+@media(max-width:719px){.workspace .intro{min-height:180px;padding:28px 0}.workspace #results{grid-template-columns:minmax(0,1fr);gap:40px;max-width:470px;margin:auto}.workspace .directory{padding-bottom:36px}.folder-group-note{margin-bottom:24px}.workspace .folder-entry{height:154px}.workspace .folder-entry+.folder-entry{margin-top:-80px}.workspace .folder-entry .folder-button{padding:16px 18px}.workspace .folder-entry .folder-title{font-size:19px}.folder-group-title{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.workspace .folder-entry{transition:none}.workspace .folder-entry:hover,.workspace .folder-entry:focus-within{transform:none}}
+/* Keep labels in each exposed tab and contain the ambient light. */
+.workspace::before{left:0;right:0}
+.workspace .folder-entry .folder-button{flex-direction:row;align-items:flex-start}
+.workspace .folder-entry .folder-title{width:auto;flex:1;min-width:0;text-transform:none;font-size:19px;white-space:nowrap}
+.workspace .folder-entry .folder-symbol{clip-path:none;overflow:visible}
+.folder-arrow{position:absolute;right:20px;bottom:20px;margin:0}
+@media(max-width:719px){.workspace #page-title{flex-wrap:wrap;gap:4px 18px;white-space:normal;font-size:clamp(28px,7.3vw,42px);line-height:1.15}.workspace #page-title .heading-secondary{font-size:1em;margin:0}.workspace .folder-entry .folder-title{font-size:18px}.workspace .folder-entry .folder-button{gap:10px}}
+:root[data-theme=dark] .workspace .folder-symbol svg{color:#B7D5FF}
