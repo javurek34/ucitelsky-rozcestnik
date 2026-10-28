@@ -651,3 +651,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .content-dialog.card-subpage .reading-box-header{width:100%}
 .content-dialog.card-subpage .reading-box-header :is(h3,h4){flex:1;min-width:0}
 @media(min-width:560px) and (max-width:899px){.content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.reading-box-inline){display:flex;flex-direction:column}}
+/* Visible tinted glass instead of an opaque white reading card. */
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff70 0%,#ffffff1f 52%,#ffffff40 100%),color-mix(in srgb,var(--page-accent) 14%,#ffffff24);border:1px solid #ffffffa6;backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:0 12px 28px #172b4929,0 3px 8px #172b4917,inset 0 1px 0 #ffffffe0,inset 1px 0 0 #ffffff65}
+.content-dialog.card-subpage .reading-box .reading-art{background:color-mix(in srgb,var(--art-tint,var(--page-accent)) 22%,#ffffff50)}
+.content-dialog.card-subpage .reading-box .reading-art.reading-art-dark{background:#172b49d9}
+:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff19,#ffffff04 55%,#ffffff10),color-mix(in srgb,var(--page-accent) 9%,#17233594);border-color:#ffffff38;box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff36,inset 1px 0 0 #ffffff12}
+:root[data-theme=dark] .content-dialog.card-subpage .reading-box .reading-art{background:color-mix(in srgb,var(--art-tint,var(--page-accent)) 12%,#1b2738a0)}
+#hodnoty-dialog .reading-panels>.value-photo{background:#f5f7fa66}
+#hodnoty-dialog .value-photo::after{background:linear-gradient(100deg,#f8fafdDE,#f8fafdC9 55%,#f8fafd8C)}
+:root[data-theme=dark] #hodnoty-dialog .reading-panels>.value-photo{background:#15223580}
+:root[data-theme=dark] #hodnoty-dialog .value-photo::after{background:linear-gradient(100deg,#152235E8,#152235D9 55%,#152235B8)}
+@supports not (backdrop-filter:blur(1px)){.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{background:color-mix(in srgb,var(--page-accent) 10%,#f5f7fa)}:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{background:#1b2738}}
