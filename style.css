@@ -662,3 +662,15 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] #hodnoty-dialog .reading-panels>.value-photo{background:#15223580}
 :root[data-theme=dark] #hodnoty-dialog .value-photo::after{background:linear-gradient(100deg,#152235E8,#152235D9 55%,#152235B8)}
 @supports not (backdrop-filter:blur(1px)){.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{background:color-mix(in srgb,var(--page-accent) 10%,#f5f7fa)}:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{background:#1b2738}}
+
+/* Gemini: balanced pairs keep equal height and follow the numbered examples. */
+@media(min-width:900px){
+ #gemini-dialog .content-body.reading-panels{grid-auto-flow:row;grid-auto-rows:auto;align-items:stretch}
+ #gemini-dialog .reading-panels>.reading-box{grid-column:span 6;grid-row:auto;align-self:stretch}
+ #gemini-dialog .reading-panels>.reading-box:first-child:not(.reading-wide){grid-column:span 7}
+ #gemini-dialog .reading-panels>.reading-box:nth-child(2){grid-column:span 5}
+ #gemini-dialog .reading-panels>.reading-box:nth-child(3){grid-column:span 4}
+ #gemini-dialog .reading-panels>.reading-box:nth-child(4){grid-column:span 8}
+ #gemini-dialog .reading-panels>.reading-box:nth-child(5){grid-column:span 7}
+ #gemini-dialog .reading-panels>.reading-box:nth-child(6){grid-column:span 5}
+}
