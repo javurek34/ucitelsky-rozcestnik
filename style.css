@@ -629,3 +629,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(min-width:720px) and (max-width:1099px){.content-dialog.card-subpage .page-shell{padding-inline:40px}}
 @media(max-width:719px){.content-dialog.card-subpage .page-shell{padding-inline:24px}}
 @media(max-width:359px){.content-dialog.card-subpage .page-shell{padding-inline:18px}}
+/* School events: a compact action panel beside wider guidance. */
+@media(min-width:900px){
+ #akce-dialog .content-body.reading-panels{grid-auto-flow:row;grid-auto-rows:auto;align-items:start}
+ #akce-dialog .reading-panels>.reading-box:first-child:not(.reading-wide){grid-column:span 4;grid-row:auto!important}
+ #akce-dialog .reading-panels>.reading-box:nth-child(2){grid-column:span 8;grid-row:auto!important}
+}
