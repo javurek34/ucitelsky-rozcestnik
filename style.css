@@ -592,3 +592,4 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Atyp BL's named Text instances use opsz=6; prevent automatic Display interpolation. */
 :root{font-optical-sizing:none;font-variation-settings:'opsz' 6}
 *,*::before,*::after{font-optical-sizing:inherit;font-variation-settings:inherit}
+.workspace .folder-entry .folder-title{font-optical-sizing:none;font-variation-settings:'opsz' 6}
