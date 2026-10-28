@@ -88,7 +88,13 @@ function prepareReadingPanels(){
      if(!next?.matches('.reading-box')||next.classList.contains('reading-wide')){set(box,12);continue;}
      const preferred=e=>{const value=getComputedStyle(e).gridColumn;const span=value.match(/span (\d+)/);return span?Number(span[1]):6;};
      let left=preferred(box),right=preferred(next);
-     if(left+right!==12){const l=box.textContent.length,r=next.textContent.length;left=l>r*1.5?8:r>l*1.5?4:6;right=12-left;}
+     const equalPair=(box.classList.contains('service-pair')&&next.classList.contains('service-pair'))||(box.classList.contains('support-pair')&&next.classList.contains('support-pair'));
+     if(equalPair){left=6;right=6;}
+     else if(left+right!==12||(dialog.id!=='gemini-dialog'&&left===6&&right===6)){
+      const weight=e=>e.querySelector('.reading-copy').textContent.trim().length+(e.querySelector('.reading-box-header')?80:0);
+      const ratio=weight(box)/Math.max(1,weight(next));
+      left=ratio>=1.65?8:ratio>=1.18?7:ratio<=1/1.65?4:ratio<=1/1.18?5:6;right=12-left;
+     }
      set(box,left);set(next,right);i++;
     }
    });
