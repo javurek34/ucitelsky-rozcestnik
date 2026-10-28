@@ -604,3 +604,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #ruzne-dialog .spp-team span{margin-top:3px;font-size:13px;color:var(--muted)}
 @media(min-width:900px){#ruzne-dialog .reading-panels>.reading-box.support-pair[data-reading-size]{grid-column:span 6}}
 @media(max-width:559px){#ruzne-dialog .spp-team{grid-template-columns:minmax(0,1fr);gap:14px}}
+/* Center the paired boxes in the page; only team names and roles use centered text. */
+#ruzne-dialog .reading-panels>.support-pair{justify-content:flex-start;text-align:left}
+#ruzne-dialog .support-pair .reading-box-header{justify-content:flex-start}
+#ruzne-dialog .support-pair .reading-copy{text-align:left}
+#ruzne-dialog .spp-team{text-align:center}
+@media(min-width:900px){#ruzne-dialog .reading-panels>#ruzne-vividbooks{grid-column:1 / span 6}#ruzne-dialog .reading-panels>#ruzne-spp{grid-column:7 / span 6}}
