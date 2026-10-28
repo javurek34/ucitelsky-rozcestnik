@@ -66,7 +66,11 @@ function prepareReadingPanels(){
   });
   illustration?.remove();body.classList.remove('has-painting');
   // Fit each independent panel to its content instead of stretching a whole row.
-  const resourceGroups=['.class-resource','.service-pair','.support-pair'].map(selector=>[...body.querySelectorAll(selector)]);
+  if(dialog.id==='uraz-dialog'){
+   [...body.querySelectorAll(':scope>.reading-box')].slice(0,2).forEach(box=>box.classList.add('injury-intro'));
+   body.classList.add('injury-sequence');
+  }
+  const resourceGroups=['.class-resource','.service-pair','.support-pair','.injury-intro'].map(selector=>[...body.querySelectorAll(selector)]);
   const fitPanels=()=>{
    resourceGroups.forEach(resources=>{
     resources.forEach(box=>box.style.removeProperty('min-height'));
@@ -74,7 +78,7 @@ function prepareReadingPanels(){
    });
    [...body.querySelectorAll('.reading-subsection'),body].forEach(grid=>{
     const style=getComputedStyle(grid),unit=parseFloat(style.gridAutoRows),gap=parseFloat(style.rowGap)||0;
-    const masonry=matchMedia('(min-width:900px)').matches&&Number.isFinite(unit);
+    const masonry=!grid.classList.contains('injury-sequence')&&matchMedia('(min-width:900px)').matches&&Number.isFinite(unit);
     [...grid.children].filter(node=>node.matches('.reading-box,.reading-subsection')).forEach(box=>{
      if(masonry){const rows=Math.ceil((box.getBoundingClientRect().height+gap)/(unit+gap));const span='span '+rows;if(box.style.gridRowEnd!==span)box.style.gridRowEnd=span;}
      else box.style.removeProperty('grid-row-end');
