@@ -635,3 +635,4 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #akce-dialog .reading-panels>.reading-box:first-child:not(.reading-wide){grid-column:span 4;grid-row:auto!important}
  #akce-dialog .reading-panels>.reading-box:nth-child(2){grid-column:span 8;grid-row:auto!important}
 }
+@media(min-width:900px){#akce-dialog .content-body.reading-panels{align-items:stretch}#akce-dialog .reading-panels>.reading-box{align-self:stretch}}
