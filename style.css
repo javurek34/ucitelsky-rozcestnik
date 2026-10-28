@@ -643,3 +643,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .card-subpage .page-back svg{width:18px;height:18px;transform:rotate(180deg)}
 .card-subpage .reading-illustration,.card-subpage .values-illustration,.card-subpage .pending-illustration{display:none!important}
 @media(max-width:719px){.card-subpage .page-surface::before{left:-35px;top:12px;width:105vw;height:90vh;opacity:.22}.card-subpage .page-back{margin-bottom:16px}}
+/* Hidden artwork must not leave the reading copy in the narrow icon column. */
+.content-dialog.card-subpage .reading-box-inline>.reading-copy{grid-column:2;grid-row:1}
+.content-dialog.card-subpage .reading-box-inline>.reading-art{grid-column:1;grid-row:1}
+.content-dialog.card-subpage .reading-box-inline>.reading-illustration+.reading-copy{grid-column:1 / -1}
