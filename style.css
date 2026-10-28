@@ -593,3 +593,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root{font-optical-sizing:none;font-variation-settings:'opsz' 6}
 *,*::before,*::after{font-optical-sizing:inherit;font-variation-settings:inherit}
 .workspace .folder-entry .folder-title{font-optical-sizing:none;font-variation-settings:'opsz' 6}
+
+/* Center the paired service panels; keep the counselling team easy to scan. */
+#ruzne-dialog .reading-panels>.support-pair{justify-content:center;text-align:center}
+#ruzne-dialog .support-pair .reading-box-header{justify-content:center}
+#ruzne-dialog .support-pair .reading-copy{text-align:center}
+#ruzne-dialog .spp-team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px;list-style:none;padding:0;margin:20px 0}
+#ruzne-dialog .spp-team>li{padding:0;margin:0;font-size:15px;line-height:1.4}
+#ruzne-dialog .spp-team strong,#ruzne-dialog .spp-team span{display:block}
+#ruzne-dialog .spp-team span{margin-top:3px;font-size:13px;color:var(--muted)}
+@media(min-width:900px){#ruzne-dialog .reading-panels>.reading-box.support-pair[data-reading-size]{grid-column:span 6}}
+@media(max-width:559px){#ruzne-dialog .spp-team{grid-template-columns:minmax(0,1fr);gap:14px}}
