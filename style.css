@@ -623,3 +623,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #uraz-dialog .reading-panels.injury-sequence>.injury-intro:nth-child(2){grid-column:span 4}
  #uraz-dialog .reading-panels.injury-sequence>.reading-wide{grid-column:1 / -1}
 }
+/* A comfortable centered reading width with generous desktop margins. */
+.content-dialog.card-subpage .page-shell{max-width:1200px;padding-inline:48px}
+@media(min-width:1440px){.content-dialog.card-subpage .page-shell{max-width:1240px;padding-inline:60px}}
+@media(min-width:720px) and (max-width:1099px){.content-dialog.card-subpage .page-shell{padding-inline:40px}}
+@media(max-width:719px){.content-dialog.card-subpage .page-shell{padding-inline:24px}}
+@media(max-width:359px){.content-dialog.card-subpage .page-shell{padding-inline:18px}}
