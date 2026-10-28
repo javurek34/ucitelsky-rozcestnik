@@ -56,13 +56,22 @@ function prepareReadingPanels(){
     else box.classList.add('reading-box-inline');
     const copyLength=text.textContent.trim().length;
     box.dataset.readingSize=copyLength<360?'small':copyLength>620?'large':'medium';
+    if(['ruzne-cedu-hry','ruzne-emocni-karty','ruzne-etopedicke-karty'].includes(original.id))box.classList.add('class-resource');
+    if(original.id==='ruzne-rrrr')box.classList.add('reading-wide');
+    if(['ruzne-wordwall','ruzne-umimeto'].includes(original.id))box.classList.add('service-pair');
+    if(['ruzne-vividbooks','ruzne-spp'].includes(original.id))box.classList.add('support-pair');
     if(group.some(n=>n.nodeType===1&&n.matches('table,.gemini-comparison')))box.classList.add('reading-wide');
     original.parentElement.insertBefore(box,original);
    });original.remove();
   });
   illustration?.remove();body.classList.remove('has-painting');
   // Fit each independent panel to its content instead of stretching a whole row.
+  const resourceGroups=['.class-resource','.service-pair','.support-pair'].map(selector=>[...body.querySelectorAll(selector)]);
   const fitPanels=()=>{
+   resourceGroups.forEach(resources=>{
+    resources.forEach(box=>box.style.removeProperty('min-height'));
+    if(matchMedia('(min-width:900px)').matches){const height=Math.max(...resources.map(box=>box.getBoundingClientRect().height));resources.forEach(box=>box.style.minHeight=height+'px');}
+   });
    [...body.querySelectorAll('.reading-subsection'),body].forEach(grid=>{
     const style=getComputedStyle(grid),unit=parseFloat(style.gridAutoRows),gap=parseFloat(style.rowGap)||0;
     const masonry=matchMedia('(min-width:900px)').matches&&Number.isFinite(unit);

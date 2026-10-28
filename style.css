@@ -582,3 +582,10 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] #hodnoty-dialog .reading-panels>.value-photo{background:#1b2738}
 :root[data-theme=dark] #hodnoty-dialog .value-photo::after{background:linear-gradient(100deg,#152235F2 0%,#152235E8 50%,#152235BD 100%)}
 @media(max-width:559px){#hodnoty-dialog .value-photo::after{background:#f8fafde0}:root[data-theme=dark] #hodnoty-dialog .value-photo::after{background:#152235e0}}
+/* Three equal class-teacher resource tiles, followed by full-width RRRR. */
+@media(min-width:900px){
+ #ruzne-dialog .reading-subsection>.class-resource{grid-column:span 4}
+ #ruzne-dialog .reading-subsection>#ruzne-rrrr{grid-column:1 / -1}
+}
+
+@media(min-width:900px){#ruzne-dialog .reading-panels>.service-pair,#ruzne-dialog .reading-panels>.service-pair:first-child:not(.reading-wide){grid-column:span 6}}
