@@ -674,3 +674,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #gemini-dialog .reading-panels>.reading-box:nth-child(5){grid-column:span 7}
  #gemini-dialog .reading-panels>.reading-box:nth-child(6){grid-column:span 5}
 }
+
+/* Umíme to: balanced rows after removing the unused guidance. */
+@media(min-width:900px){
+ #umimeto-dialog .content-body.reading-panels{grid-auto-flow:row;grid-auto-rows:auto;align-items:stretch}
+ #umimeto-dialog .reading-panels>.reading-box{grid-column:span 6;grid-row:auto;align-self:stretch}
+ #umimeto-dialog .reading-panels>.reading-box:first-child:not(.reading-wide){grid-column:span 5}
+ #umimeto-dialog .reading-panels>.reading-box:nth-child(2){grid-column:span 7}
+ #umimeto-dialog .reading-panels>.reading-box:nth-child(5){grid-column:span 7}
+ #umimeto-dialog .reading-panels>.reading-box:nth-child(6){grid-column:span 5}
+ #umimeto-dialog .reading-panels>.reading-box:last-child{grid-column:1 / -1}
+}

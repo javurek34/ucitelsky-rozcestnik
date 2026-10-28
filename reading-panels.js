@@ -78,7 +78,7 @@ function prepareReadingPanels(){
    });
    [...body.querySelectorAll('.reading-subsection'),body].forEach(grid=>{
     const style=getComputedStyle(grid),unit=parseFloat(style.gridAutoRows),gap=parseFloat(style.rowGap)||0;
-    const masonry=!grid.classList.contains('injury-sequence')&&!['akce-dialog','gemini-dialog'].includes(dialog.id)&&matchMedia('(min-width:900px)').matches&&Number.isFinite(unit);
+    const masonry=!grid.classList.contains('injury-sequence')&&!['akce-dialog','gemini-dialog','umimeto-dialog'].includes(dialog.id)&&matchMedia('(min-width:900px)').matches&&Number.isFinite(unit);
     [...grid.children].filter(node=>node.matches('.reading-box,.reading-subsection')).forEach(box=>{
      if(masonry){const rows=Math.ceil((box.getBoundingClientRect().height+gap)/(unit+gap));const span='span '+rows;if(box.style.gridRowEnd!==span)box.style.gridRowEnd=span;}
      else box.style.removeProperty('grid-row-end');
