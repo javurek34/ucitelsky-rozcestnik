@@ -2,6 +2,7 @@
 const cardPages=(()=>{
  let active=null,items=[],routeRevision=0;
  const pendingArt={"ai-detem": {"src": "assets/mono/ai-detem.webp", "width": 1300, "height": 1210}, "formulare": {"src": "assets/mono/formulare.webp", "width": 1322, "height": 1190}, "gemini": {"src": "assets/mono/gemini-chatbot.webp", "width": 1536, "height": 1024}};
+ const pageArtwork={hodnoty:'assets/mono/hodnoty.webp',uraz:'assets/mono/uraz.webp',dohledy:'assets/mono/dohledy.webp',ipady:'assets/mono/ipady.webp','kodex-ai':'assets/undraw-artificial-intelligence.svg','ai-detem':'assets/mono/ai-detem.webp',gemini:'assets/mono/gemini-chatbot.webp',canva:'assets/mono/canva-worksheet.webp',formulare:'assets/mono/formulare.webp',umimeto:'assets/mono/umimeto.webp',akce:'assets/mono/akce.webp',ruzne:'assets/undraw-team-spirit.svg'};
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
  function play(owner,target,frames,options){
   const animation=target.animate(frames,{fill:'both',...options});
@@ -57,6 +58,7 @@ const cardPages=(()=>{
   const color=card.style.getPropertyValue('--card-color').trim();
   const ctx={dialog,card,item,color,shell:dialog.querySelector('.page-shell'),surface:dialog.querySelector('.page-surface'),originalVisibility:card.style.visibility,animations:[],skipFocus:false};
   active=ctx;dialog.style.setProperty('--page-accent',color);
+  ctx.surface.style.setProperty('--page-art','url("'+pageArtwork[item.id]+'")');
   const holder=dialog.querySelector('.page-icon');holder.replaceChildren(card.querySelector('.card-visual').cloneNode(true));
   ctx.shell.inert=true;ctx.shell.style.opacity='0';ctx.surface.style.opacity='0';
   document.documentElement.classList.add('card-page-open');dialog.showModal();
@@ -130,7 +132,7 @@ const cardPages=(()=>{
    const shell=document.createElement('div');shell.className='page-shell';shell.append(...dialog.childNodes);dialog.append(surface,shell);
    const header=shell.querySelector('.content-header,.dialog-header'),title=header.querySelector('h2');title.tabIndex=-1;
    const back=document.createElement('button');back.type='button';back.className='page-back';back.setAttribute('aria-label','Zpět na rozcestník');back.title='Zpět na rozcestník';
-   const backImage=document.querySelector('.signpost img').cloneNode();backImage.alt='';backImage.removeAttribute('loading');backImage.setAttribute('aria-hidden','true');back.append(backImage);
+   const backIcon=document.createElementNS('http://www.w3.org/2000/svg','svg');backIcon.setAttribute('aria-hidden','true');const backUse=document.createElementNS(backIcon.namespaceURI,'use');backUse.setAttribute('href','#i-arrow');backIcon.append(backUse);back.append(backIcon,document.createTextNode('Zpět'));
    back.addEventListener('click',requestClose);shell.insertBefore(back,header);
    const heading=document.createElement('div');heading.className='page-heading';
    const icon=document.createElement('span');icon.className='page-icon';icon.setAttribute('aria-hidden','true');

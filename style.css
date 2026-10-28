@@ -636,3 +636,10 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #akce-dialog .reading-panels>.reading-box:nth-child(2){grid-column:span 8;grid-row:auto!important}
 }
 @media(min-width:900px){#akce-dialog .content-body.reading-panels{align-items:stretch}#akce-dialog .reading-panels>.reading-box{align-self:stretch}}
+/* Large thematic artwork flows beneath the page heading and glass panels. */
+.card-subpage .page-surface::before{content:'';position:absolute;left:-60px;top:-35px;width:min(1050px,82vw);height:110vh;background-image:var(--page-art);background-repeat:no-repeat;background-position:left top;background-size:contain;opacity:.3;pointer-events:none;mask-image:linear-gradient(135deg,#000 15%,#000b 58%,transparent 90%);-webkit-mask-image:linear-gradient(135deg,#000 15%,#000b 58%,transparent 90%)}
+:root[data-theme=dark] .card-subpage .page-surface::before{opacity:.24;filter:brightness(1.6)}
+.card-subpage .page-back{display:inline-flex;align-items:center;gap:8px;width:auto;min-height:40px;margin:0 0 18px;padding:7px 11px;border:1px solid var(--line);border-radius:12px;background:#ffffff48;font-size:14px;color:var(--text)}
+.card-subpage .page-back svg{width:18px;height:18px;transform:rotate(180deg)}
+.card-subpage .reading-illustration,.card-subpage .values-illustration,.card-subpage .pending-illustration{display:none!important}
+@media(max-width:719px){.card-subpage .page-surface::before{left:-35px;top:12px;width:105vw;height:90vh;opacity:.22}.card-subpage .page-back{margin-bottom:16px}}
