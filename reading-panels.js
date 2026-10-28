@@ -70,24 +70,30 @@ function prepareReadingPanels(){
    [...body.querySelectorAll(':scope>.reading-box')].slice(0,2).forEach(box=>box.classList.add('injury-intro'));
    body.classList.add('injury-sequence');
   }
-  const resourceGroups=['.class-resource','.service-pair','.support-pair','.injury-intro'].map(selector=>[...body.querySelectorAll(selector)]);
+  // Complete each row across the same content width; native grid equalizes heights.
   const fitPanels=()=>{
-   resourceGroups.forEach(resources=>{
-    resources.forEach(box=>box.style.removeProperty('min-height'));
-    if(matchMedia('(min-width:900px)').matches){const height=Math.max(...resources.map(box=>box.getBoundingClientRect().height));resources.forEach(box=>box.style.minHeight=height+'px');}
-   });
+   const desktop=matchMedia('(min-width:900px)').matches;
    [...body.querySelectorAll('.reading-subsection'),body].forEach(grid=>{
-    const style=getComputedStyle(grid),unit=parseFloat(style.gridAutoRows),gap=parseFloat(style.rowGap)||0;
-    const masonry=!grid.classList.contains('injury-sequence')&&!['akce-dialog','gemini-dialog','umimeto-dialog'].includes(dialog.id)&&matchMedia('(min-width:900px)').matches&&Number.isFinite(unit);
-    [...grid.children].filter(node=>node.matches('.reading-box,.reading-subsection')).forEach(box=>{
-     if(masonry){const rows=Math.ceil((box.getBoundingClientRect().height+gap)/(unit+gap));const span='span '+rows;if(box.style.gridRowEnd!==span)box.style.gridRowEnd=span;}
-     else box.style.removeProperty('grid-row-end');
-    });
+    const boxes=[...grid.children].filter(node=>node.matches('.reading-box'));
+    boxes.forEach(box=>{box.style.removeProperty('min-height');box.style.removeProperty('grid-row-end');box.style.removeProperty('grid-column');box.style.removeProperty('align-self');});
+    if(!desktop){['grid-auto-rows','grid-auto-flow','align-items'].forEach(key=>grid.style.removeProperty(key));return;}
+    grid.style.gridAutoRows='auto';grid.style.gridAutoFlow='row';grid.style.alignItems='stretch';
+    const set=(box,span)=>{box.style.gridColumn='span '+span;box.style.alignSelf='stretch';};
+    const children=[...grid.children];
+    for(let i=0;i<children.length;i++){
+     const box=children[i];if(!box.matches('.reading-box'))continue;
+     if(box.classList.contains('reading-wide')){set(box,12);continue;}
+     if(box.classList.contains('class-resource')&&children.slice(i,i+3).every(e=>e.classList.contains('class-resource'))&&children.slice(i,i+3).length===3){children.slice(i,i+3).forEach(e=>set(e,4));i+=2;continue;}
+     const next=children[i+1];
+     if(!next?.matches('.reading-box')||next.classList.contains('reading-wide')){set(box,12);continue;}
+     const preferred=e=>{const value=getComputedStyle(e).gridColumn;const span=value.match(/span (\d+)/);return span?Number(span[1]):6;};
+     let left=preferred(box),right=preferred(next);
+     if(left+right!==12){const l=box.textContent.length,r=next.textContent.length;left=l>r*1.5?8:r>l*1.5?4:6;right=12-left;}
+     set(box,left);set(next,right);i++;
+    }
    });
   };
   let frame;const schedule=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(fitPanels);};
-  const observer=new ResizeObserver(schedule);observer.observe(body);
-  body.querySelectorAll('.reading-box,.reading-subsection').forEach(box=>observer.observe(box));
   dialog.addEventListener('toggle',schedule);addEventListener('resize',schedule);
   document.fonts?.ready.then(schedule);
 
