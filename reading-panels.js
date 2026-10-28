@@ -41,6 +41,7 @@ function prepareReadingPanels(){
    groups.forEach((group,part)=>{
     const box=document.createElement('section');box.className='prose reading-box';
     if(original.dataset.readingLayout==='wide')box.classList.add('reading-wide');
+    if(original.dataset.valuePhoto){box.classList.add('value-photo');box.style.setProperty('--value-photo','url("'+original.dataset.valuePhoto+'")');box.style.setProperty('--photo-position',original.dataset.photoPosition||'center');}
     if(part===0&&original.id)box.id=original.id;
     if(original.classList.contains('quick-start'))box.classList.add('reading-quick');
     if(part>0)box.setAttribute('aria-label',topic+' – pokračování');

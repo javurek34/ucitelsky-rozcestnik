@@ -51,3 +51,26 @@ accent #80CBA9):
 - CEDU: externally hosted logo supplied by the user, from SKAV:
   https://skav.cz/wp-content/uploads/2025/09/cedu-1.jpg
   This image requires access to skav.cz; it is not stored locally.
+
+## School values: user-selected background photos
+
+Images are loaded externally from the providers’ image CDNs. Crops are set in CSS.
+
+- Podpora: Julia Larson, Pexels, photo 6456291.
+  https://www.pexels.com/cs-cz/foto/zdravy-zena-rozostreni-sport-6456291/
+- Atmosféra: Nathan Dumlao, Unsplash, P5MXtYfgmmw.
+  https://unsplash.com/photos/P5MXtYfgmmw
+- Kreativita: Dragos Gontariu, Unsplash, 54VAb3f1z6w.
+  https://unsplash.com/photos/54VAb3f1z6w
+- Živost: Curated Lifestyle, Unsplash+, cZTAon221Yc (Unsplash+ license).
+  https://unsplash.com/photos/cZTAon221Yc
+- Laskavost: Kelly Sikkema, Unsplash, XX2WTbLr3r8.
+  https://unsplash.com/photos/XX2WTbLr3r8
+- Inspirace: Katrina Wright, Unsplash, yMg_SMqfoRU.
+  https://unsplash.com/photos/yMg_SMqfoRU
+- Ambice: Cristofer Maximilian, Unsplash, NSKP7Gwa_I0.
+  https://unsplash.com/photos/NSKP7Gwa_I0
+- Komunita: Helena Lopes, Unsplash, PGnqT0rXWLs.
+  https://unsplash.com/photos/PGnqT0rXWLs
+
+Other Unsplash images above are listed under the Unsplash License on their pages.
