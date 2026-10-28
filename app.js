@@ -56,6 +56,7 @@ $('#close-gemini').onclick=$('#gemini-ok').onclick=cardPages.requestClose;
 document.querySelectorAll('[data-umime-jump]').forEach(button=>button.addEventListener('click',()=>{const target=document.getElementById(button.dataset.umimeJump);target.querySelector('h3').focus({preventScroll:true});target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});}));
 $('.brand').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
 render();
+prepareReadingPanels();
 cardPages.init(base);
 
 // Finish the marker stroke before drawing the handwritten oval.
