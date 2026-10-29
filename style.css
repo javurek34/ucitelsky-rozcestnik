@@ -722,3 +722,4 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy{display:flow-root}
  #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>.ipad-final-image{float:right;width:36%;max-width:300px;margin:0 0 12px 24px}
 }
+@media(max-width:719px){#ipady-dialog .reading-copy:has(>.ipad-final-image){display:flex;flex-direction:column}#ipady-dialog .reading-copy>.ipad-final-image{order:1}}
