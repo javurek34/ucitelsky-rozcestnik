@@ -714,3 +714,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Closing iPad visual keeps its full proportions and all embedded information. */
 #ipady-dialog .reading-panels>.ipad-final-image{grid-column:1 / -1;min-width:0;width:100%;margin:8px 0 0;text-align:center}
 #ipady-dialog .ipad-final-image img{display:block;width:100%;height:auto;max-width:100%;border-radius:20px}
+
+#ipady-dialog .reading-copy>.ipad-final-image{width:100%;max-width:380px;margin:22px auto 0}
+#ipady-dialog .reading-copy>.ipad-final-image img{display:block;width:100%;height:auto;border-radius:14px}
