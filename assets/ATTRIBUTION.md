@@ -79,3 +79,12 @@ Other Unsplash images above are listed under the Unsplash License on their pages
 
 User-supplied Vividbooks photograph, loaded externally and cropped with CSS:
 https://uploads-ssl.webflow.com/5dfa34b974e1f6fab1ef33cd/65e1b905486763544318e6e3_vividbook_slavik_2_01_S.jpg
+
+## Additional resource photographs
+
+User-selected images, loaded externally (not copied into the repository):
+- umimeto.png: https://www.umimeto.org/asset/global/ogimage/umime-og-image.png
+- wordwall.png: https://app.cdn.wordwall.net/website/content/images/homepage/keyfeatures/30activitty.2x4yj0gnzpodcy_yqkctukw2.png
+- faceup.png: https://www.faceup.com/_next/image?url=https%3A%2F%2Fcms.faceup.com%2Fstatic%2FOG_image_HP_CZ_bfb82d9835.png&w=1920&q=75
+- emocni-karty.jpg: https://www.societyforall.cz/img/lg_a39ffbbc6ee29998d04841b03eeeaa32aac28f23.JPG
+- rrrr.png: https://www.societyforall.cz/images/hybatelesystemu_1.png
