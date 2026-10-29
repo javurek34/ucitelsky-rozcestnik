@@ -717,3 +717,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #ipady-dialog .reading-copy>.ipad-final-image{width:100%;max-width:380px;margin:22px auto 0}
 #ipady-dialog .reading-copy>.ipad-final-image img{display:block;width:100%;height:auto;border-radius:14px}
+/* Final iPad panel: text on the left, the smaller visual on the right. */
+@media(min-width:720px){
+ #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy{display:flow-root}
+ #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>.ipad-final-image{float:right;width:36%;max-width:300px;margin:0 0 12px 24px}
+}
