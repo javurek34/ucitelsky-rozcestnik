@@ -88,3 +88,8 @@ User-selected images, loaded externally (not copied into the repository):
 - faceup.png: https://www.faceup.com/_next/image?url=https%3A%2F%2Fcms.faceup.com%2Fstatic%2FOG_image_HP_CZ_bfb82d9835.png&w=1920&q=75
 - emocni-karty.jpg: https://www.societyforall.cz/img/lg_a39ffbbc6ee29998d04841b03eeeaa32aac28f23.JPG
 - rrrr.png: https://www.societyforall.cz/images/hybatelesystemu_1.png
+
+## Closing iPad visual
+
+User-supplied image from Oak Park Primary School, loaded externally:
+https://www.oakparkps.vic.edu.au/uploads/4/8/1/3/48136671/977082.png?371

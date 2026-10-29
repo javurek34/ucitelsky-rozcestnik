@@ -710,3 +710,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ruzne-rrrr .resource-content-photo img{object-position:50% 50%}
 }
 @media(max-width:719px){#ruzne-rrrr .resource-content-photo{height:260px}}
+
+/* Closing iPad visual keeps its full proportions and all embedded information. */
+#ipady-dialog .reading-panels>.ipad-final-image{grid-column:1 / -1;min-width:0;width:100%;margin:8px 0 0;text-align:center}
+#ipady-dialog .ipad-final-image img{display:block;width:100%;height:auto;max-width:100%;border-radius:20px}
