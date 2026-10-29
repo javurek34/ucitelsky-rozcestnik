@@ -723,3 +723,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>.ipad-final-image{float:right;width:36%;max-width:300px;margin:0 0 12px 24px}
 }
 @media(max-width:719px){#ipady-dialog .reading-copy:has(>.ipad-final-image){display:flex;flex-direction:column}#ipady-dialog .reading-copy>.ipad-final-image{order:1}}
+
+/* Keep the Forms illustration beside the copy without narrowing its text. */
+#formulare-dialog .reading-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,22%);gap:0 32px;align-items:start}
+#formulare-dialog .reading-copy>p{grid-column:1}
+#formulare-dialog .forms-docs-image{grid-column:2;grid-row:1 / span 3;align-self:center;width:100%;max-width:200px;margin:0 auto}
+#formulare-dialog .forms-docs-image img{display:block;width:100%;height:auto}
+@media(max-width:719px){
+ #formulare-dialog .reading-copy{display:flex;flex-direction:column}
+ #formulare-dialog .forms-docs-image{max-width:140px;margin:20px auto 0}
+}
