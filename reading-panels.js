@@ -49,6 +49,11 @@ function prepareReadingPanels(){
     if(visual){const mark=visual.firstElementChild?.cloneNode(true);if(mark){mark.removeAttribute('width');mark.removeAttribute('height');if(mark.matches('img'))mark.alt='';art.append(mark);}art.style.setProperty('--art-tint',original.style.getPropertyValue('--mosaic-color'));}
     else if(index===0&&part===0&&illustration){art.classList.add('reading-illustration');const image=illustration.querySelector('img');image.loading='eager';art.append(image);}
     else art.append(makeIcon(iconFor(group.find(n=>n.matches?.('h3,h4'))?.textContent||topic)));
+    if(dialog.id==='uraz-dialog'){
+     const pictures=['assets/mono/uraz.webp','assets/undraw-documents.svg','assets/mono/uraz.webp','assets/undraw-chat.svg','assets/undraw-team-spirit.svg','assets/undraw-documents.svg','assets/undraw-calendar.svg','assets/undraw-documents.svg'];
+     const image=document.createElement('img');image.src=pictures[index]||'assets/undraw-documents.svg';image.alt='';image.loading='lazy';image.decoding='async';
+     art.replaceChildren(image);art.classList.remove('reading-illustration');art.classList.add('injury-artwork');
+    }
     if(dialog.id==='ruzne-dialog'&&original.id==='ruzne-vividbooks')art.classList.add('reading-art-dark');
     const text=document.createElement('div');text.className='reading-copy';group.forEach(node=>{text.append(node,document.createTextNode('\n'));});box.append(art,text);
     const finalIpadImage=text.querySelector(':scope>.ipad-final-image');

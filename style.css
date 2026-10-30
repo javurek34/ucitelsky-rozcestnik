@@ -747,3 +747,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(hover:hover) and (pointer:fine){.workspace .folder-entry:hover{transform:translateY(-3px)}}
 @media(max-width:719px){.workspace .folder-entry,.workspace .folder-entry .folder-button{min-height:88px}.workspace .folder-entry .folder-button{padding:20px}}
 @media(prefers-reduced-motion:reduce){.workspace .folder-entry:hover,.workspace .folder-entry:focus-within{transform:none}}
+
+/* Illustrations give the injury procedure a clearer visual identity. */
+#uraz-dialog.card-subpage .reading-box .injury-artwork{width:88px;height:80px;flex:0 0 88px;background:transparent;padding:0;border-radius:0}
+#uraz-dialog.card-subpage .reading-box .injury-artwork>img{width:100%;height:100%;object-fit:contain}
+#uraz-dialog.card-subpage .injury-intro:nth-child(2){display:flex;flex-direction:column;justify-content:center}
+#uraz-dialog.card-subpage .injury-intro:nth-child(2) .reading-copy{font-size:21px;line-height:1.55}
+#uraz-dialog.card-subpage .injury-intro:nth-child(2) .reading-copy p{font-size:inherit;line-height:inherit}
+@media(max-width:559px){#uraz-dialog.card-subpage .reading-box .injury-artwork{width:68px;height:64px;flex-basis:68px}#uraz-dialog.card-subpage .injury-intro:nth-child(2) .reading-copy{font-size:20px}}
