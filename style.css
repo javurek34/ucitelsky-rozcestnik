@@ -733,3 +733,17 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #formulare-dialog .reading-copy{display:flex;flex-direction:column}
  #formulare-dialog .forms-docs-image{max-width:140px;margin:20px auto 0}
 }
+
+/* Independent glass cards, grouped in the existing three columns. */
+.workspace .folder-files{display:grid;gap:16px;padding:0;filter:none}
+.workspace .folder-entry{height:auto;min-height:96px;transition:transform .2s ease}
+.workspace .folder-entry+.folder-entry{margin-top:0}
+.workspace .folder-entry .folder-button{align-items:center;min-height:96px;padding:22px;gap:14px;border-radius:24px}
+.workspace .folder-entry .folder-title{white-space:normal;padding:0}
+.workspace .folder-button::before{box-shadow:inset 0 1px 0 #fffffff0,0 8px 22px #172b491c}
+.workspace .folder-button::after{display:none}
+.workspace .folder-arrow{position:static;flex-shrink:0;margin:0 0 0 auto}
+.workspace .folder-entry:focus-within{transform:translateY(-3px)}
+@media(hover:hover) and (pointer:fine){.workspace .folder-entry:hover{transform:translateY(-3px)}}
+@media(max-width:719px){.workspace .folder-entry,.workspace .folder-entry .folder-button{min-height:88px}.workspace .folder-entry .folder-button{padding:20px}}
+@media(prefers-reduced-motion:reduce){.workspace .folder-entry:hover,.workspace .folder-entry:focus-within{transform:none}}
