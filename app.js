@@ -59,18 +59,6 @@ render();
 prepareReadingPanels();
 cardPages.init(base);
 
-// Finish the marker stroke before drawing the handwritten oval.
-(()=>{
- const marker=document.querySelector('#page-title .subtitle-highlight');
- const circle=document.querySelector('#page-title .subtitle-circle');
- if(!marker||!circle||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- const draw=()=>{circle.classList.remove('is-waiting');circle.classList.add('is-drawing');};
- const stroke=marker.getAnimations?.().find(animation=>animation.animationName==='subtitle-marker');
- if(!stroke||stroke.playState==='finished'){draw();return;}
- circle.classList.add('is-waiting');
- stroke.finished.then(draw,draw);
-})();
-
 // Shortcuts stay within the open page; focus follows the reading position.
 document.querySelectorAll('[data-page-jump]').forEach(button=>{
  button.addEventListener('click',()=>{
