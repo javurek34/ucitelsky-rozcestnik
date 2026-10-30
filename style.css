@@ -755,3 +755,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #uraz-dialog.card-subpage .injury-intro:nth-child(2) .reading-copy{font-size:21px;line-height:1.55}
 #uraz-dialog.card-subpage .injury-intro:nth-child(2) .reading-copy p{font-size:inherit;line-height:inherit}
 @media(max-width:559px){#uraz-dialog.card-subpage .reading-box .injury-artwork{width:68px;height:64px;flex-basis:68px}#uraz-dialog.card-subpage .injury-intro:nth-child(2) .reading-copy{font-size:20px}}
+
+/* Keep only the opening injury panel illustrated. */
+#uraz-dialog.card-subpage .reading-box:not(:first-child) .reading-art{display:none}
+#uraz-dialog.card-subpage .reading-box-inline:not(:first-child){display:flex;flex-direction:column}
+#uraz-dialog.card-subpage .reading-box-inline:not(:first-child)>.reading-copy{width:100%;min-width:0}
