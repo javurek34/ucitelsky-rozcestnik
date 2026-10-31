@@ -760,4 +760,4 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace #page-title{column-gap:.25em}
 @media(max-width:719px){.workspace #page-title{column-gap:.25em;row-gap:4px}}
 
-#uraz-dialog.card-subpage .reading-box .reading-art.school-online-logo{display:flex;width:150px;height:112px;flex:0 0 112px;align-self:center;background:#ffffffeb;padding:10px 16px;border-radius:16px}
+#uraz-dialog.card-subpage .reading-box .reading-art.school-online-logo{display:flex;width:150px;height:112px;flex:0 0 112px;align-self:center;background:transparent;padding:0;border-radius:0}
