@@ -53,7 +53,7 @@ function prepareReadingPanels(){
      const pictures=['assets/mono/uraz.webp','assets/undraw-documents.svg','assets/mono/uraz.webp','assets/undraw-chat.svg','assets/undraw-team-spirit.svg','assets/undraw-documents.svg','assets/undraw-calendar.svg','assets/undraw-documents.svg'];
      const image=document.createElement('img');image.src=pictures[index]||'assets/undraw-documents.svg';image.alt='';image.loading='lazy';image.decoding='async';
      art.replaceChildren(image);art.classList.remove('reading-illustration');art.classList.add('injury-artwork');
-     if(index===1){image.src='https://www.skolaonline.cz/wp-content/uploads/downloads/skola-online-logo-04-vertikalni-barevne-rgb.png';image.alt='Škola Online';image.referrerPolicy='no-referrer';art.removeAttribute('aria-hidden');art.classList.add('school-online-logo');}
+     if(index===1){image.src='https://www.skolaonline.cz/wp-content/uploads/downloads/skola-online-logo-05-vertikalni-jednobarevne-rgb.svg';image.alt='Škola Online';image.referrerPolicy='no-referrer';art.removeAttribute('aria-hidden');art.classList.add('school-online-logo');}
     }
     if(dialog.id==='ruzne-dialog'&&original.id==='ruzne-vividbooks')art.classList.add('reading-art-dark');
     const text=document.createElement('div');text.className='reading-copy';group.forEach(node=>{text.append(node,document.createTextNode('\n'));});box.append(art,text);
