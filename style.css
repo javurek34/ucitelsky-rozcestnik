@@ -755,3 +755,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #uraz-dialog.card-subpage .reading-box:not(:first-child) .reading-art{display:none}
 #uraz-dialog.card-subpage .reading-box-inline:not(:first-child){display:flex;flex-direction:column}
 #uraz-dialog.card-subpage .reading-box-inline:not(:first-child)>.reading-copy{width:100%;min-width:0}
+
+/* Keep both parts of the homepage title together. */
+.workspace #page-title{column-gap:.25em}
+@media(max-width:719px){.workspace #page-title{column-gap:.25em;row-gap:4px}}
