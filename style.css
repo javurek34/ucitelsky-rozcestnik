@@ -761,3 +761,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(max-width:719px){.workspace #page-title{column-gap:.25em;row-gap:4px}}
 
 #uraz-dialog.card-subpage .reading-box .reading-art.school-online-logo{display:flex;width:150px;height:112px;flex:0 0 112px;align-self:center;background:transparent;padding:0;border-radius:0}
+
+/* Crop empty space in the iPad image and size the closing panel to its copy. */
+#ipady-dialog .reading-box:has(.ipad-final-image){min-height:0}
+#ipady-dialog .reading-copy>.ipad-final-image{overflow:hidden;border-radius:14px}
+#ipady-dialog .reading-copy>.ipad-final-image img{margin-top:-16%;margin-bottom:-20%;border-radius:0}
+#ipady-dialog .reading-copy:has(>.ipad-final-image)>p:last-child{margin-bottom:0}
+@media(min-width:720px){
+ #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,22%);gap:16px 28px;align-items:start}
+ #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>p{grid-column:1;margin-top:0;margin-bottom:0}
+ #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>.ipad-final-image{float:none;grid-column:2;grid-row:1 / span 2;align-self:center;width:100%;max-width:240px;margin:0}
+}
