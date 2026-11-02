@@ -772,3 +772,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>p{grid-column:1;margin-top:0;margin-bottom:0}
  #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>.ipad-final-image{float:none;grid-column:2;grid-row:1 / span 2;align-self:center;width:100%;max-width:240px;margin:0}
 }
+
+/* The recommendations photo is stored with the site and shares its text panel. */
+#ruzne-doporuceni .reading-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,30%);gap:16px 28px}
+#ruzne-doporuceni .reading-copy>:not(.recommendations-photo){grid-column:1;margin-block:0}
+#ruzne-doporuceni .recommendations-photo{grid-column:2;grid-row:1 / span 4;position:relative;min-height:380px;margin:0;overflow:hidden;border-radius:20px}
+#ruzne-doporuceni .recommendations-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+@media(max-width:719px){
+ #ruzne-doporuceni .reading-copy{display:flex;flex-direction:column}
+ #ruzne-doporuceni .recommendations-photo{order:1;min-height:0;height:320px;width:100%}
+}
