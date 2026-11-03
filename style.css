@@ -794,3 +794,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #dohledy-dialog.card-subpage .mobile-phones-panel .reading-art{display:none}
 #dohledy-dialog.card-subpage .mobile-phones-panel::after{content:'';position:absolute;inset:16px;background:url('assets/mobile-payments.webp') right bottom / auto 90% no-repeat;opacity:.065;mix-blend-mode:multiply;pointer-events:none;z-index:-1}
 :root[data-theme=dark] #dohledy-dialog.card-subpage .mobile-phones-panel::after{mix-blend-mode:screen;opacity:.055}
+
+/* Lunch guidance follows the same quiet illustrated background treatment. */
+#dohledy-dialog.card-subpage .lunch-panel{position:relative;isolation:isolate}
+#dohledy-dialog.card-subpage .lunch-panel .reading-art{display:none}
+#dohledy-dialog.card-subpage .lunch-panel::after{content:'';position:absolute;inset:16px;background:url('assets/eating-together.webp') right bottom / contain no-repeat;opacity:.065;mix-blend-mode:multiply;pointer-events:none;z-index:-1}
+:root[data-theme=dark] #dohledy-dialog.card-subpage .lunch-panel::after{mix-blend-mode:screen;opacity:.055}
