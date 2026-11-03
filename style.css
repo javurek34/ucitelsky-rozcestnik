@@ -800,3 +800,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #dohledy-dialog.card-subpage .lunch-panel .reading-art{display:none}
 #dohledy-dialog.card-subpage .lunch-panel::after{content:'';position:absolute;inset:16px;background:url('assets/eating-together.webp') right bottom / contain no-repeat;opacity:.065;mix-blend-mode:multiply;pointer-events:none;z-index:-1}
 :root[data-theme=dark] #dohledy-dialog.card-subpage .lunch-panel::after{mix-blend-mode:screen;opacity:.055}
+
+#formulare-dialog .forms-folder-action{grid-column:1 / -1;display:flex;justify-content:center;margin:4px 0 0}
+#formulare-dialog .forms-folder-action>.primary{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;text-align:center;min-height:48px;padding:12px 22px}
