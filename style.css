@@ -782,3 +782,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ruzne-doporuceni .reading-copy{display:flex;flex-direction:column}
  #ruzne-doporuceni .recommendations-photo{order:1;min-height:0;height:210px;width:140px;align-self:center}
 }
+
+/* Supervision continuation: a quiet watermark instead of an icon column. */
+#dohledy-dialog.card-subpage .reading-box-inline:has(use[href="#i-eye"]){position:relative;display:block;isolation:isolate}
+#dohledy-dialog.card-subpage .reading-box-inline:has(use[href="#i-eye"])>.reading-art{position:absolute;right:18px;bottom:18px;width:160px;height:160px;padding:0;background:transparent;opacity:.07;pointer-events:none;z-index:-1}
+#dohledy-dialog.card-subpage .reading-box-inline:has(use[href="#i-eye"])>.reading-art>svg{width:100%;height:100%}
+#dohledy-dialog.card-subpage .reading-box-inline:has(use[href="#i-eye"])>.reading-copy{width:100%;min-width:0}
