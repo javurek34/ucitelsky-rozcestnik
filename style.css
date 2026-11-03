@@ -788,3 +788,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #dohledy-dialog.card-subpage .reading-box-inline:has(use[href="#i-eye"])>.reading-art{position:absolute;right:18px;bottom:18px;width:160px;height:160px;padding:0;background:transparent;opacity:.07;pointer-events:none;z-index:-1}
 #dohledy-dialog.card-subpage .reading-box-inline:has(use[href="#i-eye"])>.reading-art>svg{width:100%;height:100%}
 #dohledy-dialog.card-subpage .reading-box-inline:has(use[href="#i-eye"])>.reading-copy{width:100%;min-width:0}
+
+/* Mobile-phone guidance: illustration behind the content, without a heading icon. */
+#dohledy-dialog.card-subpage .mobile-phones-panel{position:relative;isolation:isolate}
+#dohledy-dialog.card-subpage .mobile-phones-panel .reading-art{display:none}
+#dohledy-dialog.card-subpage .mobile-phones-panel::after{content:'';position:absolute;inset:16px;background:url('assets/mobile-payments.webp') right bottom / auto 90% no-repeat;opacity:.065;mix-blend-mode:multiply;pointer-events:none;z-index:-1}
+:root[data-theme=dark] #dohledy-dialog.card-subpage .mobile-phones-panel::after{mix-blend-mode:screen;opacity:.055}

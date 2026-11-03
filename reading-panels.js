@@ -60,6 +60,7 @@ function prepareReadingPanels(){
     const finalIpadImage=text.querySelector(':scope>.ipad-final-image');
     if(finalIpadImage)text.prepend(finalIpadImage);
     const title=text.querySelector(':scope>h3,:scope>h4');
+    if(dialog.id==='dohledy-dialog'&&/MOBILNÍ TELEFONY/i.test(topic))box.classList.add('mobile-phones-panel');
     if(title){const header=document.createElement('div');header.className='reading-box-header';header.append(art,title);box.prepend(header);}
     else box.classList.add('reading-box-inline');
     const copyLength=text.textContent.trim().length;
