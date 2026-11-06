@@ -15,7 +15,7 @@ const base=[
 {id:'agenda-ucitele',title:'Agenda učitele',icon:'file',url:null,content:'agenda-ucitele'}
 ];
 
-const cardColors=['#EFD45A','#EF5848','#80CBA9','#B8DEEC','#C9A2DF','#FFB284','#F0F0E8','#EFD45A','#C9EE73','#B8DEEC','#FFB284','#C9A2DF','#B8DEEC'];
+const cardColors=['#FFF4D6','#263BAA','#FFF4D6','#263BAA','#FFF4D6','#263BAA','#FFF4D6','#263BAA','#FFF4D6','#263BAA','#FFF4D6','#263BAA','#FFF4D6'];
 const brandLogos={'ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
 const folderGroups=[

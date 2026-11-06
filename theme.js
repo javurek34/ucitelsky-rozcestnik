@@ -6,7 +6,7 @@
  function apply(theme){
   document.documentElement.dataset.theme=theme;
   document.documentElement.style.colorScheme=theme;
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#101927':'#F7F9FC');
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#14172D':'#FFF4D6');
   document.querySelectorAll('[data-theme-choice]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.themeChoice===theme)));
  }
  apply(choice||(system.matches?'dark':'light'));
