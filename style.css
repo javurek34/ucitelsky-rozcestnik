@@ -903,3 +903,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){box-shadow:var(--button-shadow)}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover{box-shadow:var(--panel-shadow)}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active{box-shadow:inset 2px 2px 6px #263baa24,inset -2px -2px 6px #fffaf01a}
+
+/* Homepage cards contrast with the page instead of repeating its brightness. */
+:root .workspace .folder-button::before{background:linear-gradient(135deg,#ffffff14,transparent 65%),#263BAA;border-color:#bac3ff3d}
+:root .workspace .folder-entry .folder-button{color:#FFF4D6}
+:root .workspace .folder-symbol svg{color:#FFF4D6}
+:root .workspace .folder-arrow{color:#FFF4D6;opacity:.75}
+:root[data-theme=dark] .workspace .folder-button::before{background:linear-gradient(135deg,#ffffff38,transparent 65%),#FFF4D6;border-color:#fffaf0b3}
+:root[data-theme=dark] .workspace .folder-entry .folder-button{color:#263BAA}
+:root[data-theme=dark] .workspace .folder-symbol svg,:root[data-theme=dark] .workspace .folder-arrow{color:#263BAA}
+:root .workspace .folder-symbol:has(img){background:#fffaf0;border-radius:8px;padding:3px}
+:root .workspace .folder-symbol img{width:100%;height:100%;object-fit:contain}
