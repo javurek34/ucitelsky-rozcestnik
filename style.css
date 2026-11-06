@@ -1063,3 +1063,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #ipady-dialog .reading-copy>p.ipad-learning-goal{font-size:24px;font-weight:400;line-height:1.5}
 #ipady-dialog .ipad-learning-goal>strong{font-weight:700}
 @media(max-width:559px){#ipady-dialog .reading-copy>p.ipad-learning-goal{font-size:22px}}
+
+/* The closing goal spans below the introductory text and the complete iPads. */
+@media(min-width:720px){
+ #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>.ipad-final-image{grid-row:1;align-self:start;max-width:200px;justify-self:end}
+ #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>p.ipad-learning-goal{grid-column:1 / -1;grid-row:2;margin:0}
+}
