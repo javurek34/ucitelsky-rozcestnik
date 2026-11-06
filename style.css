@@ -1013,3 +1013,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root .reading-copy a:not(.primary):not(.secondary-action){text-decoration:underline;text-underline-offset:4px}
 @media(max-width:359px){.workspace .brand{width:140px}}
 :root button:disabled,:root a[aria-disabled="true"]{opacity:.5;cursor:not-allowed;box-shadow:none;transform:none}
+
+/* A comfortable line length for the complete class-teacher guidance. */
+#agenda-tridni-ucitel .reading-copy{width:100%;max-width:88ch}
+#agenda-tridni-ucitel .reading-copy>h4{font-size:20px;line-height:1.4;margin:24px 0 12px}
+#agenda-tridni-ucitel .reading-copy>p{margin-top:0}
