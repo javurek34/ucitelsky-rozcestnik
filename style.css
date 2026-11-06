@@ -950,3 +950,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root .workspace .group-digitalni .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--toxic-violet);border-color:#d4b5ff3d;box-shadow:0 12px 26px #46088438,0 4px 10px #46088424,inset 0 1px 0 #ffffff38}
 :root .workspace .group-digitalni .folder-entry .folder-button,:root .workspace .group-digitalni .folder-symbol svg,:root .workspace .group-digitalni .folder-arrow{color:#F8F7F4}
 :root[data-theme=dark] .workspace .group-digitalni .folder-button::before{box-shadow:0 14px 30px #1406246b,0 5px 12px #14062447,inset 0 1px 0 #ffffff38}
+
+/* Let the heading content determine the intro height, without a hero-sized gap. */
+.workspace .intro{min-height:0;padding:24px 0 18px}
+.workspace .intro-copy>p{margin-top:0;margin-bottom:0}
+.workspace #page-title{margin-bottom:10px}
+.workspace .directory{padding-top:8px}
+.workspace .folder-group-note{margin-bottom:20px}
+@media(max-width:719px){.workspace .intro{min-height:0;padding:20px 0 18px}.workspace .directory{padding-top:6px}}
