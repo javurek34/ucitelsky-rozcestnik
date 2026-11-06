@@ -843,3 +843,10 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* One shared action size, including filled and outlined buttons side by side. */
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action),:root .umime-shortcuts button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:48px;height:auto;padding:11px 20px;border-width:1px;border-style:solid;font-family:'greycliff-cf',sans-serif;font-size:16px;font-weight:700;line-height:24px;white-space:normal;text-align:center;overflow-wrap:anywhere}
 .card-subpage :is(.quick-actions,.dialog-actions,.umime-shortcuts){align-items:stretch}
+
+/* A compact theme switch keeps the header visually quiet. */
+.workspace .theme-switch{grid-template-columns:repeat(2,38px);gap:2px;padding:4px}
+.workspace .theme-switch::before{left:4px;top:4px;width:38px;height:36px}
+.workspace .theme-switch button{width:38px;height:36px;min-height:36px}
+.workspace .theme-switch button svg{width:19px;height:19px}
+:root[data-theme=dark] .workspace .theme-switch::before{transform:translateX(40px)}
