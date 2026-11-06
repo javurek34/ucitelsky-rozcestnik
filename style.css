@@ -1085,3 +1085,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ipady-dialog .ipad-photo-panel>.ipad-final-image{grid-column:2;grid-row:1 / span 2;align-self:stretch;position:relative;height:auto;min-height:260px}
  #ipady-dialog .ipad-photo-panel>.ipad-final-image img{position:absolute;inset:0}
 }
+
+#ipady-dialog .reading-copy>p.ipad-availability{font-size:18px}
