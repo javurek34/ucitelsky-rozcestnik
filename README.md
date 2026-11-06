@@ -35,3 +35,18 @@ výpočet vnějšího rádiusu z odsazení. Dekorativní vrstvy kopírují rádi
 Stíny musí být měkké, rozptýlené a tónované do barev webu; nepoužívejte
 ostré šedé okraje. Používejte sdílené `--panel-shadow` a `--button-shadow`
 s vlastními hodnotami pro světlý a tmavý režim.
+
+## Rozestupy a tlačítka
+
+Používejte rozestupy v násobcích 4px (4, 8, 12, 16, 20, 24, 32, 48).
+Velikost textu, tloušťka rámečků, optické korekce a plynulé rozměry
+v procentech nejsou součástí této stupnice. Automatické mezery vzniklé
+zarovnáním obsahu a stejně vysokými boxy se nemusí rovnat násobku 4px.
+Akční tlačítka mají minimálně 48px na výšku; ikonové ovladače 44 × 44px.
+Delší popisky se mohou zalomit a tlačítko zvětšit. Zachovejte přirozené
+prvky `a` pro odkazy a `button` pro akce, viditelný focus, hover a stav
+stisknutí. Textové odkazy uvnitř odstavců jsou podtržené.
+
+Kontrola 2026-11-06: oba dodané články UX Planet vracely HTTP 403.
+Úpravy vycházejí z čtyřbodového systému a obecných zásad použitelnosti
+ovládacích prvků; nejde o potvrzení souladu s nezobrazeným zněním článků.
