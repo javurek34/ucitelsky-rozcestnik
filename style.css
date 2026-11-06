@@ -894,3 +894,12 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(max-width:719px){
  .workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:calc(var(--nested-radius) + 20px)}
 }
+
+/* Soft, palette-tinted elevation instead of hard grey drop shadows. */
+:root{--panel-shadow:0 10px 28px #263baa1c,0 3px 10px #263baa0a;--button-shadow:5px 5px 14px #263baa1c,-4px -4px 12px #fffaf0a6}
+:root[data-theme=dark]{--panel-shadow:0 12px 32px #090d2847,0 4px 14px #090d281f;--button-shadow:5px 5px 14px #0d12304d,-4px -4px 12px #bac3ff12}
+:root .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root #ruzne-dialog .reading-subsection>.reading-box{box-shadow:var(--panel-shadow),inset 0 1px 0 #ffffff30}
+:root .workspace .folder-button::before{box-shadow:var(--panel-shadow),inset 0 1px 0 #ffffff50}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){box-shadow:var(--button-shadow)}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover{box-shadow:var(--panel-shadow)}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active{box-shadow:inset 2px 2px 6px #263baa24,inset -2px -2px 6px #fffaf01a}

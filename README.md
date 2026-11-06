@@ -32,3 +32,7 @@ Dodržujte soustředné rohy: vnější rádius = vnitřní rádius + odsazení.
 Pro obsahové boxy používáme `--nested-radius: 16px` a `--panel-inset`
 (24px, na mobilu 20px). Vnější rádius se počítá pomocí `calc()`;
 obrázky uvnitř mají rádius 16px. Dekorativní vrstvy kopírují rádius svého boxu.
+
+Stíny musí být měkké, rozptýlené a tónované do barev webu; nepoužívejte
+ostré šedé okraje. Používejte sdílené `--panel-shadow` a `--button-shadow`
+s vlastními hodnotami pro světlý a tmavý režim.
