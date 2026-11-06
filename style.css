@@ -1087,3 +1087,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 }
 
 #ipady-dialog .reading-copy>p.ipad-availability{font-size:18px}
+
+/* On phones, link buttons consistently fill their containing content box. */
+@media(max-width:719px){
+ :root :is(body,.card-subpage) a:is(.primary,.secondary-action){display:flex;width:100%;max-width:100%;align-self:stretch}
+ #formulare-dialog .forms-folder-action{width:100%}
+ :root .card-subpage :is(.quick-actions,.illustrated-action){width:100%}
+ :root .card-subpage :is(.quick-actions,.illustrated-action)>a:is(.primary,.secondary-action){flex:1 1 100%}
+}
