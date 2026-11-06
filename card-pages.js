@@ -2,7 +2,7 @@
 const cardPages=(()=>{
  let active=null,items=[],routeRevision=0;
  const pendingArt={"ai-detem": {"src": "assets/mono/ai-detem.webp", "width": 1300, "height": 1210}, "formulare": {"src": "assets/mono/formulare.webp", "width": 1322, "height": 1190}, "gemini": {"src": "assets/mono/gemini-chatbot.webp", "width": 1536, "height": 1024}};
- const pageArtwork={hodnoty:'assets/mono/hodnoty.webp',uraz:'assets/mono/uraz.webp',dohledy:'assets/mono/dohledy.webp',ipady:'assets/mono/ipady.webp','kodex-ai':'assets/undraw-artificial-intelligence.svg','ai-detem':'assets/mono/ai-detem.webp',gemini:'assets/mono/gemini-chatbot.webp',canva:'assets/mono/canva-worksheet.webp',formulare:'assets/mono/formulare.webp',umimeto:'assets/mono/umimeto.webp',akce:'assets/mono/akce.webp',ruzne:'assets/undraw-team-spirit.svg'};
+ const pageArtwork={'agenda-ucitele':'assets/undraw-team-spirit.svg',hodnoty:'assets/mono/hodnoty.webp',uraz:'assets/mono/uraz.webp',dohledy:'assets/mono/dohledy.webp',ipady:'assets/mono/ipady.webp','kodex-ai':'assets/undraw-artificial-intelligence.svg','ai-detem':'assets/mono/ai-detem.webp',gemini:'assets/mono/gemini-chatbot.webp',canva:'assets/mono/canva-worksheet.webp',formulare:'assets/mono/formulare.webp',umimeto:'assets/mono/umimeto.webp',akce:'assets/mono/akce.webp',ruzne:'assets/undraw-team-spirit.svg'};
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
  function play(owner,target,frames,options){
   const animation=target.animate(frames,{fill:'both',...options});

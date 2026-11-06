@@ -418,28 +418,28 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 @media(min-width:1000px){.link-card{aspect-ratio:3 / 4}}
 
 /* Alternating halves: service artwork and the existing information. */
-#ruzne-dialog .content-body{padding-top:24px;padding-bottom:24px}
-#ruzne-dialog .content-body>.mosaic-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;margin:0;overflow:hidden}
-#ruzne-dialog .mosaic-row:first-child{border-radius:var(--radius) var(--radius) 0 0}
-#ruzne-dialog .mosaic-row:last-child{border-radius:0 0 var(--radius) var(--radius)}
-#ruzne-dialog .mosaic-visual{display:flex;align-items:center;justify-content:center;min-width:0;min-height:360px;padding:56px;background:var(--mosaic-color);color:#20285A}
-#ruzne-dialog .mosaic-row:nth-child(even) .mosaic-visual{grid-column:2;grid-row:1}
-#ruzne-dialog .mosaic-copy{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,4vw,64px);background:var(--surface)}
-#ruzne-dialog .mosaic-row:nth-child(even) .mosaic-copy{grid-column:1;grid-row:1}
-#ruzne-dialog .mosaic-copy h3{font-size:clamp(24px,2.4vw,34px);line-height:1.15;color:var(--text);margin:0 0 24px}
-#ruzne-dialog .mosaic-copy>:last-child{margin-bottom:0}
-#ruzne-dialog .mosaic-logo{display:block;width:min(100%,260px);height:260px;object-fit:contain}
-#ruzne-dialog .mosaic-icon{display:block;width:150px;height:150px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
-#ruzne-dialog .mosaic-copy .illustrated-action{justify-content:flex-start}
-#ruzne-dialog .mosaic-copy .primary{width:auto}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .content-body{padding-top:24px;padding-bottom:24px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .content-body>.mosaic-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;margin:0;overflow:hidden}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-row:first-child{border-radius:var(--radius) var(--radius) 0 0}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-row:last-child{border-radius:0 0 var(--radius) var(--radius)}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-visual{display:flex;align-items:center;justify-content:center;min-width:0;min-height:360px;padding:56px;background:var(--mosaic-color);color:#20285A}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-row:nth-child(even) .mosaic-visual{grid-column:2;grid-row:1}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-copy{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,4vw,64px);background:var(--surface)}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-row:nth-child(even) .mosaic-copy{grid-column:1;grid-row:1}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-copy h3{font-size:clamp(24px,2.4vw,34px);line-height:1.15;color:var(--text);margin:0 0 24px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-copy>:last-child{margin-bottom:0}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-logo{display:block;width:min(100%,260px);height:260px;object-fit:contain}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-icon{display:block;width:150px;height:150px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-copy .illustrated-action{justify-content:flex-start}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-copy .primary{width:auto}
 @media(max-width:719px){
- #ruzne-dialog .content-body>.mosaic-row{grid-template-columns:minmax(0,1fr)}
- #ruzne-dialog .mosaic-row:nth-child(even) .mosaic-visual,#ruzne-dialog .mosaic-row:nth-child(even) .mosaic-copy{grid-column:auto;grid-row:auto}
- #ruzne-dialog .mosaic-visual{min-height:240px;padding:36px}
- #ruzne-dialog .mosaic-logo{width:180px;height:180px}
- #ruzne-dialog .mosaic-icon{width:120px;height:120px}
- #ruzne-dialog .mosaic-copy{padding:28px 24px 36px}
- #ruzne-dialog .mosaic-copy h3{font-size:26px;margin-bottom:20px}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .content-body>.mosaic-row{grid-template-columns:minmax(0,1fr)}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-row:nth-child(even) .mosaic-visual,:is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-row:nth-child(even) .mosaic-copy{grid-column:auto;grid-row:auto}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-visual{min-height:240px;padding:36px}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-logo{width:180px;height:180px}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-icon{width:120px;height:120px}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-copy{padding:28px 24px 36px}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .mosaic-copy h3{font-size:26px;margin-bottom:20px}
 }
 
 /* Frosted filing folders replace the home-page card grid. */
@@ -513,8 +513,8 @@ dialog.content-dialog.card-subpage{--text:#20285A;--muted:#52617A;--blue:#263BAA
 @media(max-width:899px){.content-dialog.card-subpage .content-body.reading-panels{gap:20px}.content-dialog.card-subpage .content-body.reading-panels>.reading-box{padding:28px;grid-column:1 / -1;display:grid;grid-template-columns:88px minmax(0,1fr);align-items:start}.reading-art.reading-illustration{width:88px;height:120px;padding:4px}}
 @media(max-width:559px){.content-dialog.card-subpage .content-body.reading-panels{gap:16px;padding:24px 0}.content-dialog.card-subpage .content-body.reading-panels>.reading-box{display:flex;padding:24px;border-radius:24px;gap:20px}.content-dialog.card-subpage .reading-copy :is(h3,h4){font-size:22px}.content-dialog.card-subpage .reading-copy :is(p,li){font-size:16px}.reading-art{width:76px;height:76px;border-radius:18px}.reading-art>img{width:56px;height:56px}.reading-art.reading-illustration{width:100%;height:180px}}
 #uraz-dialog :is(h2,h3),#uraz-dialog .reading-copy :is(h3,h4){color:var(--text)}
-#ruzne-dialog .reading-art>.mosaic-icon{width:44px;height:44px}
-#ruzne-dialog .reading-art>.mosaic-logo{width:64px;height:64px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-art>.mosaic-icon{width:44px;height:44px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-art>.mosaic-logo{width:64px;height:64px}
 /* Rounded glass layers suggest folders without a paper silhouette. */
 .workspace .folder-entry .folder-button{padding-top:24px}
 .workspace .folder-button::before{inset:0;clip-path:none;border-radius:24px;border:1px solid #ffffffb8;background:linear-gradient(130deg,#ffffff9c 0%,#ffffff24 48%,#ffffff66 100%),color-mix(in srgb,var(--card-color) 26%,#ffffff42);backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%);box-shadow:inset 0 1px 0 #fffffff0,inset 0 -1px 0 #ffffff5c,0 8px 24px #1a35550a}
@@ -531,47 +531,47 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .card-subpage .content-body,.content-dialog.card-subpage .content-body.reading-panels{height:auto;max-height:none;min-height:0;flex:none;overflow:visible;overscroll-behavior:auto;scrollbar-gutter:auto}
 
 /* A single recommendations panel and a grouped class-teacher subsection. */
-#ruzne-dialog .reading-panels>#ruzne-doporuceni{grid-column:1 / -1}
-#ruzne-dialog .reading-subsection{grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;max-width:none;margin:12px 0 0}
-#ruzne-dialog .reading-subsection>h3{grid-column:1 / -1;font-size:32px;line-height:1.2;color:var(--text);margin:12px 0 4px}
-#ruzne-dialog .reading-subsection>.reading-box{grid-column:span 6;display:flex;flex-direction:column;gap:24px;min-width:0;max-width:none;margin:0;padding:32px;border:1px solid var(--box-line);border-radius:28px;background:var(--box-bg)}
-@media(max-width:899px){#ruzne-dialog .reading-subsection>.reading-box{grid-column:1 / -1;padding:28px}}
-@media(max-width:559px){#ruzne-dialog .reading-subsection{gap:16px}#ruzne-dialog .reading-subsection>h3{font-size:28px}#ruzne-dialog .reading-subsection>.reading-box{padding:24px;border-radius:24px}}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>#ruzne-doporuceni{grid-column:1 / -1}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection{grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;max-width:none;margin:12px 0 0}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>h3{grid-column:1 / -1;font-size:32px;line-height:1.2;color:var(--text);margin:12px 0 4px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{grid-column:span 6;display:flex;flex-direction:column;gap:24px;min-width:0;max-width:none;margin:0;padding:32px;border:1px solid var(--box-line);border-radius:28px;background:var(--box-bg)}
+@media(max-width:899px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{grid-column:1 / -1;padding:28px}}
+@media(max-width:559px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection{gap:16px}:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>h3{font-size:28px}:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{padding:24px;border-radius:24px}}
 /* Variable panel widths and compact rows follow the amount of content. */
 @media(min-width:900px){
- .content-dialog.card-subpage .content-body.reading-panels,#ruzne-dialog .reading-subsection{grid-auto-rows:8px;grid-auto-flow:row dense;align-items:start;gap:20px}
- .content-dialog.card-subpage .reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{align-self:start;grid-column:span 6}
- .content-dialog.card-subpage .reading-panels>.reading-box[data-reading-size=small],#ruzne-dialog .reading-subsection>.reading-box[data-reading-size=small]{grid-column:span 4}
- .content-dialog.card-subpage .reading-panels>.reading-box[data-reading-size=large],#ruzne-dialog .reading-subsection>.reading-box[data-reading-size=large]{grid-column:span 8}
+ .content-dialog.card-subpage .content-body.reading-panels,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection{grid-auto-rows:8px;grid-auto-flow:row dense;align-items:start;gap:20px}
+ .content-dialog.card-subpage .reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{align-self:start;grid-column:span 6}
+ .content-dialog.card-subpage .reading-panels>.reading-box[data-reading-size=small],:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box[data-reading-size=small]{grid-column:span 4}
+ .content-dialog.card-subpage .reading-panels>.reading-box[data-reading-size=large],:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box[data-reading-size=large]{grid-column:span 8}
  .content-dialog.card-subpage .reading-panels>.reading-quick{grid-column:span 8}
- .content-dialog.card-subpage .reading-panels>.reading-wide,#ruzne-dialog .reading-panels>#ruzne-doporuceni{grid-column:1 / -1}
- #ruzne-dialog .reading-subsection{grid-row-end:auto;grid-auto-rows:8px}
- #ruzne-dialog .reading-subsection>h3{grid-row-end:span 3;margin:8px 0 0}
+ .content-dialog.card-subpage .reading-panels>.reading-wide,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>#ruzne-doporuceni{grid-column:1 / -1}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection{grid-row-end:auto;grid-auto-rows:8px}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>h3{grid-row-end:span 3;margin:8px 0 0}
  .content-dialog.card-subpage .reading-box[data-reading-size=small]{padding:28px;gap:20px}
  .content-dialog.card-subpage .reading-box[data-reading-size=small] .reading-art{width:68px;height:68px;border-radius:18px}
  .content-dialog.card-subpage .reading-box[data-reading-size=small] .reading-art>svg{width:36px;height:36px}
  .content-dialog.card-subpage .reading-box[data-reading-size=small] .reading-copy :is(h3,h4){font-size:22px}
 }
 /* Compact glass panels: artwork sits beside the title, not above it. */
-.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{padding:24px;gap:16px;border-radius:24px;background:linear-gradient(135deg,#ffffffaa,#ffffff55),color-mix(in srgb,var(--box-bg) 72%,transparent);border:1px solid #ffffffc4;box-shadow:0 5px 18px #20285A09,0 1px 3px #20285A05,inset 0 1px 0 #ffffffdd;backdrop-filter:blur(16px) saturate(120%);-webkit-backdrop-filter:blur(16px) saturate(120%)}
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{padding:24px;gap:16px;border-radius:24px;background:linear-gradient(135deg,#ffffffaa,#ffffff55),color-mix(in srgb,var(--box-bg) 72%,transparent);border:1px solid #ffffffc4;box-shadow:0 5px 18px #20285A09,0 1px 3px #20285A05,inset 0 1px 0 #ffffffdd;backdrop-filter:blur(16px) saturate(120%);-webkit-backdrop-filter:blur(16px) saturate(120%)}
 .content-dialog.card-subpage .reading-box-header{display:flex;align-items:center;gap:16px;min-width:0}
 .content-dialog.card-subpage .reading-box-header :is(h3,h4){min-width:0;font-size:22px;line-height:1.25;color:var(--text);letter-spacing:-.025em;margin:0}
 .content-dialog.card-subpage .reading-box .reading-art{width:56px;height:56px;flex:0 0 56px;padding:0;border-radius:16px}
-.content-dialog.card-subpage .reading-box .reading-art>svg,#ruzne-dialog .reading-box .reading-art>.mosaic-icon{width:30px;height:30px}
-.content-dialog.card-subpage .reading-box .reading-art>img,#ruzne-dialog .reading-box .reading-art>.mosaic-logo{width:44px;height:44px}
+.content-dialog.card-subpage .reading-box .reading-art>svg,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-box .reading-art>.mosaic-icon{width:30px;height:30px}
+.content-dialog.card-subpage .reading-box .reading-art>img,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-box .reading-art>.mosaic-logo{width:44px;height:44px}
 .content-dialog.card-subpage .reading-box .reading-art.reading-illustration{width:76px;height:64px;flex-basis:76px;padding:4px}
 .content-dialog.card-subpage .reading-box .reading-art.reading-illustration>img{width:100%;height:100%}
 .content-dialog.card-subpage .reading-box .reading-copy p{margin-bottom:16px;line-height:1.6}
 .content-dialog.card-subpage .reading-box .reading-copy>:last-child{margin-bottom:0}
-.content-dialog.card-subpage .content-body.reading-panels>.reading-box-inline,#ruzne-dialog .reading-subsection>.reading-box-inline{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:start}
-.content-dialog.card-subpage .content-body.reading-panels,#ruzne-dialog .reading-subsection{gap:16px}
-:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{background:linear-gradient(135deg,#ffffff0c,#ffffff03),#222846db;border-color:#ffffff1f;box-shadow:0 6px 20px #00000018,inset 0 1px 0 #ffffff0c}
-@media(max-width:559px){.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{padding:20px;gap:16px}.content-dialog.card-subpage .reading-box-header{gap:12px}.content-dialog.card-subpage .reading-box-header :is(h3,h4){font-size:21px}.content-dialog.card-subpage .content-body.reading-panels>.reading-box-inline,#ruzne-dialog .reading-subsection>.reading-box-inline{display:flex}.content-dialog.card-subpage .reading-box-inline>.reading-art{display:none}}
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box-inline,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box-inline{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:start}
+.content-dialog.card-subpage .content-body.reading-panels,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection{gap:16px}
+:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:linear-gradient(135deg,#ffffff0c,#ffffff03),#222846db;border-color:#ffffff1f;box-shadow:0 6px 20px #00000018,inset 0 1px 0 #ffffff0c}
+@media(max-width:559px){.content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{padding:20px;gap:16px}.content-dialog.card-subpage .reading-box-header{gap:12px}.content-dialog.card-subpage .reading-box-header :is(h3,h4){font-size:21px}.content-dialog.card-subpage .content-body.reading-panels>.reading-box-inline,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box-inline{display:flex}.content-dialog.card-subpage .reading-box-inline>.reading-art{display:none}}
 @media(min-width:900px){.content-dialog.card-subpage .reading-panels>.reading-box:first-child:not(.reading-wide){grid-column:span 8}}
-@media(max-width:559px){.content-dialog.card-subpage .content-body.reading-panels>.reading-box-inline,#ruzne-dialog .reading-subsection>.reading-box-inline{display:grid;grid-template-columns:44px minmax(0,1fr)}.content-dialog.card-subpage .reading-box-inline>.reading-art{display:flex;width:44px;height:44px;flex-basis:44px}.content-dialog.card-subpage .reading-box-inline>.reading-art>svg{width:26px;height:26px}}
+@media(max-width:559px){.content-dialog.card-subpage .content-body.reading-panels>.reading-box-inline,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box-inline{display:grid;grid-template-columns:44px minmax(0,1fr)}.content-dialog.card-subpage .reading-box-inline>.reading-art{display:flex;width:44px;height:44px;flex-basis:44px}.content-dialog.card-subpage .reading-box-inline>.reading-art>svg{width:26px;height:26px}}
 /* A visible, softly spread shadow lifts every content panel. */
-.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{box-shadow:0 12px 28px #20285A26,0 3px 8px #20285A17,inset 0 1px 0 #ffffffd9}
-:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff14}
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{box-shadow:0 12px 28px #20285A26,0 3px 8px #20285A17,inset 0 1px 0 #ffffffd9}
+:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff14}
 /* Photographic crops stay behind a translucent reading layer. */
 #hodnoty-dialog .reading-panels>.value-photo{position:relative;isolation:isolate;background:#f5f7fa}
 #hodnoty-dialog .value-photo::before,#hodnoty-dialog .value-photo::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1}
@@ -584,27 +584,27 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(max-width:559px){#hodnoty-dialog .value-photo::after{background:#f8fafde0}:root[data-theme=dark] #hodnoty-dialog .value-photo::after{background:#152235e0}}
 /* Three equal class-teacher resource tiles, followed by full-width RRRR. */
 @media(min-width:900px){
- #ruzne-dialog .reading-subsection>.class-resource{grid-column:span 4}
- #ruzne-dialog .reading-subsection>#ruzne-rrrr{grid-column:1 / -1}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.class-resource{grid-column:span 4}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>#ruzne-rrrr{grid-column:1 / -1}
 }
 
-@media(min-width:900px){#ruzne-dialog .reading-panels>.service-pair,#ruzne-dialog .reading-panels>.service-pair:first-child:not(.reading-wide){grid-column:span 6}}
+@media(min-width:900px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>.service-pair,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>.service-pair:first-child:not(.reading-wide){grid-column:span 6}}
 /* Center the paired service panels; keep the counselling team easy to scan. */
-#ruzne-dialog .reading-panels>.support-pair{justify-content:center;text-align:center}
-#ruzne-dialog .support-pair .reading-box-header{justify-content:center}
-#ruzne-dialog .support-pair .reading-copy{text-align:center}
-#ruzne-dialog .spp-team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;list-style:none;padding:0;margin:20px 0}
-#ruzne-dialog .spp-team>li{padding:0;margin:0;font-size:15px;line-height:1.4}
-#ruzne-dialog .spp-team strong,#ruzne-dialog .spp-team span{display:block}
-#ruzne-dialog .spp-team span{margin-top:4px;font-size:13px;color:var(--muted)}
-@media(min-width:900px){#ruzne-dialog .reading-panels>.reading-box.support-pair[data-reading-size]{grid-column:span 6}}
-@media(max-width:559px){#ruzne-dialog .spp-team{grid-template-columns:minmax(0,1fr);gap:16px}}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>.support-pair{justify-content:center;text-align:center}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .support-pair .reading-box-header{justify-content:center}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .support-pair .reading-copy{text-align:center}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .spp-team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;list-style:none;padding:0;margin:20px 0}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .spp-team>li{padding:0;margin:0;font-size:15px;line-height:1.4}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .spp-team strong,:is(#ruzne-dialog,#agenda-ucitele-dialog) .spp-team span{display:block}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .spp-team span{margin-top:4px;font-size:13px;color:var(--muted)}
+@media(min-width:900px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>.reading-box.support-pair[data-reading-size]{grid-column:span 6}}
+@media(max-width:559px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .spp-team{grid-template-columns:minmax(0,1fr);gap:16px}}
 /* Center the paired boxes in the page; only team names and roles use centered text. */
-#ruzne-dialog .reading-panels>.support-pair{justify-content:flex-start;text-align:left}
-#ruzne-dialog .support-pair .reading-box-header{justify-content:flex-start}
-#ruzne-dialog .support-pair .reading-copy{text-align:left}
-#ruzne-dialog .spp-team{text-align:center}
-@media(min-width:900px){#ruzne-dialog .reading-panels>#ruzne-vividbooks{grid-column:1 / span 6}#ruzne-dialog .reading-panels>#ruzne-spp{grid-column:7 / span 6}}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>.support-pair{justify-content:flex-start;text-align:left}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .support-pair .reading-box-header{justify-content:flex-start}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .support-pair .reading-copy{text-align:left}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .spp-team{text-align:center}
+@media(min-width:900px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>#ruzne-vividbooks{grid-column:1 / span 6}:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-panels>#ruzne-spp{grid-column:7 / span 6}}
 
 /* Crop the supplied Vividbooks photograph below its explanatory text. */
 #ruzne-vividbooks .vividbooks-photo{width:100%;height:190px;margin:20px 0 0;overflow:hidden;border-radius:16px;background:var(--art-bg)}
@@ -647,16 +647,16 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .content-dialog.card-subpage .reading-box-header :is(h3,h4){flex:1;min-width:0}
 @media(min-width:560px) and (max-width:899px){.content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.reading-box-inline){display:flex;flex-direction:column}}
 /* Visible tinted glass instead of an opaque white reading card. */
-.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff70 0%,#ffffff1f 52%,#ffffff40 100%),color-mix(in srgb,var(--page-accent) 14%,#ffffff24);border:1px solid #ffffffa6;backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:0 12px 28px #20285A29,0 3px 8px #20285A17,inset 0 1px 0 #ffffffe0,inset 1px 0 0 #ffffff65}
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff70 0%,#ffffff1f 52%,#ffffff40 100%),color-mix(in srgb,var(--page-accent) 14%,#ffffff24);border:1px solid #ffffffa6;backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:0 12px 28px #20285A29,0 3px 8px #20285A17,inset 0 1px 0 #ffffffe0,inset 1px 0 0 #ffffff65}
 .content-dialog.card-subpage .reading-box .reading-art{background:color-mix(in srgb,var(--art-tint,var(--page-accent)) 22%,#ffffff50)}
 .content-dialog.card-subpage .reading-box .reading-art.reading-art-dark{background:#20285Ad9}
-:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff19,#ffffff04 55%,#ffffff10),color-mix(in srgb,var(--page-accent) 9%,#1E234194);border-color:#ffffff38;box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff36,inset 1px 0 0 #ffffff12}
+:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff19,#ffffff04 55%,#ffffff10),color-mix(in srgb,var(--page-accent) 9%,#1E234194);border-color:#ffffff38;box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff36,inset 1px 0 0 #ffffff12}
 :root[data-theme=dark] .content-dialog.card-subpage .reading-box .reading-art{background:color-mix(in srgb,var(--art-tint,var(--page-accent)) 12%,#222846a0)}
 #hodnoty-dialog .reading-panels>.value-photo{background:#f5f7fa66}
 #hodnoty-dialog .value-photo::after{background:linear-gradient(100deg,#f8fafdDE,#f8fafdC9 55%,#f8fafd8C)}
 :root[data-theme=dark] #hodnoty-dialog .reading-panels>.value-photo{background:#15223580}
 :root[data-theme=dark] #hodnoty-dialog .value-photo::after{background:linear-gradient(100deg,#152235E8,#152235D9 55%,#152235B8)}
-@supports not (backdrop-filter:blur(1px)){.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{background:color-mix(in srgb,var(--page-accent) 10%,#f5f7fa)}:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{background:#222846}}
+@supports not (backdrop-filter:blur(1px)){.content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:color-mix(in srgb,var(--page-accent) 10%,#f5f7fa)}:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:#222846}}
 
 /* Gemini: balanced pairs keep equal height and follow the numbered examples. */
 @media(min-width:900px){
@@ -685,22 +685,22 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#152235E8,#152235D9 55%,#152235B8)}
 
 /* Shared rhythm for the three classroom resources, with unchanged type sizes. */
-#ruzne-dialog .class-resource .reading-box-header{min-height:60px;align-items:center}
-#ruzne-dialog .class-resource .reading-copy{display:flex;flex-direction:column;flex:1;min-width:0}
-#ruzne-dialog .class-resource .reading-copy>p:last-child{margin-top:auto;margin-bottom:0;padding-top:20px}
-#ruzne-dialog .class-resource .reading-copy>p:last-child>a{display:flex;width:100%;min-height:48px;justify-content:center;align-items:center;text-align:center}
-#ruzne-dialog .class-resource-illustration{display:flex;flex:1;align-items:center;justify-content:center;margin:12px 0 0;min-height:140px}
-#ruzne-dialog .class-resource-illustration>img{display:block;width:min(100%,240px);height:190px;object-fit:contain}
-@media(max-width:899px){#ruzne-dialog .class-resource .reading-copy>p:last-child{margin-top:0}#ruzne-dialog .class-resource-illustration>img{height:170px}}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource .reading-box-header{min-height:60px;align-items:center}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource .reading-copy{display:flex;flex-direction:column;flex:1;min-width:0}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource .reading-copy>p:last-child{margin-top:auto;margin-bottom:0;padding-top:20px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource .reading-copy>p:last-child>a{display:flex;width:100%;min-height:48px;justify-content:center;align-items:center;text-align:center}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource-illustration{display:flex;flex:1;align-items:center;justify-content:center;margin:12px 0 0;min-height:140px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource-illustration>img{display:block;width:min(100%,240px);height:190px;object-fit:contain}
+@media(max-width:899px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource .reading-copy>p:last-child{margin-top:0}:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource-illustration>img{height:170px}}
 
 /* Resource photos share a consistent crop and reading rhythm. */
-#ruzne-dialog .resource-content-photo{width:100%;height:170px;margin:20px 0 0;overflow:hidden;border-radius:16px;background:var(--art-bg)}
-#ruzne-dialog .resource-content-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-#ruzne-dialog .class-resource .resource-content-photo{flex:0 0 170px}
-@media(max-width:559px){#ruzne-dialog .resource-content-photo{height:155px}#ruzne-dialog .class-resource .resource-content-photo{flex-basis:155px}}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .resource-content-photo{width:100%;height:170px;margin:20px 0 0;overflow:hidden;border-radius:16px;background:var(--art-bg)}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .resource-content-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource .resource-content-photo{flex:0 0 170px}
+@media(max-width:559px){:is(#ruzne-dialog,#agenda-ucitele-dialog) .resource-content-photo{height:155px}:is(#ruzne-dialog,#agenda-ucitele-dialog) .class-resource .resource-content-photo{flex-basis:155px}}
 /* RRRR: a tall photograph on the right side of the full-width panel. */
 @media(min-width:720px){
- #ruzne-dialog .reading-subsection>#ruzne-rrrr{position:relative;padding-right:calc(34% + 24px);min-height:330px}
+ :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>#ruzne-rrrr{position:relative;padding-right:calc(34% + 24px);min-height:330px}
  #ruzne-rrrr .resource-content-photo{position:absolute;top:16px;right:16px;bottom:16px;width:30%;height:auto;margin:0}
  #ruzne-rrrr .resource-content-photo img{object-position:50% 50%}
 }
@@ -873,8 +873,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] dialog.content-dialog.card-subpage{--text:#F8F7F4;--muted:#C5C3D0;--blue:#BAC3FF;--line:#bac3ff38;--surface:#222846;--box-bg:#222846;--box-line:#bac3ff30;--art-bg:#2C3359}
 :root .content-dialog.card-subpage .page-surface{background:#F8F7F4}
 :root[data-theme=dark] .content-dialog.card-subpage .page-surface{background:#14172D}
-:root .content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.value-photo),:root #ruzne-dialog .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff80,#F8F7F438 55%,#ffffff50),#F8F7F44d;border-color:#FFFFFFcc}
-:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.value-photo),:root[data-theme=dark] #ruzne-dialog .reading-subsection>.reading-box{background:linear-gradient(125deg,#bac3ff15,#F8F7F404 55%,#bac3ff0c),#222846ba;border-color:#bac3ff38}
+:root .content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.value-photo),:root :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff80,#F8F7F438 55%,#ffffff50),#F8F7F44d;border-color:#FFFFFFcc}
+:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.value-photo),:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:linear-gradient(125deg,#bac3ff15,#F8F7F404 55%,#bac3ff0c),#222846ba;border-color:#bac3ff38}
 :root .content-dialog.card-subpage .reading-box .reading-art:not(.reading-art-dark){background:#263baa0d}
 :root[data-theme=dark] .content-dialog.card-subpage .reading-box .reading-art:not(.reading-art-dark){background:#bac3ff12}
 .workspace .theme-switch{background:#EAE9E6;border-color:#FFFFFFb3;box-shadow:inset 3px 3px 7px #20285a26,inset -3px -3px 7px #FFFFFF,0 7px 18px #20285a14}
@@ -883,13 +883,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Concentric corners: outer radius = nested radius + container inset. */
 :root{--nested-radius:16px}
-.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{--panel-inset:24px;padding:var(--panel-inset);border-radius:calc(var(--nested-radius) + var(--panel-inset))}
-#ruzne-classroom .classroom-guide-photo,#ruzne-doporuceni .recommendations-photo,#ruzne-vividbooks .vividbooks-photo,#ruzne-dialog .resource-content-photo{border-radius:var(--nested-radius)}
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{--panel-inset:24px;padding:var(--panel-inset);border-radius:calc(var(--nested-radius) + var(--panel-inset))}
+#ruzne-classroom .classroom-guide-photo,#ruzne-doporuceni .recommendations-photo,#ruzne-vividbooks .vividbooks-photo,:is(#ruzne-dialog,#agenda-ucitele-dialog) .resource-content-photo{border-radius:var(--nested-radius)}
 .workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:calc(var(--nested-radius) + 22px)}
 .workspace .theme-switch{border-radius:22px}
 .workspace .theme-switch::before,.workspace .theme-switch button{border-radius:18px}
 @media(max-width:559px){
- .content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{--panel-inset:20px}
+ .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{--panel-inset:20px}
 }
 @media(max-width:719px){
  .workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:calc(var(--nested-radius) + 20px)}
@@ -898,7 +898,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Soft, palette-tinted elevation instead of hard grey drop shadows. */
 :root{--panel-shadow:0 10px 28px #263baa1c,0 3px 10px #263baa0a;--button-shadow:5px 5px 14px #263baa1c,-4px -4px 12px #FFFFFFa6}
 :root[data-theme=dark]{--panel-shadow:0 12px 32px #090d2847,0 4px 14px #090d281f;--button-shadow:5px 5px 14px #0d12304d,-4px -4px 12px #bac3ff12}
-:root .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root #ruzne-dialog .reading-subsection>.reading-box{box-shadow:var(--panel-shadow),inset 0 1px 0 #ffffff30}
+:root .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{box-shadow:var(--panel-shadow),inset 0 1px 0 #ffffff30}
 :root .workspace .folder-button::before{box-shadow:var(--panel-shadow),inset 0 1px 0 #ffffff50}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){box-shadow:var(--button-shadow)}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover{box-shadow:var(--panel-shadow)}
@@ -919,7 +919,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root{--nested-radius:8px}
 .workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:20px}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){border-radius:10px}
-#ruzne-dialog .reading-box .reading-art{border-radius:8px}
+:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-box .reading-art{border-radius:8px}
 
 /* Prominent group headings and contrasting external-link buttons. */
 .workspace .folder-group-title{font-size:30px;line-height:1.2;font-weight:700;margin-bottom:12px}
@@ -931,9 +931,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#EAE9E6;color:#263BAA}
 
 /* Explicit corner sizes requested for cards and content images. */
-.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{border-radius:16px}
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box,:is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{border-radius:16px}
 .workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:16px}
-.content-dialog.card-subpage .reading-box img,#ruzne-classroom .classroom-guide-photo,#ruzne-doporuceni .recommendations-photo,#ruzne-vividbooks .vividbooks-photo,#ruzne-dialog .resource-content-photo,#ipady-dialog .reading-copy>.ipad-final-image,#ipady-dialog .reading-copy>.ipad-final-image img{border-radius:8px}
+.content-dialog.card-subpage .reading-box img,#ruzne-classroom .classroom-guide-photo,#ruzne-doporuceni .recommendations-photo,#ruzne-vividbooks .vividbooks-photo,:is(#ruzne-dialog,#agenda-ucitele-dialog) .resource-content-photo,#ipady-dialog .reading-copy>.ipad-final-image,#ipady-dialog .reading-copy>.ipad-final-image img{border-radius:8px}
 
 /* Stronger homepage elevation, while keeping soft palette-tinted edges. */
 :root .workspace .folder-button::before{box-shadow:0 12px 26px #263baa38,0 4px 10px #263baa24,inset 0 1px 0 #ffffff38}
