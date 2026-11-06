@@ -832,8 +832,10 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] .workspace .theme-switch::before{transform:translateX(56px)}
 @media(prefers-reduced-motion:reduce){.workspace .theme-switch::before,.workspace .theme-switch button{transition:none}}
 
-/* Rounded blue link buttons with the reference's subtle depth. */
-:root :is(body,.card-subpage) :is(a,button).primary{border:1px solid #1854ce;border-radius:16px;background:linear-gradient(180deg,#397ef6 0%,#2464e7 100%);color:#fff;box-shadow:inset 0 1px 0 #ffffff5c,0 2px 2px #132f6c24;transition:background .18s ease,box-shadow .18s ease,transform .18s ease}
-:root :is(body,.card-subpage) :is(a,button).primary:hover{background:linear-gradient(180deg,#2d70e8,#1c55cc);box-shadow:inset 0 1px 0 #ffffff5c,0 4px 9px #132f6c2e}
-:root :is(body,.card-subpage) :is(a,button).primary:active{transform:translateY(1px);box-shadow:inset 0 2px 4px #14387540,0 1px 1px #132f6c1a}
+/* Primary actions share the site's blue palette and restrained glass finish. */
+:root :is(body,.card-subpage) :is(a,button).primary{border:1px solid #194b9066;border-radius:14px;background:linear-gradient(180deg,#ffffff12,transparent),#2258A5;color:#fff;box-shadow:inset 0 1px 0 #ffffff30,0 3px 9px #172b491c;font-family:'greycliff-cf',sans-serif;font-weight:700;letter-spacing:-.015em;transition:background .18s ease,box-shadow .18s ease,transform .18s ease}
+:root :is(body,.card-subpage) :is(a,button).primary:hover{background:linear-gradient(180deg,#ffffff14,transparent),#194987;box-shadow:inset 0 1px 0 #ffffff38,0 5px 13px #172b4926}
+:root :is(body,.card-subpage) :is(a,button).primary:active{transform:translateY(1px);box-shadow:inset 0 1px 3px #102b522b,0 1px 3px #172b491a}
+:root[data-theme=dark] :is(body,.card-subpage) :is(a,button).primary{border-color:#b7d5ff66;background:linear-gradient(180deg,#ffffff14,transparent),#8DB7F4;color:#101927;box-shadow:inset 0 1px 0 #ffffff5c,0 3px 10px #0003}
+:root[data-theme=dark] :is(body,.card-subpage) :is(a,button).primary:hover{background:linear-gradient(180deg,#ffffff14,transparent),#a9caf8}
 @media(prefers-reduced-motion:reduce){:root :is(body,.card-subpage) :is(a,button).primary{transition:none}}
