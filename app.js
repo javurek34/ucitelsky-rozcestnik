@@ -12,7 +12,7 @@ const base=[
 {id:'umimeto',title:'umimeto.org',icon:'book',url:null,content:'umimeto'},
 {id:'akce',title:'Akce a exkurze',icon:'calendar',url:null,content:'akce'},
 {id:'ruzne',title:'Různé',icon:'misc',url:null,content:'ruzne'},
-{id:'agenda-ucitele',title:'Agenda učitele',icon:'file',url:null}
+{id:'agenda-ucitele',title:'Agenda učitele',icon:'file',url:null,content:'agenda-ucitele'}
 ];
 
 const cardColors=['#EFD45A','#EF5848','#80CBA9','#B8DEEC','#C9A2DF','#FFB284','#F0F0E8','#EFD45A','#C9EE73','#B8DEEC','#FFB284','#C9A2DF','#B8DEEC'];
@@ -43,6 +43,7 @@ function render(){
   });
  });
 }
+$('#close-agenda-ucitele').onclick=$('#agenda-ucitele-ok').onclick=cardPages.requestClose;
 $('#close-aktualne').onclick=$('#aktualne-ok').onclick=cardPages.requestClose;
 $('#close-formulare').onclick=$('#formulare-ok').onclick=cardPages.requestClose;
 $('#close-pending').onclick=$('#pending-ok').onclick=cardPages.requestClose;
