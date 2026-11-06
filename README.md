@@ -25,3 +25,10 @@ při nedostupnosti se použije náhradní písmo.
 
 Jde o obnovu publikovaných souborů, ne historie původního editoru nebo chatu.
 Soubory nejsou tímto automaticky odeslány na GitHub ani publikovány.
+
+## Zaoblení vnořených prvků
+
+Dodržujte soustředné rohy: vnější rádius = vnitřní rádius + odsazení.
+Pro obsahové boxy používáme `--nested-radius: 16px` a `--panel-inset`
+(24px, na mobilu 20px). Vnější rádius se počítá pomocí `calc()`;
+obrázky uvnitř mají rádius 16px. Dekorativní vrstvy kopírují rádius svého boxu.

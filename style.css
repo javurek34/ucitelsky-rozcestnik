@@ -880,3 +880,17 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .theme-switch{background:#F2E8CB;border-color:#fffaf0b3;box-shadow:inset 3px 3px 7px #20285a26,inset -3px -3px 7px #fffaf0,0 7px 18px #20285a14}
 .workspace .theme-switch::before{background:radial-gradient(ellipse at 50% 110%,#8d9bee,#263BAA 65%);box-shadow:inset 0 2px 4px #ffffff50,inset 0 -3px 6px #bac3ff70,0 2px 7px #263baa55}
 :root[data-theme=dark] .workspace .theme-switch{background:#222846;border-color:#bac3ff30}
+
+/* Concentric corners: outer radius = nested radius + container inset. */
+:root{--nested-radius:16px}
+.content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{--panel-inset:24px;padding:var(--panel-inset);border-radius:calc(var(--nested-radius) + var(--panel-inset))}
+#ruzne-classroom .classroom-guide-photo,#ruzne-doporuceni .recommendations-photo,#ruzne-vividbooks .vividbooks-photo,#ruzne-dialog .resource-content-photo{border-radius:var(--nested-radius)}
+.workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:calc(var(--nested-radius) + 22px)}
+.workspace .theme-switch{border-radius:22px}
+.workspace .theme-switch::before,.workspace .theme-switch button{border-radius:18px}
+@media(max-width:559px){
+ .content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{--panel-inset:20px}
+}
+@media(max-width:719px){
+ .workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:calc(var(--nested-radius) + 20px)}
+}
