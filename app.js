@@ -5,7 +5,7 @@ const base=[
 {id:'dohledy',title:'Dohledy',icon:'eye',url:null,content:'dohledy'},
 {id:'ipady',title:'iPady',icon:'tablet',url:null,content:'ipady'},
 {id:'kodex-ai',title:'Kodex AI',icon:'shield',url:null},
-{id:'ai-detem',title:'AI dětem',icon:'book',url:'https://aidetem.cz/'},
+{id:'aktualne',title:'Aktuálně',icon:'calendar',url:null,content:'aktualne'},
 {id:'gemini',title:'Gemini',icon:'tool',url:null,content:'gemini'},
 {id:'canva',title:'Canva',icon:'tool',url:null,content:'canva'},
 {id:'formulare',title:'Formuláře',icon:'file',url:null,content:'formulare'},
@@ -18,8 +18,8 @@ const cardColors=['#EFD45A','#EF5848','#80CBA9','#B8DEEC','#C9A2DF','#FFB284','#
 const brandLogos={'ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
 const folderGroups=[
- {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['hodnoty','uraz','dohledy','ipady']},
- {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ai-detem','gemini','canva']},
+ {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['hodnoty','uraz','dohledy','aktualne']},
+ {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ipady','gemini','canva']},
  {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['formulare','umimeto','akce','ruzne']}
 ];
 function render(){
@@ -42,6 +42,7 @@ function render(){
   });
  });
 }
+$('#close-aktualne').onclick=$('#aktualne-ok').onclick=cardPages.requestClose;
 $('#close-formulare').onclick=$('#formulare-ok').onclick=cardPages.requestClose;
 $('#close-pending').onclick=$('#pending-ok').onclick=cardPages.requestClose;
 $('#close-dohledy').onclick=$('#dohledy-ok').onclick=cardPages.requestClose;
