@@ -967,3 +967,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  .workspace main{padding-top:0}
  .workspace .directory{margin-top:0}
 }
+
+/* School-life cards retain their indigo identity in dark mode. */
+:root[data-theme=dark] .workspace .group-zivot-skoly .folder-button::before{background:linear-gradient(135deg,#ffffff14,transparent 65%),#263BAA;border-color:#bac3ff3d}
+:root[data-theme=dark] .workspace .group-zivot-skoly .folder-entry .folder-button,:root[data-theme=dark] .workspace .group-zivot-skoly .folder-symbol svg,:root[data-theme=dark] .workspace .group-zivot-skoly .folder-arrow{color:#F8F7F4}
