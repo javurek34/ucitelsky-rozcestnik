@@ -26,7 +26,7 @@ const folderGroups=[
 function render(){
  const root=$('#results');root.replaceChildren();
  folderGroups.forEach(group=>{
-  const stack=document.createElement('section');stack.className='folder-stack';
+  const stack=document.createElement('section');stack.className='folder-stack';if(group.title==='Po ruce')stack.classList.add('group-po-ruce');
   const heading=document.createElement('h2');heading.className='folder-group-title';heading.textContent=group.title;
   const note=document.createElement('p');note.className='folder-group-note';note.textContent=group.note;
   const files=document.createElement('div');files.className='folder-files';stack.append(heading,note,files);root.append(stack);

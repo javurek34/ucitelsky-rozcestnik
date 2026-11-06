@@ -938,3 +938,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Stronger homepage elevation, while keeping soft palette-tinted edges. */
 :root .workspace .folder-button::before{box-shadow:0 12px 26px #263baa38,0 4px 10px #263baa24,inset 0 1px 0 #ffffff38}
 :root[data-theme=dark] .workspace .folder-button::before{box-shadow:0 14px 30px #070b286b,0 5px 12px #070b2847,inset 0 1px 0 #ffffff80}
+
+/* Deep Berry distinguishes the handy-resources homepage group. */
+:root{--deep-berry:#5B245F}
+:root .workspace .group-po-ruce .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--deep-berry);border-color:#e2bce43d;box-shadow:0 12px 26px #5b245f38,0 4px 10px #5b245f24,inset 0 1px 0 #ffffff38}
+:root .workspace .group-po-ruce .folder-entry .folder-button,:root .workspace .group-po-ruce .folder-symbol svg,:root .workspace .group-po-ruce .folder-arrow{color:#F8F7F4}
+:root[data-theme=dark] .workspace .group-po-ruce .folder-button::before{box-shadow:0 14px 30px #16091d6b,0 5px 12px #16091d47,inset 0 1px 0 #ffffff38}
