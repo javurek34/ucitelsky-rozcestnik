@@ -1035,3 +1035,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #agenda-poznamky .notes-rule-card>:last-child{margin-bottom:0}
 :root[data-theme=dark] #agenda-poznamky .notes-rule-card{background:#bac3ff0a;border-color:#bac3ff30}
 @media(max-width:719px){#agenda-poznamky .notes-rule-grid{grid-template-columns:minmax(0,1fr)}#agenda-poznamky .notes-rule-card{padding:16px}}
+
+/* Transparent document pictograms stay legible on dark glass. */
+:root[data-theme=dark] :is(#agenda-dokumenty,#agenda-smernice) .reading-art>img{filter:brightness(0) invert(1)}
