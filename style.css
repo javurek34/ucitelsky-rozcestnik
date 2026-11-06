@@ -1097,3 +1097,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 }
 
 #ruzne-spp .spp-team strong{font-size:18px}
+
+/* Full-width mobile actions also need a stretched copy wrapper. */
+@media(max-width:719px){
+ .content-dialog.card-subpage .reading-box>.reading-copy{width:100%;min-width:0}
+ .content-dialog.card-subpage .reading-box:not(.reading-box-inline)>.reading-copy{align-self:stretch}
+}
