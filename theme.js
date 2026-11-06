@@ -8,9 +8,11 @@
   document.documentElement.style.colorScheme=theme;
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#14172D':'#F8F7F4');
   document.querySelectorAll('[data-theme-choice]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.themeChoice===theme)));
+  document.querySelectorAll('[data-theme-toggle]').forEach(button=>button.setAttribute('aria-checked',String(theme==='dark')));
  }
  apply(choice||(system.matches?'dark':'light'));
  document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('[data-theme-toggle]').forEach(button=>button.addEventListener('click',()=>{choice=document.documentElement.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem(key,choice);}catch{}apply(choice);}));
   document.querySelectorAll('[data-theme-choice]').forEach(button=>button.addEventListener('click',()=>{choice=button.dataset.themeChoice;try{localStorage.setItem(key,choice);}catch{}apply(choice);}));
   apply(choice||(system.matches?'dark':'light'));
  });

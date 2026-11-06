@@ -1038,3 +1038,24 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Transparent document pictograms stay legible on dark glass. */
 :root[data-theme=dark] :is(#agenda-dokumenty,#agenda-smernice) .reading-art>img{filter:brightness(0) invert(1)}
+
+/* Sun-to-crescent switch from the supplied animation reference. */
+.theme-toggle-control{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.theme-mode-label{font-size:14px;line-height:20px;font-weight:700;color:var(--muted)}
+.theme-label-light{color:var(--text)}
+:root[data-theme=dark] .theme-label-light{color:var(--muted)}
+:root[data-theme=dark] .theme-label-dark{color:var(--text)}
+.theme-toggle{position:relative;isolation:isolate;display:block;flex:0 0 76px;width:76px;height:44px;min-height:44px;padding:0;overflow:hidden;border-radius:24px;background:#708ff0;box-shadow:inset 0 1px 3px #263baa26;transition:background .35s ease}
+.theme-toggle-orb{position:absolute;left:6px;top:6px;width:32px;height:32px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #263baa20;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.theme-toggle-orb::after{content:'';position:absolute;right:-3px;top:-4px;width:28px;height:28px;border-radius:50%;background:#101526;transform:scale(0);transform-origin:top right;transition:transform .35s ease}
+.theme-toggle-sky{position:absolute;inset:0;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.theme-toggle-spark{position:absolute;left:52px;top:8px;width:8px;height:8px;border-radius:50%;background:#fff;transition:clip-path .3s ease}
+.theme-toggle-spark:nth-child(2){left:45px;top:22px;width:4px;height:4px}
+.theme-toggle-spark:nth-child(3){left:64px;top:25px;width:3px;height:3px}
+:root[data-theme=dark] .theme-toggle{background:#101526;box-shadow:inset 0 1px 3px #0006}
+:root[data-theme=dark] .theme-toggle-orb{transform:translateX(32px)}
+:root[data-theme=dark] .theme-toggle-orb::after{transform:scale(1)}
+:root[data-theme=dark] .theme-toggle-sky{transform:translateX(-36px)}
+:root[data-theme=dark] .theme-toggle-spark{border-radius:0;clip-path:polygon(50% 0,62% 35%,100% 50%,62% 65%,50% 100%,38% 65%,0 50%,38% 35%)}
+@media(max-width:559px){.theme-mode-label{display:none}}
+@media(prefers-reduced-motion:reduce){.theme-toggle,.theme-toggle-orb,.theme-toggle-orb::after,.theme-toggle-sky,.theme-toggle-spark{transition:none}}
