@@ -1024,3 +1024,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #agenda-poznamky .reading-copy>h4{font-size:20px;line-height:1.4;margin:24px 0 12px}
 #agenda-poznamky .reading-copy>h4:first-child{margin-top:0}
+
+/* Three distinct topics stay inside the Notes rules parent panel. */
+#agenda-poznamky .notes-rule-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch;margin-bottom:24px}
+#agenda-poznamky .notes-rule-card{min-width:0;padding:20px;border:1px solid #263baa20;border-radius:8px;background:#263baa07}
+#agenda-poznamky .notes-rule-card:last-child{grid-column:1 / -1}
+#agenda-poznamky .notes-rule-card>h4{font-size:20px;line-height:1.4;margin:0 0 16px}
+#agenda-poznamky .notes-rule-card>p{margin:0 0 16px}
+#agenda-poznamky .notes-rule-card>ul{margin:0 0 16px;padding-left:24px}
+#agenda-poznamky .notes-rule-card>:last-child{margin-bottom:0}
+:root[data-theme=dark] #agenda-poznamky .notes-rule-card{background:#bac3ff0a;border-color:#bac3ff30}
+@media(max-width:719px){#agenda-poznamky .notes-rule-grid{grid-template-columns:minmax(0,1fr)}#agenda-poznamky .notes-rule-card{padding:16px}}
