@@ -850,3 +850,12 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .theme-switch button{width:38px;height:36px;min-height:36px}
 .workspace .theme-switch button svg{width:19px;height:19px}
 :root[data-theme=dark] .workspace .theme-switch::before{transform:translateX(40px)}
+
+/* Soft raised buttons, adapted to the site's light and dark surfaces. */
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){border:1px solid #ffffff45;border-radius:16px;background:#eaf0f8;color:#2258A5;box-shadow:6px 6px 12px #172b4926,-5px -5px 12px #ffffffc9;transition:box-shadow .18s ease,background .18s ease,transform .18s ease}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover{background:#e4edf9;box-shadow:4px 4px 9px #172b4929,-4px -4px 9px #ffffffd9}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active{transform:translateY(1px);background:#e5edf7;box-shadow:inset 3px 3px 7px #172b4926,inset -3px -3px 7px #ffffffb3}
+:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){border-color:#ffffff08;background:#253149;color:#e5edff;box-shadow:6px 6px 12px #080f1e80,-5px -5px 12px #46547345}
+:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover{background:#2b3954;box-shadow:4px 4px 9px #080f1e80,-4px -4px 9px #46547355}
+:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active{background:#253149;box-shadow:inset 3px 3px 7px #080f1e80,inset -3px -3px 7px #46547345}
+@media(prefers-reduced-motion:reduce){:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){transition:none}}
