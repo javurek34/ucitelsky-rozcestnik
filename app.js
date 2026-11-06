@@ -11,16 +11,17 @@ const base=[
 {id:'formulare',title:'Formuláře',icon:'file',url:null,content:'formulare'},
 {id:'umimeto',title:'umimeto.org',icon:'book',url:null,content:'umimeto'},
 {id:'akce',title:'Akce a exkurze',icon:'calendar',url:null,content:'akce'},
-{id:'ruzne',title:'Různé',icon:'misc',url:null,content:'ruzne'}
+{id:'ruzne',title:'Různé',icon:'misc',url:null,content:'ruzne'},
+{id:'agenda-ucitele',title:'Agenda učitele',icon:'file',url:null}
 ];
 
-const cardColors=['#EFD45A','#EF5848','#80CBA9','#B8DEEC','#C9A2DF','#FFB284','#F0F0E8','#EFD45A','#C9EE73','#B8DEEC','#FFB284','#C9A2DF'];
+const cardColors=['#EFD45A','#EF5848','#80CBA9','#B8DEEC','#C9A2DF','#FFB284','#F0F0E8','#EFD45A','#C9EE73','#B8DEEC','#FFB284','#C9A2DF','#B8DEEC'];
 const brandLogos={'ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
 const folderGroups=[
  {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['hodnoty','uraz','dohledy','aktualne']},
  {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ipady','gemini','canva']},
- {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['formulare','umimeto','akce','ruzne']}
+ {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['formulare','agenda-ucitele','akce','ruzne']}
 ];
 function render(){
  const root=$('#results');root.replaceChildren();
