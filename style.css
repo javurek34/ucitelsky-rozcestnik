@@ -810,3 +810,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #ruzne-classroom .reading-art{background:transparent}
 #ruzne-classroom .reading-copy .primary{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;text-align:center}
 @media(max-width:719px){#ruzne-classroom::after{inset:16px;background-position:right bottom;background-size:65% auto;opacity:.055}}
+
+/* Classroom guide image sits to the left of the overview. */
+#ruzne-classroom .reading-copy{display:grid;grid-template-columns:minmax(220px,32%) minmax(0,1fr);gap:18px 28px}
+#ruzne-classroom .reading-copy>:not(.classroom-guide-photo){grid-column:2;margin-block:0}
+#ruzne-classroom .classroom-guide-photo{grid-column:1;grid-row:1 / span 3;position:relative;min-height:300px;margin:0;overflow:hidden;border-radius:20px}
+#ruzne-classroom .classroom-guide-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+@media(max-width:719px){
+ #ruzne-classroom .reading-copy{display:flex;flex-direction:column}
+ #ruzne-classroom .classroom-guide-photo{width:100%;height:210px;min-height:0}
+}
