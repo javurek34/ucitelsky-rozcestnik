@@ -934,3 +934,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .content-dialog.card-subpage .content-body.reading-panels>.reading-box,#ruzne-dialog .reading-subsection>.reading-box{border-radius:16px}
 .workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:16px}
 .content-dialog.card-subpage .reading-box img,#ruzne-classroom .classroom-guide-photo,#ruzne-doporuceni .recommendations-photo,#ruzne-vividbooks .vividbooks-photo,#ruzne-dialog .resource-content-photo,#ipady-dialog .reading-copy>.ipad-final-image,#ipady-dialog .reading-copy>.ipad-final-image img{border-radius:8px}
+
+/* Stronger homepage elevation, while keeping soft palette-tinted edges. */
+:root .workspace .folder-button::before{box-shadow:0 12px 26px #263baa38,0 4px 10px #263baa24,inset 0 1px 0 #ffffff38}
+:root[data-theme=dark] .workspace .folder-button::before{box-shadow:0 14px 30px #070b286b,0 5px 12px #070b2847,inset 0 1px 0 #ffffff80}
