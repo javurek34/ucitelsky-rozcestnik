@@ -914,3 +914,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] .workspace .folder-symbol svg,:root[data-theme=dark] .workspace .folder-arrow{color:#263BAA}
 :root .workspace .folder-symbol:has(img){background:#fffaf0;border-radius:8px;padding:3px}
 :root .workspace .folder-symbol img{width:100%;height:100%;object-fit:contain}
+
+/* Tighter corners keep cards distinct without a pill-like silhouette. */
+:root{--nested-radius:8px}
+.workspace .folder-entry,.workspace .folder-entry .folder-button,.workspace .folder-button::before{border-radius:20px}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action){border-radius:10px}
+#ruzne-dialog .reading-box .reading-art{border-radius:8px}
