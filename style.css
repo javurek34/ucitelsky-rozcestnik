@@ -958,3 +958,12 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .directory{padding-top:8px}
 .workspace .folder-group-note{margin-bottom:20px}
 @media(max-width:719px){.workspace .intro{min-height:0;padding:20px 0 18px}.workspace .directory{padding-top:6px}}
+
+/* The compact control must not inherit the old full-width mobile layout. */
+.workspace .theme-switch{width:88px;max-width:88px;flex:0 0 88px;align-self:center}
+@media(max-width:559px){
+ .workspace .topbar{flex-wrap:nowrap;gap:12px;padding:16px 0;min-height:80px}
+ .workspace .brand{width:clamp(145px,46vw,185px)}
+ .workspace main{padding-top:0}
+ .workspace .directory{margin-top:0}
+}
