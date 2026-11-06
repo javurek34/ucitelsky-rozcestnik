@@ -979,3 +979,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] .workspace .folder-button::before{box-shadow:0 5px 10px #070b285c,0 2px 4px #070b2840,inset 0 1px 0 #ffffff30}
 :root[data-theme=dark] .workspace .group-po-ruce .folder-button::before{box-shadow:0 5px 10px #16091d5c,0 2px 4px #16091d40,inset 0 1px 0 #ffffff30}
 :root[data-theme=dark] .workspace .group-digitalni .folder-button::before{box-shadow:0 5px 10px #1406245c,0 2px 4px #14062440,inset 0 1px 0 #ffffff30}
+
+/* External actions use the ink-dark reference colour in both themes. */
+:root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#1D2033;color:#F8F7F4;border-color:#ffffff14;box-shadow:0 4px 9px #1d20332b,inset 0 1px 0 #ffffff12}
+:root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#292D46;color:#F8F7F4;box-shadow:0 5px 11px #1d203333,inset 0 1px 0 #ffffff18}
+:root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#171A2B;color:#F8F7F4;box-shadow:inset 0 2px 4px #090b1b40}
