@@ -93,3 +93,5 @@ User-selected images, loaded externally (not copied into the repository):
 
 User-supplied image from Oak Park Primary School, loaded externally:
 https://www.oakparkps.vic.edu.au/uploads/4/8/1/3/48136671/977082.png?371
+
+- Pozadí stránky Aktuálně: Rohan Krishnan / Unsplash, fotografie iPOzQwvcMLE; soubor dodal uživatel.

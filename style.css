@@ -989,3 +989,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root .umime-shortcuts button,:root[data-theme=dark] .umime-shortcuts button{background:#1D2033;color:#F8F7F4;border:1px solid #ffffff14;box-shadow:0 3px 6px #1d203326,inset 0 1px 0 #ffffff12}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root .umime-shortcuts button:hover{background:#292D46;color:#F8F7F4}
 :root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root .umime-shortcuts button:active{background:#171A2B;color:#F8F7F4;box-shadow:inset 0 2px 4px #090b1b40}
+
+/* A locally stored calendar photo forms the background of Current updates. */
+:root #aktualne-dialog.card-subpage .page-surface{background:linear-gradient(110deg,#f8f7f4e6,#f8f7f4b8),url('assets/aktualne-background.webp') center 42% / cover no-repeat}
+:root[data-theme=dark] #aktualne-dialog.card-subpage .page-surface{background:linear-gradient(110deg,#14172de0,#14172d99),url('assets/aktualne-background.webp') center 42% / cover no-repeat}
+#aktualne-dialog.card-subpage .page-surface::before{display:none}
