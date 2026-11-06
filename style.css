@@ -1095,3 +1095,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  :root .card-subpage :is(.quick-actions,.illustrated-action){width:100%}
  :root .card-subpage :is(.quick-actions,.illustrated-action)>a:is(.primary,.secondary-action){flex:1 1 100%}
 }
+
+#ruzne-spp .spp-team strong{font-size:18px}
