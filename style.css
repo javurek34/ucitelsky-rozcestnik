@@ -1021,3 +1021,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Full-width, natural paragraph wrapping; keep Czech prepositions with their words. */
 #agenda-tridni-ucitel .reading-copy>p{max-width:none;white-space:normal;text-wrap:wrap;word-break:normal;overflow-wrap:normal;hyphens:none;text-align:left}
+
+#agenda-poznamky .reading-copy>h4{font-size:20px;line-height:1.4;margin:24px 0 12px}
+#agenda-poznamky .reading-copy>h4:first-child{margin-top:0}
