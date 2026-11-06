@@ -820,3 +820,20 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ruzne-classroom .reading-copy{display:flex;flex-direction:column}
  #ruzne-classroom .classroom-guide-photo{width:100%;height:210px;min-height:0}
 }
+
+/* Animated sun/moon control inspired by the supplied motion reference. */
+.workspace .theme-switch{position:relative;isolation:isolate;flex-shrink:0;display:grid;grid-template-columns:repeat(2,52px);gap:4px;padding:5px;border:1px solid #ffffffa6;border-radius:40px;background:#dfe7fa;box-shadow:inset 3px 3px 7px #9aaed14d,inset -3px -3px 7px #fff,0 7px 18px #172b4914}
+.workspace .theme-switch::before{content:'';position:absolute;left:5px;top:5px;width:52px;height:44px;border-radius:28px;background:radial-gradient(ellipse at 50% 110%,#51d5ff 0%,#2467ff 40%,#183ee5 75%,#244cf4 100%);box-shadow:inset 0 2px 4px #ffffff65,inset 0 -4px 7px #79d8ffb0,0 2px 9px #2459ff80;transition:transform .36s cubic-bezier(.22,.8,.25,1);pointer-events:none;z-index:-1}
+.workspace .theme-switch button{width:52px;height:44px;min-height:44px;padding:0;border-radius:28px;background:transparent;color:#647394;transition:color .25s ease}
+.workspace .theme-switch button svg{width:23px;height:23px}
+.workspace .theme-switch button[aria-pressed=true]{background:transparent;color:#fff}
+.workspace .theme-switch button>span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+:root[data-theme=dark] .workspace .theme-switch{background:#1b2234;border-color:#3c4862;box-shadow:inset 3px 3px 7px #080e2380,inset -2px -2px 5px #46547265,0 7px 18px #0003}
+:root[data-theme=dark] .workspace .theme-switch::before{transform:translateX(56px)}
+@media(prefers-reduced-motion:reduce){.workspace .theme-switch::before,.workspace .theme-switch button{transition:none}}
+
+/* Rounded blue link buttons with the reference's subtle depth. */
+:root :is(body,.card-subpage) :is(a,button).primary{border:1px solid #1854ce;border-radius:16px;background:linear-gradient(180deg,#397ef6 0%,#2464e7 100%);color:#fff;box-shadow:inset 0 1px 0 #ffffff5c,0 2px 2px #132f6c24;transition:background .18s ease,box-shadow .18s ease,transform .18s ease}
+:root :is(body,.card-subpage) :is(a,button).primary:hover{background:linear-gradient(180deg,#2d70e8,#1c55cc);box-shadow:inset 0 1px 0 #ffffff5c,0 4px 9px #132f6c2e}
+:root :is(body,.card-subpage) :is(a,button).primary:active{transform:translateY(1px);box-shadow:inset 0 2px 4px #14387540,0 1px 1px #132f6c1a}
+@media(prefers-reduced-motion:reduce){:root :is(body,.card-subpage) :is(a,button).primary{transition:none}}
