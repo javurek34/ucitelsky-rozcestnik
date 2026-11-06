@@ -1074,3 +1074,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #ipady-dialog .reading-copy>.ipad-final-image{height:176px;overflow:hidden;border-radius:8px}
 #ipady-dialog .reading-copy>.ipad-final-image img{width:100%;height:100%;object-fit:cover;object-position:50% 72%;margin:0}
 @media(max-width:719px){#ipady-dialog .reading-copy>.ipad-final-image{height:220px;max-width:320px}}
+
+/* A full-height portrait strip accompanies the complete closing panel. */
+#ipady-dialog .ipad-photo-panel>.ipad-final-image{width:100%;height:240px;margin:0;overflow:hidden;border-radius:8px}
+#ipady-dialog .ipad-photo-panel>.ipad-final-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 70%;border-radius:8px}
+@media(min-width:720px){
+ #ipady-dialog.card-subpage .content-body.reading-panels>.ipad-photo-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,24%);gap:16px 24px;align-items:start}
+ #ipady-dialog .ipad-photo-panel>.reading-box-header{grid-column:1;grid-row:1}
+ #ipady-dialog .ipad-photo-panel>.reading-copy{display:block;grid-column:1;grid-row:2}
+ #ipady-dialog .ipad-photo-panel>.ipad-final-image{grid-column:2;grid-row:1 / span 2;align-self:stretch;position:relative;height:auto;min-height:260px}
+ #ipady-dialog .ipad-photo-panel>.ipad-final-image img{position:absolute;inset:0}
+}
