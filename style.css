@@ -971,3 +971,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* School-life cards retain their indigo identity in dark mode. */
 :root[data-theme=dark] .workspace .group-zivot-skoly .folder-button::before{background:linear-gradient(135deg,#ffffff14,transparent 65%),#263BAA;border-color:#bac3ff3d}
 :root[data-theme=dark] .workspace .group-zivot-skoly .folder-entry .folder-button,:root[data-theme=dark] .workspace .group-zivot-skoly .folder-symbol svg,:root[data-theme=dark] .workspace .group-zivot-skoly .folder-arrow{color:#F8F7F4}
+
+/* Homepage shadows stay close to the cards rather than spreading into the gaps. */
+:root .workspace .folder-button::before{box-shadow:0 5px 10px #263baa30,0 2px 4px #263baa24,inset 0 1px 0 #ffffff38}
+:root .workspace .group-po-ruce .folder-button::before{box-shadow:0 5px 10px #5b245f30,0 2px 4px #5b245f24,inset 0 1px 0 #ffffff38}
+:root .workspace .group-digitalni .folder-button::before{box-shadow:0 5px 10px #46088430,0 2px 4px #46088424,inset 0 1px 0 #ffffff38}
+:root[data-theme=dark] .workspace .folder-button::before{box-shadow:0 5px 10px #070b285c,0 2px 4px #070b2840,inset 0 1px 0 #ffffff30}
+:root[data-theme=dark] .workspace .group-po-ruce .folder-button::before{box-shadow:0 5px 10px #16091d5c,0 2px 4px #16091d40,inset 0 1px 0 #ffffff30}
+:root[data-theme=dark] .workspace .group-digitalni .folder-button::before{box-shadow:0 5px 10px #1406245c,0 2px 4px #14062440,inset 0 1px 0 #ffffff30}
