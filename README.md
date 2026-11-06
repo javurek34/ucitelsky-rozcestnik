@@ -26,12 +26,11 @@ při nedostupnosti se použije náhradní písmo.
 Jde o obnovu publikovaných souborů, ne historie původního editoru nebo chatu.
 Soubory nejsou tímto automaticky odeslány na GitHub ani publikovány.
 
-## Zaoblení vnořených prvků
+## Zaoblení prvků
 
-Dodržujte soustředné rohy: vnější rádius = vnitřní rádius + odsazení.
-Pro obsahové boxy používáme `--nested-radius: 8px` a `--panel-inset`
-(24px, na mobilu 20px). Vnější rádius se počítá pomocí `calc()`;
-obrázky uvnitř mají rádius 8px. Dekorativní vrstvy kopírují rádius svého boxu.
+Aktuální zadání: obsahové boxy a karty na úvodu mají rádius 16px,
+obrázky a jejich obaly 8px. Tyto explicitní hodnoty nahrazují dřívější
+výpočet vnějšího rádiusu z odsazení. Dekorativní vrstvy kopírují rádius boxu.
 
 Stíny musí být měkké, rozptýlené a tónované do barev webu; nepoužívejte
 ostré šedé okraje. Používejte sdílené `--panel-shadow` a `--button-shadow`
