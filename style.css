@@ -1069,3 +1069,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>.ipad-final-image{grid-row:1;align-self:start;max-width:200px;justify-self:end}
  #ipady-dialog .reading-box:has(.ipad-final-image) .reading-copy>p.ipad-learning-goal{grid-column:1 / -1;grid-row:2;margin:0}
 }
+
+/* Crop the supplied portrait photo around the tablet, not the empty upper area. */
+#ipady-dialog .reading-copy>.ipad-final-image{height:176px;overflow:hidden;border-radius:8px}
+#ipady-dialog .reading-copy>.ipad-final-image img{width:100%;height:100%;object-fit:cover;object-position:50% 72%;margin:0}
+@media(max-width:719px){#ipady-dialog .reading-copy>.ipad-final-image{height:220px;max-width:320px}}
