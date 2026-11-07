@@ -1154,3 +1154,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Include the countdown within the square, rather than below it. */
 #aktualne-dialog .event-date{margin-bottom:0;padding:4px 8px 20px;overflow:hidden}
 :root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{left:0;right:0;bottom:0;border-radius:0;padding:2px 4px}
+
+#aktualne-dialog .event-date{gap:0}
+#aktualne-dialog .event-date time{line-height:40px}
