@@ -1181,3 +1181,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #aktualne-dialog .event-date::before,#aktualne-dialog .event-date::after{display:none}
 #aktualne-dialog .event-date{margin-top:0}
+
+:root[data-theme=dark] #agenda-ucitele-dialog .agenda-custom-icon>img{filter:brightness(0) invert(1)}
