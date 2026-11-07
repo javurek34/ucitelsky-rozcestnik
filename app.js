@@ -11,7 +11,7 @@ const base=[
 {id:'formulare',title:'Formuláře',icon:'file',url:null,content:'formulare'},
 {id:'umimeto',title:'umimeto.org',icon:'book',url:null,content:'umimeto'},
 {id:'akce',title:'Akce a exkurze',icon:'calendar',url:null,content:'akce'},
-{id:'ruzne',title:'Různé',icon:'misc',url:null,content:'ruzne'},
+{id:'ruzne',title:'Podpora',icon:'misc',url:null,content:'ruzne'},
 {id:'agenda-ucitele',title:'Agenda učitele',icon:'file',url:null,content:'agenda-ucitele'}
 ];
 
