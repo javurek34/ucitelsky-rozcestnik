@@ -1145,3 +1145,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 :root #aktualne-dialog .event-date,:root[data-theme=dark] #aktualne-dialog .event-date{background:#1D2033;color:#F8F7F4;border-color:#ffffff1f}
 :root #aktualne-dialog .event-month,:root[data-theme=dark] #aktualne-dialog .event-month{color:#C7CADA}
+
+#aktualne-dialog .event-date time{color:#BAC3FF}
