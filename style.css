@@ -1232,3 +1232,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root .workspace .folder-symbol:has(img){background:transparent;padding:0}
 :root .reading-art.reading-art-dark>img{filter:brightness(.3)}
 :root[data-theme=dark] .reading-art.reading-art-dark>img{filter:none}
+
+.workspace [data-card-id="akce"] .folder-symbol img{filter:brightness(0) invert(1)}

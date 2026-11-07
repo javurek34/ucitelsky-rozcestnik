@@ -16,7 +16,7 @@ const base=[
 ];
 
 const cardColors=['#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4'];
-const brandLogos={'ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
+const brandLogos={akce:'vylet.png','ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
 const folderGroups=[
  {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['aktualne','hodnoty','uraz','dohledy']},
