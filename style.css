@@ -1237,3 +1237,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Icon wrappers are alignment-only surfaces on every page and in both themes. */
 .reading-art,.page-icon,.page-icon .card-visual,.mosaic-visual,.folder-symbol{background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important}
+
+#ruzne-wordwall .wordwall-photo{height:180px;margin-top:20px}
+#ruzne-wordwall .wordwall-photo img{object-fit:cover;object-position:center}
