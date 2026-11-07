@@ -1183,3 +1183,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #aktualne-dialog .event-date{margin-top:0}
 
 :root[data-theme=dark] #agenda-ucitele-dialog .agenda-custom-icon>img{filter:brightness(0) invert(1)}
+
+/* Values use light photographic glass instead of the previously dark treatment. */
+:root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{--text:#20285A;--muted:#64617A;--blue:#263BAA;color:var(--text);color-scheme:light;background:#F8F7F480;border-color:#ffffffb3;box-shadow:var(--panel-shadow),inset 0 1px 0 #ffffff80}
+:root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#f8f7f4ed,#f8f7f4de 55%,#f8f7f4bd)}
