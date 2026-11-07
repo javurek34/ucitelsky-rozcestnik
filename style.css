@@ -1103,3 +1103,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  .content-dialog.card-subpage .reading-box>.reading-copy{width:100%;min-width:0}
  .content-dialog.card-subpage .reading-box:not(.reading-box-inline)>.reading-copy{align-self:stretch}
 }
+
+#aktualne-dialog .reading-copy>.upcoming-events{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+#aktualne-dialog .upcoming-events>li{display:flex;align-items:center;gap:16px;margin:0}
+#aktualne-dialog .event-date{display:flex;align-items:center;justify-content:center;flex:0 0 72px;min-height:56px;padding:8px;border-radius:8px;background:#263baa10;border:1px solid #263baa24;color:var(--blue);font-weight:700;font-size:20px}
+#aktualne-dialog .event-name{font-size:18px;font-weight:600;line-height:1.4}
+:root[data-theme=dark] #aktualne-dialog .event-date{background:#bac3ff14;border-color:#bac3ff38}
