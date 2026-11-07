@@ -1240,3 +1240,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #ruzne-wordwall .wordwall-photo{height:180px;margin-top:20px}
 #ruzne-wordwall .wordwall-photo img{object-fit:cover;object-position:center}
+
+#ruzne-wordwall .wordwall-photo img{object-position:center top}
