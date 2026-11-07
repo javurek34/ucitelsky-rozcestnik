@@ -1130,3 +1130,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #aktualne-dialog .reading-panels>#aktualne-porada{grid-column:span 4}
  #aktualne-dialog .reading-panels>#aktualne-co-nas-ceka{grid-column:span 8}
 }
+
+/* A narrow vertical divider separates the calendar tile from the event name. */
+#aktualne-dialog .event-name{position:relative;min-width:0;padding-left:20px;font-size:20px;line-height:1.4}
+#aktualne-dialog .event-name::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:48px;background:var(--blue);opacity:.3}
