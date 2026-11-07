@@ -1163,3 +1163,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #aktualne-dialog .event-month{font-size:9px;line-height:12px;letter-spacing:.02em}
 #aktualne-dialog .event-date time{font-size:22px;line-height:22px}
 :root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{font-size:8px;line-height:12px;padding:0 2px}
+
+/* Readable calendar-page tiles: month band, large day, and countdown footer. */
+:root #aktualne-dialog .event-date,:root[data-theme=dark] #aktualne-dialog .event-date{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:20px 32px 18px;gap:0;width:72px;height:72px;min-height:72px;flex:0 0 72px;padding:0;background:#F8F7F4;border:1px solid #1d20334d;border-radius:8px;overflow:hidden;color:#263BAA;box-shadow:0 2px 4px #1d20331a}
+:root #aktualne-dialog .event-date .event-month,:root[data-theme=dark] #aktualne-dialog .event-date .event-month{display:block;width:100%;font-size:12px;line-height:20px;font-weight:700;letter-spacing:.04em;text-align:center;background:#1D2033;color:#F8F7F4}
+#aktualne-dialog .event-date time{display:block;width:100%;font-size:28px;line-height:32px;font-weight:700;text-align:center;color:#263BAA}
+:root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{position:static;width:100%;min-width:0;padding:0;transform:none;border-radius:0;background:#1D2033;color:#F8F7F4;font-size:11px;line-height:18px;font-weight:500;text-align:center}
