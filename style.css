@@ -1134,3 +1134,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* A narrow vertical divider separates the calendar tile from the event name. */
 #aktualne-dialog .event-name{position:relative;min-width:0;padding-left:20px;font-size:20px;line-height:1.4}
 #aktualne-dialog .event-name::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:48px;background:var(--blue);opacity:.3}
+
+#aktualne-dialog .event-month{font-size:12px;line-height:16px;font-weight:600;letter-spacing:.04em;color:var(--muted)}
+#aktualne-dialog .event-date time{font-size:32px;line-height:36px;font-weight:700}
+#aktualne-dialog .event-date{min-height:88px}
