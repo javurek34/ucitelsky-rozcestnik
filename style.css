@@ -1112,3 +1112,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #aktualne-dialog .event-date{flex-basis:88px;flex-direction:column;gap:4px;line-height:24px}
 #aktualne-dialog .event-countdown{font-size:12px;line-height:16px;font-weight:400;white-space:nowrap;color:var(--muted)}
+
+/* Calendar tiles with a small countdown badge, following the supplied reference. */
+#aktualne-dialog .event-date{position:relative;flex-basis:88px;min-height:80px;padding:8px 8px 16px;margin-bottom:8px;background:#ffffff80;border:1px solid #263baa30;border-radius:8px;box-shadow:0 2px 5px #263baa14;gap:4px}
+#aktualne-dialog .event-date time{font-size:20px;line-height:24px;font-weight:700;white-space:nowrap}
+#aktualne-dialog .event-weekday{font-size:12px;line-height:16px;font-weight:400;color:var(--muted);text-transform:capitalize}
+#aktualne-dialog .event-date .event-countdown{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);padding:4px 8px;min-width:72px;border-radius:8px;background:#263BAA;color:#F8F7F4;font-size:12px;line-height:16px;font-weight:600;text-align:center}
+:root[data-theme=dark] #aktualne-dialog .event-date{background:#222846b3;border-color:#bac3ff40}
+:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{background:#BAC3FF;color:#14172D}

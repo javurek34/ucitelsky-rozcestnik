@@ -81,6 +81,8 @@ function updateEventCountdowns(){
  document.querySelectorAll('[data-event-date]').forEach(box=>{
   const [year,month,day]=box.dataset.eventDate.split('-').map(Number);
   const days=Math.round((Date.UTC(year,month-1,day)-today)/86400000);
+  let weekday=box.querySelector('.event-weekday');if(!weekday){weekday=document.createElement('span');weekday.className='event-weekday';box.prepend(weekday);}
+  weekday.textContent=new Intl.DateTimeFormat('cs-CZ',{weekday:'short',timeZone:'Europe/Prague'}).format(new Date(Date.UTC(year,month-1,day,12)));
   const label=days<0?'Proběhlo':days===0?'Dnes':days===1?'Zítra':`za ${days} ${days<5?'dny':'dní'}`;
   const counter=box.querySelector('.event-countdown');if(counter)counter.textContent=label;
  });
