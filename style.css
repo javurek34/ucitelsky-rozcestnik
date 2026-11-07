@@ -1178,3 +1178,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root #aktualne-dialog .event-date .event-month,:root[data-theme=dark] #aktualne-dialog .event-date .event-month{background:#E93C4E;color:#fff;border-radius:7px 7px 0 0}
 #aktualne-dialog .event-date time{font-size:30px;line-height:32px;color:#1D2033}
 :root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{background:#F8F7F4;color:#1D2033;border-radius:0 0 7px 7px}
+
+#aktualne-dialog .event-date::before,#aktualne-dialog .event-date::after{display:none}
+#aktualne-dialog .event-date{margin-top:0}
