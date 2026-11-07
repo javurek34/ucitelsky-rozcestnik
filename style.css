@@ -1150,3 +1150,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* The date tile stays square; the countdown badge sits on its lower edge. */
 #aktualne-dialog .event-date{width:88px;height:88px;min-height:88px;flex:0 0 88px;aspect-ratio:1;box-sizing:border-box}
+
+/* Include the countdown within the square, rather than below it. */
+#aktualne-dialog .event-date{margin-bottom:0;padding:4px 8px 20px;overflow:hidden}
+:root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{left:0;right:0;bottom:0;border-radius:0;padding:2px 4px}
