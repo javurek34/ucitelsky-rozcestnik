@@ -1202,3 +1202,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #agenda-zuzka .administrator-topic-card a{overflow-wrap:anywhere}
 :root[data-theme=dark] #agenda-zuzka .administrator-topic-card{background:#bac3ff0a;border-color:#bac3ff30}
 @media(max-width:719px){#agenda-zuzka .administrator-topic-grid{grid-template-columns:minmax(0,1fr)}#agenda-zuzka .administrator-topic-card{padding:16px}}
+
+@media(min-width:720px){
+ #agenda-zuzka .administrator-topic-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+ #agenda-zuzka .administrator-topic-card{grid-column:span 3}
+ #agenda-zuzka .administrator-topic-card:nth-child(3){grid-column:1 / -1}
+ #agenda-zuzka .administrator-topic-card:nth-child(6){grid-column:span 4}
+ #agenda-zuzka .administrator-topic-card:nth-child(7){grid-column:span 2}
+}
