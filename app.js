@@ -20,7 +20,7 @@ const brandLogos={'ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'ca
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
 const folderGroups=[
  {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['aktualne','hodnoty','uraz','dohledy']},
- {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['formulare','agenda-ucitele','akce','ruzne']},
+ {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['agenda-ucitele','akce','ruzne','formulare']},
  {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ipady','gemini','canva']}
 ];
 function render(){
