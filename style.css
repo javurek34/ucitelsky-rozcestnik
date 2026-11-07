@@ -1246,7 +1246,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Homepage palette experiment: Old Red, Soft Bone and Shadow. */
 .workspace .group-zivot-skoly{--home-card-bg:#0B1215;--home-card-text:#F8F7F4;--home-card-shadow:#0b12152e}
 .workspace .group-po-ruce{--home-card-bg:#011222;--home-card-text:#F8F7F4;--home-card-shadow:#0112222e}
-.workspace .group-digitalni{--home-card-bg:#22282F;--home-card-text:#F8F7F4;--home-card-shadow:#22282f2e}
+.workspace .group-digitalni{--home-card-bg:#0D1717;--home-card-text:#F8F7F4;--home-card-shadow:#0d17172e}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-button::before{background:linear-gradient(135deg,#ffffff0a,transparent 65%),var(--home-card-bg);border-color:color-mix(in srgb,var(--home-card-text) 15%,transparent);box-shadow:0 3px 6px var(--home-card-shadow),0 1px 2px var(--home-card-shadow),inset 0 1px 0 #ffffff18}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-entry .folder-button,:root[data-theme] .workspace .folder-stack.folder-stack .folder-symbol svg,:root[data-theme] .workspace .folder-stack.folder-stack .folder-arrow{color:var(--home-card-text)}
 :root[data-theme] .workspace .group-po-ruce [data-card-id="akce"] .folder-symbol img{filter:brightness(0) invert(1)}
@@ -1254,5 +1254,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Subtle tonal gradients preserve the restrained homepage palette. */
 .workspace .group-zivot-skoly{--home-card-gradient:linear-gradient(135deg,#26343B 0%,#142127 48%,#0B1215 100%)}
 .workspace .group-po-ruce{--home-card-gradient:linear-gradient(135deg,#123652 0%,#072238 48%,#011222 100%)}
-.workspace .group-digitalni{--home-card-gradient:linear-gradient(135deg,#3C4753 0%,#2D3640 48%,#22282F 100%)}
+.workspace .group-digitalni{--home-card-gradient:linear-gradient(135deg,#243535 0%,#172626 48%,#0D1717 100%)}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-button::before{background:var(--home-card-gradient)}
