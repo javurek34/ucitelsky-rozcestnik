@@ -1234,3 +1234,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] .reading-art.reading-art-dark>img{filter:none}
 
 .workspace [data-card-id="akce"] .folder-symbol img{filter:brightness(0) invert(1)}
+
+/* Icon wrappers are alignment-only surfaces on every page and in both themes. */
+.reading-art,.page-icon,.page-icon .card-visual,.mosaic-visual,.folder-symbol{background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important}
