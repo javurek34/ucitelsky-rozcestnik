@@ -1256,3 +1256,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .group-po-ruce{--home-card-gradient:linear-gradient(135deg,#123652 0%,#072238 48%,#011222 100%)}
 .workspace .group-digitalni{--home-card-gradient:linear-gradient(135deg,#3C4753 0%,#2D3640 48%,#22282F 100%)}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-button::before{background:var(--home-card-gradient)}
+
+/* Ferrari-red gradient experiment, fading into each group's dark base. */
+.workspace .group-zivot-skoly{--home-card-gradient:linear-gradient(125deg,#FF2800 0%,#9C180D 38%,#0B1215 100%)}
+.workspace .group-po-ruce{--home-card-gradient:linear-gradient(125deg,#FF2800 0%,#8F1C23 38%,#011222 100%)}
+.workspace .group-digitalni{--home-card-gradient:linear-gradient(125deg,#FF2800 0%,#A52A1D 38%,#22282F 100%)}
