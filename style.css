@@ -1109,3 +1109,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #aktualne-dialog .event-date{display:flex;align-items:center;justify-content:center;flex:0 0 72px;min-height:56px;padding:8px;border-radius:8px;background:#263baa10;border:1px solid #263baa24;color:var(--blue);font-weight:700;font-size:20px}
 #aktualne-dialog .event-name{font-size:18px;font-weight:600;line-height:1.4}
 :root[data-theme=dark] #aktualne-dialog .event-date{background:#bac3ff14;border-color:#bac3ff38}
+
+#aktualne-dialog .event-date{flex-basis:88px;flex-direction:column;gap:4px;line-height:24px}
+#aktualne-dialog .event-countdown{font-size:12px;line-height:16px;font-weight:400;white-space:nowrap;color:var(--muted)}

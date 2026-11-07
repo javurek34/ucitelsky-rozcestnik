@@ -72,3 +72,18 @@ document.querySelectorAll('[data-page-jump]').forEach(button=>{
   target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
  });
 });
+
+// Calendar-day countdowns follow the school's timezone, including DST changes.
+function updateEventCountdowns(){
+ const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Prague',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ const part=type=>Number(parts.find(value=>value.type===type).value);
+ const today=Date.UTC(part('year'),part('month')-1,part('day'));
+ document.querySelectorAll('[data-event-date]').forEach(box=>{
+  const [year,month,day]=box.dataset.eventDate.split('-').map(Number);
+  const days=Math.round((Date.UTC(year,month-1,day)-today)/86400000);
+  const label=days<0?'Proběhlo':days===0?'Dnes':days===1?'Zítra':`za ${days} ${days<5?'dny':'dní'}`;
+  const counter=box.querySelector('.event-countdown');if(counter)counter.textContent=label;
+ });
+}
+updateEventCountdowns();
+setInterval(updateEventCountdowns,60000);
