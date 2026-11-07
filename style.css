@@ -1191,3 +1191,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #agenda-zuzka .reading-copy>h4{font-size:20px;line-height:1.4;margin:24px 0 12px}
 #agenda-zuzka .reading-copy>p{max-width:none;text-wrap:wrap;overflow-wrap:normal}
 #agenda-zuzka .reading-copy a[href^="mailto:"]{overflow-wrap:anywhere}
+
+/* The administrator's agenda contains individual, aligned topic cards. */
+#agenda-zuzka .administrator-topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
+#agenda-zuzka .administrator-topic-card{min-width:0;padding:20px;border:1px solid #263baa20;border-radius:8px;background:#263baa07}
+#agenda-zuzka .administrator-topic-card:nth-child(3),#agenda-zuzka .administrator-topic-card:last-child{grid-column:1 / -1}
+#agenda-zuzka .administrator-topic-card>h4{font-size:20px;line-height:1.4;margin:0 0 16px}
+#agenda-zuzka .administrator-topic-card>p{margin:0 0 16px;overflow-wrap:normal}
+#agenda-zuzka .administrator-topic-card>:last-child{margin-bottom:0}
+#agenda-zuzka .administrator-topic-card a{overflow-wrap:anywhere}
+:root[data-theme=dark] #agenda-zuzka .administrator-topic-card{background:#bac3ff0a;border-color:#bac3ff30}
+@media(max-width:719px){#agenda-zuzka .administrator-topic-grid{grid-template-columns:minmax(0,1fr)}#agenda-zuzka .administrator-topic-card{padding:16px}}
