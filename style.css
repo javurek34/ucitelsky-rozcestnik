@@ -1304,3 +1304,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] .workspace .group-zivot-skoly .folder-group-title::after{background:#A6BCC5;filter:none}
 :root[data-theme=dark] .workspace .group-po-ruce .folder-group-title::after{background:#8BB6D8;filter:none}
 :root[data-theme=dark] .workspace .group-digitalni .folder-group-title::after{background:#9FC6C3;filter:none}
+
+/* Compact directory rows keep the same readable labels and icon sizes. */
+.workspace .folder-entry{min-height:72px}
+.workspace .folder-entry .folder-button{min-height:72px;padding:16px 20px}
+@media(max-width:719px){.workspace .folder-entry,.workspace .folder-entry .folder-button{min-height:64px}.workspace .folder-entry .folder-button{padding:12px 16px}}
