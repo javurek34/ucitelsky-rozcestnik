@@ -1299,3 +1299,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .topbar{min-height:68px;padding:12px 0;gap:16px}
 .workspace .brand{width:180px}
 @media(max-width:559px){.workspace .topbar{min-height:60px;padding:8px 0;gap:12px}.workspace .brand{width:clamp(140px,43vw,164px)}}
+
+/* Lighter equivalents keep the handwritten strokes visible on dark pages. */
+:root[data-theme=dark] .workspace .group-zivot-skoly .folder-group-title::after{background:#A6BCC5;filter:none}
+:root[data-theme=dark] .workspace .group-po-ruce .folder-group-title::after{background:#8BB6D8;filter:none}
+:root[data-theme=dark] .workspace .group-digitalni .folder-group-title::after{background:#9FC6C3;filter:none}
