@@ -1279,3 +1279,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .folder-group-title{position:relative;width:fit-content;max-width:100%;margin-bottom:20px}
 .workspace .folder-group-title::after{content:'';position:absolute;left:0;right:-4px;bottom:-8px;height:8px;background:var(--home-card-bg);mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 Q75 3 148 6 T297 4 M12 10 Q120 6 284 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 Q75 3 148 6 T297 4 M12 10 Q120 6 284 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;pointer-events:none}
 :root[data-theme=dark] .workspace .folder-group-title::after{filter:drop-shadow(0 1px 0 #ffffff40)}
+
+.workspace .folder-group-title::after{height:12px;bottom:-10px}
