@@ -1345,3 +1345,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#0b1215ed,#0b1215e0 55%,#0b1215c9)}
 :root[data-theme=dark] :is(.notes-rule-card,.administrator-topic-card){background:#0B1215;border-color:#ffffff24}
 :root[data-theme=dark] #agenda-poznamky .notes-rule-card,:root[data-theme=dark] #agenda-zuzka .administrator-topic-card{background:#0B1215;border-color:#ffffff24}
+
+:root[data-theme=dark] .school-online-logo>img,:root[data-theme=dark] #agenda-znamky .reading-art>img{filter:brightness(0) invert(1)}
