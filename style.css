@@ -1350,3 +1350,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Authoritative dark panel surface overrides legacy tinted glass gradients. */
 :root[data-theme=dark] .content-dialog.card-subpage .reading-box,:root[data-theme=dark] .content-dialog.card-subpage .notes-rule-card,:root[data-theme=dark] .content-dialog.card-subpage .administrator-topic-card{background:#0B1215!important;background-image:none!important;border-color:#ffffff1f}
+
+/* Subtle Obsidian depth without returning to the old bright glass tint. */
+:root[data-theme=dark] .content-dialog.card-subpage .reading-box,:root[data-theme=dark] .content-dialog.card-subpage .notes-rule-card,:root[data-theme=dark] .content-dialog.card-subpage .administrator-topic-card{background:#0B1215!important;background-image:linear-gradient(135deg,#142025 0%,#101A1E 45%,#0B1215 100%)!important}
