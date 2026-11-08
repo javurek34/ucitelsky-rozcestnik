@@ -1339,3 +1339,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root :is(body,.card-subpage) button.page-back,:root[data-theme=dark] :is(body,.card-subpage) button.page-back{background:#BC162C;color:#F8F7F4}
 :root :is(body,.card-subpage) button.page-back:hover,:root[data-theme=dark] :is(body,.card-subpage) button.page-back:hover{background:#A31326}
 :root :is(body,.card-subpage) button.page-back:active,:root[data-theme=dark] :is(body,.card-subpage) button.page-back:active{background:#8C1021}
+
+/* Dark detail cards use Obsidian rather than pale photographic glass. */
+:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box,:root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{background:#0B1215;--text:#F8F7F4;--muted:#BFC7CC;--blue:#BAC3FF;color:var(--text);color-scheme:dark;border-color:#ffffff1f}
+:root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#0b1215ed,#0b1215e0 55%,#0b1215c9)}
+:root[data-theme=dark] :is(.notes-rule-card,.administrator-topic-card){background:#0B1215;border-color:#ffffff24}
