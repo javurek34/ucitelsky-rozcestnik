@@ -1347,3 +1347,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] #agenda-poznamky .notes-rule-card,:root[data-theme=dark] #agenda-zuzka .administrator-topic-card{background:#0B1215;border-color:#ffffff24}
 
 :root[data-theme=dark] .school-online-logo>img,:root[data-theme=dark] #agenda-znamky .reading-art>img{filter:brightness(0) invert(1)}
+
+/* Authoritative dark panel surface overrides legacy tinted glass gradients. */
+:root[data-theme=dark] .content-dialog.card-subpage .reading-box,:root[data-theme=dark] .content-dialog.card-subpage .notes-rule-card,:root[data-theme=dark] .content-dialog.card-subpage .administrator-topic-card{background:#0B1215!important;background-image:none!important;border-color:#ffffff1f}
