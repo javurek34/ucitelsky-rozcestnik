@@ -69,6 +69,7 @@ function prepareReadingPanels(){
     if(title){const header=document.createElement('div');header.className='reading-box-header';header.append(art,title);box.prepend(header);}
     else box.classList.add('reading-box-inline');
     if(finalIpadImage){box.classList.add('ipad-photo-panel');box.append(finalIpadImage);}
+    const climatePhoto=text.querySelector(':scope>.climate-resource-photo');if(climatePhoto)box.prepend(climatePhoto);
     const copyLength=text.textContent.trim().length;
     box.dataset.readingSize=copyLength<360?'small':copyLength>620?'large':'medium';
     if(['ruzne-cedu-hry','ruzne-emocni-karty','ruzne-etopedicke-karty'].includes(original.id))box.classList.add('class-resource');
