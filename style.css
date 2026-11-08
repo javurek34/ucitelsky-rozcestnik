@@ -1271,8 +1271,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#7F2718;color:#F8F7F4}
 
 /* Category-title accents; the homepage card palette stays unchanged. */
-.workspace .group-zivot-skoly .folder-group-title{color:#EE5001}
-.workspace .group-po-ruce .folder-group-title{color:#F42902}
+.workspace .group-zivot-skoly .folder-group-title{color:#EB2F33}
+.workspace .group-po-ruce .folder-group-title{color:#EB2F33}
 .workspace .group-digitalni .folder-group-title{color:#EB2F33}
 
 /* Hand-drawn underlines echo the cards belonging to each category. */
