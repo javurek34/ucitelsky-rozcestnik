@@ -1269,3 +1269,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#AB3620;color:#F8F7F4}
 :root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#922D1B;color:#F8F7F4}
 :root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#7F2718;color:#F8F7F4}
+
+/* Category-title accents; the homepage card palette stays unchanged. */
+.workspace .group-zivot-skoly .folder-group-title{color:#123DD0}
+.workspace .group-po-ruce .folder-group-title{color:#FC734D}
+.workspace .group-digitalni .folder-group-title{color:#EB2F33}
