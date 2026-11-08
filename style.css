@@ -1256,3 +1256,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .group-po-ruce{--home-card-gradient:linear-gradient(135deg,#123652 0%,#072238 48%,#011222 100%)}
 .workspace .group-digitalni{--home-card-gradient:linear-gradient(135deg,#243535 0%,#172626 48%,#0D1717 100%)}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-button::before{background:var(--home-card-gradient)}
+
+/* Shared light-theme page background across the directory and detail pages. */
+:root:not([data-theme=dark]){--bg:#F3F5F7}
+:root:not([data-theme=dark]) .content-dialog.card-subpage .page-surface{background:#F3F5F7}
+:root:not([data-theme=dark]) #aktualne-dialog.card-subpage .page-surface{background:linear-gradient(110deg,#f3f5f7e6,#f3f5f7b8),url('assets/aktualne-background.webp') center 42% / cover no-repeat}
