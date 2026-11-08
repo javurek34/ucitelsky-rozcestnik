@@ -1323,3 +1323,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #agenda-tridni-klima-zasobnik>.climate-resource-photo{grid-column:1;grid-row:1 / span 2;height:100%;min-height:200px;margin:0;position:relative}
  #agenda-tridni-klima-zasobnik>.climate-resource-photo img{position:absolute;inset:0}
 }
+
+/* Return-to-directory buttons use their requested distinct red. */
+:root :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok),:root[data-theme=dark] :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok){background:#BC162C;color:#F8F7F4}
+:root :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok):hover{background:#A31326}
+:root :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok):active{background:#8C1021}
