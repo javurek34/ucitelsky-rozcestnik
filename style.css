@@ -1344,3 +1344,4 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box,:root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{background:#0B1215;--text:#F8F7F4;--muted:#BFC7CC;--blue:#BAC3FF;color:var(--text);color-scheme:dark;border-color:#ffffff1f}
 :root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#0b1215ed,#0b1215e0 55%,#0b1215c9)}
 :root[data-theme=dark] :is(.notes-rule-card,.administrator-topic-card){background:#0B1215;border-color:#ffffff24}
+:root[data-theme=dark] #agenda-poznamky .notes-rule-card,:root[data-theme=dark] #agenda-zuzka .administrator-topic-card{background:#0B1215;border-color:#ffffff24}
