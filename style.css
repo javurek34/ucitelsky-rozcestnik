@@ -1309,3 +1309,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .folder-entry{min-height:72px}
 .workspace .folder-entry .folder-button{min-height:72px;padding:16px 20px}
 @media(max-width:719px){.workspace .folder-entry,.workspace .folder-entry .folder-button{min-height:64px}.workspace .folder-entry .folder-button{padding:12px 16px}}
+
+:root:not([data-theme=dark]) .workspace .folder-group-title::after{background:#EB2F33}
