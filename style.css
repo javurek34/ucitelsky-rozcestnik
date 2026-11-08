@@ -1336,3 +1336,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root :is(body,.card-subpage) .page-back,:root[data-theme=dark] :is(body,.card-subpage) .page-back,:root :is(body,.card-subpage) button.primary[id$="-ok"],:root[data-theme=dark] :is(body,.card-subpage) button.primary[id$="-ok"]{background:#BC162C;color:#F8F7F4;box-shadow:0 3px 6px #bc162c26,inset 0 1px 0 #ffffff18}
 :root :is(body,.card-subpage) .page-back:hover,:root[data-theme=dark] :is(body,.card-subpage) .page-back:hover,:root :is(body,.card-subpage) button.primary[id$="-ok"]:hover,:root[data-theme=dark] :is(body,.card-subpage) button.primary[id$="-ok"]:hover{background:#A31326}
 :root :is(body,.card-subpage) .page-back:active,:root[data-theme=dark] :is(body,.card-subpage) .page-back:active,:root :is(body,.card-subpage) button.primary[id$="-ok"]:active,:root[data-theme=dark] :is(body,.card-subpage) button.primary[id$="-ok"]:active{background:#8C1021}
+:root :is(body,.card-subpage) button.page-back,:root[data-theme=dark] :is(body,.card-subpage) button.page-back{background:#BC162C;color:#F8F7F4}
+:root :is(body,.card-subpage) button.page-back:hover,:root[data-theme=dark] :is(body,.card-subpage) button.page-back:hover{background:#A31326}
+:root :is(body,.card-subpage) button.page-back:active,:root[data-theme=dark] :is(body,.card-subpage) button.page-back:active{background:#8C1021}
