@@ -1385,3 +1385,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #aktualne-porada>.reading-copy{width:100%;align-self:stretch}
 #aktualne-porada .reading-copy>p{width:100%}
 :root #aktualne-porada a.primary{display:flex;width:100%;max-width:100%;box-sizing:border-box}
+
+#aktualne-porada .reading-copy>.opening-meeting-action{margin-top:24px}
+#aktualne-porada .button-docs-icon{display:block;width:24px;height:24px;flex:0 0 24px;object-fit:contain;border-radius:0}
