@@ -1377,3 +1377,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #agenda-pedagogicka-rada .council-materials-link{display:flex;align-items:center;justify-content:center;text-align:center}
 #agenda-pedagogicka-rada .council-school-online{border-left:1px solid var(--line);padding-left:24px}
 @media(max-width:719px){#agenda-pedagogicka-rada .council-materials-link{display:block}#agenda-pedagogicka-rada .council-school-online{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:24px}}
+
+#aktualne-dialog .important-label{color:#BC162C}
+:root[data-theme=dark] #aktualne-dialog .important-label{color:#FF6B7D}
