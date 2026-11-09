@@ -1358,3 +1358,12 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #formulare-dialog .forms-docs-image{position:relative}
 #formulare-dialog .forms-docs-image>.docs-light-wordmark{display:none}
 :root[data-theme=dark] #formulare-dialog .forms-docs-image>.docs-light-wordmark{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:fill;clip-path:inset(72% 0 0 0);filter:brightness(0) invert(1);pointer-events:none}
+
+/* Slightly tilted calendar background, independently of readable page content. */
+:root:not([data-theme=dark]) #aktualne-dialog.card-subpage .page-surface{background:#F3F5F7;overflow:hidden;isolation:isolate}
+:root[data-theme=dark] #aktualne-dialog.card-subpage .page-surface{background:#1A1A1D;overflow:hidden;isolation:isolate}
+#aktualne-dialog.card-subpage .page-surface::before{display:block;inset:-12%;width:124%;height:124%;background:url('assets/aktualne-calendar-2026.webp') center 42% / cover no-repeat;transform:rotate(-6deg) scale(1.06);opacity:.18;filter:none;mask-image:none;-webkit-mask-image:none;pointer-events:none;z-index:0}
+:root[data-theme=dark] #aktualne-dialog.card-subpage .page-surface::before{opacity:.25;filter:none}
+
+/* A diagonal direction remains apparent on wide and tall dark panels alike. */
+:root[data-theme=dark] .content-dialog.card-subpage .reading-box,:root[data-theme=dark] .content-dialog.card-subpage .notes-rule-card,:root[data-theme=dark] .content-dialog.card-subpage .administrator-topic-card{background-image:linear-gradient(to bottom right,#17272D 0%,#101A1E 50%,#0B1215 100%)!important}
