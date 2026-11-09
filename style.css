@@ -1391,3 +1391,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #aktualne-porada .button-docs-circle{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex:0 0 32px;border-radius:50%;background:#F3F5F7}
 #aktualne-porada .button-docs-circle .button-docs-icon{width:20px;height:20px;flex-basis:20px}
+
+/* Meeting icons share a fixed left column with outlined, shadowed circles. */
+#aktualne-porada a.primary:has(.button-docs-circle){display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;text-align:center;padding-inline:16px}
+#aktualne-porada .button-docs-circle{justify-self:start;background:transparent;border:1px solid #c5d5ff99;box-shadow:0 2px 4px #00000040}
