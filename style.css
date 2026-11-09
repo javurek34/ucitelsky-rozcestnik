@@ -1367,3 +1367,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* A diagonal direction remains apparent on wide and tall dark panels alike. */
 :root[data-theme=dark] .content-dialog.card-subpage .reading-box,:root[data-theme=dark] .content-dialog.card-subpage .notes-rule-card,:root[data-theme=dark] .content-dialog.card-subpage .administrator-topic-card{background-image:linear-gradient(to bottom right,#17272D 0%,#101A1E 50%,#0B1215 100%)!important}
+
+#agenda-pedagogicka-rada .council-materials-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+#agenda-pedagogicka-rada .council-materials-columns p{margin:0 0 16px}
+#agenda-pedagogicka-rada .council-materials-columns p:last-child{margin-bottom:0}
+@media(max-width:719px){#agenda-pedagogicka-rada .council-materials-columns{grid-template-columns:minmax(0,1fr)}}
