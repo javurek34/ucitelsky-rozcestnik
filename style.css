@@ -1372,3 +1372,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #agenda-pedagogicka-rada .council-materials-columns p{margin:0 0 16px}
 #agenda-pedagogicka-rada .council-materials-columns p:last-child{margin-bottom:0}
 @media(max-width:719px){#agenda-pedagogicka-rada .council-materials-columns{grid-template-columns:minmax(0,1fr)}}
+
+#agenda-pedagogicka-rada .council-materials-columns{align-items:stretch}
+#agenda-pedagogicka-rada .council-materials-link{display:flex;align-items:center;justify-content:center;text-align:center}
+#agenda-pedagogicka-rada .council-school-online{border-left:1px solid var(--line);padding-left:24px}
+@media(max-width:719px){#agenda-pedagogicka-rada .council-materials-link{display:block}#agenda-pedagogicka-rada .council-school-online{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:24px}}
