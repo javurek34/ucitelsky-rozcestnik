@@ -1388,3 +1388,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #aktualne-porada .reading-copy>.opening-meeting-action{margin-top:24px}
 #aktualne-porada .button-docs-icon{display:block;width:24px;height:24px;flex:0 0 24px;object-fit:contain;border-radius:0}
+
+#aktualne-porada .button-docs-circle{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex:0 0 32px;border-radius:50%;background:#F3F5F7}
+#aktualne-porada .button-docs-circle .button-docs-icon{width:20px;height:20px;flex-basis:20px}
