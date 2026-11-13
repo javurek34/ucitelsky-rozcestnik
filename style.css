@@ -1447,3 +1447,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(max-width:559px){.page-navigation-menu{gap:24px}}
 
 .page-navigation-menu{transform-origin:top left}
+
+/* Animate the outer height while the inner layout stays steady: no flashing. */
+.page-navigation-menu{display:block;padding:0;scrollbar-gutter:stable;transform-origin:top left}
+.page-navigation-content{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:20px}
+@media(max-width:559px){.page-navigation-content{grid-template-columns:minmax(0,1fr)}}

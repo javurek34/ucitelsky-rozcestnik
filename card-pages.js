@@ -142,16 +142,20 @@ const cardPages=(()=>{
     const wasOpen=navigation.open;
     if(!wasOpen&&!wanted)return;
     const current=wasOpen?getComputedStyle(menu):null;
-    const start=wasOpen?{opacity:current.opacity,transform:current.transform,clipPath:current.clipPath}:{opacity:0,transform:'translateY(-16px)',clipPath:'inset(0 0 100% 0 round 16px)'};
+    const start=wasOpen?{height:menu.getBoundingClientRect().height+'px',opacity:current.opacity,transform:current.transform}:{height:'0px',opacity:.65,transform:'translateY(-8px)'};
     menuAnimation?.cancel();navigation.open=true;menu.inert=!wanted;
-    if(reduced()||!dialog.open){navigation.open=wanted;return;}
-    const end=wanted?{opacity:1,transform:'translateY(0)',clipPath:'inset(0 0 0 0 round 16px)'}:{opacity:0,transform:'translateY(-16px)',clipPath:'inset(0 0 100% 0 round 16px)'};
-    const animation=menu.animate([start,end],{duration:wanted?260:200,easing:wanted?'cubic-bezier(.2,.8,.2,1)':'cubic-bezier(.4,0,.8,.2)',fill:'both'});menuAnimation=animation;
+    if(reduced()||!dialog.open){navigation.open=wanted;menu.style.overflow='';return;}
+    const styles=getComputedStyle(menu);
+    const borders=parseFloat(styles.borderTopWidth)+parseFloat(styles.borderBottomWidth);
+    const fullHeight=Math.min(menu.querySelector('.page-navigation-content').scrollHeight+borders,parseFloat(styles.maxHeight)||innerHeight);
+    menu.style.overflow='hidden';
+    const end=wanted?{height:fullHeight+'px',opacity:1,transform:'translateY(0)'}:{height:'0px',opacity:.65,transform:'translateY(-8px)'};
+    const animation=menu.animate([start,end],{duration:wanted?600:450,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'});menuAnimation=animation;
     await animation.finished.catch(()=>{});if(revision!==menuRevision)return;
-    navigation.open=wanted;animation.cancel();menuAnimation=null;
+    navigation.open=wanted;animation.cancel();menuAnimation=null;menu.style.overflow='';
    }
    menuToggle.addEventListener('click',event=>{event.preventDefault();setMenuOpen(!menuWanted);});
-   dialog.addEventListener('close',()=>{++menuRevision;menuAnimation?.cancel();menuAnimation=null;menuWanted=false;navigation.open=false;menuToggle.setAttribute('aria-expanded','false');});
+   dialog.addEventListener('close',()=>{++menuRevision;menuAnimation?.cancel();menuAnimation=null;menuWanted=false;navigation.open=false;menu.style.overflow='';menuToggle.setAttribute('aria-expanded','false');});
    const home=document.createElement('a');home.href='./';home.className='page-navigation-home';home.textContent='Úvodní rozcestník';home.addEventListener('click',async event=>{event.preventDefault();await setMenuOpen(false);if(dialog.open)requestClose();});menu.append(home);
    groups.forEach(group=>{
     const column=document.createElement('div');column.className='page-navigation-group';
@@ -172,6 +176,7 @@ const cardPages=(()=>{
      });li.append(link);links.append(li);
     });column.append(links);menu.append(column);
    });
+   const menuContent=document.createElement('div');menuContent.className='page-navigation-content';menuContent.append(...menu.childNodes);menu.append(menuContent);
    navigation.append(menuToggle,menu);shell.insertBefore(navigation,header);
    navigation.addEventListener('toggle',()=>{if(navigation.open){menu.querySelectorAll('a').forEach(link=>{if(link.hash&&link.hash===location.hash)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}});
    dialog.addEventListener('click',event=>{if(menuWanted&&!navigation.contains(event.target))setMenuOpen(false);});
