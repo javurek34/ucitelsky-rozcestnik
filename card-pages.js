@@ -135,7 +135,24 @@ const cardPages=(()=>{
    const menuToggle=document.createElement('summary');menuToggle.className='page-navigation-toggle';menuToggle.setAttribute('aria-label','Navigace webu');
    menuToggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span>';
    const menu=document.createElement('nav');menu.className='page-navigation-menu';menu.setAttribute('aria-label','Sekce rozcestníku');
-   const home=document.createElement('a');home.href='./';home.className='page-navigation-home';home.textContent='Úvodní rozcestník';home.addEventListener('click',event=>{event.preventDefault();navigation.open=false;requestClose();});menu.append(home);
+   let menuAnimation=null,menuWanted=false,menuRevision=0;
+   menuToggle.setAttribute('aria-expanded','false');
+   async function setMenuOpen(wanted){
+    const revision=++menuRevision;menuWanted=wanted;menuToggle.setAttribute('aria-expanded',String(wanted));
+    const wasOpen=navigation.open;
+    if(!wasOpen&&!wanted)return;
+    const current=wasOpen?getComputedStyle(menu):null;
+    const start=wasOpen?{opacity:current.opacity,transform:current.transform,clipPath:current.clipPath}:{opacity:0,transform:'translateY(-16px)',clipPath:'inset(0 0 100% 0 round 16px)'};
+    menuAnimation?.cancel();navigation.open=true;menu.inert=!wanted;
+    if(reduced()||!dialog.open){navigation.open=wanted;return;}
+    const end=wanted?{opacity:1,transform:'translateY(0)',clipPath:'inset(0 0 0 0 round 16px)'}:{opacity:0,transform:'translateY(-16px)',clipPath:'inset(0 0 100% 0 round 16px)'};
+    const animation=menu.animate([start,end],{duration:wanted?260:200,easing:wanted?'cubic-bezier(.2,.8,.2,1)':'cubic-bezier(.4,0,.8,.2)',fill:'both'});menuAnimation=animation;
+    await animation.finished.catch(()=>{});if(revision!==menuRevision)return;
+    navigation.open=wanted;animation.cancel();menuAnimation=null;
+   }
+   menuToggle.addEventListener('click',event=>{event.preventDefault();setMenuOpen(!menuWanted);});
+   dialog.addEventListener('close',()=>{++menuRevision;menuAnimation?.cancel();menuAnimation=null;menuWanted=false;navigation.open=false;menuToggle.setAttribute('aria-expanded','false');});
+   const home=document.createElement('a');home.href='./';home.className='page-navigation-home';home.textContent='Úvodní rozcestník';home.addEventListener('click',async event=>{event.preventDefault();await setMenuOpen(false);if(dialog.open)requestClose();});menu.append(home);
    groups.forEach(group=>{
     const column=document.createElement('div');column.className='page-navigation-group';
     const homeGroup=[...document.querySelectorAll('.folder-stack')].find(section=>section.querySelector('h2')?.textContent===group.title);
@@ -149,7 +166,7 @@ const cardPages=(()=>{
      if(originalIcon){const icon=originalIcon.cloneNode(true);icon.className='page-navigation-icon';link.append(icon);if(id==='akce')icon.classList.add('navigation-trip-icon');}
      const text=document.createElement('span');text.className='page-navigation-label';text.textContent=item.title;link.append(text);
      const arrow=document.createElement('span');arrow.className='page-navigation-arrow';arrow.textContent='→';arrow.setAttribute('aria-hidden','true');link.append(arrow);
-     link.addEventListener('click',event=>{event.preventDefault();navigation.open=false;if(active?.item.id===id)return;
+     link.addEventListener('click',async event=>{event.preventDefault();await setMenuOpen(false);if(!dialog.open)return;if(active?.item.id===id){menuToggle.focus();return;}
       const state=history.state?.cardPage?{...history.state,cardPage:id}:history.state;
       history.replaceState(state,'',location.pathname+location.search+'#'+id);syncRoute();
      });li.append(link);links.append(li);
@@ -157,11 +174,11 @@ const cardPages=(()=>{
    });
    navigation.append(menuToggle,menu);shell.insertBefore(navigation,header);
    navigation.addEventListener('toggle',()=>{if(navigation.open){menu.querySelectorAll('a').forEach(link=>{if(link.hash&&link.hash===location.hash)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}});
-   dialog.addEventListener('click',event=>{if(navigation.open&&!navigation.contains(event.target))navigation.open=false;});
+   dialog.addEventListener('click',event=>{if(menuWanted&&!navigation.contains(event.target))setMenuOpen(false);});
    const heading=document.createElement('div');heading.className='page-heading';
    const icon=document.createElement('span');icon.className='page-icon';icon.setAttribute('aria-hidden','true');
    heading.append(icon,title);header.prepend(heading);
-   dialog.addEventListener('cancel',event=>{event.preventDefault();if(navigation.open){navigation.open=false;menuToggle.focus();}else requestClose();});
+   dialog.addEventListener('cancel',event=>{event.preventDefault();if(navigation.open){setMenuOpen(false).then(()=>{if(dialog.open)menuToggle.focus();});}else requestClose();});
   }
   addEventListener('popstate',syncRoute);addEventListener('hashchange',syncRoute);syncRoute();
  }

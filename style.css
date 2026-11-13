@@ -1445,3 +1445,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .page-navigation-label{flex:1;min-width:0}
 .page-navigation-arrow{flex:0 0 auto;opacity:.7}
 @media(max-width:559px){.page-navigation-menu{gap:24px}}
+
+.page-navigation-menu{transform-origin:top left}
