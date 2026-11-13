@@ -97,3 +97,5 @@ https://www.oakparkps.vic.edu.au/uploads/4/8/1/3/48136671/977082.png?371
 - Pozadí stránky Aktuálně: Rohan Krishnan / Unsplash, fotografie iPOzQwvcMLE; soubor dodal uživatel.
 
 - Aktuální pozadí stránky Aktuálně: uživatelem dodaný obrázek IMG_4868.png (kalendář 2026).
+
+- Obrázky a loga v `assets/external/` dodal uživatel v archivu Archiv.zip. Původní URL jednotlivých souborů jsou uvedeny v `assets/external/sources.json`.

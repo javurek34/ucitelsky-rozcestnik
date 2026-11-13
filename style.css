@@ -806,7 +806,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Classroom keeps a readable glass surface over a soft brand watermark. */
 #ruzne-classroom{position:relative;isolation:isolate}
-#ruzne-classroom::after{content:'';position:absolute;inset:24px;background:url('https://veritascollege.co.za/wp-content/uploads/2024/01/Gclassroom.png') right center / min(34%,300px) auto no-repeat;opacity:.075;pointer-events:none;z-index:-1}
+#ruzne-classroom::after{content:'';position:absolute;inset:24px;background:url('assets/external/Gclassroom.png') right center / min(34%,300px) auto no-repeat;opacity:.075;pointer-events:none;z-index:-1}
 #ruzne-classroom .reading-art{background:transparent}
 #ruzne-classroom .reading-copy .primary{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;text-align:center}
 @media(max-width:719px){#ruzne-classroom::after{inset:16px;background-position:right bottom;background-size:65% auto;opacity:.055}}

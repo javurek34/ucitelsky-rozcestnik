@@ -53,10 +53,12 @@ ovládacích prvků; nejde o potvrzení souladu s nezobrazeným zněním článk
 
 ## Lokální obrázky
 
-Dodané obrázky jsou uložené v `assets/`. Logo Školy Online v Úrazech
-používá stejný lokální soubor jako uzavírání známek.
-Zbývající externí obrázky eviduje `scripts/external-images.json`.
-Síťová politika prostředí jejich zdroje nyní blokuje. Po povolení domén
-lze spustit `python scripts/localize-images.py`: přepíše jen úspěšně
-stažené obrázky a obnoví verze zdrojových souborů. Při chybě původní
-obrázek neodstraní. YouTube videa a Adobe Fonts tento seznam nezahrnuje.
+Všechny obrázky v HTML, CSS a skriptech jsou nyní uložené v `assets/`.
+Externí soubory dodané uživatelem v archivu jsou v `assets/external/`;
+jejich původní zdroje eviduje `assets/external/sources.json`.
+Logo Školy Online v Úrazech používá lokální soubor z dřívějšího archivu.
+
+`scripts/external-images.json` je prázdný: nezbývají žádné externí obrázky.
+Pokud budou přidány nové zdroje, lze je po zpřístupnění domén převést
+pomocí `python scripts/localize-images.py`. YouTube přehrávače a Adobe Fonts
+jsou externí služby a nejsou součástí místních obrázků.
