@@ -138,11 +138,17 @@ const cardPages=(()=>{
    const home=document.createElement('a');home.href='./';home.className='page-navigation-home';home.textContent='Úvodní rozcestník';home.addEventListener('click',event=>{event.preventDefault();navigation.open=false;requestClose();});menu.append(home);
    groups.forEach(group=>{
     const column=document.createElement('div');column.className='page-navigation-group';
-    const label=document.createElement('h3');label.textContent=group.title;column.append(label);
+    const homeGroup=[...document.querySelectorAll('.folder-stack')].find(section=>section.querySelector('h2')?.textContent===group.title);
+    if(homeGroup)[...homeGroup.classList].filter(name=>name.startsWith('group-')).forEach(name=>column.classList.add(name));
+    const label=document.createElement('h3');label.className='folder-group-title';label.textContent=group.title;column.append(label);
     const links=document.createElement('ul');
     group.ids.forEach(id=>{
      const item=list.find(item=>item.id===id);if(!item)return;
-     const li=document.createElement('li'),link=document.createElement('a');link.href='#'+id;link.textContent=item.title;
+     const li=document.createElement('li'),link=document.createElement('a');link.href='#'+id;
+     const originalIcon=document.querySelector(`[data-card-id="${id}"] .folder-symbol`);
+     if(originalIcon){const icon=originalIcon.cloneNode(true);icon.className='page-navigation-icon';link.append(icon);if(id==='akce')icon.classList.add('navigation-trip-icon');}
+     const text=document.createElement('span');text.className='page-navigation-label';text.textContent=item.title;link.append(text);
+     const arrow=document.createElement('span');arrow.className='page-navigation-arrow';arrow.textContent='→';arrow.setAttribute('aria-hidden','true');link.append(arrow);
      link.addEventListener('click',event=>{event.preventDefault();navigation.open=false;if(active?.item.id===id)return;
       const state=history.state?.cardPage?{...history.state,cardPage:id}:history.state;
       history.replaceState(state,'',location.pathname+location.search+'#'+id);syncRoute();

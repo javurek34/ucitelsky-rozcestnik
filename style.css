@@ -922,8 +922,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-box .reading-art{border-radius:8px}
 
 /* Prominent group headings and contrasting external-link buttons. */
-.workspace .folder-group-title{font-size:30px;line-height:1.2;font-weight:700;margin-bottom:12px}
-@media(max-width:719px){.workspace .folder-group-title{font-size:27px}}
+:is(.workspace,.page-navigation-menu) .folder-group-title{font-size:30px;line-height:1.2;font-weight:700;margin-bottom:12px}
+@media(max-width:719px){:is(.workspace,.page-navigation-menu) .folder-group-title{font-size:27px}}
 :root :is(body,.card-subpage) a.primary[href^="http"]{background:#263BAA;color:#F8F7F4;border-color:#bac3ff40}
 :root :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#1D2D88;color:#F8F7F4}
 :root :is(body,.card-subpage) a.primary[href^="http"]:active{background:#1D2D88;color:#F8F7F4}
@@ -941,15 +941,15 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Deep Berry distinguishes the handy-resources homepage group. */
 :root{--deep-berry:#5B245F}
-:root .workspace .group-po-ruce .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--deep-berry);border-color:#e2bce43d;box-shadow:0 12px 26px #5b245f38,0 4px 10px #5b245f24,inset 0 1px 0 #ffffff38}
-:root .workspace .group-po-ruce .folder-entry .folder-button,:root .workspace .group-po-ruce .folder-symbol svg,:root .workspace .group-po-ruce .folder-arrow{color:#F8F7F4}
-:root[data-theme=dark] .workspace .group-po-ruce .folder-button::before{box-shadow:0 14px 30px #16091d6b,0 5px 12px #16091d47,inset 0 1px 0 #ffffff38}
+:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--deep-berry);border-color:#e2bce43d;box-shadow:0 12px 26px #5b245f38,0 4px 10px #5b245f24,inset 0 1px 0 #ffffff38}
+:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-entry .folder-button,:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-symbol svg,:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-arrow{color:#F8F7F4}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-button::before{box-shadow:0 14px 30px #16091d6b,0 5px 12px #16091d47,inset 0 1px 0 #ffffff38}
 
 /* Vivid violet gives the digital staffroom its own identity. */
 :root{--toxic-violet:#460884}
-:root .workspace .group-digitalni .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--toxic-violet);border-color:#d4b5ff3d;box-shadow:0 12px 26px #46088438,0 4px 10px #46088424,inset 0 1px 0 #ffffff38}
-:root .workspace .group-digitalni .folder-entry .folder-button,:root .workspace .group-digitalni .folder-symbol svg,:root .workspace .group-digitalni .folder-arrow{color:#F8F7F4}
-:root[data-theme=dark] .workspace .group-digitalni .folder-button::before{box-shadow:0 14px 30px #1406246b,0 5px 12px #14062447,inset 0 1px 0 #ffffff38}
+:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--toxic-violet);border-color:#d4b5ff3d;box-shadow:0 12px 26px #46088438,0 4px 10px #46088424,inset 0 1px 0 #ffffff38}
+:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-entry .folder-button,:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-symbol svg,:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-arrow{color:#F8F7F4}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-digitalni .folder-button::before{box-shadow:0 14px 30px #1406246b,0 5px 12px #14062447,inset 0 1px 0 #ffffff38}
 
 /* Let the heading content determine the intro height, without a hero-sized gap. */
 .workspace .intro{min-height:0;padding:24px 0 20px}
@@ -969,16 +969,16 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 }
 
 /* School-life cards retain their indigo identity in dark mode. */
-:root[data-theme=dark] .workspace .group-zivot-skoly .folder-button::before{background:linear-gradient(135deg,#ffffff14,transparent 65%),#263BAA;border-color:#bac3ff3d}
-:root[data-theme=dark] .workspace .group-zivot-skoly .folder-entry .folder-button,:root[data-theme=dark] .workspace .group-zivot-skoly .folder-symbol svg,:root[data-theme=dark] .workspace .group-zivot-skoly .folder-arrow{color:#F8F7F4}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-button::before{background:linear-gradient(135deg,#ffffff14,transparent 65%),#263BAA;border-color:#bac3ff3d}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-entry .folder-button,:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-symbol svg,:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-arrow{color:#F8F7F4}
 
 /* Homepage shadows stay close to the cards rather than spreading into the gaps. */
 :root .workspace .folder-button::before{box-shadow:0 3px 6px #263baa30,0 1px 2px #263baa24,inset 0 1px 0 #ffffff38}
-:root .workspace .group-po-ruce .folder-button::before{box-shadow:0 3px 6px #5b245f30,0 1px 2px #5b245f24,inset 0 1px 0 #ffffff38}
-:root .workspace .group-digitalni .folder-button::before{box-shadow:0 3px 6px #46088430,0 1px 2px #46088424,inset 0 1px 0 #ffffff38}
+:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-button::before{box-shadow:0 3px 6px #5b245f30,0 1px 2px #5b245f24,inset 0 1px 0 #ffffff38}
+:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-button::before{box-shadow:0 3px 6px #46088430,0 1px 2px #46088424,inset 0 1px 0 #ffffff38}
 :root[data-theme=dark] .workspace .folder-button::before{box-shadow:0 3px 6px #070b285c,0 1px 2px #070b2840,inset 0 1px 0 #ffffff30}
-:root[data-theme=dark] .workspace .group-po-ruce .folder-button::before{box-shadow:0 3px 6px #16091d5c,0 1px 2px #16091d40,inset 0 1px 0 #ffffff30}
-:root[data-theme=dark] .workspace .group-digitalni .folder-button::before{box-shadow:0 3px 6px #1406245c,0 1px 2px #14062440,inset 0 1px 0 #ffffff30}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-button::before{box-shadow:0 3px 6px #16091d5c,0 1px 2px #16091d40,inset 0 1px 0 #ffffff30}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-digitalni .folder-button::before{box-shadow:0 3px 6px #1406245c,0 1px 2px #14062440,inset 0 1px 0 #ffffff30}
 
 /* External actions use the ink-dark reference colour in both themes. */
 :root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#1D2033;color:#F8F7F4;border-color:#ffffff14;box-shadow:0 4px 9px #1d20332b,inset 0 1px 0 #ffffff12}
@@ -1244,17 +1244,17 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #ruzne-wordwall .wordwall-photo img{object-position:center top}
 
 /* Homepage palette experiment: Old Red, Soft Bone and Shadow. */
-.workspace .group-zivot-skoly{--home-card-bg:#0B1215;--home-card-text:#F8F7F4;--home-card-shadow:#0b12152e}
-.workspace .group-po-ruce{--home-card-bg:#011222;--home-card-text:#F8F7F4;--home-card-shadow:#0112222e}
-.workspace .group-digitalni{--home-card-bg:#0D1717;--home-card-text:#F8F7F4;--home-card-shadow:#0d17172e}
+:is(.workspace,.page-navigation-menu) .group-zivot-skoly{--home-card-bg:#0B1215;--home-card-text:#F8F7F4;--home-card-shadow:#0b12152e}
+:is(.workspace,.page-navigation-menu) .group-po-ruce{--home-card-bg:#011222;--home-card-text:#F8F7F4;--home-card-shadow:#0112222e}
+:is(.workspace,.page-navigation-menu) .group-digitalni{--home-card-bg:#0D1717;--home-card-text:#F8F7F4;--home-card-shadow:#0d17172e}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-button::before{background:linear-gradient(135deg,#ffffff0a,transparent 65%),var(--home-card-bg);border-color:color-mix(in srgb,var(--home-card-text) 15%,transparent);box-shadow:0 3px 6px var(--home-card-shadow),0 1px 2px var(--home-card-shadow),inset 0 1px 0 #ffffff18}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-entry .folder-button,:root[data-theme] .workspace .folder-stack.folder-stack .folder-symbol svg,:root[data-theme] .workspace .folder-stack.folder-stack .folder-arrow{color:var(--home-card-text)}
-:root[data-theme] .workspace .group-po-ruce [data-card-id="akce"] .folder-symbol img{filter:brightness(0) invert(1)}
+:root[data-theme] :is(.workspace,.page-navigation-menu) .group-po-ruce [data-card-id="akce"] .folder-symbol img{filter:brightness(0) invert(1)}
 
 /* Subtle tonal gradients preserve the restrained homepage palette. */
-.workspace .group-zivot-skoly{--home-card-gradient:linear-gradient(135deg,#26343B 0%,#142127 48%,#0B1215 100%)}
-.workspace .group-po-ruce{--home-card-gradient:linear-gradient(135deg,#123652 0%,#072238 48%,#011222 100%)}
-.workspace .group-digitalni{--home-card-gradient:linear-gradient(135deg,#243535 0%,#172626 48%,#0D1717 100%)}
+:is(.workspace,.page-navigation-menu) .group-zivot-skoly{--home-card-gradient:linear-gradient(135deg,#26343B 0%,#142127 48%,#0B1215 100%)}
+:is(.workspace,.page-navigation-menu) .group-po-ruce{--home-card-gradient:linear-gradient(135deg,#123652 0%,#072238 48%,#011222 100%)}
+:is(.workspace,.page-navigation-menu) .group-digitalni{--home-card-gradient:linear-gradient(135deg,#243535 0%,#172626 48%,#0D1717 100%)}
 :root[data-theme] .workspace .folder-stack.folder-stack .folder-button::before{background:var(--home-card-gradient)}
 
 /* Shared light-theme page background across the directory and detail pages. */
@@ -1271,21 +1271,21 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#7F2718;color:#F8F7F4}
 
 /* Category-title accents; the homepage card palette stays unchanged. */
-.workspace .group-zivot-skoly .folder-group-title{color:#212A78}
-.workspace .group-po-ruce .folder-group-title{color:#212A78}
-.workspace .group-digitalni .folder-group-title{color:#212A78}
+:is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-group-title{color:#212A78}
+:is(.workspace,.page-navigation-menu) .group-po-ruce .folder-group-title{color:#212A78}
+:is(.workspace,.page-navigation-menu) .group-digitalni .folder-group-title{color:#212A78}
 
 /* Hand-drawn underlines echo the cards belonging to each category. */
-.workspace .folder-group-title{position:relative;width:fit-content;max-width:100%;margin-bottom:20px}
-.workspace .folder-group-title::after{content:'';position:absolute;left:0;right:-4px;bottom:-8px;height:8px;background:var(--home-card-bg);mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 Q75 3 148 6 T297 4 M12 10 Q120 6 284 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 Q75 3 148 6 T297 4 M12 10 Q120 6 284 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;pointer-events:none}
-:root[data-theme=dark] .workspace .folder-group-title::after{filter:drop-shadow(0 1px 0 #ffffff40)}
+:is(.workspace,.page-navigation-menu) .folder-group-title{position:relative;width:fit-content;max-width:100%;margin-bottom:20px}
+:is(.workspace,.page-navigation-menu) .folder-group-title::after{content:'';position:absolute;left:0;right:-4px;bottom:-8px;height:8px;background:var(--home-card-bg);mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 Q75 3 148 6 T297 4 M12 10 Q120 6 284 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 Q75 3 148 6 T297 4 M12 10 Q120 6 284 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;pointer-events:none}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .folder-group-title::after{filter:drop-shadow(0 1px 0 #ffffff40)}
 
-.workspace .folder-group-title::after{height:12px;bottom:-10px}
+:is(.workspace,.page-navigation-menu) .folder-group-title::after{height:12px;bottom:-10px}
 
 /* Small variations make the three underline strokes feel individually drawn. */
-.workspace .group-zivot-skoly .folder-group-title::after{mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%208%20Q80%202%20153%206%20T297%205%20M14%2010%20Q143%206%20286%208%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%208%20Q80%202%20153%206%20T297%205%20M14%2010%20Q143%206%20286%208%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E")}
-.workspace .group-po-ruce .folder-group-title::after{mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%205%20C70%209%20112%203%20176%206%20S255%209%20297%203%20M18%209%20Q140%2012%20280%206%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%205%20C70%209%20112%203%20176%206%20S255%209%20297%203%20M18%209%20Q140%2012%20280%206%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E")}
-.workspace .group-digitalni .folder-group-title::after{mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%209%20C76%207%20107%202%20174%205%20S252%208%20297%206%20M9%2011%20C99%207%20206%2010%20287%209%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%209%20C76%207%20107%202%20174%205%20S252%208%20297%206%20M9%2011%20C99%207%20206%2010%20287%209%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E")}
+:is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-group-title::after{mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%208%20Q80%202%20153%206%20T297%205%20M14%2010%20Q143%206%20286%208%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%208%20Q80%202%20153%206%20T297%205%20M14%2010%20Q143%206%20286%208%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E")}
+:is(.workspace,.page-navigation-menu) .group-po-ruce .folder-group-title::after{mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%205%20C70%209%20112%203%20176%206%20S255%209%20297%203%20M18%209%20Q140%2012%20280%206%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%205%20C70%209%20112%203%20176%206%20S255%209%20297%203%20M18%209%20Q140%2012%20280%206%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E")}
+:is(.workspace,.page-navigation-menu) .group-digitalni .folder-group-title::after{mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%209%20C76%207%20107%202%20174%205%20S252%208%20297%206%20M9%2011%20C99%207%20206%2010%20287%209%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%2014%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M3%209%20C76%207%20107%202%20174%205%20S252%208%20297%206%20M9%2011%20C99%207%20206%2010%20287%209%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E")}
 
 /* Compact homepage introduction, with no accumulated legacy outer spacing. */
 .workspace main{padding-top:0}
@@ -1301,18 +1301,18 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(max-width:559px){.workspace .topbar{min-height:60px;padding:8px 0;gap:12px}.workspace .brand{width:clamp(140px,43vw,164px)}}
 
 /* Lighter equivalents keep the handwritten strokes visible on dark pages. */
-:root[data-theme=dark] .workspace .group-zivot-skoly .folder-group-title::after{background:#A6BCC5;filter:none}
-:root[data-theme=dark] .workspace .group-po-ruce .folder-group-title::after{background:#8BB6D8;filter:none}
-:root[data-theme=dark] .workspace .group-digitalni .folder-group-title::after{background:#9FC6C3;filter:none}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-group-title::after{background:#A6BCC5;filter:none}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-group-title::after{background:#8BB6D8;filter:none}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-digitalni .folder-group-title::after{background:#9FC6C3;filter:none}
 
 /* Compact directory rows keep the same readable labels and icon sizes. */
 .workspace .folder-entry{min-height:72px}
 .workspace .folder-entry .folder-button{min-height:72px;padding:16px 20px}
 @media(max-width:719px){.workspace .folder-entry,.workspace .folder-entry .folder-button{min-height:64px}.workspace .folder-entry .folder-button{padding:12px 16px}}
 
-:root:not([data-theme=dark]) .workspace .folder-group-title::after{background:#EB2F33}
+:root:not([data-theme=dark]) :is(.workspace,.page-navigation-menu) .folder-group-title::after{background:#EB2F33}
 
-:root[data-theme=dark] .workspace .folder-group-title{color:#4B9CD3}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .folder-group-title{color:#4B9CD3}
 
 #agenda-tridni-klima-zasobnik .climate-resource-photo{width:100%;height:200px;margin:0 0 16px;overflow:hidden;border-radius:8px}
 #agenda-tridni-klima-zasobnik .climate-resource-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:8px}
@@ -1430,3 +1430,18 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .page-navigation-group li{margin:0!important;font-size:15px}
 :root[data-theme=dark] .page-navigation-menu,:root[data-theme=dark] .page-navigation-toggle{background:#0B1215}
 @media(max-width:559px){.page-navigation-menu{grid-template-columns:minmax(0,1fr);gap:16px}.page-navigation-home{grid-column:1}}
+
+/* The dropdown reuses the homepage category accents, strokes, icons and gradients. */
+.page-navigation-menu{width:min(800px,calc(100vw - 48px));gap:24px}
+.page-navigation-menu .page-navigation-group>.folder-group-title{font-size:18px;line-height:24px;font-weight:700;margin:0 0 24px}
+.page-navigation-menu .page-navigation-group>.folder-group-title::after{height:8px;bottom:-8px}
+.page-navigation-group ul{display:grid;gap:8px}
+.page-navigation-menu .page-navigation-group a{display:flex;align-items:center;gap:12px;min-height:48px;padding:12px;border:1px solid #ffffff1f;border-radius:16px;background:var(--home-card-gradient);color:#F8F7F4;box-shadow:0 3px 6px var(--home-card-shadow);font-weight:600}
+.page-navigation-menu .page-navigation-group a:hover{background:var(--home-card-gradient);color:#fff;box-shadow:0 4px 8px #0b121540}
+.page-navigation-menu .page-navigation-group a[aria-current=page]{background:var(--home-card-gradient);color:#F8F7F4;outline:2px solid var(--blue);outline-offset:2px}
+.page-navigation-icon{display:flex;align-items:center;justify-content:center;flex:0 0 20px;width:20px;height:20px;background:transparent}
+.page-navigation-icon :is(svg,img){display:block;width:20px;height:20px;object-fit:contain;color:inherit}
+.page-navigation-icon.navigation-trip-icon img{filter:brightness(0) invert(1)}
+.page-navigation-label{flex:1;min-width:0}
+.page-navigation-arrow{flex:0 0 auto;opacity:.7}
+@media(max-width:559px){.page-navigation-menu{gap:24px}}
