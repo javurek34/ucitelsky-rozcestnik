@@ -60,7 +60,7 @@ document.querySelectorAll('[data-umime-jump]').forEach(button=>button.addEventLi
 $('.brand').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
 render();
 prepareReadingPanels();
-cardPages.init(base);
+cardPages.init(base,folderGroups);
 
 // Shortcuts stay within the open page; focus follows the reading position.
 document.querySelectorAll('[data-page-jump]').forEach(button=>{

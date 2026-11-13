@@ -1411,3 +1411,22 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #agenda-ucitele-dialog .agenda-accordion[open]>.climate-resource-photo{margin:20px 0 0;height:200px}
 #agenda-ucitele-dialog .agenda-accordion>.agenda-accordion-title:focus-visible{outline:3px solid var(--blue);outline-offset:8px;border-radius:8px}
 @media(prefers-reduced-motion:reduce){#agenda-ucitele-dialog .agenda-accordion-title::after{transition:none}}
+
+/* Compact navigation replaces the duplicated upper Back button on detail pages. */
+.page-navigation{position:relative;z-index:5;margin:0 0 16px;width:fit-content;max-width:100%}
+.page-navigation-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;list-style:none;cursor:pointer;font-weight:700;font-size:16px;line-height:24px;background:var(--surface);color:var(--text)}
+.page-navigation-toggle::-webkit-details-marker{display:none}
+.page-navigation-toggle::marker{content:''}
+.page-navigation-toggle svg{width:20px;height:20px}
+.page-navigation-toggle:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.page-navigation[open]>.page-navigation-toggle{border-color:var(--blue)}
+.page-navigation-menu{position:absolute;left:0;top:calc(100% + 8px);width:min(720px,calc(100vw - 48px));display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:0 8px 24px #0b12152e;max-height:70dvh;overflow:auto}
+.page-navigation:not([open])>.page-navigation-menu{display:none}
+.page-navigation-home{grid-column:1 / -1;border-bottom:1px solid var(--line);font-weight:700}
+.page-navigation-menu a{display:flex;align-items:center;min-height:44px;padding:8px;border-radius:8px;font-size:15px;line-height:24px;color:var(--text);text-decoration:none}
+.page-navigation-menu a:hover,.page-navigation-menu a[aria-current=page]{background:var(--soft);color:var(--blue)}
+.page-navigation-group h3{font-size:16px;line-height:24px;margin:0 0 8px}
+.page-navigation-group ul{list-style:none;padding:0;margin:0}
+.page-navigation-group li{margin:0!important;font-size:15px}
+:root[data-theme=dark] .page-navigation-menu,:root[data-theme=dark] .page-navigation-toggle{background:#0B1215}
+@media(max-width:559px){.page-navigation-menu{grid-template-columns:minmax(0,1fr);gap:16px}.page-navigation-home{grid-column:1}}

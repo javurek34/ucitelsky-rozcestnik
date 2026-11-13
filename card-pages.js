@@ -124,20 +124,38 @@ const cardPages=(()=>{
   await close();if(revision!==routeRevision||!item)return;
   const card=document.querySelector(`[data-card-id="${item.id}"]`);if(card)open(item,card,false);
  }
- function init(list){
+ function init(list,groups=[]){
   items=list;
   for(const dialog of document.querySelectorAll('dialog')){
    dialog.classList.add('card-subpage');
    const surface=document.createElement('div');surface.className='page-surface';surface.setAttribute('aria-hidden','true');
    const shell=document.createElement('div');shell.className='page-shell';shell.append(...dialog.childNodes);dialog.append(surface,shell);
    const header=shell.querySelector('.content-header,.dialog-header'),title=header.querySelector('h2');title.tabIndex=-1;
-   const back=document.createElement('button');back.type='button';back.className='page-back';back.setAttribute('aria-label','Zpět na rozcestník');back.title='Zpět na rozcestník';
-   const backIcon=document.createElementNS('http://www.w3.org/2000/svg','svg');backIcon.setAttribute('aria-hidden','true');const backUse=document.createElementNS(backIcon.namespaceURI,'use');backUse.setAttribute('href','#i-arrow');backIcon.append(backUse);back.append(backIcon,document.createTextNode('Zpět'));
-   back.addEventListener('click',requestClose);shell.insertBefore(back,header);
+   const navigation=document.createElement('details');navigation.className='page-navigation';
+   const menuToggle=document.createElement('summary');menuToggle.className='page-navigation-toggle';menuToggle.setAttribute('aria-label','Navigace webu');
+   menuToggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span>';
+   const menu=document.createElement('nav');menu.className='page-navigation-menu';menu.setAttribute('aria-label','Sekce rozcestníku');
+   const home=document.createElement('a');home.href='./';home.className='page-navigation-home';home.textContent='Úvodní rozcestník';home.addEventListener('click',event=>{event.preventDefault();navigation.open=false;requestClose();});menu.append(home);
+   groups.forEach(group=>{
+    const column=document.createElement('div');column.className='page-navigation-group';
+    const label=document.createElement('h3');label.textContent=group.title;column.append(label);
+    const links=document.createElement('ul');
+    group.ids.forEach(id=>{
+     const item=list.find(item=>item.id===id);if(!item)return;
+     const li=document.createElement('li'),link=document.createElement('a');link.href='#'+id;link.textContent=item.title;
+     link.addEventListener('click',event=>{event.preventDefault();navigation.open=false;if(active?.item.id===id)return;
+      const state=history.state?.cardPage?{...history.state,cardPage:id}:history.state;
+      history.replaceState(state,'',location.pathname+location.search+'#'+id);syncRoute();
+     });li.append(link);links.append(li);
+    });column.append(links);menu.append(column);
+   });
+   navigation.append(menuToggle,menu);shell.insertBefore(navigation,header);
+   navigation.addEventListener('toggle',()=>{if(navigation.open){menu.querySelectorAll('a').forEach(link=>{if(link.hash&&link.hash===location.hash)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}});
+   dialog.addEventListener('click',event=>{if(navigation.open&&!navigation.contains(event.target))navigation.open=false;});
    const heading=document.createElement('div');heading.className='page-heading';
    const icon=document.createElement('span');icon.className='page-icon';icon.setAttribute('aria-hidden','true');
    heading.append(icon,title);header.prepend(heading);
-   dialog.addEventListener('cancel',event=>{event.preventDefault();requestClose();});
+   dialog.addEventListener('cancel',event=>{event.preventDefault();if(navigation.open){navigation.open=false;menuToggle.focus();}else requestClose();});
   }
   addEventListener('popstate',syncRoute);addEventListener('hashchange',syncRoute);syncRoute();
  }
