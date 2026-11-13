@@ -1452,3 +1452,22 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .page-navigation-menu{display:block;padding:0;scrollbar-gutter:stable;transform-origin:top left}
 .page-navigation-content{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:20px}
 @media(max-width:559px){.page-navigation-content{grid-template-columns:minmax(0,1fr)}}
+
+/* iOS-inspired glass feedback: soft reflections, a bright edge and subtle lift. */
+.workspace .folder-entry .folder-button::after{content:'';display:block;position:absolute;inset:0;width:auto;height:auto;border:0;border-radius:inherit;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 0%,#ffffff30,transparent 65%),linear-gradient(120deg,#ffffff12,transparent 48%,#ffffff0a);box-shadow:inset 0 1px 0 #ffffffa6,inset 1px 0 0 #ffffff38,inset 0 -1px 0 #ffffff24;opacity:0;transition:opacity .28s ease}
+.workspace .folder-entry .folder-button::before{transition:background .28s ease,border-color .28s ease,box-shadow .28s ease,backdrop-filter .28s ease}
+.page-navigation-menu .page-navigation-group a{position:relative;isolation:isolate;overflow:hidden;transition:background .28s ease,border-color .28s ease,box-shadow .28s ease,transform .28s ease}
+.page-navigation-menu .page-navigation-group a::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse at 12% 0%,#ffffff30,transparent 65%),linear-gradient(120deg,#ffffff12,transparent 48%,#ffffff0a);box-shadow:inset 0 1px 0 #ffffffa6,inset 1px 0 0 #ffffff38,inset 0 -1px 0 #ffffff24;opacity:0;transition:opacity .28s ease;z-index:-1}
+.page-navigation-toggle{transition:background .24s ease,border-color .24s ease,box-shadow .24s ease}
+@media(hover:hover) and (pointer:fine){
+ .workspace .folder-entry:hover{transform:translateY(-2px)}
+ .workspace .folder-entry:hover .folder-button::after,.page-navigation-menu .page-navigation-group a:hover::after{opacity:1}
+ :root[data-theme] .workspace .folder-stack.folder-stack .folder-button:hover::before{background:linear-gradient(135deg,#ffffff1f,#ffffff05 48%,#ffffff14),color-mix(in srgb,var(--home-card-bg) 90%,transparent);border-color:#ffffff80;backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);box-shadow:0 5px 10px var(--home-card-shadow),inset 0 1px 0 #ffffff80}
+ .page-navigation-menu .page-navigation-group a:hover{background:linear-gradient(135deg,#ffffff1f,#ffffff05 48%,#ffffff14),color-mix(in srgb,var(--home-card-bg) 90%,transparent);border-color:#ffffff80;backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);box-shadow:0 5px 10px var(--home-card-shadow);transform:translateY(-2px)}
+ .page-navigation-toggle:hover{background:color-mix(in srgb,var(--surface) 85%,transparent);border-color:var(--blue);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 #ffffff50,0 3px 8px #0b12151a}
+}
+.workspace .folder-button:focus-visible::after,.page-navigation-menu .page-navigation-group a:focus-visible::after{opacity:1}
+@media(prefers-reduced-motion:reduce){
+ .workspace .folder-entry .folder-button::before,.workspace .folder-entry .folder-button::after,.page-navigation-menu .page-navigation-group a,.page-navigation-menu .page-navigation-group a::after,.page-navigation-toggle{transition:none}
+ .workspace .folder-entry:hover,.page-navigation-menu .page-navigation-group a:hover{transform:none}
+}
