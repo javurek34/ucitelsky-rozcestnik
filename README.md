@@ -50,3 +50,13 @@ stisknutí. Textové odkazy uvnitř odstavců jsou podtržené.
 Kontrola 2026-11-06: oba dodané články UX Planet vracely HTTP 403.
 Úpravy vycházejí z čtyřbodového systému a obecných zásad použitelnosti
 ovládacích prvků; nejde o potvrzení souladu s nezobrazeným zněním článků.
+
+## Lokální obrázky
+
+Dodané obrázky jsou uložené v `assets/`. Logo Školy Online v Úrazech
+používá stejný lokální soubor jako uzavírání známek.
+Zbývající externí obrázky eviduje `scripts/external-images.json`.
+Síťová politika prostředí jejich zdroje nyní blokuje. Po povolení domén
+lze spustit `python scripts/localize-images.py`: přepíše jen úspěšně
+stažené obrázky a obnoví verze zdrojových souborů. Při chybě původní
+obrázek neodstraní. YouTube videa a Adobe Fonts tento seznam nezahrnuje.

@@ -1398,3 +1398,16 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #agenda-pracovni-doba .reading-copy>h4{font-size:20px;line-height:1.4;margin:24px 0 12px}
 #agenda-pracovni-doba .reading-copy>h4:first-child{margin-top:0}
+
+/* Native, keyboard-accessible disclosure panels for the teacher agenda. */
+#agenda-ucitele-dialog .agenda-accordion{display:block!important;align-self:start!important}
+#agenda-ucitele-dialog .agenda-accordion>.agenda-accordion-title{position:relative;display:flex;align-items:center;gap:16px;min-height:56px;margin:0;padding-right:28px;list-style:none;cursor:pointer;user-select:none}
+#agenda-ucitele-dialog .agenda-accordion-title::-webkit-details-marker{display:none}
+#agenda-ucitele-dialog .agenda-accordion-title::marker{content:''}
+#agenda-ucitele-dialog .agenda-accordion-title::after{content:'';position:absolute;right:4px;top:50%;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-70%) rotate(45deg);transition:transform .18s ease}
+#agenda-ucitele-dialog .agenda-accordion[open]>.agenda-accordion-title::after{transform:translateY(-30%) rotate(225deg)}
+#agenda-ucitele-dialog .agenda-accordion:not([open])>:not(summary){display:none!important}
+#agenda-ucitele-dialog .agenda-accordion[open]>.reading-copy{margin-top:20px}
+#agenda-ucitele-dialog .agenda-accordion[open]>.climate-resource-photo{margin:20px 0 0;height:200px}
+#agenda-ucitele-dialog .agenda-accordion>.agenda-accordion-title:focus-visible{outline:3px solid var(--blue);outline-offset:8px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){#agenda-ucitele-dialog .agenda-accordion-title::after{transition:none}}
