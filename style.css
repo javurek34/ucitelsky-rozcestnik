@@ -1395,3 +1395,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Meeting icons share a fixed left column with outlined, shadowed circles. */
 #aktualne-porada a.primary:has(.button-docs-circle){display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;text-align:center;padding-inline:16px}
 #aktualne-porada .button-docs-circle{justify-self:start;background:transparent;border:1px solid #c5d5ff99;box-shadow:0 2px 4px #00000040}
+
+#agenda-pracovni-doba .reading-copy>h4{font-size:20px;line-height:1.4;margin:24px 0 12px}
+#agenda-pracovni-doba .reading-copy>h4:first-child{margin-top:0}
