@@ -74,6 +74,7 @@ function prepareReadingPanels(){
     box.dataset.readingSize=copyLength<360?'small':copyLength>620?'large':'medium';
     if(['ruzne-cedu-hry','ruzne-emocni-karty','ruzne-etopedicke-karty'].includes(original.id))box.classList.add('class-resource');
     if(original.id==='ruzne-rrrr')box.classList.add('reading-wide');
+    if(['agenda-tu-fond','agenda-poskola'].includes(original.id))box.classList.add('agenda-fixed-pair');
     if(['ruzne-wordwall','ruzne-umimeto'].includes(original.id))box.classList.add('service-pair');
     if(['ruzne-vividbooks','ruzne-spp'].includes(original.id))box.classList.add('support-pair');
     if(group.some(n=>n.nodeType===1&&n.matches('table,.gemini-comparison')))box.classList.add('reading-wide');
@@ -104,7 +105,7 @@ function prepareReadingPanels(){
      if(!next?.matches('.reading-box')||next.classList.contains('reading-wide')){set(box,12);continue;}
      const preferred=e=>{const value=getComputedStyle(e).gridColumn;const span=value.match(/span (\d+)/);return span?Number(span[1]):6;};
      let left=preferred(box),right=preferred(next);
-     const equalPair=(box.classList.contains('service-pair')&&next.classList.contains('service-pair'))||(box.classList.contains('support-pair')&&next.classList.contains('support-pair'));
+     const equalPair=(box.classList.contains('agenda-fixed-pair')&&next.classList.contains('agenda-fixed-pair'))||(box.classList.contains('service-pair')&&next.classList.contains('service-pair'))||(box.classList.contains('support-pair')&&next.classList.contains('support-pair'));
      if(equalPair){left=6;right=6;}
      else if(left+right!==12||(dialog.id!=='gemini-dialog'&&left===6&&right===6)){
       const weight=e=>e.querySelector('.reading-copy').textContent.trim().length+(e.querySelector('.reading-box-header')?80:0);
