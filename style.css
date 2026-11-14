@@ -1508,3 +1508,12 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #agenda-ucitele-dialog #ruzne-rrrr>.reading-copy>p{grid-column:1;margin:0}
  #agenda-ucitele-dialog #ruzne-rrrr>.reading-copy>.resource-content-photo{grid-column:2;grid-row:1 / span 3;height:100%;min-height:240px}
 }
+
+/* RRRR and the climate resource bank share equal-width disclosure columns. */
+#agenda-ucitele-dialog #ruzne-rrrr.agenda-climate-pair[open]>.reading-copy{display:block}
+#agenda-ucitele-dialog #ruzne-rrrr.agenda-climate-pair .resource-content-photo{height:200px;min-height:0;margin:20px 0}
+#agenda-ucitele-dialog .agenda-climate-pair .primary{display:flex;width:100%;justify-content:center;text-align:center}
+@media(min-width:900px){
+ #agenda-ucitele-dialog .agenda-climate-pair>.agenda-accordion-title{min-height:88px}
+ #agenda-ucitele-dialog .reading-subsection:has(>#ruzne-rrrr[open]):has(>#agenda-tridni-klima-zasobnik[open])>.agenda-climate-pair{align-self:stretch!important}
+}

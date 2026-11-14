@@ -74,6 +74,7 @@ function prepareReadingPanels(){
     box.dataset.readingSize=copyLength<360?'small':copyLength>620?'large':'medium';
     if(['ruzne-cedu-hry','ruzne-emocni-karty','ruzne-etopedicke-karty'].includes(original.id))box.classList.add('class-resource');
     if(original.id==='ruzne-rrrr')box.classList.add('reading-wide');
+    if(dialog.id==='agenda-ucitele-dialog'&&['ruzne-rrrr','agenda-tridni-klima-zasobnik'].includes(original.id)){box.classList.remove('reading-wide');box.classList.add('agenda-fixed-pair','agenda-climate-pair');}
     if(['agenda-tu-fond','agenda-poskola'].includes(original.id))box.classList.add('agenda-fixed-pair');
     if(['ruzne-wordwall','ruzne-umimeto'].includes(original.id))box.classList.add('service-pair');
     if(['ruzne-vividbooks','ruzne-spp'].includes(original.id))box.classList.add('support-pair');
