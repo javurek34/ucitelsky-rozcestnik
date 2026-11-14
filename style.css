@@ -1457,16 +1457,16 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .folder-entry{transition:transform .65s cubic-bezier(.22,.61,.36,1)}
 .workspace .folder-entry .folder-button::after{content:'';display:block;position:absolute;inset:0;width:auto;height:auto;border:0;border-radius:inherit;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 0%,#ffffff30,transparent 65%),linear-gradient(120deg,#ffffff12,transparent 48%,#ffffff0a);box-shadow:inset 0 1px 0 #ffffffa6,inset 1px 0 0 #ffffff38,inset 0 -1px 0 #ffffff24;opacity:0;transition:opacity .7s ease}
 .workspace .folder-entry .folder-button::before{transition:border-color .65s ease,box-shadow .65s ease}
-.page-navigation-menu .page-navigation-group a{position:relative;isolation:isolate;overflow:hidden;transition:background .28s ease,border-color .28s ease,box-shadow .28s ease,transform .28s ease}
-.page-navigation-menu .page-navigation-group a::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse at 12% 0%,#ffffff30,transparent 65%),linear-gradient(120deg,#ffffff12,transparent 48%,#ffffff0a);box-shadow:inset 0 1px 0 #ffffffa6,inset 1px 0 0 #ffffff38,inset 0 -1px 0 #ffffff24;opacity:0;transition:opacity .28s ease;z-index:-1}
+.page-navigation-menu .page-navigation-group a{position:relative;isolation:isolate;overflow:hidden;transition:border-color .65s ease,box-shadow .65s ease}
+.page-navigation-menu .page-navigation-group a::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse at 12% 0%,#ffffff30,transparent 65%),linear-gradient(120deg,#ffffff12,transparent 48%,#ffffff0a);box-shadow:inset 0 1px 0 #ffffffa6,inset 1px 0 0 #ffffff38,inset 0 -1px 0 #ffffff24;opacity:0;transition:opacity .7s ease;z-index:-1}
 .page-navigation-toggle{transition:background .24s ease,border-color .24s ease,box-shadow .24s ease}
 @media(hover:hover) and (pointer:fine){
  .workspace .folder-entry:hover{transform:translateY(-1px)}
  .workspace .folder-entry:hover .folder-button::after{opacity:.35}
- .page-navigation-menu .page-navigation-group a:hover::after{opacity:1}
+ .page-navigation-menu .page-navigation-group a:hover::after{opacity:.3}
  :root[data-theme] .workspace .folder-stack.folder-stack .folder-button:hover::before{background:var(--home-card-gradient);border-color:#ffffff40;box-shadow:0 4px 7px var(--home-card-shadow),inset 0 1px 0 #ffffff38}
- .page-navigation-menu .page-navigation-group a:hover{background:linear-gradient(135deg,#ffffff1f,#ffffff05 48%,#ffffff14),color-mix(in srgb,var(--home-card-bg) 90%,transparent);border-color:#ffffff80;backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);box-shadow:0 5px 10px var(--home-card-shadow);transform:translateY(-2px)}
- .page-navigation-toggle:hover{background:color-mix(in srgb,var(--surface) 85%,transparent);border-color:var(--blue);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 #ffffff50,0 3px 8px #0b12151a}
+ .page-navigation-menu .page-navigation-group a:hover{background:var(--home-card-gradient);border-color:#ffffff40;box-shadow:0 4px 7px var(--home-card-shadow);transform:none}
+ .page-navigation-toggle:hover{background:var(--surface);border-color:var(--blue);box-shadow:inset 0 1px 0 #ffffff30,0 2px 5px #0b12151a}
 }
 .workspace .folder-button:focus-visible::after,.page-navigation-menu .page-navigation-group a:focus-visible::after{opacity:1}
 @media(prefers-reduced-motion:reduce){
