@@ -1498,7 +1498,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] #agenda-ucitele-dialog .class-resources-grid>.class-resource-inner{background:linear-gradient(135deg,#101c20,#0b1215);border-color:#ffffff1f;box-shadow:0 2px 5px #00000026}
 @media(max-width:899px){#agenda-ucitele-dialog .class-resources-grid{grid-template-columns:minmax(0,1fr)}#agenda-ucitele-dialog .class-resource-inner>.reading-box-header{min-height:56px}}
 
-@media(min-width:900px){#agenda-ucitele-dialog .agenda-accordion.agenda-fixed-pair{align-self:stretch!important}}
+@media(min-width:900px){#agenda-ucitele-dialog #agenda-tridni-ucitel:has(>#agenda-tu-fond[open]):has(>#agenda-poskola[open])>.agenda-fixed-pair{align-self:stretch!important}}
 
 /* RRRR collapses to its header; only the expanded copy uses a photo column. */
 #agenda-ucitele-dialog .reading-subsection>#ruzne-rrrr.agenda-accordion{min-height:0;padding:var(--panel-inset,24px)}
