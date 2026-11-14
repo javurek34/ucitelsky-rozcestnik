@@ -3,7 +3,13 @@
 Obnoveno z veřejně publikované statické verze webu 26. 10. 2026:
 https://ucitelsky-rozcestnik-javor.javurek25644.chatgpt.site
 
-## Spuštění
+## Chráněná verze
+
+Pro produkční přístup společným heslem je připraven Cloudflare Worker.
+Postup nasazení a omezení jsou v [docs/PRISTUP.md](docs/PRISTUP.md).
+Příprava kódu sama nezabezpečuje dosavadní veřejné kopie webu.
+
+## Místní statický náhled
 
 V adresáři projektu spusťte:
 
@@ -11,8 +17,9 @@ V adresáři projektu spusťte:
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Projekt používá HTML, CSS a JavaScript. Nepotřebuje instalaci balíčků,
-build, databázi ani tajné klíče. Živé procesy se po obnovení prostředí
+Statický náhled používá HTML, CSS a JavaScript a nemá ochranu heslem.
+Nepotřebuje instalaci balíčků ani build. Chráněná varianta vyžaduje Node.js,
+build a nastavení tajných hodnot podle návodu výše. Živé procesy se po obnovení prostředí
 musí znovu spustit.
 
 ## Ověření

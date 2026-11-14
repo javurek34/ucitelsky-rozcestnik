@@ -1,0 +1,52 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile, access } from 'node:fs/promises';
+import worker from '../worker/auth.mjs';
+const origin='https://rozcestnik.example';
+const password='only-a-local-test-password';
+function environment(overrides={}){return {SITE_PASSWORD:password,SESSION_SECRET:'this-is-only-a-test-signing-secret-with-ample-length',LOGIN_RATE_LIMITER:{limit:async()=>({success:true})},ASSETS:{fetch:async()=>new Response('PRIVATE_SCHOOL_CONTENT',{headers:{'Cache-Control':'public, max-age=3600'}})},...overrides};}
+function login(value=password,headers={}){return new Request(origin+'/__auth/login',{method:'POST',headers:{Origin:origin,'Content-Type':'application/x-www-form-urlencoded',...headers},body:new URLSearchParams({password:value})});}
+async function cookieFor(env){const response=await worker.fetch(login(),env);assert.equal(response.status,303);return response.headers.get('Set-Cookie').split(';')[0];}
+
+test('unconfigured or weakly configured deployment never reveals any assets',async()=>{
+ for(const path of ['/','/index.html','/app.js','/assets/skola-logo.png']){
+  const response=await worker.fetch(new Request(origin+path),environment({SITE_PASSWORD:undefined}));assert.equal(response.status,503);assert.ok(!(await response.text()).includes('PRIVATE_SCHOOL_CONTENT'));
+ }
+});
+test('anonymous visitors cannot access HTML, JS, images, or encoded paths',async()=>{
+ for(const path of ['/','/index.html','/app.js','/assets/skola-logo.png','/%69ndex.html','/?download=1']){
+  const response=await worker.fetch(new Request(origin+path),environment());assert.ok([200,303].includes(response.status));assert.ok(!(await response.text()).includes('PRIVATE_SCHOOL_CONTENT'));assert.match(response.headers.get('Cache-Control'),/no-store/);
+ }
+});
+test('wrong passwords do not create a session',async()=>{const r=await worker.fetch(login('incorrect-password'),environment());assert.equal(r.status,401);assert.equal(r.headers.get('Set-Cookie'),null);});
+test('login rejects cross-origin forms and oversized submissions',async()=>{
+ assert.equal((await worker.fetch(login(password,{Origin:'https://other.example'}),environment())).status,403);
+ assert.equal((await worker.fetch(login('a'.repeat(5000)),environment())).status,413);
+});
+test('valid login creates a signed secure cookie and authenticated assets are not cached',async()=>{
+ const env=environment();const r=await worker.fetch(login(),env);assert.equal(r.status,303);const cookie=r.headers.get('Set-Cookie');for(const flag of ['HttpOnly','Secure','SameSite=Lax','Path=/'])assert.ok(cookie.includes(flag));assert.ok(!cookie.includes(password));
+ const asset=await worker.fetch(new Request(origin+'/app.js',{headers:{Cookie:cookie.split(';')[0]}}),env);assert.equal(await asset.text(),'PRIVATE_SCHOOL_CONTENT');assert.match(asset.headers.get('Cache-Control'),/private, no-store/);
+});
+test('tampering and password rotation invalidate previous cookies',async()=>{
+ const env=environment(),cookie=await cookieFor(env);const forged=cookie.slice(0,-4)+'AAAA';
+ assert.equal((await worker.fetch(new Request(origin+'/app.js',{headers:{Cookie:forged}}),env)).status,303);
+ assert.equal((await worker.fetch(new Request(origin+'/app.js',{headers:{Cookie:cookie}}),environment({SITE_PASSWORD:'changed-test-password'}))).status,303);
+});
+test('expired sessions are rejected',async()=>{
+ const env=environment(),original=Date.now;let cookie;try{Date.now=()=>original()-8*86400000;cookie=await cookieFor(env);}finally{Date.now=original;}
+ assert.equal((await worker.fetch(new Request(origin+'/app.js',{headers:{Cookie:cookie}}),env)).status,303);
+});
+test('logout expires the session cookie and refuses cross-origin logout',async()=>{
+ const env=environment();const r=await worker.fetch(new Request(origin+'/__auth/logout',{method:'POST',headers:{Origin:origin}}),env);assert.equal(r.status,303);assert.match(r.headers.get('Set-Cookie'),/Max-Age=0/);
+ assert.equal((await worker.fetch(new Request(origin+'/__auth/logout',{method:'POST',headers:{Origin:'https://other.example'}}),env)).status,403);
+});
+test('login attempts are rate-limited and a missing limiter fails closed',async()=>{
+ const r=await worker.fetch(login(),environment({LOGIN_RATE_LIMITER:{limit:async()=>({success:false})}}));assert.equal(r.status,429);assert.equal(r.headers.get('Retry-After'),'60');
+ assert.equal((await worker.fetch(login(),environment({LOGIN_RATE_LIMITER:undefined}))).status,503);
+});
+test('all paths go through the Worker and protected build contains no server or repository files',async()=>{
+ const config=JSON.parse(await readFile(new URL('../wrangler.jsonc',import.meta.url),'utf8'));assert.equal(config.assets.run_worker_first,true);assert.equal(config.preview_urls,false);
+ for(const file of ['index.html','app.js','assets/skola-logo.png'])await access(new URL('../dist/client/'+file,import.meta.url));
+ for(const file of ['.git/config','worker/auth.mjs','README.md','.dev.vars','assets/external/sources.json'])await assert.rejects(access(new URL('../dist/client/'+file,import.meta.url)));
+ assert.ok((await readFile(new URL('../dist/client/index.html',import.meta.url),'utf8')).includes('/__auth/logout'));
+});
