@@ -119,7 +119,16 @@ function prepareReadingPanels(){
   dialog.addEventListener('toggle',schedule);addEventListener('resize',schedule);
   document.fonts?.ready.then(schedule);
   if(dialog.id==='agenda-ucitele-dialog'){
-   body.querySelectorAll('.reading-box').forEach(box=>{
+   // Keep the three classroom resources together inside their shared disclosure.
+   const classroom=body.querySelector('#agenda-tu-kolektiv>.reading-copy');
+   const resources=['ruzne-cedu-hry','ruzne-emocni-karty','ruzne-etopedicke-karty'].map(id=>body.querySelector('#'+id));
+   if(classroom&&resources.every(Boolean)){
+    const grid=document.createElement('div');grid.className='class-resources-grid';
+    grid.setAttribute('role','group');grid.setAttribute('aria-label','Pomůcky pro třídnické hodiny');
+    resources.forEach(box=>{box.classList.add('class-resource-inner');grid.append(box);});
+    classroom.append(grid);
+   }
+   body.querySelectorAll('.reading-box:not(.class-resource-inner)').forEach(box=>{
     const header=box.querySelector(':scope>.reading-box-header');if(!header)return;
     const details=document.createElement('details');
     [...box.attributes].forEach(attribute=>details.setAttribute(attribute.name,attribute.value));
