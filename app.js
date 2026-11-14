@@ -39,7 +39,9 @@ function render(){
    if(brandLogos[id]){const img=document.createElement('img');img.src='assets/logos/'+brandLogos[id];img.alt='';img.width=32;img.height=32;visual.append(img);}else visual.append(icon(item.icon));
    const title=document.createElement('span');title.className='card-title folder-title';title.textContent=item.title;
    const arrow=document.createElement('span');arrow.className='folder-arrow';arrow.setAttribute('aria-hidden','true');arrow.append(icon('arrow'));
-   button.append(visual,title,arrow);folder.append(button);files.append(folder);
+   const outline=document.createElementNS('http://www.w3.org/2000/svg','svg');outline.classList.add('folder-hover-outline');outline.setAttribute('aria-hidden','true');outline.setAttribute('focusable','false');
+   const outlinePath=document.createElementNS('http://www.w3.org/2000/svg','rect');outlinePath.setAttribute('x','1');outlinePath.setAttribute('y','1');outlinePath.setAttribute('rx','15');outlinePath.setAttribute('pathLength','1');outline.append(outlinePath);
+   button.append(visual,title,arrow,outline);folder.append(button);files.append(folder);
   });
  });
 }

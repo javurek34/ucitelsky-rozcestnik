@@ -1473,3 +1473,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  .workspace .folder-entry,.workspace .folder-entry .folder-button::before,.workspace .folder-entry .folder-button::after,.page-navigation-menu .page-navigation-group a,.page-navigation-menu .page-navigation-group a::after,.page-navigation-toggle{transition:none}
  .workspace .folder-entry:hover,.page-navigation-menu .page-navigation-group a:hover{transform:none}
 }
+
+/* One quiet perimeter trace per hover, with a compact luminous shadow. */
+.workspace .folder-entry .folder-button > .folder-hover-outline{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible;pointer-events:none;fill:none;color:#f4f8ff;filter:drop-shadow(0 1px 2px #00000070) drop-shadow(0 0 3px #dceaff45);opacity:0;transition:opacity .4s ease}
+.workspace .folder-hover-outline rect{width:calc(100% - 2px);height:calc(100% - 2px);fill:none;stroke:currentColor;stroke-width:1.25;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1)}
+@media(hover:hover) and (pointer:fine){
+ .workspace .folder-button:hover > .folder-hover-outline{opacity:.8}
+ .workspace .folder-button:hover > .folder-hover-outline rect{stroke-dashoffset:0}
+}
+.workspace .folder-button:focus-visible > .folder-hover-outline{opacity:.8}
+.workspace .folder-button:focus-visible > .folder-hover-outline rect{stroke-dashoffset:0}
+@media(prefers-reduced-motion:reduce){.workspace .folder-entry .folder-button > .folder-hover-outline,.workspace .folder-hover-outline rect{transition:none}}
