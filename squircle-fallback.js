@@ -4,7 +4,12 @@ function prepareSquircleFallback(){
  const selector='.folder-button,.card-subpage .reading-box,.notes-rule-card,.administrator-topic-card,.page-navigation-menu,.page-navigation-group a';
  const nodes=[...document.querySelectorAll(selector)];
  const home=element=>element.matches('.folder-button');
- const radius=element=>element.matches('.notes-rule-card,.administrator-topic-card')?24:32;
+ const radius=element=>{
+  const style=getComputedStyle(element);
+  if(element.matches('.class-resource-inner,.notes-rule-card,.administrator-topic-card'))return parseFloat(style.getPropertyValue('--squircle-inner-radius'));
+  if(element.matches('.reading-box'))return parseFloat(style.getPropertyValue('--squircle-panel-radius'));
+  return 32;
+ };
  function geometry(width,height,r,inset=0){
   const left=inset,top=inset,right=width-inset,bottom=height-inset;
   r=Math.max(0,Math.min(r-inset,(right-left)/2,(bottom-top)/2));
@@ -19,6 +24,7 @@ function prepareSquircleFallback(){
  function measure(element){
   const {width,height}=element.getBoundingClientRect();if(width<2||height<2)return;
   const r=radius(element),points=geometry(width,height,r);
+  element.style.setProperty('--squircle-radius',r+'px');
   element.style.setProperty('--squircle-clip','polygon('+points.map(p=>p.map(v=>v+'px').join(' ')).join(',')+')');
   if(!home(element)){
    const border=geometry(width,height,r,0.5),d='M '+border.map(p=>p.join(' ')).join(' L ')+' Z';
@@ -35,6 +41,8 @@ function prepareSquircleFallback(){
   let image=style.backgroundImage;
   if(element.classList.contains('value-photo'))image+=','+getComputedStyle(element,'::before').backgroundImage;
   element.style.setProperty('--squircle-fill',style.backgroundColor);
+  const shadows=style.boxShadow.split(/,(?![^()]*\))/).filter(shadow=>!shadow.includes('inset'));
+  element.style.setProperty('--squircle-shadow',shadows.join(',')||'none');
   element.style.setProperty('--squircle-image',image);
   element.dataset.squircleBorder=style.borderTopColor;
   if(!home(element))element.classList.add('squircle-fallback-panel');

@@ -36,8 +36,8 @@ Soubory nejsou tímto automaticky odeslány na GitHub ani publikovány.
 ## Zaoblení prvků
 
 Aktuální zadání: karty, obsahové a vnořené boxy i menu používají
-`corner-shape: squircle`, s rádiusem 32px pro hlavní boxy a 24px pro
-menší vnořené boxy. Nahrazuje to předchozí běžné zaoblení 16px/8px.
+`corner-shape: squircle`, s rádiusem 64px pro hlavní obsahové boxy (48px na mobilu)
+a 40px pro vnořené boxy (32px na mobilu). Homepage a menu mají 32px. Nahrazuje to předchozí běžné zaoblení 16px/8px.
 V prohlížečích bez podpory vykresluje `squircle-fallback.js` skutečné
 supereliptické plochy a obrysy; přepočítává je při změně rozměrů a tématu. Obrázky mají nadále
 rádius 8px; kruhové ikony a přepínač tématu zachovávají svůj tvar.
