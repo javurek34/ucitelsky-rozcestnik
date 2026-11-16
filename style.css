@@ -1588,3 +1588,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @supports (corner-shape:squircle){
  :root #kodex-ai-dialog :is(.ai-intro,.ai-accordion){border-radius:var(--squircle-panel-radius);corner-shape:squircle}
 }
+
+#kodex-ai-dialog .ai-meta>.ai-full-document{justify-self:start;display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px}
+@media(max-width:559px){#kodex-ai-dialog .ai-meta>.ai-full-document{justify-self:stretch;width:100%}}
