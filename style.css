@@ -1575,3 +1575,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root .card-subpage .squircle-media.squircle-fallback>:is(img,iframe){border-radius:0!important}
 /* The fallback fill replaces even the stronger legacy dark background rules. */
 :root[data-theme] .content-dialog.card-subpage .content-body.reading-panels .squircle-fallback-panel{background:transparent!important;background-image:none!important;border-color:transparent!important;box-shadow:var(--squircle-shadow)!important}
+
+#agenda-podklady-mzdy .reading-copy .primary{display:flex;width:100%;justify-content:center;text-align:center}
+@media(min-width:900px){
+ #agenda-ucitele-dialog .content-body:has(>#agenda-pracovni-doba[open]):has(>#agenda-podklady-mzdy[open])>.agenda-payroll-pair{align-self:stretch!important}
+ #agenda-ucitele-dialog .agenda-payroll-pair>.agenda-accordion-title{min-height:72px}
+}
