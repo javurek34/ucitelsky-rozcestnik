@@ -4,7 +4,7 @@ const base=[
 {id:'uraz',title:'Úrazy',icon:'medical',url:null,content:'uraz'},
 {id:'dohledy',title:'Dohledy',icon:'eye',url:null,content:'dohledy'},
 {id:'ipady',title:'iPady',icon:'tablet',url:null,content:'ipady'},
-{id:'kodex-ai',title:'Kodex AI',icon:'shield',url:null},
+{id:'kodex-ai',title:'Kodex AI',icon:'shield',url:null,content:'kodex-ai'},
 {id:'aktualne',title:'Aktuálně',icon:'calendar',url:null,content:'aktualne'},
 {id:'gemini',title:'Gemini',icon:'tool',url:null,content:'gemini'},
 {id:'canva',title:'Canva',icon:'tool',url:null,content:'canva'},
@@ -78,6 +78,7 @@ $('#close-uraz').onclick=$('#uraz-ok').onclick=cardPages.requestClose;
 $('#close-umimeto').onclick=$('#umimeto-ok').onclick=cardPages.requestClose;
 $('#close-canva').onclick=$('#canva-ok').onclick=cardPages.requestClose;
 $('#close-gemini').onclick=$('#gemini-ok').onclick=cardPages.requestClose;
+$('#close-kodex-ai').onclick=$('#kodex-ai-ok').onclick=cardPages.requestClose;
 document.querySelectorAll('[data-umime-jump]').forEach(button=>button.addEventListener('click',()=>{const target=document.getElementById(button.dataset.umimeJump);target.querySelector('h3').focus({preventScroll:true});target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});}));
 $('.brand').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
 render();
