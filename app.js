@@ -23,7 +23,27 @@ const folderGroups=[
  {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['agenda-ucitele','akce','ruzne','formulare']},
  {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ipady','gemini','canva']}
 ];
+// Match the animated perimeter to native squircle corners, including after resize.
+const homeOutlineObserver=new ResizeObserver(entries=>{
+ const continuous=CSS.supports('corner-shape','squircle');
+ entries.forEach(({target})=>{
+  const path=target.querySelector('.folder-hover-outline path');if(!path)return;
+  const {width,height}=target.getBoundingClientRect();if(width<2||height<2)return;
+  const radius=Math.min(parseFloat(getComputedStyle(target).borderTopLeftRadius)-1,(width-2)/2,(height-2)/2);
+  const left=1,top=1,right=width-1,bottom=height-1,power=continuous ? 0.5 : 1;
+  const corners=[[right-radius,top+radius,-Math.PI/2],[right-radius,bottom-radius,0],[left+radius,bottom-radius,Math.PI/2],[left+radius,top+radius,Math.PI]];
+  let d=`M ${left+radius} ${top} L ${right-radius} ${top}`;
+  corners.forEach(([cx,cy,start])=>{
+   for(let step=0;step<=24;step++){
+    const angle=start+Math.PI/2*step/24,cos=Math.cos(angle),sin=Math.sin(angle);
+    const x=cx+radius*Math.sign(cos)*Math.abs(cos)**power,y=cy+radius*Math.sign(sin)*Math.abs(sin)**power;
+    d+=` L ${x.toFixed(3)} ${y.toFixed(3)}`;
+   }
+  });path.setAttribute('d',d+' Z');
+ });
+});
 function render(){
+ homeOutlineObserver.disconnect();
  const root=$('#results');root.replaceChildren();
  folderGroups.forEach(group=>{
   const stack=document.createElement('section');stack.className='folder-stack';if(group.title==='Život školy')stack.classList.add('group-zivot-skoly');if(group.title==='Po ruce')stack.classList.add('group-po-ruce');if(group.title==='Digitální sborovna')stack.classList.add('group-digitalni');
@@ -40,8 +60,8 @@ function render(){
    const title=document.createElement('span');title.className='card-title folder-title';title.textContent=item.title;
    const arrow=document.createElement('span');arrow.className='folder-arrow';arrow.setAttribute('aria-hidden','true');arrow.append(icon('arrow'));
    const outline=document.createElementNS('http://www.w3.org/2000/svg','svg');outline.classList.add('folder-hover-outline');outline.setAttribute('aria-hidden','true');outline.setAttribute('focusable','false');
-   const outlinePath=document.createElementNS('http://www.w3.org/2000/svg','rect');outlinePath.setAttribute('x','1');outlinePath.setAttribute('y','1');outlinePath.setAttribute('rx','15');outlinePath.setAttribute('pathLength','1');outline.append(outlinePath);
-   button.append(visual,title,arrow,outline);folder.append(button);files.append(folder);
+   const outlinePath=document.createElementNS('http://www.w3.org/2000/svg','path');outlinePath.setAttribute('pathLength','1');outline.append(outlinePath);
+   button.append(visual,title,arrow,outline);folder.append(button);files.append(folder);homeOutlineObserver.observe(button);
   });
  });
 }

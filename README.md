@@ -35,9 +35,13 @@ Soubory nejsou tímto automaticky odeslány na GitHub ani publikovány.
 
 ## Zaoblení prvků
 
-Aktuální zadání: obsahové boxy a karty na úvodu mají rádius 16px,
-obrázky a jejich obaly 8px. Tyto explicitní hodnoty nahrazují dřívější
-výpočet vnějšího rádiusu z odsazení. Dekorativní vrstvy kopírují rádius boxu.
+Aktuální zadání: karty, obsahové a vnořené boxy i menu používají
+`corner-shape: squircle`, s rádiusem 24px pro hlavní boxy a 16px pro
+menší vnořené boxy. Nahrazuje to předchozí běžné zaoblení 16px/8px.
+V prohlížečích bez podpory zůstává původní zaoblení. Obrázky mají nadále
+rádius 8px; kruhové ikony a přepínač tématu zachovávají svůj tvar.
+Animovaný světlý obrys homepage sleduje stejnou superelipsu a přepočítává
+se při změně rozměrů. Neměňte kvůli tvaru výšku ani šířku boxů.
 
 Stíny musí být měkké, rozptýlené a tónované do barev webu; nepoužívejte
 ostré šedé okraje. Používejte sdílené `--panel-shadow` a `--button-shadow`
