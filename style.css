@@ -1530,9 +1530,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  :root .page-navigation-menu,
  :root .page-navigation-menu .page-navigation-group a,
  :root .page-navigation-menu .page-navigation-group a::after{
-  border-radius:24px;corner-shape:squircle;
+  border-radius:32px;corner-shape:squircle;
  }
  :root #agenda-poznamky .notes-rule-card,
- :root #agenda-zuzka .administrator-topic-card{border-radius:16px;corner-shape:squircle}
+ :root #agenda-zuzka .administrator-topic-card{border-radius:24px;corner-shape:squircle}
  :root .reading-box::before,:root .reading-box::after{corner-shape:inherit}
 }
