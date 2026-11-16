@@ -7,7 +7,7 @@ function decode64(value){if(!/^[A-Za-z0-9_-]+$/.test(value))throw Error('Invalid
 const digest=value=>crypto.subtle.digest('SHA-256',encoder.encode(value));
 async function signingKey(env){const material=await digest(env.SESSION_SECRET+'\0'+env.SITE_PASSWORD);return crypto.subtle.importKey('raw',material,{name:'HMAC',hash:'SHA-256'},false,['sign','verify']);}
 async function samePassword(a,b){const [first,second]=await Promise.all([digest(a),digest(b)]);const left=new Uint8Array(first),right=new Uint8Array(second);let diff=0;for(let i=0;i<left.length;i++)diff|=left[i]^right[i];return diff===0;}
-async function makeSession(env){const payload=base64url(encoder.encode(JSON.stringify({v:1,expires:Math.floor(Date.now()/1000)+SESSION_SECONDS})));const signature=await crypto.subtle.sign('HMAC',await signingKey(env),encoder.encode(payload));return payload+'.'+base64url(signature);}
+async function makeSession(env){const payload=base64url(encoder.encode(JSON.stringify({v:2,expires:Math.floor(Date.now()/1000)+SESSION_SECONDS})));const signature=await crypto.subtle.sign('HMAC',await signingKey(env),encoder.encode(payload));return payload+'.'+base64url(signature);}
 async function hasSession(request,env){
  try{
   const value=(request.headers.get('Cookie')||'').split(';').map(part=>part.trim()).find(part=>part.startsWith(COOKIE+'='))?.slice(COOKIE.length+1);
@@ -16,7 +16,7 @@ async function hasSession(request,env){
   const [payload,signature]=pieces;
   if(!await crypto.subtle.verify('HMAC',await signingKey(env),decode64(signature),encoder.encode(payload)))return false;
   const data=JSON.parse(new TextDecoder().decode(decode64(payload)));const now=Math.floor(Date.now()/1000);
-  return data.v===1&&Number.isSafeInteger(data.expires)&&data.expires>now&&data.expires<=now+SESSION_SECONDS;
+  return data.v===2&&Number.isSafeInteger(data.expires)&&data.expires>now&&data.expires<=now+SESSION_SECONDS;
  }catch{return false;}
 }
 function redirect(path,cookie){const headers=new Headers(noStore);headers.set('Location',path);if(cookie)headers.set('Set-Cookie',cookie);return new Response(null,{status:303,headers});}
@@ -52,7 +52,7 @@ export default {
    let form;try{form=await readSmallForm(request);}catch{return new Response('Request too large',{status:413,headers:noStore});}
    const password=form.get('password')||'';
    if(!password||password.length>256||!await samePassword(password,env.SITE_PASSWORD))return page('Heslo není správné. Zkuste to znovu.',401);
-   return redirect('/',`${COOKIE}=${await makeSession(env)}; Path=/; Max-Age=${SESSION_SECONDS}; HttpOnly; Secure; SameSite=Lax`);
+   return redirect('/',`${COOKIE}=${await makeSession(env)}; Path=/; HttpOnly; Secure; SameSite=Lax`);
   }
   if(url.pathname==='/__auth/logout'&&method==='POST'){
    if(request.headers.get('Origin')!==url.origin)return new Response('Forbidden',{status:403,headers:noStore});

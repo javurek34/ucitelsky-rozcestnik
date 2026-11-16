@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { createHash, createHmac } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import worker from '../worker/auth.mjs';
@@ -23,8 +24,8 @@ test('login rejects cross-origin forms and oversized submissions',async()=>{
  assert.equal((await worker.fetch(login(password,{Origin:'https://other.example'}),environment())).status,403);
  assert.equal((await worker.fetch(login('a'.repeat(5000)),environment())).status,413);
 });
-test('valid login creates a signed secure cookie and authenticated assets are not cached',async()=>{
- const env=environment();const r=await worker.fetch(login(),env);assert.equal(r.status,303);const cookie=r.headers.get('Set-Cookie');for(const flag of ['HttpOnly','Secure','SameSite=Lax','Path=/'])assert.ok(cookie.includes(flag));assert.ok(!cookie.includes(password));
+test('valid login creates a non-persistent signed secure cookie and authenticated assets are not cached',async()=>{
+ const env=environment();const r=await worker.fetch(login(),env);assert.equal(r.status,303);const cookie=r.headers.get('Set-Cookie');for(const flag of ['HttpOnly','Secure','SameSite=Lax','Path=/'])assert.ok(cookie.includes(flag));assert.ok(!cookie.includes(password));assert.doesNotMatch(cookie,/Max-Age=|Expires=/i);
  const asset=await worker.fetch(new Request(origin+'/app.js',{headers:{Cookie:cookie.split(';')[0]}}),env);assert.equal(await asset.text(),'PRIVATE_SCHOOL_CONTENT');assert.match(asset.headers.get('Cache-Control'),/private, no-store/);
 });
 test('tampering and password rotation invalidate previous cookies',async()=>{
@@ -49,4 +50,14 @@ test('all paths go through the Worker and protected build contains no server or 
  for(const file of ['index.html','app.js','assets/skola-logo.png'])await access(new URL('../dist/client/'+file,import.meta.url));
  for(const file of ['.git/config','worker/auth.mjs','README.md','.dev.vars','assets/external/sources.json'])await assert.rejects(access(new URL('../dist/client/'+file,import.meta.url)));
  assert.ok((await readFile(new URL('../dist/client/index.html',import.meta.url),'utf8')).includes('/__auth/logout'));
+});
+
+test('previous persistent sessions require a fresh login after the session-cookie migration',async()=>{
+ const env=environment();
+ const payload=Buffer.from(JSON.stringify({v:1,expires:Math.floor(Date.now()/1000)+3600})).toString('base64url');
+ const material=createHash('sha256').update(env.SESSION_SECRET+'\0'+env.SITE_PASSWORD).digest();
+ const signature=createHmac('sha256',material).update(payload).digest('base64url');
+ const response=await worker.fetch(new Request(origin+'/app.js',{headers:{Cookie:'__Host-rozcestnik_session='+payload+'.'+signature}}),env);
+ assert.equal(response.status,303);
+ assert.equal(response.headers.get('Location'),'/__auth/login');
 });

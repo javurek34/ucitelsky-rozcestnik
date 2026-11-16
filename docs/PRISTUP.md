@@ -19,7 +19,7 @@ Poslední příkaz se bezpečně zeptá na společné heslo (alespoň 12 znaků)
 3. Na přidělené adrese workers.dev ověřte přihlášení, odhlášení a přímý přístup k obrázku bez přihlášení.
 4. Teprve po ověření přesměrujte používané odkazy a vypněte původní veřejný GitHub Pages i původní veřejnou kopii na chatgpt.site. Zkontrolujte také viditelnost repozitáře a podle potřeby jej přepněte na soukromý. Dokud veřejné kopie existují, jejich obsah je nadále dostupný bez hesla.
 
-Nejde o přihlášení Google účtem ani o ověření členství ve skupině zaměstnanců. Přístup má každý, kdo zná společné heslo. Přihlášení platí sedm dní, případně do odhlášení. Změna hesla zneplatní všechna dosavadní přihlášení; použijte znovu `npm run setup:password`. Přístup ke sdíleným dokumentům Google nadále řídí jejich vlastní oprávnění.
+Nejde o přihlášení Google účtem ani o ověření členství ve skupině zaměstnanců. Přístup má každý, kdo zná společné heslo. Přihlášení používá relační cookie bez trvalého uložení. Po úplném ukončení prohlížeče obvykle skončí; zavření jedné karty či okna nestačí, pokud zůstávají další okna otevřená. Obnova relace prohlížeče může zachovat také přihlášení. Pro jisté ukončení použijte Odhlásit. Server dovolí jedné relaci platit nejvýše sedm dní. Dřívější trvalé relace se po nasazení této změny zneplatní a uživatelé se přihlásí znovu. Změna hesla zneplatní všechna dosavadní přihlášení; použijte znovu `npm run setup:password`. Přístup ke sdíleným dokumentům Google nadále řídí jejich vlastní oprávnění.
 
 ## Místní kontrola
 
