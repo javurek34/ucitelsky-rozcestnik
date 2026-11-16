@@ -3,7 +3,7 @@ import { resolve, join, extname } from 'node:path';
 const root=resolve(import.meta.dirname,'..');
 const output=join(root,'dist/client');
 await rm(output,{recursive:true,force:true});await mkdir(output,{recursive:true});
-const publicFiles=['index.html','app.js','style.css','theme.js','card-pages.js','reading-panels.js'];
+const publicFiles=['index.html','app.js','style.css','theme.js','card-pages.js','reading-panels.js','kodex-ai.js'];
 for(const name of publicFiles)await copyFile(join(root,name),join(output,name));
 const extensions=new Set(['.png','.jpg','.jpeg','.webp','.avif','.svg','.gif','.ico','.woff','.woff2','.ttf','.otf']);
 async function copyAssets(directory,relative='assets'){
