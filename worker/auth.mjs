@@ -24,10 +24,10 @@ function page(message='',status=200,unavailable=false){
  const nonce=base64url(crypto.getRandomValues(new Uint8Array(18)));
  const text=unavailable?'Přístup zatím není nastavený. Obraťte se prosím na správce rozcestníku.':'Pro vstup zadejte společné heslo pro zaměstnance školy.';
  const safeMessage=message.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const html=`<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#F3F5F7"><title>Přihlášení · Učitelský rozcestník</title><style nonce="${nonce}">
+ const html=`<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#F3F5F7"><title>Přihlášení · Učitelský rozcestník</title><link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png?v=1"><link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png?v=1"><style nonce="${nonce}">
 *{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:#F3F5F7;color:#20285A;font-family:'greycliff-cf',system-ui,sans-serif}.login{width:100%;max-width:440px;padding:32px;border:1px solid #fff;border-radius:16px;background:linear-gradient(135deg,#ffffffd9,#ffffff80);box-shadow:0 4px 12px #091f5b18}.eyebrow{margin:0 0 12px;font-size:14px;color:#64617A}h1{font-size:28px;line-height:1.2;margin:0 0 16px}p{line-height:1.6;margin:0 0 24px}label{display:block;font-weight:700;margin-bottom:8px}input,button{width:100%;min-height:48px;padding:12px 16px;border-radius:8px;font:inherit}input{border:1px solid #8c98b0;background:#fff;color:#1d2033}button{margin-top:16px;border:1px solid #ffffff30;background:#091F5B;color:#F8F7F4;font-weight:700;cursor:pointer}button:hover{background:#102D78}input:focus-visible,button:focus-visible{outline:3px solid #4B9CD3;outline-offset:4px}.error{margin:16px 0 0;color:#BC162C;font-weight:600}.note{font-size:13px;margin:24px 0 0;color:#64617A}@media(prefers-color-scheme:dark){body{background:#1A1A1D;color:#F8F7F4}.login{background:linear-gradient(to bottom right,#17272D,#0B1215);border-color:#ffffff1f}.eyebrow,.note{color:#BFC7CC}input{background:#0B1215;border-color:#7b8b94;color:#F8F7F4}.error{color:#FF8898}}@media(max-width:399px){.login{padding:24px}}
 </style></head><body><main class="login"><p class="eyebrow">ZŠ Kaplického</p><h1>Učitelský rozcestník</h1><p>${text}</p>${unavailable?'':`<form method="post" action="/__auth/login"><label for="password">Heslo pro zaměstnance</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256"${message?' aria-describedby="login-error"':''}><button type="submit">Přihlásit se</button></form>`}${safeMessage?`<p class="error" id="login-error" role="alert">${safeMessage}</p>`:''}<p class="note">Přístup je určen zaměstnancům školy.</p></main></body></html>`;
- const headers=new Headers(noStore);headers.set('Content-Type','text/html; charset=utf-8');headers.set('Content-Security-Policy',`default-src 'none'; style-src 'nonce-${nonce}'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'`);return new Response(html,{status,headers});
+ const headers=new Headers(noStore);headers.set('Content-Type','text/html; charset=utf-8');headers.set('Content-Security-Policy',`default-src 'none'; img-src 'self'; style-src 'nonce-${nonce}'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'`);return new Response(html,{status,headers});
 }
 async function readSmallForm(request){
  if(!request.body)return new URLSearchParams();
@@ -41,6 +41,10 @@ export default {
   const url=new URL(request.url),method=request.method;
   // No configuration means no access, including assets and preview URLs.
   if(!configured(env))return page('',503,true);
+  // Only these two branding icons are public; application assets remain protected.
+  if((method==='GET'||method==='HEAD')&&['/assets/icons/favicon-32.png','/assets/icons/apple-touch-icon.png'].includes(url.pathname)){
+   const asset=await env.ASSETS.fetch(request);return new Response(method==='HEAD'?null:asset.body,{status:asset.status,headers:{...noStore,'Content-Type':'image/png'}});
+  }
   if(url.pathname==='/__auth/login'&&method==='GET')return page();
   if(url.pathname==='/__auth/login'&&method==='POST'){
    if(request.headers.get('Origin')!==url.origin)return new Response('Forbidden',{status:403,headers:noStore});

@@ -61,3 +61,14 @@ test('previous persistent sessions require a fresh login after the session-cooki
  assert.equal(response.status,303);
  assert.equal(response.headers.get('Location'),'/__auth/login');
 });
+
+test('only the two exact branding icon paths are public and login includes their links',async()=>{
+ const env=environment();
+ for(const path of ['/assets/icons/favicon-32.png','/assets/icons/apple-touch-icon.png']){
+  const response=await worker.fetch(new Request(origin+path),env);assert.equal(response.status,200);assert.equal(response.headers.get('Content-Type'),'image/png');
+ }
+ for(const path of ['/assets/icons/elearning.png','/assets/icons/favicon-32.png/anything','/app.js']){
+  assert.equal((await worker.fetch(new Request(origin+path),env)).status,303);
+ }
+ const login=await worker.fetch(new Request(origin+'/'),env);assert.match(await login.text(),/rel="icon"/);assert.match(login.headers.get('Content-Security-Policy'),/img-src 'self'/);
+});
