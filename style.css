@@ -1524,7 +1524,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  :root .workspace .folder-entry .folder-button,
  :root .workspace .folder-entry .folder-button::before,
  :root .workspace .folder-entry .folder-button::after,
- :root .content-dialog.card-subpage .reading-box,
+ :root .content-dialog.card-subpage .content-body.reading-panels .reading-box,
  :root :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box,
  :root #agenda-ucitele-dialog .class-resources-grid>.class-resource-inner,
  :root .page-navigation-menu,
@@ -1547,7 +1547,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Real superellipse surfaces when native continuous corners are unavailable.
    Keep shadows on the host so clipping the fill does not clip their spread. */
-:root .squircle-fallback{border-radius:var(--squircle-radius)}
+:root .squircle-fallback{border-radius:var(--squircle-radius)!important}
 :root .squircle-fallback-panel{position:var(--squircle-position,relative);isolation:isolate;background:transparent!important;border-color:transparent!important;box-shadow:var(--squircle-shadow)!important}
 :root .squircle-fallback-panel::before{content:'';position:absolute;inset:-1px;z-index:-1;pointer-events:none;border:0;border-radius:0;background-color:var(--squircle-fill);background-image:var(--squircle-border-image),var(--squircle-image);background-size:100% 100%,cover;background-position:center;clip-path:var(--squircle-clip)}
 :root .squircle-fallback-panel::after{border-radius:0;clip-path:var(--squircle-clip)}
@@ -1558,8 +1558,8 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Large reading surfaces need a wider corner arc for a visible squircle contour. */
 :root{--squircle-panel-radius:64px;--squircle-inner-radius:40px}
 @media(max-width:559px){:root{--squircle-panel-radius:48px;--squircle-inner-radius:32px}}
-@supports(corner-shape:squircle){
- :root .content-dialog.card-subpage .reading-box,
+@supports (corner-shape:squircle){
+ :root .content-dialog.card-subpage .content-body.reading-panels .reading-box,
  :root :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{border-radius:var(--squircle-panel-radius)}
  :root #agenda-ucitele-dialog .class-resources-grid>.class-resource-inner,
  :root #agenda-poznamky .notes-rule-card,
