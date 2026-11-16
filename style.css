@@ -1581,3 +1581,10 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #agenda-ucitele-dialog .content-body:has(>#agenda-pracovni-doba[open]):has(>#agenda-podklady-mzdy[open])>.agenda-payroll-pair{align-self:stretch!important}
  #agenda-ucitele-dialog .agenda-payroll-pair>.agenda-accordion-title{min-height:72px}
 }
+
+/* The custom AI document occupies the entire shared twelve-column page grid. */
+#kodex-ai-dialog .content-body.reading-panels>.ai-layout{grid-column:1 / -1;width:100%;min-width:0;box-sizing:border-box}
+#kodex-ai-dialog .ai-layout>:is(.ai-intro,.ai-accordion,.ai-meta){min-width:0;max-width:100%;box-sizing:border-box}
+@supports (corner-shape:squircle){
+ :root #kodex-ai-dialog :is(.ai-intro,.ai-accordion){border-radius:var(--squircle-panel-radius);corner-shape:squircle}
+}

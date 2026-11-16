@@ -25,7 +25,7 @@ function prepareNestedSquircleCorners(){
 function prepareSquircleFallback(){
  prepareNestedSquircleCorners();
  if(CSS.supports('corner-shape','squircle'))return;
- const selector='.folder-button,.card-subpage .reading-box,.notes-rule-card,.administrator-topic-card,.page-navigation-menu,.page-navigation-group a,.squircle-media';
+ const selector='.folder-button,.card-subpage .reading-box,.notes-rule-card,.administrator-topic-card,.page-navigation-menu,.page-navigation-group a,.squircle-media,#kodex-ai-dialog .ai-intro,#kodex-ai-dialog .ai-accordion';
  const nodes=[...document.querySelectorAll(selector)];
  const home=element=>element.matches('.folder-button');
  const media=element=>element.classList.contains('squircle-media');
@@ -33,7 +33,7 @@ function prepareSquircleFallback(){
   const style=getComputedStyle(element);
   if(media(element))return parseFloat(style.getPropertyValue('--nested-squircle-radius'))||8;
   if(element.matches('.class-resource-inner,.notes-rule-card,.administrator-topic-card'))return parseFloat(style.getPropertyValue('--squircle-inner-radius'));
-  if(element.matches('.reading-box'))return parseFloat(style.getPropertyValue('--squircle-panel-radius'));
+  if(element.matches('.reading-box,.ai-intro,.ai-accordion'))return parseFloat(style.getPropertyValue('--squircle-panel-radius'));
   return 32;
  };
  function geometry(width,height,r,inset=0){
