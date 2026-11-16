@@ -1519,7 +1519,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 }
 
 /* Native continuous corners preserve borders, shadows and disclosure geometry.
-   Older browsers retain the existing rounded-corner fallback. */
+   Other browsers use the responsive SVG/polygon surface fallback. */
 @supports (corner-shape:squircle){
  :root .workspace .folder-entry .folder-button,
  :root .workspace .folder-entry .folder-button::before,
@@ -1544,3 +1544,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] #kodex-ai-dialog :is(.page-icon,.agenda-custom-icon) img{filter:brightness(0) invert(1)}
 #kodex-ai-dialog #kodex-ai-overovani .reading-copy>ul{display:grid;gap:12px;margin:0;padding-left:24px}
 #kodex-ai-dialog #kodex-ai-overovani .reading-copy li{margin:0;line-height:1.6;padding-left:4px}
+
+/* Real superellipse surfaces when native continuous corners are unavailable.
+   Keep shadows on the host so clipping the fill does not clip their spread. */
+:root .squircle-fallback{border-radius:var(--squircle-radius)}
+:root .squircle-fallback-panel{position:var(--squircle-position,relative);isolation:isolate;background:transparent!important;border-color:transparent!important}
+:root .squircle-fallback-panel::before{content:'';position:absolute;inset:-1px;z-index:-1;pointer-events:none;border:0;border-radius:0;background-color:var(--squircle-fill);background-image:var(--squircle-border-image),var(--squircle-image);background-size:100% 100%,cover;background-position:center;clip-path:var(--squircle-clip)}
+:root .squircle-fallback-panel::after{border-radius:0;clip-path:var(--squircle-clip)}
+:root .workspace .folder-entry .folder-button.squircle-fallback::before,
+:root .workspace .folder-entry .folder-button.squircle-fallback::after{border-radius:0;clip-path:var(--squircle-clip)}
+:root .workspace .folder-entry:has(>.squircle-fallback){filter:drop-shadow(0 3px 4px var(--home-card-shadow))}

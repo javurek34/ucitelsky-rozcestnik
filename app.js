@@ -25,7 +25,7 @@ const folderGroups=[
 ];
 // Match the animated perimeter to native squircle corners, including after resize.
 const homeOutlineObserver=new ResizeObserver(entries=>{
- const continuous=CSS.supports('corner-shape','squircle');
+ const continuous=true;
  entries.forEach(({target})=>{
   const path=target.querySelector('.folder-hover-outline path');if(!path)return;
   const {width,height}=target.getBoundingClientRect();if(width<2||height<2)return;
@@ -84,6 +84,7 @@ $('.brand').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top
 render();
 prepareReadingPanels();
 cardPages.init(base,folderGroups);
+prepareSquircleFallback();
 
 // Shortcuts stay within the open page; focus follows the reading position.
 document.querySelectorAll('[data-page-jump]').forEach(button=>{
