@@ -1536,3 +1536,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  :root #agenda-zuzka .administrator-topic-card{border-radius:24px;corner-shape:squircle}
  :root .reading-box::before,:root .reading-box::after{corner-shape:inherit}
 }
+
+/* AI code icon stays legible wherever the shared navigation places it. */
+.workspace [data-card-id="kodex-ai"] .folder-symbol img,
+.page-navigation-menu a[href="#kodex-ai"] .page-navigation-icon img{filter:brightness(0) invert(1)}
+#kodex-ai-dialog .page-icon img{width:100%;height:100%;object-fit:contain}
+:root[data-theme=dark] #kodex-ai-dialog :is(.page-icon,.agenda-custom-icon) img{filter:brightness(0) invert(1)}
+#kodex-ai-dialog #kodex-ai-overovani .reading-copy>ul{display:grid;gap:12px;margin:0;padding-left:24px}
+#kodex-ai-dialog #kodex-ai-overovani .reading-copy li{margin:0;line-height:1.6;padding-left:4px}
