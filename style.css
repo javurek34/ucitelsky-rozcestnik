@@ -1565,3 +1565,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  :root #agenda-poznamky .notes-rule-card,
  :root #agenda-zuzka .administrator-topic-card{border-radius:var(--squircle-inner-radius)}
 }
+
+/* Images and nested cards follow the inset of their containing squircle. */
+@supports (corner-shape:squircle){
+ :root .card-subpage .reading-box .squircle-media{border-radius:var(--nested-squircle-radius)!important;corner-shape:squircle;overflow:hidden}
+ :root .card-subpage .reading-box .squircle-media>:is(img,iframe){border-radius:inherit;corner-shape:inherit}
+}
+:root .card-subpage .squircle-media.squircle-fallback{border-radius:var(--nested-squircle-radius)!important;clip-path:var(--squircle-clip);overflow:hidden}
+:root .card-subpage .squircle-media.squircle-fallback>:is(img,iframe){border-radius:0!important}
+/* The fallback fill replaces even the stronger legacy dark background rules. */
+:root[data-theme] .content-dialog.card-subpage .content-body.reading-panels .squircle-fallback-panel{background:transparent!important;background-image:none!important;border-color:transparent!important;box-shadow:var(--squircle-shadow)!important}

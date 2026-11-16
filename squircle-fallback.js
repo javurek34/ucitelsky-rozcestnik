@@ -1,11 +1,37 @@
+/* Nested radii follow their containing surface minus its actual padding. */
+function prepareNestedSquircleCorners(){
+ const inner='.class-resource-inner,.notes-rule-card,.administrator-topic-card';
+ const media='.resource-content-photo,.climate-resource-photo,.ipad-final-image,.classroom-guide-photo,.recommendations-photo,.vividbooks-photo,.forms-docs-image,.grade-video-player';
+ const elements=[...document.querySelectorAll(inner+','+media)];
+ elements.forEach(element=>{if(element.matches(media))element.classList.add('squircle-media');});
+ function parentRadius(element){
+  if(element.matches(inner))return nestedRadius(element);
+  return parseFloat(getComputedStyle(element).getPropertyValue('--squircle-panel-radius'))||64;
+ }
+ function nestedRadius(element){
+  const parent=element.parentElement.closest('.reading-box,.notes-rule-card,.administrator-topic-card');
+  if(!parent)return 8;
+  const padding=parseFloat(getComputedStyle(parent).paddingLeft)||0;
+  return Math.max(8,parentRadius(parent)-padding);
+ }
+ const update=()=>elements.forEach(element=>{
+  const r=nestedRadius(element);element.style.setProperty('--nested-squircle-radius',r+'px');
+  if(element.matches(inner))element.style.setProperty('--squircle-inner-radius',r+'px');
+ });
+ update();const observer=new ResizeObserver(update);elements.forEach(element=>observer.observe(element));
+ addEventListener('resize',update);
+}
 /* Continuous corners for Safari and other engines without corner-shape. */
 function prepareSquircleFallback(){
+ prepareNestedSquircleCorners();
  if(CSS.supports('corner-shape','squircle'))return;
- const selector='.folder-button,.card-subpage .reading-box,.notes-rule-card,.administrator-topic-card,.page-navigation-menu,.page-navigation-group a';
+ const selector='.folder-button,.card-subpage .reading-box,.notes-rule-card,.administrator-topic-card,.page-navigation-menu,.page-navigation-group a,.squircle-media';
  const nodes=[...document.querySelectorAll(selector)];
  const home=element=>element.matches('.folder-button');
+ const media=element=>element.classList.contains('squircle-media');
  const radius=element=>{
   const style=getComputedStyle(element);
+  if(media(element))return parseFloat(style.getPropertyValue('--nested-squircle-radius'))||8;
   if(element.matches('.class-resource-inner,.notes-rule-card,.administrator-topic-card'))return parseFloat(style.getPropertyValue('--squircle-inner-radius'));
   if(element.matches('.reading-box'))return parseFloat(style.getPropertyValue('--squircle-panel-radius'));
   return 32;
@@ -26,7 +52,7 @@ function prepareSquircleFallback(){
   const r=radius(element),points=geometry(width,height,r);
   element.style.setProperty('--squircle-radius',r+'px');
   element.style.setProperty('--squircle-clip','polygon('+points.map(p=>p.map(v=>v+'px').join(' ')).join(',')+')');
-  if(!home(element)){
+  if(!home(element)&&!media(element)){
    const border=geometry(width,height,r,0.5),d='M '+border.map(p=>p.join(' ')).join(' L ')+' Z';
    const color=element.dataset.squircleBorder||'transparent';
    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><path d="${d}" fill="none" stroke="${color}" stroke-width="1"/></svg>`;
@@ -34,6 +60,7 @@ function prepareSquircleFallback(){
   }
  }
  function capture(element){
+  if(media(element)){measure(element);return;}
   // Read the original themed surface synchronously; no intermediate frame is painted.
   element.classList.remove('squircle-fallback-panel');
   const style=getComputedStyle(element);
