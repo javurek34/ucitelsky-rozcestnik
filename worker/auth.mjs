@@ -1,3 +1,4 @@
+const APP_PATH='/kapli';
 const COOKIE='__Host-rozcestnik_session';
 const SESSION_SECONDS=7*24*60*60;
 const encoder=new TextEncoder();
@@ -24,9 +25,9 @@ function page(message='',status=200,unavailable=false){
  const nonce=base64url(crypto.getRandomValues(new Uint8Array(18)));
  const text=unavailable?'Přístup zatím není nastavený. Obraťte se prosím na správce rozcestníku.':'Pro vstup zadejte společné heslo pro zaměstnance školy.';
  const safeMessage=message.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const html=`<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#F3F5F7"><title>Přihlášení · Učitelský rozcestník</title><link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png?v=1"><link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png?v=1"><style nonce="${nonce}">
+ const html=`<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#F3F5F7"><title>Přihlášení · Učitelský rozcestník</title><link rel="icon" type="image/png" sizes="32x32" href="/kapli/assets/icons/favicon-32.png?v=1"><link rel="apple-touch-icon" sizes="180x180" href="/kapli/assets/icons/apple-touch-icon.png?v=1"><style nonce="${nonce}">
 *{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:#F3F5F7;color:#20285A;font-family:'greycliff-cf',system-ui,sans-serif}.login{width:100%;max-width:440px;padding:32px;border:1px solid #fff;border-radius:16px;background:linear-gradient(135deg,#ffffffd9,#ffffff80);box-shadow:0 4px 12px #091f5b18}.eyebrow{margin:0 0 12px;font-size:14px;color:#64617A}h1{font-size:28px;line-height:1.2;margin:0 0 16px}p{line-height:1.6;margin:0 0 24px}label{display:block;font-weight:700;margin-bottom:8px}input,button{width:100%;min-height:48px;padding:12px 16px;border-radius:8px;font:inherit}input{border:1px solid #8c98b0;background:#fff;color:#1d2033}button{margin-top:16px;border:1px solid #ffffff30;background:#091F5B;color:#F8F7F4;font-weight:700;cursor:pointer}button:hover{background:#102D78}input:focus-visible,button:focus-visible{outline:3px solid #4B9CD3;outline-offset:4px}.error{margin:16px 0 0;color:#BC162C;font-weight:600}.note{font-size:13px;margin:24px 0 0;color:#64617A}@media(prefers-color-scheme:dark){body{background:#1A1A1D;color:#F8F7F4}.login{background:linear-gradient(to bottom right,#17272D,#0B1215);border-color:#ffffff1f}.eyebrow,.note{color:#BFC7CC}input{background:#0B1215;border-color:#7b8b94;color:#F8F7F4}.error{color:#FF8898}}@media(max-width:399px){.login{padding:24px}}
-</style></head><body><main class="login"><p class="eyebrow">ZŠ Kaplického</p><h1>Učitelský rozcestník</h1><p>${text}</p>${unavailable?'':`<form method="post" action="/__auth/login"><label for="password">Heslo pro zaměstnance</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256"${message?' aria-describedby="login-error"':''}><button type="submit">Přihlásit se</button></form>`}${safeMessage?`<p class="error" id="login-error" role="alert">${safeMessage}</p>`:''}<p class="note">Přístup je určen zaměstnancům školy.</p></main></body></html>`;
+</style></head><body><main class="login"><p class="eyebrow">ZŠ Kaplického</p><h1>Učitelský rozcestník</h1><p>${text}</p>${unavailable?'':`<form method="post" action="/kapli/__auth/login"><label for="password">Heslo pro zaměstnance</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256"${message?' aria-describedby="login-error"':''}><button type="submit">Přihlásit se</button></form>`}${safeMessage?`<p class="error" id="login-error" role="alert">${safeMessage}</p>`:''}<p class="note">Přístup je určen zaměstnancům školy.</p></main></body></html>`;
  const headers=new Headers(noStore);headers.set('Content-Type','text/html; charset=utf-8');headers.set('Content-Security-Policy',`default-src 'none'; img-src 'self'; style-src 'nonce-${nonce}'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'`);return new Response(html,{status,headers});
 }
 async function readSmallForm(request){
@@ -41,12 +42,22 @@ export default {
   const url=new URL(request.url),method=request.method;
   // No configuration means no access, including assets and preview URLs.
   if(!configured(env))return page('',503,true);
-  // Only these two branding icons are public; application assets remain protected.
-  if((method==='GET'||method==='HEAD')&&['/assets/icons/favicon-32.png','/assets/icons/apple-touch-icon.png'].includes(url.pathname)){
-   const asset=await env.ASSETS.fetch(request);return new Response(method==='HEAD'?null:asset.body,{status:asset.status,headers:{...noStore,'Content-Type':'image/png'}});
+  // Canonical directory URL keeps relative scripts, images and hash navigation local.
+  if(url.pathname===APP_PATH||!url.pathname.startsWith(APP_PATH+'/')){
+   const tail=url.pathname===APP_PATH||url.pathname==='/'?'/' :url.pathname;
+   const location=APP_PATH+tail+url.search;
+   return new Response(null,{status:method==='GET'||method==='HEAD'?303:307,headers:{...noStore,Location:location}});
   }
-  if(url.pathname==='/__auth/login'&&method==='GET')return page();
-  if(url.pathname==='/__auth/login'&&method==='POST'){
+  const path=url.pathname.slice(APP_PATH.length);
+  const assetUrl=new URL(url);assetUrl.pathname=path;
+  const assetRequest=new Request(assetUrl,request);
+
+  // Only these two branding icons are public; application assets remain protected.
+  if((method==='GET'||method==='HEAD')&&['/assets/icons/favicon-32.png','/assets/icons/apple-touch-icon.png'].includes(path)){
+   const asset=await env.ASSETS.fetch(assetRequest);return new Response(method==='HEAD'?null:asset.body,{status:asset.status,headers:{...noStore,'Content-Type':'image/png'}});
+  }
+  if(path==='/__auth/login'&&method==='GET')return page();
+  if(path==='/__auth/login'&&method==='POST'){
    if(request.headers.get('Origin')!==url.origin)return new Response('Forbidden',{status:403,headers:noStore});
    if(!request.headers.get('Content-Type')?.startsWith('application/x-www-form-urlencoded'))return new Response('Unsupported content type',{status:415,headers:noStore});
    if(!env.LOGIN_RATE_LIMITER?.limit)return page('',503,true);
@@ -56,19 +67,23 @@ export default {
    let form;try{form=await readSmallForm(request);}catch{return new Response('Request too large',{status:413,headers:noStore});}
    const password=form.get('password')||'';
    if(!password||password.length>256||!await samePassword(password,env.SITE_PASSWORD))return page('Heslo není správné. Zkuste to znovu.',401);
-   return redirect('/',`${COOKIE}=${await makeSession(env)}; Path=/; HttpOnly; Secure; SameSite=Lax`);
+   return redirect(APP_PATH+'/',`${COOKIE}=${await makeSession(env)}; Path=/; HttpOnly; Secure; SameSite=Lax`);
   }
-  if(url.pathname==='/__auth/logout'&&method==='POST'){
+  if(path==='/__auth/logout'&&method==='POST'){
    if(request.headers.get('Origin')!==url.origin)return new Response('Forbidden',{status:403,headers:noStore});
-   return redirect('/__auth/login',`${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
+   return redirect(APP_PATH+'/__auth/login',`${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
   }
   if(method!=='GET'&&method!=='HEAD')return new Response('Method not allowed',{status:405,headers:{...noStore,Allow:'GET, HEAD'}});
   if(!await hasSession(request,env)){
-   if(url.pathname==='/')return method==='HEAD'?new Response(null,{headers:{...noStore,'Content-Type':'text/html; charset=utf-8'}}):page();
+   if(path==='/')return method==='HEAD'?new Response(null,{headers:{...noStore,'Content-Type':'text/html; charset=utf-8'}}):page();
    // Do not return login HTML as a JS/image response; no protected bytes escape.
-   return new Response(null,{status:303,headers:{...noStore,Location:'/__auth/login'}});
+   return new Response(null,{status:303,headers:{...noStore,Location:APP_PATH+'/__auth/login'}});
   }
-  const response=await env.ASSETS.fetch(request);const headers=new Headers(response.headers);
+  const response=await env.ASSETS.fetch(assetRequest);const headers=new Headers(response.headers);
+  // Asset canonicalization must stay within the mounted application as well.
+  const location=headers.get('Location');
+  if(location){const target=new URL(location,assetUrl);if(target.origin===url.origin&&!target.pathname.startsWith(APP_PATH+'/'))headers.set('Location',APP_PATH+target.pathname+target.search+target.hash);}
+
   for(const [key,value] of Object.entries(noStore))headers.set(key,value);
   headers.set('Content-Security-Policy',"frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
   return new Response(method==='HEAD'?null:response.body,{status:response.status,statusText:response.statusText,headers});

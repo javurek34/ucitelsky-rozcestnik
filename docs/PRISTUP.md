@@ -1,5 +1,7 @@
 # Přístup společným heslem
 
+Rozcestník je dostupný na `https://javurek.online/kapli/`. Kořen domény i staré adresy se přesměrují pod `/kapli/`; odkazy na podstránky přes `#` zůstávají funkční. Přihlášení a odhlášení používají `/kapli/__auth/login` a `/kapli/__auth/logout`.
+
 Připravená varianta používá Cloudflare Workers. Každý požadavek na HTML, skript i obrázek nejprve ověří server. Samotná přihlašovací obrazovka v JavaScriptu by veřejný statický web neochránila.
 
 ## První nasazení
@@ -16,7 +18,7 @@ npm run setup:password
 
 Poslední příkaz se bezpečně zeptá na společné heslo (alespoň 12 znaků) a sám vytvoří náhodný podpisový klíč. Heslo neposílejte do chatu ani ho nevkládejte do repozitáře. Do nastavení Workers se uloží jako tajné hodnoty `SITE_PASSWORD` a `SESSION_SECRET`. Před nastavením tajných hodnot server vrací pouze informaci o nedostupnosti.
 
-3. Na přidělené adrese workers.dev ověřte přihlášení, odhlášení a přímý přístup k obrázku bez přihlášení.
+3. Na přidělené adrese workers.dev pod `/kapli/` ověřte přihlášení, odhlášení a přímý přístup k obrázku bez přihlášení.
 4. Teprve po ověření přesměrujte používané odkazy a vypněte původní veřejný GitHub Pages i původní veřejnou kopii na chatgpt.site. Zkontrolujte také viditelnost repozitáře a podle potřeby jej přepněte na soukromý. Dokud veřejné kopie existují, jejich obsah je nadále dostupný bez hesla.
 
 Nejde o přihlášení Google účtem ani o ověření členství ve skupině zaměstnanců. Přístup má každý, kdo zná společné heslo. Přihlášení používá relační cookie bez trvalého uložení. Po úplném ukončení prohlížeče obvykle skončí; zavření jedné karty či okna nestačí, pokud zůstávají další okna otevřená. Obnova relace prohlížeče může zachovat také přihlášení. Pro jisté ukončení použijte Odhlásit. Server dovolí jedné relaci platit nejvýše sedm dní. Dřívější trvalé relace se po nasazení této změny zneplatní a uživatelé se přihlásí znovu. Změna hesla zneplatní všechna dosavadní přihlášení; použijte znovu `npm run setup:password`. Přístup ke sdíleným dokumentům Google nadále řídí jejich vlastní oprávnění.

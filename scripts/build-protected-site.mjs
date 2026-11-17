@@ -15,8 +15,9 @@ async function copyAssets(directory,relative='assets'){
  }
 }
 await copyAssets(join(root,'assets'));
-const logout='<form class="protected-logout" action="/__auth/logout" method="post"><button class="secondary-action" type="submit">Odhlásit</button></form>';
+const logout='<form class="protected-logout" action="/kapli/__auth/logout" method="post"><button class="secondary-action" type="submit">Odhlásit</button></form>';
 let index=await readFile(join(output,'index.html'),'utf8');
+index=index.replace('<head>','<head><base href="/kapli/">').replaceAll('href="/assets/icons/','href="/kapli/assets/icons/');
 index=index.replace('</footer>',logout+'</footer>');await writeFile(join(output,'index.html'),index);
 let app=await readFile(join(output,'app.js'),'utf8');
 app+='\n// Logout is available only in the server-protected build.\nconst logoutForm=document.querySelector(".protected-logout");\nif(logoutForm)document.querySelectorAll(".page-navigation-content").forEach(menu=>menu.append(logoutForm.cloneNode(true)));\n';
