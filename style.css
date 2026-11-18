@@ -1593,3 +1593,5 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 @media(max-width:559px){#kodex-ai-dialog .ai-meta>.ai-full-document{justify-self:stretch;width:100%}}
 
 :root #kodex-ai-dialog .ai-intro p{max-width:none;width:100%}
+
+#aktualne-dialog :is(.upcoming-events,.upcoming-events>li,.events-empty)[hidden]{display:none!important}

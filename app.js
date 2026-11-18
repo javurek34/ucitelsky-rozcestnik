@@ -105,12 +105,27 @@ function updateEventCountdowns(){
  document.querySelectorAll('[data-event-date]').forEach(box=>{
   const [year,month,day]=box.dataset.eventDate.split('-').map(Number);
   const days=Math.round((Date.UTC(year,month-1,day)-today)/86400000);
+  const event=box.closest('.upcoming-events>li');
+  if(event)event.hidden=days<0;
+  if(days<0)return;
   const months=['LED','ÚNR','BŘE','DUB','KVĚ','ČER','ČVC','SRP','ZÁŘ','ŘÍJ','LIS','PRO'];
   let monthLabel=box.querySelector('.event-month');if(!monthLabel){monthLabel=document.createElement('span');monthLabel.className='event-month';box.prepend(monthLabel);}
   monthLabel.textContent=months[month-1];
-  const label=days<0?'Proběhlo':days===0?'Dnes':days===1?'Zítra':`za ${days} ${days<5?'dny':'dní'}`;
+  const label=days===0?'Dnes':days===1?'Zítra':`za ${days} ${days<5?'dny':'dní'}`;
   const counter=box.querySelector('.event-countdown');if(counter)counter.textContent=label;
+ });
+ document.querySelectorAll('.upcoming-events').forEach(list=>{
+  const hasUpcoming=[...list.children].some(event=>!event.hidden);
+  list.hidden=!hasUpcoming;
+  let empty=list.nextElementSibling;
+  if(!empty?.classList.contains('events-empty')){
+   empty=document.createElement('p');empty.className='events-empty';empty.textContent='Další akce připravujeme.';list.after(empty);
+  }
+  empty.hidden=hasUpcoming;
  });
 }
 updateEventCountdowns();
 setInterval(updateEventCountdowns,60000);
+// Refresh immediately when returning to a tab left open overnight.
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateEventCountdowns();});
+addEventListener('pageshow',updateEventCountdowns);

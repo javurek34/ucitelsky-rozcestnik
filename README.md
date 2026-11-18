@@ -75,3 +75,13 @@ Logo Školy Online v Úrazech používá lokální soubor z dřívějšího arch
 Pokud budou přidány nové zdroje, lze je po zpřístupnění domén převést
 pomocí `python scripts/localize-images.py`. YouTube přehrávače a Adobe Fonts
 jsou externí služby a nejsou součástí místních obrázků.
+
+## Automatické skrývání proběhlých akcí
+
+V Aktuálně se položky `.upcoming-events` s `data-event-date` zobrazují
+včetně dne konání a od následujícího kalendářního dne se automaticky
+skryjí. Výpočet používá `Europe/Prague`, nikoli časové pásmo návštěvníka.
+Odpočet i viditelnost se obnovují po minutě, při návratu na kartu a při
+obnovení stránky z historie. Pokud nezůstane žádná budoucí akce, zobrazí
+se „Další akce připravujeme.“ Odkazy na porady a formulář zůstávají.
+Historické položky zůstávají ve zdroji, nejsou automaticky mazány z Gitu.
