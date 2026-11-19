@@ -469,7 +469,7 @@ dialog.card-subpage{overflow-y:auto;overscroll-behavior:contain}
 .workspace .folder-entry:focus-within{transform:translateY(-12px)}
 .workspace .folder-button:focus-visible{outline:3px solid var(--blue);outline-offset:5px;border-radius:12px}
 @media(hover:hover) and (pointer:fine){.workspace .folder-entry:hover{transform:translateY(-12px)}.folder-entry:hover .folder-arrow{opacity:1}}
-:root[data-theme=dark] .workspace::before{opacity:.4}
+:root[data-theme=dark] .workspace::before{content:none}
 :root[data-theme=dark] .folder-button::before{background:linear-gradient(125deg,#ffffff24,#ffffff08 60%,#ffffff18),color-mix(in srgb,var(--card-color) 23%,#1E2341dd)}
 :root[data-theme=dark] .workspace .folder-entry .folder-button{color:#f2f6ff}
 :root[data-theme=dark] .folder-button::after{border-color:#ffffff30}
