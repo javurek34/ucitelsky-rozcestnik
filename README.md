@@ -85,3 +85,10 @@ Odpočet i viditelnost se obnovují po minutě, při návratu na kartu a při
 obnovení stránky z historie. Pokud nezůstane žádná budoucí akce, zobrazí
 se „Další akce připravujeme.“ Odkazy na porady a formulář zůstávají.
 Historické položky zůstávají ve zdroji, nejsou automaticky mazány z Gitu.
+
+## Schránka důvěry pro učitele
+
+Anonymní podněty, rady a pomoc s konflikty jsou dostupné přímo z rozcestníku.
+Pro spuštění nastavte oddělené heslo pověřeného týmu podle
+[docs/SCHRANKA-DUVERY.md](docs/SCHRANKA-DUVERY.md). Podněty se ukládají
+do soukromého SQLite Durable Object, nikdy do souborů webu nebo Gitu.

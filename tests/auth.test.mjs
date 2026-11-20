@@ -48,8 +48,8 @@ test('login attempts are rate-limited and a missing limiter fails closed',async(
 });
 test('all paths go through the Worker and protected build contains no server or repository files',async()=>{
  const config=JSON.parse(await readFile(new URL('../wrangler.jsonc',import.meta.url),'utf8'));assert.equal(config.assets.run_worker_first,true);assert.equal(config.preview_urls,false);
- for(const file of ['index.html','app.js','squircle-fallback.js','assets/skola-logo.png'])await access(new URL('../dist/client/'+file,import.meta.url));
- for(const file of ['.git/config','worker/auth.mjs','README.md','.dev.vars','assets/external/sources.json'])await assert.rejects(access(new URL('../dist/client/'+file,import.meta.url)));
+ for(const file of ['index.html','app.js','squircle-fallback.js','trust-inbox.js','trust-inbox.css','assets/skola-logo.png'])await access(new URL('../dist/client/'+file,import.meta.url));
+ for(const file of ['.git/config','worker/auth.mjs','worker/trust-store.mjs','worker/trust-routes.mjs','README.md','.dev.vars','assets/external/sources.json'])await assert.rejects(access(new URL('../dist/client/'+file,import.meta.url)));
  assert.ok((await readFile(new URL('../dist/client/index.html',import.meta.url),'utf8')).includes('/kapli/__auth/logout'));
 });
 

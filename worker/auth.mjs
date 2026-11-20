@@ -1,3 +1,5 @@
+import { handleTrustRequest,clearTrustAdminCookie } from './trust-routes.mjs';
+export { TrustInbox } from './trust-store.mjs';
 const APP_PATH='/kapli';
 const COOKIE='__Host-rozcestnik_session';
 const SESSION_SECONDS=7*24*60*60;
@@ -71,7 +73,12 @@ export default {
   }
   if(path==='/__auth/logout'&&method==='POST'){
    if(request.headers.get('Origin')!==url.origin)return new Response('Forbidden',{status:403,headers:noStore});
-   return redirect(APP_PATH+'/__auth/login',`${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
+   const response=redirect(APP_PATH+'/__auth/login',`${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
+   response.headers.append('Set-Cookie',clearTrustAdminCookie());return response;
+  }
+  if(path.startsWith('/api/schranka/')){
+   if(!await hasSession(request,env))return Response.json({error:'Přihlášení do rozcestníku vypršelo. Přihlaste se prosím znovu.'},{status:401,headers:noStore});
+   return await handleTrustRequest(request,env);
   }
   if(method!=='GET'&&method!=='HEAD')return new Response('Method not allowed',{status:405,headers:{...noStore,Allow:'GET, HEAD'}});
   if(!await hasSession(request,env)){

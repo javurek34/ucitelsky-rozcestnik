@@ -1,3 +1,7 @@
 # Local preview only. Do not commit real passwords or secrets.
 SITE_PASSWORD="REPLACE_WITH_AT_LEAST_12_CHARACTERS"
 SESSION_SECRET="REPLACE_WITH_A_RANDOM_SECRET_AT_LEAST_32_CHARACTERS"
+
+# Separate inbox access, only for school leadership and designated counselling staff.
+# At least 16 characters, different from SITE_PASSWORD.
+TRUST_ADMIN_PASSWORD="REPLACE_WITH_A_DIFFERENT_ADMIN_PASSWORD"

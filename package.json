@@ -6,7 +6,10 @@
     "dev:protected": "wrangler dev --ip 127.0.0.1",
     "deploy": "wrangler deploy",
     "setup:password": "node scripts/setup-password.mjs",
-    "test:auth": "node --test tests/auth.test.mjs"
+    "test:auth": "node --test tests/auth.test.mjs",
+    "test:trust": "node --test tests/trust-inbox.test.mjs"
   },
-  "devDependencies": { "wrangler": "4.162.0" }
+  "devDependencies": {
+    "wrangler": "4.162.0"
+  }
 }

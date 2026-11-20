@@ -1,5 +1,6 @@
 const $=s=>document.querySelector(s);
 const base=[
+{id:'schranka-duvery',title:'Schránka důvěry',icon:'heart',url:null,content:'schranka-duvery'},
 {id:'hodnoty',title:'Hodnoty školy',icon:'heart',url:null,content:'hodnoty'},
 {id:'uraz',title:'Úrazy',icon:'medical',url:null,content:'uraz'},
 {id:'dohledy',title:'Dohledy',icon:'eye',url:null,content:'dohledy'},
@@ -19,7 +20,7 @@ const cardColors=['#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#
 const brandLogos={'kodex-ai':'generative.png',akce:'vylet.png','ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
 const folderGroups=[
- {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['aktualne','hodnoty','uraz','dohledy']},
+ {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['aktualne','hodnoty','uraz','dohledy','schranka-duvery']},
  {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['agenda-ucitele','akce','ruzne','formulare']},
  {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ipady','gemini','canva']}
 ];
@@ -53,7 +54,7 @@ function render(){
   group.ids.forEach((id,position)=>{
    const item=base.find(item=>item.id===id),index=base.indexOf(item);
    const folder=document.createElement('article');folder.className='link-card folder-entry'+(item.content?'':' pending');folder.dataset.cardId=item.id;
-   folder.style.setProperty('--card-color',cardColors[index]);folder.style.setProperty('--folder-order',position);
+   folder.style.setProperty('--card-color',cardColors[index%cardColors.length]);folder.style.setProperty('--folder-order',position);
    const button=document.createElement('button');button.type='button';button.className='card-main folder-button';button.setAttribute('aria-haspopup','dialog');button.setAttribute('aria-label',item.title+(item.content?'':' – připravujeme'));button.onclick=()=>cardPages.open(item,folder);
    const visual=document.createElement('span');visual.className='card-visual folder-symbol';visual.setAttribute('aria-hidden','true');
    if(brandLogos[id]){const img=document.createElement('img');img.src='assets/logos/'+brandLogos[id];img.alt='';img.width=32;img.height=32;visual.append(img);}else visual.append(icon(item.icon));
@@ -78,6 +79,7 @@ $('#close-uraz').onclick=$('#uraz-ok').onclick=cardPages.requestClose;
 $('#close-umimeto').onclick=$('#umimeto-ok').onclick=cardPages.requestClose;
 $('#close-canva').onclick=$('#canva-ok').onclick=cardPages.requestClose;
 $('#close-gemini').onclick=$('#gemini-ok').onclick=cardPages.requestClose;
+$('#close-schranka-duvery').onclick=$('#schranka-duvery-ok').onclick=cardPages.requestClose;
 $('#close-kodex-ai').onclick=$('#kodex-ai-ok').onclick=cardPages.requestClose;
 document.querySelectorAll('[data-umime-jump]').forEach(button=>button.addEventListener('click',()=>{const target=document.getElementById(button.dataset.umimeJump);target.querySelector('h3').focus({preventScroll:true});target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});}));
 $('.brand').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});

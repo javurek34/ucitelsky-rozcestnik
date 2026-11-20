@@ -1,0 +1,100 @@
+/* Calm teacher inbox, sharing the hub's navy, porcelain and continuous corners. */
+#schranka-duvery-dialog{--trust-ink:var(--text);--trust-muted:var(--muted);--trust-fill:#ffffffb8;--trust-line:#20285a24;--trust-tint:#091f5b08;--trust-radius:32px}
+:root[data-theme=dark] #schranka-duvery-dialog{--trust-fill:#0b1215ed;--trust-line:#ffffff24;--trust-tint:#4b9cd310}
+#schranka-duvery-dialog .content-body.trust-body{display:block;padding-top:24px;overflow:visible}
+#schranka-duvery-dialog .trust-body section{margin:0}
+#schranka-duvery-dialog .trust-intro{max-width:900px;margin-bottom:28px;padding:0}
+#schranka-duvery-dialog .trust-eyebrow{display:block;font-size:12px;line-height:1.5;letter-spacing:.1em;font-weight:700;color:var(--trust-muted);margin-bottom:12px}
+#schranka-duvery-dialog .trust-intro>h3{font-size:clamp(28px,4vw,40px);line-height:1.2;letter-spacing:-.03em;color:var(--trust-ink);margin:0 0 16px;font-weight:700}
+#schranka-duvery-dialog .trust-intro>p{font-size:18px;line-height:1.65;margin:0 0 20px}
+#schranka-duvery-dialog .trust-readers{display:flex;align-items:flex-start;gap:12px;color:var(--trust-muted);font-size:14px!important;line-height:1.6!important}
+#schranka-duvery-dialog .trust-readers svg{width:24px;height:24px;flex:0 0 24px;fill:none;stroke:currentColor;stroke-width:1.6}
+#schranka-duvery-dialog .trust-tabs{display:flex;gap:8px;padding:6px;max-width:560px;margin:0 0 24px;border:1px solid var(--trust-line);border-radius:16px;background:var(--trust-tint)}
+#schranka-duvery-dialog .trust-tabs button{flex:1;min-height:48px;padding:12px 16px;border-radius:12px;font:inherit;font-size:15px;font-weight:700;color:var(--trust-ink);background:transparent;transition:background .2s ease,color .2s ease;cursor:pointer}
+#schranka-duvery-dialog .trust-tabs button[aria-selected=true]{background:#091f5b;color:#f8f7f4;box-shadow:0 2px 4px #091f5b20}
+#schranka-duvery-dialog .trust-form{display:grid;gap:20px}
+#schranka-duvery-dialog .trust-section{min-width:0;padding:28px;border:1px solid var(--trust-line);border-radius:var(--trust-radius);background:linear-gradient(135deg,#ffffff24,transparent),var(--trust-fill);box-shadow:0 3px 8px #0b12150c;margin:0}
+#schranka-duvery-dialog .trust-section>h3,#schranka-duvery-dialog .trust-section>legend{color:var(--trust-ink);font-size:21px;line-height:1.4;letter-spacing:-.02em;font-weight:700;margin:0 0 20px}
+#schranka-duvery-dialog fieldset.trust-section{padding-top:20px}
+#schranka-duvery-dialog .trust-section>legend{padding:0 8px;margin-left:-8px;margin-bottom:0;max-width:100%}
+#schranka-duvery-dialog .trust-step{font-size:12px;font-weight:700;letter-spacing:.05em;color:#4b9cd3;vertical-align:middle;margin-right:8px}
+#schranka-duvery-dialog .trust-kind-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#schranka-duvery-dialog .trust-choice{display:block;position:relative;min-width:0;cursor:pointer}
+#schranka-duvery-dialog .trust-choice>input{position:absolute;top:20px;right:16px;width:18px;height:18px;accent-color:#091f5b;z-index:1}
+#schranka-duvery-dialog .trust-choice>span{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px 40px 20px 20px;border:1px solid var(--trust-line);border-radius:20px;background:transparent}
+#schranka-duvery-dialog .trust-choice:has(input:checked)>span{border-color:#4b9cd3;background:var(--trust-tint);box-shadow:inset 0 0 0 1px #4b9cd3}
+#schranka-duvery-dialog .trust-choice svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5;margin-bottom:8px}
+#schranka-duvery-dialog .trust-choice strong{font-size:17px;line-height:1.4;font-weight:700}
+#schranka-duvery-dialog .trust-choice small{font-size:14px;line-height:1.5;color:var(--trust-muted)}
+#schranka-duvery-dialog .trust-field{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:15px;font-weight:600;margin-bottom:20px}
+#schranka-duvery-dialog .trust-field>span small,#schranka-duvery-dialog h3>small{color:var(--trust-muted);font-size:13px;font-weight:400;margin-left:4px}
+#schranka-duvery-dialog :is(input:not([type=radio]):not([type=checkbox]),textarea,select){display:block;width:100%;min-width:0;min-height:48px;padding:12px 16px;border:1px solid var(--trust-line);border-radius:12px;font:inherit;font-size:16px;font-weight:400;line-height:1.6;background:var(--surface);color:var(--trust-ink)}
+#schranka-duvery-dialog textarea{resize:vertical;min-height:160px}
+#schranka-duvery-dialog :is(input,textarea)::placeholder{color:var(--trust-muted);opacity:.85}
+#schranka-duvery-dialog :is(input,textarea,select,button):focus-visible{outline:3px solid #4b9cd3;outline-offset:4px}
+#schranka-duvery-dialog .trust-field-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-top:-8px;color:var(--trust-muted);font-size:13px;line-height:1.6}
+#trust-message-count{flex-shrink:0;font-variant-numeric:tabular-nums}
+#schranka-duvery-dialog .trust-support-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+#schranka-duvery-dialog .trust-option{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:12px 0;min-height:48px}
+#schranka-duvery-dialog .trust-option input{flex:0 0 18px;width:18px;height:18px;margin:4px 0 0;accent-color:#091f5b}
+#schranka-duvery-dialog .trust-option span{display:grid;gap:4px}
+#schranka-duvery-dialog .trust-option strong{font-size:16px;line-height:1.5}
+#schranka-duvery-dialog .trust-option small{font-size:14px;line-height:1.5;color:var(--trust-muted)}
+#schranka-duvery-dialog :is(.trust-muted,.trust-fine){color:var(--trust-muted);line-height:1.6;margin:0 0 12px}
+#schranka-duvery-dialog .trust-muted{font-size:15px}
+#schranka-duvery-dialog .trust-fine{font-size:13px;margin:12px 0 0}
+#schranka-duvery-dialog .trust-submit-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:4px 0}
+#schranka-duvery-dialog .trust-submit-row>p{max-width:60ch;margin:0;color:var(--trust-muted);font-size:14px;line-height:1.6}
+#schranka-duvery-dialog .trust-submit-row>.primary{flex-shrink:0;min-width:200px}
+#schranka-duvery-dialog button:disabled{opacity:.55;cursor:wait}
+#schranka-duvery-dialog .trust-service-status{padding:16px 20px;border:1px solid var(--trust-line);border-left:3px solid #4b9cd3;border-radius:12px;background:var(--trust-tint);margin:0 0 24px;font-size:15px;line-height:1.6}
+#schranka-duvery-dialog .trust-form-error{color:#bc162c;font-size:15px;line-height:1.6;margin:16px 0 0;white-space:pre-line}
+:root[data-theme=dark] #schranka-duvery-dialog .trust-form-error{color:#ff9caa}
+#schranka-duvery-dialog .trust-access-code{display:block;padding:24px;margin:24px 0;border:1px solid #4b9cd366;border-radius:16px;background:var(--trust-tint);font-size:clamp(16px,2.5vw,24px);line-height:1.6;letter-spacing:.03em;overflow-wrap:anywhere;user-select:all;color:var(--trust-ink)}
+#schranka-duvery-dialog .trust-actions{display:flex;gap:12px;flex-wrap:wrap}
+#schranka-duvery-dialog .trust-lookup-form{display:flex;align-items:flex-end;gap:16px}
+#schranka-duvery-dialog .trust-lookup-form>.trust-field{flex:1;margin-bottom:0}
+#schranka-duvery-dialog .trust-lookup-form>button{flex-shrink:0}
+#trust-conversation{display:grid;gap:20px}
+#schranka-duvery-dialog .trust-staff-entry{display:flex;justify-content:flex-end;margin-top:24px;border-top:1px solid var(--trust-line);padding:16px 0}
+#schranka-duvery-dialog .trust-staff-entry button{min-height:44px;font:inherit;font-size:13px;color:var(--trust-muted);text-decoration:underline;text-underline-offset:4px;background:transparent;cursor:pointer}
+#schranka-duvery-dialog .trust-thread-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+#schranka-duvery-dialog .trust-thread-header .trust-eyebrow{margin:0}
+#schranka-duvery-dialog .trust-status{display:inline-flex;align-items:center;padding:4px 12px;border:1px solid var(--trust-line);border-radius:8px;line-height:1.5;font-size:12px;font-weight:700;white-space:nowrap;background:var(--trust-tint);color:var(--trust-ink)}
+#schranka-duvery-dialog .trust-status-new{border-color:#4b9cd380;color:#2672aa}
+#schranka-duvery-dialog .trust-status-resolved{border-color:#28846766;color:#288467}
+:root[data-theme=dark] #schranka-duvery-dialog .trust-status-new{color:#8ac7ee}
+:root[data-theme=dark] #schranka-duvery-dialog .trust-status-resolved{color:#81cfad}
+#schranka-duvery-dialog .trust-facts{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;margin:20px 0 24px;padding:16px 0;border-block:1px solid var(--trust-line)}
+#schranka-duvery-dialog .trust-facts dt{font-size:12px;color:var(--trust-muted);margin-top:8px}
+#schranka-duvery-dialog .trust-facts dt:first-child{margin-top:0}
+#schranka-duvery-dialog .trust-facts dd{font-size:14px;line-height:1.6;margin:0;overflow-wrap:anywhere}
+#schranka-duvery-dialog .trust-messages{display:grid;gap:16px;margin:24px 0}
+#schranka-duvery-dialog .trust-message{padding:20px;border:1px solid var(--trust-line);border-radius:20px;background:var(--trust-tint)}
+#schranka-duvery-dialog .trust-message-team{border-left:3px solid #4b9cd3}
+#schranka-duvery-dialog .trust-message-meta{display:flex;align-items:baseline;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px;color:var(--trust-muted);margin-bottom:12px}
+#schranka-duvery-dialog .trust-message-meta strong{color:var(--trust-ink)}
+#schranka-duvery-dialog .trust-message-text{font-size:16px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+#schranka-duvery-dialog .trust-reply-form{display:grid;gap:12px}
+#schranka-duvery-dialog .trust-reply-form .trust-field{margin:0}
+#schranka-duvery-dialog .trust-reply-form>button{justify-self:start}
+#schranka-duvery-dialog .trust-admin-toolbar{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+#schranka-duvery-dialog .trust-admin-toolbar>.trust-field{flex:1;margin:0}
+#schranka-duvery-dialog .trust-admin-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);align-items:start;gap:20px}
+#schranka-duvery-dialog .trust-admin-grid>.trust-section{padding:24px}
+#schranka-duvery-dialog .trust-case-item{display:grid;gap:8px;text-align:left;width:100%;padding:16px;border:1px solid var(--trust-line);border-radius:16px;background:var(--trust-tint);color:var(--trust-ink);font:inherit;margin-bottom:12px;cursor:pointer;overflow-wrap:anywhere}
+#schranka-duvery-dialog .trust-case-item[aria-pressed=true]{border-color:#4b9cd3;box-shadow:inset 0 0 0 1px #4b9cd3}
+#schranka-duvery-dialog .trust-case-item>.trust-status{justify-self:start}
+#schranka-duvery-dialog .trust-case-item>small{font-size:12px;line-height:1.5;color:var(--trust-muted)}
+#schranka-duvery-dialog .trust-case-item>.trust-new-message{color:#4b9cd3}
+#schranka-duvery-dialog .trust-status-controls{display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px}
+#schranka-duvery-dialog .trust-status-controls label{flex:1;font-size:13px;display:grid;gap:8px}
+#schranka-duvery-dialog [hidden]{display:none!important}
+@supports (corner-shape:squircle){#schranka-duvery-dialog :is(.trust-section,.trust-message){corner-shape:squircle;border-radius:32px}#schranka-duvery-dialog .trust-choice>span{corner-shape:squircle;border-radius:24px}}
+@media(max-width:899px){#schranka-duvery-dialog .trust-kind-options{grid-template-columns:minmax(0,1fr)}#schranka-duvery-dialog .trust-choice>span{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 16px;padding:16px 44px 16px 16px}#schranka-duvery-dialog .trust-choice svg{grid-row:1/span 2;margin:0}#schranka-duvery-dialog .trust-choice small{grid-column:2}#schranka-duvery-dialog .trust-admin-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:559px){#schranka-duvery-dialog .content-body.trust-body{padding-top:16px}#schranka-duvery-dialog .trust-intro>p{font-size:16px}#schranka-duvery-dialog .trust-section{padding:20px;border-radius:24px}#schranka-duvery-dialog .trust-section>h3,#schranka-duvery-dialog .trust-section>legend{font-size:19px}#schranka-duvery-dialog .trust-support-grid{grid-template-columns:minmax(0,1fr);gap:20px}#schranka-duvery-dialog .trust-field-footer{flex-wrap:wrap;gap:8px}#schranka-duvery-dialog .trust-submit-row,#schranka-duvery-dialog .trust-lookup-form{flex-direction:column;align-items:stretch;gap:16px}#schranka-duvery-dialog .trust-submit-row>.primary{width:100%;min-width:0}#schranka-duvery-dialog :is(.trust-actions,.trust-admin-toolbar){display:grid;grid-template-columns:minmax(0,1fr)}#schranka-duvery-dialog .trust-actions>button,#schranka-duvery-dialog .trust-admin-toolbar>button,#schranka-duvery-dialog .trust-reply-form>button{width:100%;justify-self:stretch}#schranka-duvery-dialog .trust-admin-grid>.trust-section{padding:20px}#schranka-duvery-dialog .trust-message{padding:16px}#schranka-duvery-dialog .trust-access-code{padding:16px;font-size:16px;letter-spacing:0}}
+@media(prefers-reduced-motion:reduce){#schranka-duvery-dialog .trust-tabs button{transition:none}}
+#schranka-duvery-dialog .page-surface::before{display:none}
+#schranka-duvery-dialog .trust-step,#schranka-duvery-dialog .trust-case-item>.trust-new-message{color:#2672aa}
+:root[data-theme=dark] #schranka-duvery-dialog .trust-step,:root[data-theme=dark] #schranka-duvery-dialog .trust-case-item>.trust-new-message{color:#8ac7ee}
+#schranka-duvery-dialog :is(input:not([type=radio]):not([type=checkbox]),textarea,select){border-color:#8994ad}
