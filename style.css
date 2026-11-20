@@ -1614,3 +1614,11 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 .workspace footer .trust-footer-link{display:inline-block;padding:16px 0;margin:-16px 0;color:inherit;text-decoration:none}
 .workspace footer .trust-footer-link:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* Avoid the clipped viewport edge and rubber-band gap below iOS modal pages. */
+:root.card-page-open,:root.card-page-open body{overscroll-behavior-y:none}
+dialog.content-dialog.card-subpage,dialog#pending-dialog.card-subpage{height:var(--reading-viewport-height,100dvh);max-height:var(--reading-viewport-height,100dvh);min-height:0;background:var(--bg);box-shadow:none;overscroll-behavior-y:none;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.card-subpage .page-surface{bottom:auto;height:var(--reading-viewport-height,100dvh)}
+.card-subpage .page-shell{min-height:var(--reading-viewport-height,100dvh);padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
+.page-navigation-menu{max-height:calc(var(--reading-viewport-height,100dvh) * .7)}
+@media(max-width:559px){.card-subpage .page-shell{padding-bottom:max(20px,env(safe-area-inset-bottom,0px))}}

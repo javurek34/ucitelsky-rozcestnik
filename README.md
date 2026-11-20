@@ -92,3 +92,10 @@ Anonymní podněty, rady a pomoc s konflikty jsou dostupné přímo z rozcestní
 Pro spuštění nastavte oddělené heslo pověřeného týmu podle
 [docs/SCHRANKA-DUVERY.md](docs/SCHRANKA-DUVERY.md). Podněty se ukládají
 do soukromého SQLite Durable Object, nikdy do souborů webu nebo Gitu.
+
+## Mobilní výška podstránek
+
+`viewport.js` udržuje `--reading-viewport-height` podle `visualViewport.height`,
+aby celostránkový dialog sledoval schování lišt Safari a změnu dostupné výšky.
+Při pinch zoomu se rozložení nepřepočítává. Scrolluje pouze vnější dialog,
+který nemá vlastní stín ani pružné odskočení; čtecí obsah nemá vnořený scroller.
