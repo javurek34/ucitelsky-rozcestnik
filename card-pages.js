@@ -157,6 +157,10 @@ const cardPages=(()=>{
    menuToggle.addEventListener('click',event=>{event.preventDefault();setMenuOpen(!menuWanted);});
    dialog.addEventListener('close',()=>{++menuRevision;menuAnimation?.cancel();menuAnimation=null;menuWanted=false;navigation.open=false;menu.style.overflow='';menuToggle.setAttribute('aria-expanded','false');});
    const home=document.createElement('a');home.href='./';home.className='page-navigation-home';home.textContent='Úvodní rozcestník';home.addEventListener('click',async event=>{event.preventDefault();await setMenuOpen(false);if(dialog.open)requestClose();});menu.append(home);
+   const navigateTo=id=>async event=>{event.preventDefault();await setMenuOpen(false);if(!dialog.open)return;if(active?.item.id===id){menuToggle.focus();return;}
+    const state=history.state?.cardPage?{...history.state,cardPage:id}:history.state;
+    history.replaceState(state,'',location.pathname+location.search+'#'+id);syncRoute();
+   };
    groups.forEach(group=>{
     const column=document.createElement('div');column.className='page-navigation-group';
     const homeGroup=[...document.querySelectorAll('.folder-stack')].find(section=>section.querySelector('h2')?.textContent===group.title);
@@ -170,12 +174,17 @@ const cardPages=(()=>{
      if(originalIcon){const icon=originalIcon.cloneNode(true);icon.className='page-navigation-icon';link.append(icon);if(id==='akce')icon.classList.add('navigation-trip-icon');}
      const text=document.createElement('span');text.className='page-navigation-label';text.textContent=item.title;link.append(text);
      const arrow=document.createElement('span');arrow.className='page-navigation-arrow';arrow.textContent='→';arrow.setAttribute('aria-hidden','true');link.append(arrow);
-     link.addEventListener('click',async event=>{event.preventDefault();await setMenuOpen(false);if(!dialog.open)return;if(active?.item.id===id){menuToggle.focus();return;}
-      const state=history.state?.cardPage?{...history.state,cardPage:id}:history.state;
-      history.replaceState(state,'',location.pathname+location.search+'#'+id);syncRoute();
-     });li.append(link);links.append(li);
+     link.addEventListener('click',navigateTo(id));li.append(link);links.append(li);
     });column.append(links);menu.append(column);
    });
+   const trustItem=list.find(item=>item.id==='schranka-duvery');
+   if(trustItem){
+    const row=document.createElement('div');row.className='page-navigation-standalone-row';
+    const link=document.createElement('a');link.href='#schranka-duvery';link.className='page-navigation-standalone';
+    const mark=document.querySelector('[data-card-id="schranka-duvery"] .folder-symbol')?.cloneNode(true);if(mark){mark.className='page-navigation-icon';link.append(mark);}
+    const label=document.createElement('span');label.className='page-navigation-label';label.textContent=trustItem.title;
+    const arrow=document.createElement('span');arrow.className='page-navigation-arrow';arrow.textContent='→';arrow.setAttribute('aria-hidden','true');link.append(label,arrow);link.addEventListener('click',navigateTo(trustItem.id));row.append(link);menu.append(row);
+   }
    const menuContent=document.createElement('div');menuContent.className='page-navigation-content';menuContent.append(...menu.childNodes);menu.append(menuContent);
    navigation.append(menuToggle,menu);shell.insertBefore(navigation,header);
    navigation.addEventListener('toggle',()=>{if(navigation.open){menu.querySelectorAll('a').forEach(link=>{if(link.hash&&link.hash===location.hash)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}});

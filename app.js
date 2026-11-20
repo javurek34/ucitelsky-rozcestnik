@@ -1,6 +1,6 @@
 const $=s=>document.querySelector(s);
 const base=[
-{id:'schranka-duvery',title:'Schránka důvěry',icon:'heart',url:null,content:'schranka-duvery'},
+{id:'schranka-duvery',title:'Schránka důvěry pro učitele',icon:'heart',url:null,content:'schranka-duvery'},
 {id:'hodnoty',title:'Hodnoty školy',icon:'heart',url:null,content:'hodnoty'},
 {id:'uraz',title:'Úrazy',icon:'medical',url:null,content:'uraz'},
 {id:'dohledy',title:'Dohledy',icon:'eye',url:null,content:'dohledy'},
@@ -17,10 +17,10 @@ const base=[
 ];
 
 const cardColors=['#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4','#263BAA','#F8F7F4'];
-const brandLogos={'kodex-ai':'generative.png',akce:'vylet.png','ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
+const brandLogos={'schranka-duvery':'trezor.png','kodex-ai':'generative.png',akce:'vylet.png','ai-detem':'ai-detem.png',gemini:'gemini-symbol.svg',canva:'canva-circle.svg',umimeto:'umimeto.svg'};
 function icon(name){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');const u=document.createElementNS(s.namespaceURI,'use');u.setAttribute('href','#i-'+name);s.append(u);s.setAttribute('aria-hidden','true');return s;}
 const folderGroups=[
- {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['aktualne','hodnoty','uraz','dohledy','schranka-duvery']},
+ {title:'Život školy',note:'Lidé, pravidla a každodenní provoz',ids:['aktualne','hodnoty','uraz','dohledy']},
  {title:'Po ruce',note:'Podklady, přípravy a užitečné odkazy',ids:['agenda-ucitele','akce','ruzne','formulare']},
  {title:'Digitální sborovna',note:'Inspirace a nástroje pro výuku',ids:['kodex-ai','ipady','gemini','canva']}
 ];
@@ -43,15 +43,7 @@ const homeOutlineObserver=new ResizeObserver(entries=>{
   });path.setAttribute('d',d+' Z');
  });
 });
-function render(){
- homeOutlineObserver.disconnect();
- const root=$('#results');root.replaceChildren();
- folderGroups.forEach(group=>{
-  const stack=document.createElement('section');stack.className='folder-stack';if(group.title==='Život školy')stack.classList.add('group-zivot-skoly');if(group.title==='Po ruce')stack.classList.add('group-po-ruce');if(group.title==='Digitální sborovna')stack.classList.add('group-digitalni');
-  const heading=document.createElement('h2');heading.className='folder-group-title';heading.textContent=group.title;
-  const note=document.createElement('p');note.className='folder-group-note';note.textContent=group.note;
-  const files=document.createElement('div');files.className='folder-files';stack.append(heading,note,files);root.append(stack);
-  group.ids.forEach((id,position)=>{
+function makeFolderEntry(id,position=0){
    const item=base.find(item=>item.id===id),index=base.indexOf(item);
    const folder=document.createElement('article');folder.className='link-card folder-entry'+(item.content?'':' pending');folder.dataset.cardId=item.id;
    folder.style.setProperty('--card-color',cardColors[index%cardColors.length]);folder.style.setProperty('--folder-order',position);
@@ -62,9 +54,21 @@ function render(){
    const arrow=document.createElement('span');arrow.className='folder-arrow';arrow.setAttribute('aria-hidden','true');arrow.append(icon('arrow'));
    const outline=document.createElementNS('http://www.w3.org/2000/svg','svg');outline.classList.add('folder-hover-outline');outline.setAttribute('aria-hidden','true');outline.setAttribute('focusable','false');
    const outlinePath=document.createElementNS('http://www.w3.org/2000/svg','path');outlinePath.setAttribute('pathLength','1');outline.append(outlinePath);
-   button.append(visual,title,arrow,outline);folder.append(button);files.append(folder);homeOutlineObserver.observe(button);
-  });
+   button.append(visual,title,arrow,outline);folder.append(button);homeOutlineObserver.observe(button);return folder;
+}
+function render(){
+ homeOutlineObserver.disconnect();
+ $('#trust-home-entry')?.remove();
+ const root=$('#results');root.replaceChildren();
+ folderGroups.forEach(group=>{
+  const stack=document.createElement('section');stack.className='folder-stack';if(group.title==='Život školy')stack.classList.add('group-zivot-skoly');if(group.title==='Po ruce')stack.classList.add('group-po-ruce');if(group.title==='Digitální sborovna')stack.classList.add('group-digitalni');
+  const heading=document.createElement('h2');heading.className='folder-group-title';heading.textContent=group.title;
+  const note=document.createElement('p');note.className='folder-group-note';note.textContent=group.note;
+  const files=document.createElement('div');files.className='folder-files';stack.append(heading,note,files);root.append(stack);
+  group.ids.forEach((id,position)=>files.append(makeFolderEntry(id,position)));
  });
+ const trust=document.createElement('div');trust.id='trust-home-entry';trust.className='home-trust-entry';
+ const divider=document.createElement('hr');divider.className='home-trust-divider';trust.append(divider,makeFolderEntry('schranka-duvery'));root.after(trust);
 }
 $('#close-agenda-ucitele').onclick=$('#agenda-ucitele-ok').onclick=cardPages.requestClose;
 $('#close-aktualne').onclick=$('#aktualne-ok').onclick=cardPages.requestClose;

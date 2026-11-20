@@ -1593,3 +1593,18 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root #kodex-ai-dialog .ai-intro p{max-width:none;width:100%}
 
 #aktualne-dialog :is(.upcoming-events,.upcoming-events>li,.events-empty)[hidden]{display:none!important}
+
+/* Teacher trust inbox is independent of the three directory categories. */
+.workspace .home-trust-entry{--home-card-bg:#0B1215;--home-card-text:#F8F7F4;--home-card-shadow:#0b12152e;--home-card-gradient:linear-gradient(135deg,#26343B 0%,#142127 48%,#0B1215 100%);width:100%;margin:32px 0 0}
+.workspace .home-trust-divider{display:block;width:100%;height:0;margin:0 0 24px;border:0;border-top:1px solid var(--line)}
+:root .workspace .home-trust-entry .folder-button::before{background:var(--home-card-gradient);border-color:#ffffff26;box-shadow:0 3px 6px var(--home-card-shadow),inset 0 1px 0 #ffffff18}
+:root .workspace .home-trust-entry :is(.folder-button,.folder-title,.folder-arrow){color:#F8F7F4}
+.workspace .home-trust-entry .folder-symbol img,.page-navigation-standalone .page-navigation-icon img{filter:brightness(0) invert(1)}
+#schranka-duvery-dialog .page-icon img{width:100%;height:100%;object-fit:contain}
+:root[data-theme=dark] #schranka-duvery-dialog .page-icon img{filter:brightness(0) invert(1)}
+.page-navigation-standalone-row{grid-column:1 / -1;border-top:1px solid var(--line);padding-top:20px}
+:root .page-navigation-menu .page-navigation-standalone{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:12px 16px;border:1px solid #ffffff26;border-radius:32px;background:linear-gradient(135deg,#26343B,#0B1215);color:#F8F7F4;box-shadow:0 3px 6px #0b12152e;font-weight:600}
+:root .page-navigation-menu .page-navigation-standalone:hover{background:linear-gradient(135deg,#2a3a42,#0B1215);color:#F8F7F4}
+:root .page-navigation-menu .page-navigation-standalone[aria-current=page]{outline:2px solid var(--blue);outline-offset:2px}
+@supports (corner-shape:squircle){.page-navigation-standalone{corner-shape:squircle}}
+@media(max-width:719px){.workspace .home-trust-entry{margin-top:28px}.workspace .home-trust-divider{margin-bottom:20px}}

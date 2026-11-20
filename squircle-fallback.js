@@ -25,7 +25,7 @@ function prepareNestedSquircleCorners(){
 function prepareSquircleFallback(){
  prepareNestedSquircleCorners();
  if(CSS.supports('corner-shape','squircle'))return;
- const selector='.folder-button,.card-subpage .reading-box,.notes-rule-card,.administrator-topic-card,.page-navigation-menu,.page-navigation-group a,.squircle-media,.trust-section,#kodex-ai-dialog .ai-intro,#kodex-ai-dialog .ai-accordion';
+ const selector='.folder-button,.card-subpage .reading-box,.notes-rule-card,.administrator-topic-card,.page-navigation-menu,.page-navigation-group a,.page-navigation-standalone,.squircle-media,.trust-section,#kodex-ai-dialog .ai-intro,#kodex-ai-dialog .ai-accordion';
  const nodes=[...document.querySelectorAll(selector)];
  const home=element=>element.matches('.folder-button');
  const media=element=>element.classList.contains('squircle-media');
