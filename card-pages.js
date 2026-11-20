@@ -56,12 +56,16 @@ const cardPages=(()=>{
    if(art){image.src=art.src;image.width=art.width;image.height=art.height;}else image.removeAttribute('src');
   }
   const color=card.style.getPropertyValue('--card-color').trim();
-  const ctx={dialog,card,item,color,shell:dialog.querySelector('.page-shell'),surface:dialog.querySelector('.page-surface'),originalVisibility:card.style.visibility,animations:[],skipFocus:false};
+  const ctx={dialog,card,item,color,shell:dialog.querySelector('.page-shell'),surface:dialog.querySelector('.page-surface'),originalVisibility:card.style.visibility,animations:[],skipFocus:false,documentPage:matchMedia('(max-width:719px),(hover:none) and (pointer:coarse)').matches,homeScroll:{x:window.scrollX,y:window.scrollY},returnFocus:document.activeElement};
   active=ctx;dialog.style.setProperty('--page-accent',color);
   ctx.surface.style.setProperty('--page-art','url("'+pageArtwork[item.id]+'")');
   const holder=dialog.querySelector('.page-icon');holder.replaceChildren(card.querySelector('.card-visual').cloneNode(true));
   ctx.shell.inert=true;ctx.shell.style.opacity='0';ctx.surface.style.opacity='0';
-  document.documentElement.classList.add('card-page-open');dialog.showModal();
+  document.documentElement.classList.add('card-page-open');
+  if(ctx.documentPage){
+   // Safari's main document scroller follows its collapsing browser chrome.
+   document.documentElement.classList.add('document-reading-page');dialog.show();window.scrollTo({top:0,left:0,behavior:'instant'});
+  }else dialog.showModal();
   dialog.scrollTop=0;ctx.shell.scrollTop=0;
   if(push)history.pushState({...history.state,cardPage:item.id},'',location.pathname+location.search+'#'+item.id);
   ctx.opening=enter(ctx);
@@ -107,8 +111,12 @@ const cardPages=(()=>{
     ctx.shell.style.opacity='0';ctx.surface.style.opacity='0';
     clearAnimations(ctx);if(ctx.dialog.open)ctx.dialog.close();
     ctx.card.style.visibility=ctx.originalVisibility;cover?.remove();shield?.remove();
-    document.documentElement.classList.remove('card-page-open','card-returning');active=null;
-    ctx.card.querySelector('.card-main').focus({preventScroll:true});
+    document.documentElement.classList.remove('card-page-open','card-returning','document-reading-page');active=null;
+    if(ctx.documentPage)window.scrollTo({top:ctx.homeScroll.y,left:ctx.homeScroll.x,behavior:'instant'});
+    const original=ctx.returnFocus!==document.body&&ctx.returnFocus!==document.documentElement&&ctx.returnFocus?.isConnected&&ctx.returnFocus.getClientRects().length?ctx.returnFocus:null;
+    const cardButton=ctx.card.querySelector('.card-main');
+    const target=original||(cardButton.getClientRects().length?cardButton:document.querySelector('.trust-footer-link'));
+    target?.focus({preventScroll:true});
    }
   })();return ctx.closing;
  }
@@ -125,6 +133,8 @@ const cardPages=(()=>{
   const card=document.querySelector(`[data-card-id="${item.id}"]`);if(card)open(item,card,false);
  }
  function init(list,groups=[]){
+  // The router restores the originating home position, not the reader's scroll.
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
   items=list;
   for(const dialog of document.querySelectorAll('dialog')){
    dialog.classList.add('card-subpage');
@@ -194,6 +204,9 @@ const cardPages=(()=>{
    heading.append(icon,title);header.prepend(heading);
    dialog.addEventListener('cancel',event=>{event.preventDefault();if(navigation.open){setMenuOpen(false).then(()=>{if(dialog.open)menuToggle.focus();});}else requestClose();});
   }
+  document.addEventListener('keydown',event=>{
+   if(event.key==='Escape'&&active?.documentPage&&!event.defaultPrevented){event.preventDefault();active.dialog.dispatchEvent(new Event('cancel',{cancelable:true}));}
+  });
   addEventListener('popstate',syncRoute);addEventListener('hashchange',syncRoute);syncRoute();
  }
  return {open,requestClose,init};

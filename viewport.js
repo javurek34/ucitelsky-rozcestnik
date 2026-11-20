@@ -1,5 +1,5 @@
-/* Full-screen reading pages follow Safari's visible viewport as toolbars move.
-   Keep one scroll container; do not reflow the page when the user pinch-zooms. */
+/* Desktop dialogs and navigation follow the visible viewport as toolbars move.
+   Mobile reading pages use document scrolling instead. Preserve pinch zoom. */
 (()=>{
  let frame=0,lastHeight=0;
  function update(){

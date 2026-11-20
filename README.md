@@ -95,7 +95,10 @@ do soukromého SQLite Durable Object, nikdy do souborů webu nebo Gitu.
 
 ## Mobilní výška podstránek
 
-`viewport.js` udržuje `--reading-viewport-height` podle `visualViewport.height`,
-aby celostránkový dialog sledoval schování lišt Safari a změnu dostupné výšky.
-Při pinch zoomu se rozložení nepřepočítává. Scrolluje pouze vnější dialog,
-který nemá vlastní stín ani pružné odskočení; čtecí obsah nemá vnořený scroller.
+Na malých nebo dotykových zařízeních se podstránky otevírají přes `dialog.show()`
+a scrolluje hlavní dokument. Rozcestník je během čtení skrytý; modalita ani
+vnitřní scrollbar nevytvářejí u spodní lišty Safari oříznutý okraj. Návrat
+obnovuje původní pozici rozcestníku i fokus. Router používá ruční obnovu scrollu.
+Na počítači zůstává `showModal()` a samostatný celostránkový dialog.
+`viewport.js` udržuje `--reading-viewport-height` pro desktopové dialogy a menu
+podle `visualViewport.height`. Při pinch zoomu se rozložení nepřepočítává.

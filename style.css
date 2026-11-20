@@ -1622,3 +1622,13 @@ dialog.content-dialog.card-subpage,dialog#pending-dialog.card-subpage{height:var
 .card-subpage .page-shell{min-height:var(--reading-viewport-height,100dvh);padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
 .page-navigation-menu{max-height:calc(var(--reading-viewport-height,100dvh) * .7)}
 @media(max-width:559px){.card-subpage .page-shell{padding-bottom:max(20px,env(safe-area-inset-bottom,0px))}}
+
+/* On touch-sized screens the reading page uses Safari's document scroller,
+   rather than a modal scrolling layer with a separately clipped bottom edge. */
+:root.document-reading-page.card-page-open{overflow:visible;scroll-behavior:auto;overscroll-behavior-y:none}
+:root.document-reading-page body{overflow:visible;min-height:100svh;overscroll-behavior-y:none}
+:root.document-reading-page .workspace,:root.document-reading-page .skip{display:none!important}
+:root.document-reading-page dialog.card-subpage[open]{position:relative;inset:auto;display:block;width:100%;max-width:none;height:auto;min-height:100svh;max-height:none;margin:0;overflow:visible;background:var(--bg);box-shadow:none}
+:root.document-reading-page .card-subpage .page-shell{height:auto;min-height:100svh;overflow:visible}
+:root.document-reading-page .card-subpage .page-surface{position:fixed;top:0;bottom:auto;height:100lvh}
+:root.document-reading-page .card-subpage .content-body{overflow:visible;max-height:none}
