@@ -1608,3 +1608,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root .page-navigation-menu .page-navigation-standalone[aria-current=page]{outline:2px solid var(--blue);outline-offset:2px}
 @supports (corner-shape:squircle){.page-navigation-standalone{corner-shape:squircle}}
 @media(max-width:719px){.workspace .home-trust-entry{max-width:calc(470px - 8px);margin-top:28px}.workspace .home-trust-divider{margin-bottom:20px}}
+
+/* Temporarily hide inbox entry points; keep the inbox and stored conversations intact. */
+#trust-home-entry,.page-navigation-standalone-row:has(a[href="#schranka-duvery"]){display:none!important}
