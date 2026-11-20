@@ -1611,3 +1611,6 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Temporarily hide inbox entry points; keep the inbox and stored conversations intact. */
 #trust-home-entry,.page-navigation-standalone-row:has(a[href="#schranka-duvery"]){display:none!important}
+
+.workspace footer .trust-footer-link{display:inline-block;padding:16px 0;margin:-16px 0;color:inherit;text-decoration:none}
+.workspace footer .trust-footer-link:hover{text-decoration:underline;text-underline-offset:3px}
