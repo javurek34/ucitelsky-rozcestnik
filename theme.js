@@ -6,7 +6,7 @@
  function apply(theme){
   document.documentElement.dataset.theme=theme;
   document.documentElement.style.colorScheme=theme;
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#1A1A1D':'#C3C7CC');
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#1A1A1D':'#F0EEE9');
   document.querySelectorAll('[data-theme-choice]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.themeChoice===theme)));
   document.querySelectorAll('[data-theme-toggle]').forEach(button=>button.setAttribute('aria-checked',String(theme==='dark')));
  }
