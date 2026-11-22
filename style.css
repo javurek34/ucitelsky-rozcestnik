@@ -1639,7 +1639,7 @@ dialog.content-dialog.card-subpage,dialog#pending-dialog.card-subpage{height:var
 :root[data-theme=dark] :is(.workspace,.page-navigation-menu) :is(.group-zivot-skoly,.group-po-ruce,.group-digitalni,.home-trust-entry){--home-card-text:#F5F5F7}
 :root[data-theme=dark] :is(.workspace,.page-navigation-menu,.card-subpage) :is(.folder-symbol,.page-navigation-icon,.page-icon,.reading-art)>svg{color:#F5F5F7}
 :root[data-theme=dark] .card-subpage .icon-button{color:#F5F5F7}
-:root[data-theme=dark] :is(.workspace,.page-navigation-menu,.card-subpage) :is(img[src$="agenda-ucitel.png"],img[src$="agenda-trida.png"],img[src$="agenda-konflikt.png"],img[src$="agenda-komunikace.png"],img[src$="tridni-kniha.png"],img[src$="sanony.png"],img[src$="rule.png"],img[src$="doc.png"],img[src$="skolaonline-i.png"],img[src$="generative.png"],img[src$="trezor.png"]){filter:brightness(0) invert(1)}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu,.card-subpage) :is(img[src$="agenda-ucitel.png"],img[src$="agenda-trida.png"],img[src$="agenda-konflikt.png"],img[src$="agenda-komunikace.png"],img[src$="tridni-kniha.png"],img[src$="sanony.png"],img[src$="rule.png"],img[src$="doc.png"],img[src$="skolaonline-i.png"],img[src$="generative.png"],img[src$="trezor.png"],img[src$="vylet.png"]){filter:brightness(0) invert(1)}
 :root[data-theme=dark] #kodex-ai-dialog .ai-accordion{background:linear-gradient(135deg,#17272D,#0B1215);border-color:#ffffff24}
 :root[data-theme=dark] #kodex-ai-dialog :is(.ai-intro,.ai-intro h3,.ai-intro p,.ai-accordion>summary,.ai-accordion-content p,.ai-accordion-content li,.ai-index){color:#F5F5F7}
 :root[data-theme=dark] #kodex-ai-dialog .ai-accordion>summary:hover{background:#ffffff08}
