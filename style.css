@@ -1,6 +1,8 @@
+:root{--on-dark:#F8F7F4}
+:root[data-theme=dark]{--on-dark:#F5F5F7}
 
 :root{--blue:#263BAA;--text:#20285A;--muted:#566880;--bg:#F8F7F4;--surface:#FFFFFF;--line:#dce4ef;--soft:#EAE9E6;--radius:10px;font-family:'greycliff-cf',sans-serif;letter-spacing:-.02em;background:var(--bg);color:var(--text);font-synthesis:none;color-scheme:light}
-:root[data-theme=dark]{--blue:#BAC3FF;--text:#E5EDF9;--muted:#A7B5C9;--bg:#1A1A1D;--surface:#1E2341;--line:#324258;--soft:#223751;color-scheme:dark}
+:root[data-theme=dark]{--blue:#BAC3FF;--text:#F5F5F7;--muted:#A7B5C9;--bg:#1A1A1D;--surface:#1E2341;--line:#324258;--soft:#223751;color-scheme:dark}
 *{box-sizing:border-box}body{margin:0;background:var(--bg)}button{font:inherit;cursor:pointer;color:inherit;border:0;background:none}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.sprite,.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.skip{position:fixed;left:16px;top:-80px;background:var(--text);color:var(--bg);padding:16px;border-radius:var(--radius);z-index:10}.skip:focus{top:12px}
 .workspace{width:100%;max-width:1560px;margin:0 auto;padding:0 40px}.topbar{min-height:100px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:block;width:210px;padding:0;flex-shrink:0}.brand img{display:block;width:100%;height:auto}:root[data-theme=dark] .brand img{filter:brightness(0) saturate(100%) invert(77%) sepia(22%) saturate(1022%) hue-rotate(183deg) brightness(103%) contrast(91%)}.theme-switch{display:flex;background:var(--surface);border:1px solid var(--line);padding:4px;border-radius:var(--radius);gap:4px}.theme-switch button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:8px 12px;font-size:11px;white-space:nowrap;border-radius:7px;color:var(--muted);transition:background .16s,color .16s}.theme-switch button svg{width:16px;height:16px}.theme-switch button[aria-pressed=true]{background:var(--soft);color:var(--blue)}.theme-switch button:hover{color:var(--blue)}
 main{padding-top:28px}.intro{display:flex;justify-content:space-between;align-items:center;gap:36px;min-height:205px}.intro-copy{min-width:0;max-width:690px;padding:8px 0}h1{font-size:clamp(31px,3.8vw,49px);line-height:1.16;letter-spacing:-1.8px;font-weight:600;margin:0 0 20px;overflow-wrap:break-word}.intro-copy p{font-size:14px;line-height:1.85;color:var(--muted);margin:0}.signpost{width:24%;max-width:210px;display:flex;justify-content:center;align-items:center;margin:0;padding:0;flex-shrink:0}.signpost img{width:100%;height:205px;max-width:175px;object-fit:contain;display:block}
@@ -508,7 +510,7 @@ dialog.content-dialog.card-subpage{--text:#20285A;--muted:#52617A;--blue:#263BAA
 .content-dialog.card-subpage .reading-copy .content-note{background:var(--art-bg)}
 .content-dialog.card-subpage .reading-copy .illustrated-action{justify-content:flex-start}
 .content-dialog.card-subpage .reading-copy .gemini-comparison{margin:0;font-size:15px}
-:root[data-theme=dark] dialog.content-dialog.card-subpage{--text:#e5edf9;--muted:#b0bdd0;--blue:#9fc4fa;--line:#354257;--surface:#222846;--box-bg:#222846;--box-line:#334054;--art-bg:#25354b;color-scheme:dark}
+:root[data-theme=dark] dialog.content-dialog.card-subpage{--text:#F5F5F7;--muted:#b0bdd0;--blue:#9fc4fa;--line:#354257;--surface:#222846;--box-bg:#222846;--box-line:#334054;--art-bg:#25354b;color-scheme:dark}
 :root[data-theme=dark] .content-dialog.card-subpage .page-surface{background:color-mix(in srgb,var(--page-accent) 5%,#1A1A1D)}
 @media(max-width:899px){.content-dialog.card-subpage .content-body.reading-panels{gap:20px}.content-dialog.card-subpage .content-body.reading-panels>.reading-box{padding:28px;grid-column:1 / -1;display:grid;grid-template-columns:88px minmax(0,1fr);align-items:start}.reading-art.reading-illustration{width:88px;height:120px;padding:4px}}
 @media(max-width:559px){.content-dialog.card-subpage .content-body.reading-panels{gap:16px;padding:24px 0}.content-dialog.card-subpage .content-body.reading-panels>.reading-box{display:flex;padding:24px;border-radius:24px;gap:20px}.content-dialog.card-subpage .reading-copy :is(h3,h4){font-size:22px}.content-dialog.card-subpage .reading-copy :is(p,li){font-size:16px}.reading-art{width:76px;height:76px;border-radius:18px}.reading-art>img{width:56px;height:56px}.reading-art.reading-illustration{width:100%;height:180px}}
@@ -681,7 +683,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
  #umimeto-dialog .reading-panels>.reading-box:last-child{grid-column:1 / -1}
 }
 /* Values retain their dark photo cards in both page themes. */
-:root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{--text:#e5edf9;--muted:#b0bdd0;--blue:#9fc4fa;color:var(--text);color-scheme:dark;background:#15223580;border-color:#ffffff38;box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff36,inset 1px 0 0 #ffffff12}
+:root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{--text:#F5F5F7;--muted:#b0bdd0;--blue:#9fc4fa;color:var(--text);color-scheme:dark;background:#15223580;border-color:#ffffff38;box-shadow:0 14px 32px #00000050,0 4px 10px #00000030,inset 0 1px 0 #ffffff36,inset 1px 0 0 #ffffff12}
 :root #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#152235E8,#152235D9 55%,#152235B8)}
 
 /* Shared rhythm for the three classroom resources, with unchanged type sizes. */
@@ -862,15 +864,15 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Nordic Indigo and Porcelain palette across both themes. */
 :root{--blue:#263BAA;--text:#20285A;--muted:#64617A;--bg:#F8F7F4;--surface:#FDFCFA;--line:#263baa24;--soft:#EAE9E6}
-:root[data-theme=dark]{--blue:#BAC3FF;--text:#F8F7F4;--muted:#C5C3D0;--bg:#1A1A1D;--surface:#222846;--line:#bac3ff38;--soft:#2C3359}
+:root[data-theme=dark]{--blue:#BAC3FF;--text:#F5F5F7;--muted:#C5C3D0;--bg:#1A1A1D;--surface:#222846;--line:#bac3ff38;--soft:#2C3359}
 .workspace::before{background:radial-gradient(ellipse at 12% 55%,#263baa15,transparent 48%),radial-gradient(ellipse at 80% 65%,#F8F7F4b3,transparent 45%)}
 .workspace .folder-entry .folder-button{color:var(--text)}
 .workspace .folder-button::before{background:linear-gradient(130deg,#FFFFFFb3,#F8F7F44d 55%,#ffffff66),#F8F7F466;border-color:#FFFFFFcc}
 :root[data-theme=dark] .workspace .folder-button::before{background:linear-gradient(130deg,#bac3ff20,#F8F7F405 55%,#bac3ff10),#222846bf;border-color:#bac3ff38}
-:root[data-theme=dark] .workspace .folder-entry .folder-button{color:#F8F7F4}
+:root[data-theme=dark] .workspace .folder-entry .folder-button{color:var(--on-dark)}
 :root[data-theme=dark] .workspace .folder-symbol svg{color:#BAC3FF}
 :root dialog.content-dialog.card-subpage{--text:#20285A;--muted:#64617A;--blue:#263BAA;--line:#263baa24;--surface:#FDFCFA;--box-bg:#FDFCFA;--box-line:#263baa24;--art-bg:#EAE9E6}
-:root[data-theme=dark] dialog.content-dialog.card-subpage{--text:#F8F7F4;--muted:#C5C3D0;--blue:#BAC3FF;--line:#bac3ff38;--surface:#222846;--box-bg:#222846;--box-line:#bac3ff30;--art-bg:#2C3359}
+:root[data-theme=dark] dialog.content-dialog.card-subpage{--text:#F5F5F7;--muted:#C5C3D0;--blue:#BAC3FF;--line:#bac3ff38;--surface:#222846;--box-bg:#222846;--box-line:#bac3ff30;--art-bg:#2C3359}
 :root .content-dialog.card-subpage .page-surface{background:#F8F7F4}
 :root[data-theme=dark] .content-dialog.card-subpage .page-surface{background:#1A1A1D}
 :root .content-dialog.card-subpage .content-body.reading-panels>.reading-box:not(.value-photo),:root :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box{background:linear-gradient(125deg,#ffffff80,#F8F7F438 55%,#ffffff50),#F8F7F44d;border-color:#FFFFFFcc}
@@ -906,9 +908,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Homepage cards contrast with the page instead of repeating its brightness. */
 :root .workspace .folder-button::before{background:linear-gradient(135deg,#ffffff14,transparent 65%),#263BAA;border-color:#bac3ff3d}
-:root .workspace .folder-entry .folder-button{color:#F8F7F4}
-:root .workspace .folder-symbol svg{color:#F8F7F4}
-:root .workspace .folder-arrow{color:#F8F7F4;opacity:.75}
+:root .workspace .folder-entry .folder-button{color:var(--on-dark)}
+:root .workspace .folder-symbol svg{color:var(--on-dark)}
+:root .workspace .folder-arrow{color:var(--on-dark);opacity:.75}
 :root[data-theme=dark] .workspace .folder-button::before{background:linear-gradient(135deg,#ffffff38,transparent 65%),#F8F7F4;border-color:#FFFFFFb3}
 :root[data-theme=dark] .workspace .folder-entry .folder-button{color:#263BAA}
 :root[data-theme=dark] .workspace .folder-symbol svg,:root[data-theme=dark] .workspace .folder-arrow{color:#263BAA}
@@ -924,9 +926,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Prominent group headings and contrasting external-link buttons. */
 :is(.workspace,.page-navigation-menu) .folder-group-title{font-size:30px;line-height:1.2;font-weight:700;margin-bottom:12px}
 @media(max-width:719px){:is(.workspace,.page-navigation-menu) .folder-group-title{font-size:27px}}
-:root :is(body,.card-subpage) a.primary[href^="http"]{background:#263BAA;color:#F8F7F4;border-color:#bac3ff40}
-:root :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#1D2D88;color:#F8F7F4}
-:root :is(body,.card-subpage) a.primary[href^="http"]:active{background:#1D2D88;color:#F8F7F4}
+:root :is(body,.card-subpage) a.primary[href^="http"]{background:#263BAA;color:var(--on-dark);border-color:#bac3ff40}
+:root :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#1D2D88;color:var(--on-dark)}
+:root :is(body,.card-subpage) a.primary[href^="http"]:active{background:#1D2D88;color:var(--on-dark)}
 :root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#F8F7F4;color:#263BAA;border-color:#FFFFFFb3}
 :root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#EAE9E6;color:#263BAA}
 
@@ -942,13 +944,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 /* Deep Berry distinguishes the handy-resources homepage group. */
 :root{--deep-berry:#5B245F}
 :root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--deep-berry);border-color:#e2bce43d;box-shadow:0 12px 26px #5b245f38,0 4px 10px #5b245f24,inset 0 1px 0 #ffffff38}
-:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-entry .folder-button,:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-symbol svg,:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-arrow{color:#F8F7F4}
+:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-entry .folder-button,:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-symbol svg,:root :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-arrow{color:var(--on-dark)}
 :root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-po-ruce .folder-button::before{box-shadow:0 14px 30px #16091d6b,0 5px 12px #16091d47,inset 0 1px 0 #ffffff38}
 
 /* Vivid violet gives the digital staffroom its own identity. */
 :root{--toxic-violet:#460884}
 :root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-button::before{background:linear-gradient(135deg,#ffffff12,transparent 65%),var(--toxic-violet);border-color:#d4b5ff3d;box-shadow:0 12px 26px #46088438,0 4px 10px #46088424,inset 0 1px 0 #ffffff38}
-:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-entry .folder-button,:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-symbol svg,:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-arrow{color:#F8F7F4}
+:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-entry .folder-button,:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-symbol svg,:root :is(.workspace,.page-navigation-menu) .group-digitalni .folder-arrow{color:var(--on-dark)}
 :root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-digitalni .folder-button::before{box-shadow:0 14px 30px #1406246b,0 5px 12px #14062447,inset 0 1px 0 #ffffff38}
 
 /* Let the heading content determine the intro height, without a hero-sized gap. */
@@ -970,7 +972,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* School-life cards retain their indigo identity in dark mode. */
 :root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-button::before{background:linear-gradient(135deg,#ffffff14,transparent 65%),#263BAA;border-color:#bac3ff3d}
-:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-entry .folder-button,:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-symbol svg,:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-arrow{color:#F8F7F4}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-entry .folder-button,:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-symbol svg,:root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-arrow{color:var(--on-dark)}
 
 /* Homepage shadows stay close to the cards rather than spreading into the gaps. */
 :root .workspace .folder-button::before{box-shadow:0 3px 6px #263baa30,0 1px 2px #263baa24,inset 0 1px 0 #ffffff38}
@@ -981,14 +983,14 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root[data-theme=dark] :is(.workspace,.page-navigation-menu) .group-digitalni .folder-button::before{box-shadow:0 3px 6px #1406245c,0 1px 2px #14062440,inset 0 1px 0 #ffffff30}
 
 /* External actions use the ink-dark reference colour in both themes. */
-:root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#1D2033;color:#F8F7F4;border-color:#ffffff14;box-shadow:0 4px 9px #1d20332b,inset 0 1px 0 #ffffff12}
-:root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#292D46;color:#F8F7F4;box-shadow:0 5px 11px #1d203333,inset 0 1px 0 #ffffff18}
-:root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#171A2B;color:#F8F7F4;box-shadow:inset 0 2px 4px #090b1b40}
+:root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#1D2033;color:var(--on-dark);border-color:#ffffff14;box-shadow:0 4px 9px #1d20332b,inset 0 1px 0 #ffffff12}
+:root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#292D46;color:var(--on-dark);box-shadow:0 5px 11px #1d203333,inset 0 1px 0 #ffffff18}
+:root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#171A2B;color:var(--on-dark);box-shadow:inset 0 2px 4px #090b1b40}
 
 /* All action buttons share the ink-dark finish, including internal return actions. */
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root .umime-shortcuts button,:root[data-theme=dark] .umime-shortcuts button{background:#1D2033;color:#F8F7F4;border:1px solid #ffffff14;box-shadow:0 3px 6px #1d203326,inset 0 1px 0 #ffffff12}
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root .umime-shortcuts button:hover{background:#292D46;color:#F8F7F4}
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root .umime-shortcuts button:active{background:#171A2B;color:#F8F7F4;box-shadow:inset 0 2px 4px #090b1b40}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root .umime-shortcuts button,:root[data-theme=dark] .umime-shortcuts button{background:#1D2033;color:var(--on-dark);border:1px solid #ffffff14;box-shadow:0 3px 6px #1d203326,inset 0 1px 0 #ffffff12}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root .umime-shortcuts button:hover{background:#292D46;color:var(--on-dark)}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root .umime-shortcuts button:active{background:#171A2B;color:var(--on-dark);box-shadow:inset 0 2px 4px #090b1b40}
 
 /* A locally stored calendar photo forms the background of Current updates. */
 :root #aktualne-dialog.card-subpage .page-surface{background:linear-gradient(110deg,#f8f7f4e6,#f8f7f4b8),url('assets/aktualne-calendar-2026.webp') center 42% / cover no-repeat}
@@ -1117,7 +1119,7 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 #aktualne-dialog .event-date{position:relative;flex-basis:88px;min-height:80px;padding:8px 8px 16px;margin-bottom:8px;background:#ffffff80;border:1px solid #263baa30;border-radius:8px;box-shadow:0 2px 5px #263baa14;gap:4px}
 #aktualne-dialog .event-date time{font-size:20px;line-height:24px;font-weight:700;white-space:nowrap}
 #aktualne-dialog .event-weekday{font-size:12px;line-height:16px;font-weight:400;color:var(--muted);text-transform:capitalize}
-#aktualne-dialog .event-date .event-countdown{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);padding:4px 8px;min-width:72px;border-radius:8px;background:#263BAA;color:#F8F7F4;font-size:12px;line-height:16px;font-weight:600;text-align:center}
+#aktualne-dialog .event-date .event-countdown{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);padding:4px 8px;min-width:72px;border-radius:8px;background:#263BAA;color:var(--on-dark);font-size:12px;line-height:16px;font-weight:600;text-align:center}
 :root[data-theme=dark] #aktualne-dialog .event-date{background:#222846b3;border-color:#bac3ff40}
 :root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{background:#BAC3FF;color:#1A1A1D}
 
@@ -1141,9 +1143,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 #aktualne-dialog .event-date time{font-size:40px;line-height:44px}
 #aktualne-dialog .event-date{min-height:96px}
-:root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{background:#1D2033;color:#F8F7F4;font-size:11px;line-height:16px;padding:2px 4px}
+:root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{background:#1D2033;color:var(--on-dark);font-size:11px;line-height:16px;padding:2px 4px}
 
-:root #aktualne-dialog .event-date,:root[data-theme=dark] #aktualne-dialog .event-date{background:#1D2033;color:#F8F7F4;border-color:#ffffff1f}
+:root #aktualne-dialog .event-date,:root[data-theme=dark] #aktualne-dialog .event-date{background:#1D2033;color:var(--on-dark);border-color:#ffffff1f}
 :root #aktualne-dialog .event-month,:root[data-theme=dark] #aktualne-dialog .event-month{color:#C7CADA}
 
 #aktualne-dialog .event-date time{color:#BAC3FF}
@@ -1166,9 +1168,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 
 /* Readable calendar-page tiles: month band, large day, and countdown footer. */
 :root #aktualne-dialog .event-date,:root[data-theme=dark] #aktualne-dialog .event-date{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:20px 32px 18px;gap:0;width:72px;height:72px;min-height:72px;flex:0 0 72px;padding:0;background:#F8F7F4;border:1px solid #1d20334d;border-radius:8px;overflow:hidden;color:#263BAA;box-shadow:0 2px 4px #1d20331a}
-:root #aktualne-dialog .event-date .event-month,:root[data-theme=dark] #aktualne-dialog .event-date .event-month{display:block;width:100%;font-size:12px;line-height:20px;font-weight:700;letter-spacing:.04em;text-align:center;background:#1D2033;color:#F8F7F4}
+:root #aktualne-dialog .event-date .event-month,:root[data-theme=dark] #aktualne-dialog .event-date .event-month{display:block;width:100%;font-size:12px;line-height:20px;font-weight:700;letter-spacing:.04em;text-align:center;background:#1D2033;color:var(--on-dark)}
 #aktualne-dialog .event-date time{display:block;width:100%;font-size:28px;line-height:32px;font-weight:700;text-align:center;color:#263BAA}
-:root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{position:static;width:100%;min-width:0;padding:0;transform:none;border-radius:0;background:#1D2033;color:#F8F7F4;font-size:11px;line-height:18px;font-weight:500;text-align:center}
+:root #aktualne-dialog .event-date .event-countdown,:root[data-theme=dark] #aktualne-dialog .event-date .event-countdown{position:static;width:100%;min-width:0;padding:0;transform:none;border-radius:0;background:#1D2033;color:var(--on-dark);font-size:11px;line-height:18px;font-weight:500;text-align:center}
 
 /* Tear-off calendar styling from the supplied image reference. */
 :root #aktualne-dialog .event-date,:root[data-theme=dark] #aktualne-dialog .event-date{position:relative;overflow:visible;grid-template-rows:20px 32px 18px;margin-top:8px;background:#F8F7F4;border-color:#1d203326;box-shadow:0 2px 4px #1d20331a}
@@ -1263,12 +1265,12 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 :root:not([data-theme=dark]) #aktualne-dialog.card-subpage .page-surface{background:linear-gradient(110deg,#f0eee9e6,#f0eee9b8),url('assets/aktualne-calendar-2026.webp') center 42% / cover no-repeat}
 
 /* Reversible Old Red action-button experiment; homepage cards stay untouched. */
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root .umime-shortcuts button,:root[data-theme=dark] .umime-shortcuts button{background:#AB3620;color:#F8F7F4;border-color:#ffffff24;box-shadow:0 3px 6px #ab362026,inset 0 1px 0 #ffffff18}
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root .umime-shortcuts button:hover{background:#922D1B;color:#F8F7F4}
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root .umime-shortcuts button:active{background:#7F2718;color:#F8F7F4;box-shadow:inset 0 2px 4px #50170e40}
-:root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#AB3620;color:#F8F7F4}
-:root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#922D1B;color:#F8F7F4}
-:root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#7F2718;color:#F8F7F4}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back),:root .umime-shortcuts button,:root[data-theme=dark] .umime-shortcuts button{background:#AB3620;color:var(--on-dark);border-color:#ffffff24;box-shadow:0 3px 6px #ab362026,inset 0 1px 0 #ffffff18}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):hover,:root .umime-shortcuts button:hover{background:#922D1B;color:var(--on-dark)}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action,.page-back):active,:root .umime-shortcuts button:active{background:#7F2718;color:var(--on-dark);box-shadow:inset 0 2px 4px #50170e40}
+:root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]{background:#AB3620;color:var(--on-dark)}
+:root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover{background:#922D1B;color:var(--on-dark)}
+:root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active{background:#7F2718;color:var(--on-dark)}
 
 /* Category-title accents; the homepage card palette stays unchanged. */
 :is(.workspace,.page-navigation-menu) .group-zivot-skoly .folder-group-title{color:#212A78}
@@ -1325,23 +1327,23 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 }
 
 /* Return-to-directory buttons use their requested distinct red. */
-:root :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok),:root[data-theme=dark] :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok){background:#BC162C;color:#F8F7F4}
+:root :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok),:root[data-theme=dark] :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok){background:#BC162C;color:var(--on-dark)}
 :root :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok):hover{background:#A31326}
 :root :is(body,.card-subpage) button.primary:is([id$="-ok"],#pending-ok):active{background:#8C1021}
 
 /* Page links use navy; both return actions use the requested red. */
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action),:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action),:root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"],:root .umime-shortcuts button,:root[data-theme=dark] .umime-shortcuts button{background:#091F5B;color:#F8F7F4;box-shadow:0 3px 6px #091f5b26,inset 0 1px 0 #ffffff18}
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover,:root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover,:root .umime-shortcuts button:hover{background:#102D78;color:#F8F7F4}
-:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active,:root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active,:root .umime-shortcuts button:active{background:#061644;color:#F8F7F4}
-:root :is(body,.card-subpage) .page-back,:root[data-theme=dark] :is(body,.card-subpage) .page-back,:root :is(body,.card-subpage) button.primary[id$="-ok"],:root[data-theme=dark] :is(body,.card-subpage) button.primary[id$="-ok"]{background:#BC162C;color:#F8F7F4;box-shadow:0 3px 6px #bc162c26,inset 0 1px 0 #ffffff18}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action),:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action),:root :is(body,.card-subpage) a.primary[href^="http"],:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"],:root .umime-shortcuts button,:root[data-theme=dark] .umime-shortcuts button{background:#091F5B;color:var(--on-dark);box-shadow:0 3px 6px #091f5b26,inset 0 1px 0 #ffffff18}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):hover,:root :is(body,.card-subpage) a.primary[href^="http"]:hover,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:hover,:root .umime-shortcuts button:hover{background:#102D78;color:var(--on-dark)}
+:root :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active,:root[data-theme=dark] :is(body,.card-subpage) :is(a,button):is(.primary,.secondary-action):active,:root :is(body,.card-subpage) a.primary[href^="http"]:active,:root[data-theme=dark] :is(body,.card-subpage) a.primary[href^="http"]:active,:root .umime-shortcuts button:active{background:#061644;color:var(--on-dark)}
+:root :is(body,.card-subpage) .page-back,:root[data-theme=dark] :is(body,.card-subpage) .page-back,:root :is(body,.card-subpage) button.primary[id$="-ok"],:root[data-theme=dark] :is(body,.card-subpage) button.primary[id$="-ok"]{background:#BC162C;color:var(--on-dark);box-shadow:0 3px 6px #bc162c26,inset 0 1px 0 #ffffff18}
 :root :is(body,.card-subpage) .page-back:hover,:root[data-theme=dark] :is(body,.card-subpage) .page-back:hover,:root :is(body,.card-subpage) button.primary[id$="-ok"]:hover,:root[data-theme=dark] :is(body,.card-subpage) button.primary[id$="-ok"]:hover{background:#A31326}
 :root :is(body,.card-subpage) .page-back:active,:root[data-theme=dark] :is(body,.card-subpage) .page-back:active,:root :is(body,.card-subpage) button.primary[id$="-ok"]:active,:root[data-theme=dark] :is(body,.card-subpage) button.primary[id$="-ok"]:active{background:#8C1021}
-:root :is(body,.card-subpage) button.page-back,:root[data-theme=dark] :is(body,.card-subpage) button.page-back{background:#BC162C;color:#F8F7F4}
+:root :is(body,.card-subpage) button.page-back,:root[data-theme=dark] :is(body,.card-subpage) button.page-back{background:#BC162C;color:var(--on-dark)}
 :root :is(body,.card-subpage) button.page-back:hover,:root[data-theme=dark] :is(body,.card-subpage) button.page-back:hover{background:#A31326}
 :root :is(body,.card-subpage) button.page-back:active,:root[data-theme=dark] :is(body,.card-subpage) button.page-back:active{background:#8C1021}
 
 /* Dark detail cards use Obsidian rather than pale photographic glass. */
-:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box,:root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{background:#0B1215;--text:#F8F7F4;--muted:#BFC7CC;--blue:#BAC3FF;color:var(--text);color-scheme:dark;border-color:#ffffff1f}
+:root[data-theme=dark] .content-dialog.card-subpage .content-body.reading-panels>.reading-box,:root[data-theme=dark] :is(#ruzne-dialog,#agenda-ucitele-dialog) .reading-subsection>.reading-box,:root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo{background:#0B1215;--text:#F5F5F7;--muted:#BFC7CC;--blue:#BAC3FF;color:var(--text);color-scheme:dark;border-color:#ffffff1f}
 :root[data-theme=dark] #hodnoty-dialog .content-body.reading-panels>.reading-box.value-photo::after{background:linear-gradient(100deg,#0b1215ed,#0b1215e0 55%,#0b1215c9)}
 :root[data-theme=dark] :is(.notes-rule-card,.administrator-topic-card){background:#0B1215;border-color:#ffffff24}
 :root[data-theme=dark] #agenda-poznamky .notes-rule-card,:root[data-theme=dark] #agenda-zuzka .administrator-topic-card{background:#0B1215;border-color:#ffffff24}
@@ -1436,9 +1438,9 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .page-navigation-menu .page-navigation-group>.folder-group-title{font-size:18px;line-height:24px;font-weight:700;margin:0 0 24px}
 .page-navigation-menu .page-navigation-group>.folder-group-title::after{height:8px;bottom:-8px}
 .page-navigation-group ul{display:grid;gap:8px}
-.page-navigation-menu .page-navigation-group a{display:flex;align-items:center;gap:12px;min-height:48px;padding:12px;border:1px solid #ffffff1f;border-radius:16px;background:var(--home-card-gradient);color:#F8F7F4;box-shadow:0 3px 6px var(--home-card-shadow);font-weight:600}
+.page-navigation-menu .page-navigation-group a{display:flex;align-items:center;gap:12px;min-height:48px;padding:12px;border:1px solid #ffffff1f;border-radius:16px;background:var(--home-card-gradient);color:var(--on-dark);box-shadow:0 3px 6px var(--home-card-shadow);font-weight:600}
 .page-navigation-menu .page-navigation-group a:hover{background:var(--home-card-gradient);color:#fff;box-shadow:0 4px 8px #0b121540}
-.page-navigation-menu .page-navigation-group a[aria-current=page]{background:var(--home-card-gradient);color:#F8F7F4;outline:2px solid var(--blue);outline-offset:2px}
+.page-navigation-menu .page-navigation-group a[aria-current=page]{background:var(--home-card-gradient);color:var(--on-dark);outline:2px solid var(--blue);outline-offset:2px}
 .page-navigation-icon{display:flex;align-items:center;justify-content:center;flex:0 0 20px;width:20px;height:20px;background:transparent}
 .page-navigation-icon :is(svg,img){display:block;width:20px;height:20px;object-fit:contain;color:inherit}
 .page-navigation-icon.navigation-trip-icon img{filter:brightness(0) invert(1)}
@@ -1598,13 +1600,13 @@ dialog.card-subpage{overflow:auto;overscroll-behavior-y:contain}
 .workspace .home-trust-entry{--home-card-bg:#0B1215;--home-card-text:#F8F7F4;--home-card-shadow:#0b12152e;--home-card-gradient:linear-gradient(135deg,#26343B 0%,#142127 48%,#0B1215 100%);width:calc(100% - 8px);max-width:calc(1120px - 8px);margin:32px auto 0}
 .workspace .home-trust-divider{display:block;width:100%;height:0;margin:0 0 24px;border:0;border-top:1px solid var(--line)}
 :root .workspace .home-trust-entry .folder-button::before{background:var(--home-card-gradient);border-color:#ffffff26;box-shadow:0 3px 6px var(--home-card-shadow),inset 0 1px 0 #ffffff18}
-:root .workspace .home-trust-entry :is(.folder-button,.folder-title,.folder-arrow){color:#F8F7F4}
+:root .workspace .home-trust-entry :is(.folder-button,.folder-title,.folder-arrow){color:var(--on-dark)}
 .workspace .home-trust-entry .folder-symbol img,.page-navigation-standalone .page-navigation-icon img{filter:brightness(0) invert(1)}
 #schranka-duvery-dialog .page-icon img{width:100%;height:100%;object-fit:contain}
 :root[data-theme=dark] #schranka-duvery-dialog .page-icon img{filter:brightness(0) invert(1)}
 .page-navigation-standalone-row{grid-column:1 / -1;border-top:1px solid var(--line);padding-top:20px}
-:root .page-navigation-menu .page-navigation-standalone{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:12px 16px;border:1px solid #ffffff26;border-radius:32px;background:linear-gradient(135deg,#26343B,#0B1215);color:#F8F7F4;box-shadow:0 3px 6px #0b12152e;font-weight:600}
-:root .page-navigation-menu .page-navigation-standalone:hover{background:linear-gradient(135deg,#2a3a42,#0B1215);color:#F8F7F4}
+:root .page-navigation-menu .page-navigation-standalone{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:12px 16px;border:1px solid #ffffff26;border-radius:32px;background:linear-gradient(135deg,#26343B,#0B1215);color:var(--on-dark);box-shadow:0 3px 6px #0b12152e;font-weight:600}
+:root .page-navigation-menu .page-navigation-standalone:hover{background:linear-gradient(135deg,#2a3a42,#0B1215);color:var(--on-dark)}
 :root .page-navigation-menu .page-navigation-standalone[aria-current=page]{outline:2px solid var(--blue);outline-offset:2px}
 @supports (corner-shape:squircle){.page-navigation-standalone{corner-shape:squircle}}
 @media(max-width:719px){.workspace .home-trust-entry{max-width:calc(470px - 8px);margin-top:28px}.workspace .home-trust-divider{margin-bottom:20px}}
@@ -1632,3 +1634,14 @@ dialog.content-dialog.card-subpage,dialog#pending-dialog.card-subpage{height:var
 :root.document-reading-page .card-subpage .page-shell{height:auto;min-height:100svh;overflow:visible}
 :root.document-reading-page .card-subpage .page-surface{position:fixed;top:0;bottom:auto;height:100lvh}
 :root.document-reading-page .card-subpage .content-body{overflow:visible;max-height:none}
+
+/* Consistent neutral text and legible monochrome pictograms in dark mode. */
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu) :is(.group-zivot-skoly,.group-po-ruce,.group-digitalni,.home-trust-entry){--home-card-text:#F5F5F7}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu,.card-subpage) :is(.folder-symbol,.page-navigation-icon,.page-icon,.reading-art)>svg{color:#F5F5F7}
+:root[data-theme=dark] .card-subpage .icon-button{color:#F5F5F7}
+:root[data-theme=dark] :is(.workspace,.page-navigation-menu,.card-subpage) :is(img[src$="agenda-ucitel.png"],img[src$="agenda-trida.png"],img[src$="agenda-konflikt.png"],img[src$="agenda-komunikace.png"],img[src$="tridni-kniha.png"],img[src$="sanony.png"],img[src$="rule.png"],img[src$="doc.png"],img[src$="skolaonline-i.png"],img[src$="generative.png"],img[src$="trezor.png"]){filter:brightness(0) invert(1)}
+:root[data-theme=dark] #kodex-ai-dialog .ai-accordion{background:linear-gradient(135deg,#17272D,#0B1215);border-color:#ffffff24}
+:root[data-theme=dark] #kodex-ai-dialog :is(.ai-intro,.ai-intro h3,.ai-intro p,.ai-accordion>summary,.ai-accordion-content p,.ai-accordion-content li,.ai-index){color:#F5F5F7}
+:root[data-theme=dark] #kodex-ai-dialog .ai-accordion>summary:hover{background:#ffffff08}
+:root[data-theme=dark] #kodex-ai-dialog .ai-accordion-content{border-color:#ffffff20}
+:root[data-theme=dark] #kodex-ai-dialog .ai-chevron{border-color:#F5F5F7}
