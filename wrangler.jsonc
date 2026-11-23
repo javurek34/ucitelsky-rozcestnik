@@ -5,6 +5,9 @@
   "compatibility_date": "2026-11-13",
   "workers_dev": true,
   "preview_urls": false,
+  "vars": {
+    "TRUST_NOTIFY_FROM": "Schránka důvěry <schranka@javurek.online>"
+  },
   "build": {
     "command": "node scripts/build-protected-site.mjs"
   },

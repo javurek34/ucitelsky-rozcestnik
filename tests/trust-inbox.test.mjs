@@ -7,10 +7,12 @@ const origin='https://rozcestnik.example',prefix=origin+'/kapli/api/schranka';
 const schoolPassword='only-a-local-test-password',adminPassword='different-long-admin-test-password';
 function setup(t){
  const database=new DatabaseSync(':memory:');t.after(()=>database.close());
- const ctx={storage:{sql:{exec(sql,...params){const rows=database.prepare(sql).all(...params);return{toArray:()=>rows};}},transactionSync(fn){database.exec('BEGIN');try{const result=fn();database.exec('COMMIT');return result;}catch(e){database.exec('ROLLBACK');throw e;}}}};
- let store=new TrustInbox(ctx);
+ const alarms=[];
+ const ctx={storage:{setAlarm:async time=>{alarms.push(time);},sql:{exec(sql,...params){const rows=database.prepare(sql).all(...params);return{toArray:()=>rows};}},transactionSync(fn){database.exec('BEGIN');try{const result=fn();database.exec('COMMIT');return result;}catch(e){database.exec('ROLLBACK');throw e;}}}};
+ let store;
  const env={SITE_PASSWORD:schoolPassword,SESSION_SECRET:'this-is-only-a-test-signing-secret-with-ample-length',TRUST_ADMIN_PASSWORD:adminPassword,LOGIN_RATE_LIMITER:{limit:async()=>({success:true})},TRUST_RATE_LIMITER:{limit:async()=>({success:true})},TRUST_INBOX:{idFromName:name=>name,get:()=>({fetch:request=>store.fetch(request)})},ASSETS:{fetch:async()=>new Response('PRIVATE_ASSET')}};
- return{env,database,restart:()=>{store=new TrustInbox(ctx);}};
+ store=new TrustInbox(ctx,env);
+ return{env,database,alarms,alarm:()=>store.alarm(),restart:()=>{store=new TrustInbox(ctx,env);}};
 }
 async function schoolCookie(env){const r=await worker.fetch(new Request(origin+'/kapli/__auth/login',{method:'POST',headers:{Origin:origin,'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({password:schoolPassword})}),env);assert.equal(r.status,303);return r.headers.get('Set-Cookie').split(';')[0];}
 function request(path,data,cookie,extra={}){return new Request(prefix+path,{method:data===undefined?'GET':'POST',headers:{...(data===undefined?{}:{Origin:origin,'Content-Type':'application/json'}),...(cookie?{Cookie:cookie}:{}),...extra},body:data===undefined?undefined:JSON.stringify(data)});}
@@ -73,4 +75,24 @@ test('validace, ochrana původu a limit požadavků chrání podání i odpověd
  for(const data of [draft({message:'krátké'}),draft({message:'x'.repeat(6001)}),draft({kind:'other'}),draft({participants:['someone-else']}),draft({submissionId:'guessable'})])assert.equal((await worker.fetch(request('/create',data,cookie),env)).status,400);
  assert.equal((await worker.fetch(request('/create',draft({message:'x'.repeat(40000)}),cookie),env)).status,400);
  const limited={...env,TRUST_RATE_LIMITER:{limit:async()=>({success:false})}};const response=await worker.fetch(request('/create',draft(),cookie),limited);assert.equal(response.status,429);assert.equal(response.headers.get('Retry-After'),'60');assert.equal(database.prepare('SELECT COUNT(*) AS n FROM trust_cases').get().n,0);
+});
+
+
+test('upozornění odejde pouze jednou bez obsahu, kontaktu a přístupového kódu',async t=>{
+ const {env,database,alarms,alarm}=setup(t);env.RESEND_API_KEY='test-not-a-real-api-key';
+ const calls=[];t.mock.method(globalThis,'fetch',async(url,options)=>{calls.push({url,options});return new Response('{}',{status:200});});
+ const cookie=await schoolCookie(env),data=draft({contact:'private@example.test'}),result=await create(env,cookie,data);
+ assert.ok(alarms.length);assert.equal(calls.length,0);await alarm();assert.equal(calls.length,1);
+ const sent=JSON.parse(calls[0].options.body);assert.deepEqual(sent.to,['javurek@zs-kaplickeho.cz']);assert.match(sent.text,/https:\/\/javurek.online\/kapli\/#schranka-duvery/);
+ for(const secret of [data.message,data.subject,data.contact,result.code])assert.ok(!calls[0].options.body.includes(secret));
+ assert.equal(calls[0].options.headers['Idempotency-Key'],'trust-new-'+result.id);
+ assert.equal((await worker.fetch(request('/create',data,cookie),env)).status,200);await alarm();assert.equal(calls.length,1);assert.ok(database.prepare('SELECT sent_at FROM trust_notifications').get().sent_at);
+});
+test('chyba e-mailu nebrání uložení a fronta přežije restart a zopakuje pokus',async t=>{
+ const {env,database,alarm,restart}=setup(t);const cookie=await schoolCookie(env),result=await create(env,cookie);
+ await alarm();assert.equal(database.prepare('SELECT sent_at FROM trust_notifications').get().sent_at,null);
+ env.RESEND_API_KEY='test-not-a-real-api-key';let calls=0;t.mock.method(globalThis,'fetch',async()=>{calls++;return new Response('{}',{status:calls===1?503:200});});
+ database.exec('UPDATE trust_notifications SET next_attempt=0');await alarm();assert.equal(calls,1);assert.equal(database.prepare('SELECT sent_at FROM trust_notifications').get().sent_at,null);
+ restart();database.exec('UPDATE trust_notifications SET next_attempt=0');await alarm();assert.equal(calls,2);assert.ok(database.prepare('SELECT sent_at FROM trust_notifications').get().sent_at);
+ assert.equal((await worker.fetch(request('/conversation',{code:result.code},cookie),env)).status,200);
 });

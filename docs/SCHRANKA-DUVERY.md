@@ -44,9 +44,37 @@ pro osoby, kterým správce heslo předá; nejde o individuální Google účty 
 jmenný seznam oprávnění. Při změně pověřeného týmu heslo změňte v Cloudflare.
 Změna hesla ruší dřívější relace správy, zachovává však původní vlákna a kódy.
 
-Odpovědi se čtou ve vlákně po vložení kódu. Z této verze se neposílají
-automatické e-maily. Provozovatel musí zajistit, aby pověřený tým schránku
-pravidelně kontroloval; text aplikace neslibuje konkrétní dobu odpovědi.
+Odpovědi se čtou ve vlákně po vložení kódu. Nový podnět vytvoří upozornění
+pro `javurek@zs-kaplickeho.cz`. Neobsahuje text, název, kontakt ani přístupový
+kód podnětu, pouze odkaz do schránky. Upozornění na další zprávy ve vlákně
+se zatím neposílají. Pověřený tým musí schránku pravidelně kontrolovat;
+aplikace neslibuje konkrétní dobu odpovědi.
+
+### Aktivace e-mailových upozornění (Resend)
+
+1. Založte účet na https://resend.com a v **Domains → Add domain** přidejte
+   `javurek.online`. DNS záznamy pro ověření odesílatele vložte podle Resend
+   do Cloudflare DNS. Neměňte záznamy školní domény `zs-kaplickeho.cz`.
+2. Po ověření domény vytvořte v Resend **API Keys** klíč s oprávněním
+   **Sending access**, omezený na tuto doménu.
+3. V Cloudflare Workeru přidejte do **Production → Runtime variables and
+   secrets** secret `RESEND_API_KEY` a zvolte **Save and deploy**.
+   API klíč neposílejte do chatu ani neukládejte do repozitáře.
+
+Odesílatel je `Schránka důvěry <schranka@javurek.online>` (proměnná
+`TRUST_NOTIFY_FROM`), příjemce je pevně daný v serverovém kódu. Dokud chybí
+API klíč nebo ověření domény, e-maily neodcházejí; podněty se dál ukládají.
+Fronta upozornění vzniká ve stejné transakci jako podnět, přežije restart a
+při nedostupnosti služby opakuje pokusy s prodlevou až hodinu. Po doplnění
+nastavení odešle také čekající upozornění z této verze. Starší podněty
+před zavedením fronty upozornění dodatečně neposílají.
+
+Resend dostává pouze adresu příjemce a obecné upozornění. Opakované pokusy
+používají stejný idempotency key; Resend jej uchovává 24 hodin, takže při
+velmi dlouhém nejasném výsledku může vzniknout duplicitní upozornění.
+Úspěšné předání službě nezaručuje doručení do doručené pošty; zkontrolujte
+Resend → Emails a případně spam. Tento kód neodesílá zprávu se školním
+obsahem ani uživateli neslibuje, že e-mail byl doručen.
 
 ## Uložení a ochrana
 
