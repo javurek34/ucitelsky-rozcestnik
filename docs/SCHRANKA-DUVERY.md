@@ -1,6 +1,6 @@
 # Schránka důvěry pro učitele
 
-Ve školním rozcestníku je dostupná přes kartu **Schránka důvěry** a adresu
+Ve školním rozcestníku je schovaná pod odkazem **ZŠ Kaplického** v patičce a dostupná na adrese
 `https://javurek.online/kapli/#schranka-duvery`.
 
 ## Spuštění v Cloudflare

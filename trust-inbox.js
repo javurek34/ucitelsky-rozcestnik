@@ -65,7 +65,8 @@
   catch(e){if(e.name==='AbortError')return;ready=false;error(notice,'Schránku se nepodařilo připojit. Zadaný text zůstane ve formuláři; zkuste to prosím později.');}
   $$('#trust-create-form button[type=submit],#trust-lookup-form button[type=submit],#trust-admin-login-form button[type=submit]').forEach(button=>button.disabled=!ready);
  }
- dialog.addEventListener('toggle',()=>{if(dialog.open)service();});
+ // Observe the open attribute: older Safari versions do not emit dialog toggle events.
+ new MutationObserver(records=>{if(records.some(record=>record.attributeName==='open')&&dialog.open)service();}).observe(dialog,{attributes:true,attributeFilter:['open']});
  dialog.addEventListener('close',()=>{
   controller.abort();controller=new AbortController();serial++;activeCode='';receiptCode='';adminId='';
   $('#trust-personal-thread').replaceChildren();$('#trust-personal-thread').hidden=true;
