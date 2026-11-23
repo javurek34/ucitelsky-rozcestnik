@@ -36,7 +36,8 @@ neukládá do localStorage. Odesílatel si ho musí uschovat. Kdo zná kód, mů
 nelze anonymního odesílatele dohledat podle jména. Kód se v databázi uchovává
 jako hash. U nových podnětů se navíc uchovává identifikátor pro jeho
 opětovné odvození se serverovým tajemstvím: pověřený tým vidí kód v detailu
-podnětu, nikoli v seznamu nebo e-mailu. U starších podnětů bez tohoto
+podnětu, nikoli v seznamu nebo e-mailu správci. Upozornění učiteli na odpověď
+naopak obsahuje jeho přístupový kód, pokud uvedl jednu platnou e-mailovou adresu. U starších podnětů bez tohoto
 identifikátoru kód zpětně zobrazit nelze. Opakování totožného odeslání po výpadku spojení nevytváří
 novou zprávu; při chybě se text ve formuláři zachová.
 
@@ -49,8 +50,11 @@ Změna hesla ruší dřívější relace správy, zachovává však původní vl
 
 Odpovědi se čtou ve vlákně po vložení kódu. Nový podnět vytvoří upozornění
 pro `javurek@zs-kaplickeho.cz`. Neobsahuje text, název, kontakt ani přístupový
-kód podnětu, pouze odkaz do schránky. Upozornění na další zprávy ve vlákně
-se zatím neposílají. Pověřený tým musí schránku pravidelně kontrolovat;
+kód podnětu, pouze odkaz do schránky. Po nové odpovědi pověřeného týmu přijde učiteli upozornění s jeho
+přístupovým kódem a odkazem, bez textu odpovědi. Z kontaktu se použije jen
+jedna jednoznačná e-mailová adresa; při chybějícím nebo nejednoznačném kontaktu
+se neposílá. U starších podnětů bez obnovitelného kódu se neposílá také.
+Další zpráva učitele automatické upozornění správci zatím nevytváří. Pověřený tým musí schránku pravidelně kontrolovat;
 aplikace neslibuje konkrétní dobu odpovědi.
 
 ### Aktivace e-mailových upozornění (Resend)
@@ -72,12 +76,12 @@ při nedostupnosti služby opakuje pokusy s prodlevou až hodinu. Po doplnění
 nastavení odešle také čekající upozornění z této verze. Starší podněty
 před zavedením fronty upozornění dodatečně neposílají.
 
-Resend dostává pouze adresu příjemce a obecné upozornění. Opakované pokusy
+Resend dostává adresu příjemce a obecné upozornění. U oznámení učiteli
+navíc dostává jeho přístupový kód; text podnětu ani odpovědi se neposílá. Opakované pokusy
 používají stejný idempotency key; Resend jej uchovává 24 hodin, takže při
 velmi dlouhém nejasném výsledku může vzniknout duplicitní upozornění.
 Úspěšné předání službě nezaručuje doručení do doručené pošty; zkontrolujte
-Resend → Emails a případně spam. Tento kód neodesílá zprávu se školním
-obsahem ani uživateli neslibuje, že e-mail byl doručen.
+Resend → Emails a případně spam. Tato funkce neodesílá text podnětu ani odpovědi ani uživateli neslibuje, že e-mail byl doručen.
 
 ## Uložení a ochrana
 

@@ -131,3 +131,37 @@ test('kód vidí jen správci v detailu a zůstává stejný po restartu a změn
  database.exec('UPDATE trust_cases SET receipt_id=NULL');restart();assert.equal((await detail()).accessCode,null);
  assert.equal((await worker.fetch(request('/conversation',{code:result.code},cookie),env)).status,200);
 });
+
+test('odpověď týmu upozorní učitele s jeho kódem, ale bez obsahu a bez odeslání kódu správci',async t=>{
+ const {env,database,alarm,restart}=setup(t);env.RESEND_API_KEY='test-api-key';const calls=[];
+ t.mock.method(globalThis,'fetch',async(url,options)=>{calls.push({url,options,payload:JSON.parse(options.body)});return new Response('{}',{status:200});});
+ const cookie=await schoolCookie(env),result=await create(env,cookie,draft({contact:'Paní učitelka <ucitelka@example.test>'})),team=await teamCookie(env,cookie);
+ await alarm();assert.ok(!calls[0].payload.text.includes(result.code));
+ const message='Soukromá odpověď, která do e-mailu nesmí.';
+ assert.equal((await worker.fetch(request('/admin/cases/'+result.id+'/reply',{message},team),env)).status,200);
+ assert.equal(database.prepare('SELECT COUNT(*) AS n FROM trust_reply_notifications').get().n,1);
+ restart();await alarm();assert.equal(calls.length,2);const mail=calls[1].payload;
+ assert.deepEqual(mail.to,['ucitelka@example.test']);assert.ok(mail.text.includes(result.code));assert.ok(!JSON.stringify(mail).includes(message));assert.match(mail.text,/https:\/\/javurek.online\/kapli\/#schranka-duvery/);
+ await alarm();assert.equal(calls.length,2);
+ await worker.fetch(request('/conversation/reply',{code:result.code,message:'Doplnění od učitele.'},cookie),env);await alarm();assert.equal(calls.length,2);
+ await worker.fetch(request('/admin/cases/'+result.id+'/reply',{message:'Druhá odpověď.'},team),env);await alarm();assert.equal(calls.length,3);assert.notEqual(calls[1].options.headers['Idempotency-Key'],calls[2].options.headers['Idempotency-Key']);
+});
+test('bez jednoznačné e-mailové adresy nebo u starších podnětů nevznikne e-mail s kódem',async t=>{
+ const {env,database}=setup(t),cookie=await schoolCookie(env),team=await teamCookie(env,cookie);
+ for(const contact of ['', 'Telefon: 123456789','prvni@example.test druha@example.test']){
+  const result=await create(env,cookie,draft({contact}));assert.equal((await worker.fetch(request('/admin/cases/'+result.id+'/reply',{message:'Odpověď.'},team),env)).status,200);
+ }
+ const old=await create(env,cookie,draft({contact:'ucitel@example.test'}));database.prepare('UPDATE trust_cases SET receipt_id=NULL WHERE id=?').run(old.id);
+ await worker.fetch(request('/admin/cases/'+old.id+'/reply',{message:'Odpověď staršímu podnětu.'},team),env);
+ assert.equal(database.prepare('SELECT COUNT(*) AS n FROM trust_reply_notifications').get().n,0);
+});
+test('neodeslané upozornění na odpověď se zopakuje a smazání podnětu vyčistí také tuto frontu',async t=>{
+ const {env,database,alarm,restart}=setup(t),cookie=await schoolCookie(env),result=await create(env,cookie,draft({contact:'ucitel@example.test'})),team=await teamCookie(env,cookie);
+ await worker.fetch(request('/admin/cases/'+result.id+'/reply',{message:'Odpověď.'},team),env);
+ await alarm();assert.equal(database.prepare('SELECT sent_at FROM trust_reply_notifications').get().sent_at,null);
+ env.RESEND_API_KEY='test-api-key';let emails=0;t.mock.method(globalThis,'fetch',async()=>{emails++;return new Response('{}',{status:200});});
+ restart();database.exec('UPDATE trust_reply_notifications SET next_attempt=0');await alarm();assert.equal(emails,1);
+ await worker.fetch(request('/admin/cases/'+result.id+'/status',{status:'resolved'},team),env);
+ await worker.fetch(request('/admin/cases/'+result.id+'/delete',{confirm:true},team),env);
+ assert.equal(database.prepare('SELECT COUNT(*) AS n FROM trust_reply_notifications').get().n,0);
+});

@@ -1,3 +1,4 @@
+import { accessCode } from './trust-code.mjs';
 const PREFIX='/kapli/api/schranka';
 const COOKIE='__Host-rozcestnik_trust_admin';
 const ADMIN_SECONDS=2*60*60;
@@ -41,12 +42,6 @@ const text=(value,min,max)=>typeof value==='string'&&value.trim().length>=min&&v
 const code=value=>typeof value==='string'?value.toUpperCase().replace(/[\s-]/g,''):'';
 const validCode=value=>value.length===32&&[...value].every(char=>alphabet.includes(char));
 const uuid=value=>typeof value==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
-async function accessCode(env,submissionId){
- const bytes=new Uint8Array(await crypto.subtle.sign('HMAC',await key(env,'receipt'),encoder.encode(submissionId)));
- // 160 random-looking bits; kept out of URLs, logs and the stored case record.
- let bits=0,value=0,result='';for(const byte of bytes.slice(0,20)){value=(value<<8)|byte;bits+=8;while(bits>=5){bits-=5;result+=alphabet[(value>>>bits)&31];}}
- return result;
-}
 async function stored(env,operation,input){
  const stub=env.TRUST_INBOX.get(env.TRUST_INBOX.idFromName('kaplickeho-teacher-trust'));
  const response=await stub.fetch(new Request('https://trust.internal/'+operation,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(input)}));

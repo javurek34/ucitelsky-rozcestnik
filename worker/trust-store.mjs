@@ -1,3 +1,8 @@
+import { accessCode } from './trust-code.mjs';
+function contactEmail(contact){
+ const matches=String(contact||'').match(/[A-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)+/gi)||[];
+ return matches.length===1&&matches[0].length<=254?matches[0]:null;
+}
 /* Private SQLite Durable Object. Only the authenticated Worker can call it.
    No message content, contact details or access codes belong in source control. */
 export class TrustInbox {
@@ -17,6 +22,7 @@ export class TrustInbox {
   this.sql.exec('CREATE INDEX IF NOT EXISTS trust_cases_updated ON trust_cases(updated_at DESC)');
   if(!this.sql.exec('PRAGMA table_info(trust_cases)').toArray().some(column=>column.name==='receipt_id'))this.sql.exec('ALTER TABLE trust_cases ADD COLUMN receipt_id TEXT');
   this.sql.exec(`CREATE TABLE IF NOT EXISTS trust_notifications (case_id TEXT PRIMARY KEY, created_at INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, next_attempt INTEGER NOT NULL, sent_at INTEGER)`);
+  this.sql.exec(`CREATE TABLE IF NOT EXISTS trust_reply_notifications (message_id INTEGER PRIMARY KEY, case_id TEXT NOT NULL, created_at INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, next_attempt INTEGER NOT NULL, sent_at INTEGER)`);
  }
  row(sql,...args){return this.sql.exec(sql,...args).toArray()[0]||null;}
  view(row,admin=false){
@@ -29,24 +35,35 @@ export class TrustInbox {
  }
  json(value,status=200){return Response.json(value,{status});}
  async scheduleNotifications(){
-  const pending=this.row('SELECT MIN(next_attempt) AS next FROM trust_notifications WHERE sent_at IS NULL');
+  const pending=this.row('SELECT MIN(next_attempt) AS next FROM (SELECT next_attempt FROM trust_notifications WHERE sent_at IS NULL UNION ALL SELECT next_attempt FROM trust_reply_notifications WHERE sent_at IS NULL)');
   if(pending?.next!==null&&pending?.next!==undefined)await this.ctx.storage.setAlarm(Math.max(Date.now()+1000,pending.next));
  }
  async alarm(){
-  const pending=this.sql.exec('SELECT case_id,created_at,attempts FROM trust_notifications WHERE sent_at IS NULL AND next_attempt<=? ORDER BY created_at LIMIT 10',Date.now()).toArray();
+  const pending=this.sql.exec(`SELECT case_id,case_id AS event_id,'new' AS kind,created_at,attempts FROM trust_notifications WHERE sent_at IS NULL AND next_attempt<=? UNION ALL SELECT case_id,message_id AS event_id,'reply' AS kind,created_at,attempts FROM trust_reply_notifications WHERE sent_at IS NULL AND next_attempt<=? ORDER BY created_at LIMIT 10`,Date.now(),Date.now()).toArray();
   for(const item of pending){
    let sent=false;
+   const table=item.kind==='reply'?'trust_reply_notifications':'trust_notifications',idColumn=item.kind==='reply'?'message_id':'case_id';
+   let recipient='javurek@zs-kaplickeho.cz',subject='Nový podnět ve schránce důvěry';
+   let text='Ve schránce důvěry pro učitele přibyl nový podnět.\n\nPřihlaste se do rozcestníku, otevřete schránku a zvolte Vstup pro pověřený tým:\nhttps://javurek.online/kapli/#schranka-duvery\n\nObsah podnětu je dostupný pouze ve schránce.';
+   if(item.kind==='reply'){
+    const record=this.row('SELECT contact,receipt_id FROM trust_cases WHERE id=?',item.case_id);
+    recipient=contactEmail(record?.contact);
+    if(!recipient||!record?.receipt_id){this.sql.exec('DELETE FROM trust_reply_notifications WHERE message_id=?',item.event_id);continue;}
+    const code=(await accessCode(this.env,record.receipt_id)).match(/.{4}/g).join('-');
+    subject='Nová odpověď ve schránce důvěry';
+    text='Na váš podnět ve schránce důvěry s kódem '+code+' bylo odpovězeno.\n\nOdpověď si přečtete po přihlášení do rozcestníku a zadání kódu ve schránce důvěry:\nhttps://javurek.online/kapli/#schranka-duvery\n\nKód nikomu nepředávejte. Umožňuje přístup k celé konverzaci.';
+   }
    if(this.env.RESEND_API_KEY){
     try{
      const response=await fetch('https://api.resend.com/emails',{
-      method:'POST',headers:{Authorization:'Bearer '+this.env.RESEND_API_KEY,'Content-Type':'application/json','Idempotency-Key':'trust-new-'+item.case_id},
-      body:JSON.stringify({from:this.env.TRUST_NOTIFY_FROM||'Schránka důvěry <schranka@javurek.online>',to:['javurek@zs-kaplickeho.cz'],subject:'Nový podnět ve schránce důvěry',text:'Ve schránce důvěry pro učitele přibyl nový podnět.\n\nPřihlaste se do rozcestníku, otevřete schránku a zvolte Vstup pro pověřený tým:\nhttps://javurek.online/kapli/#schranka-duvery\n\nObsah podnětu je dostupný pouze ve schránce.'}),signal:AbortSignal.timeout(15000)
+      method:'POST',headers:{Authorization:'Bearer '+this.env.RESEND_API_KEY,'Content-Type':'application/json','Idempotency-Key':'trust-'+item.kind+'-'+item.event_id},
+      body:JSON.stringify({from:this.env.TRUST_NOTIFY_FROM||'Schránka důvěry <schranka@javurek.online>',to:[recipient],subject,text}),signal:AbortSignal.timeout(15000)
      });
      sent=response.ok;await response.body?.cancel();
     }catch{ /* Never log secrets, provider responses or message content. */ }
    }
-   if(sent)this.sql.exec('UPDATE trust_notifications SET sent_at=? WHERE case_id=?',Date.now(),item.case_id);
-   else this.sql.exec('UPDATE trust_notifications SET attempts=attempts+1,next_attempt=? WHERE case_id=?',Date.now()+Math.min(3600000,60000*2**Math.min(item.attempts,6)),item.case_id);
+   if(sent)this.sql.exec('UPDATE '+table+' SET sent_at=? WHERE '+idColumn+'=?',Date.now(),item.event_id);
+   else this.sql.exec('UPDATE '+table+' SET attempts=attempts+1,next_attempt=? WHERE '+idColumn+'=?',Date.now()+Math.min(3600000,60000*2**Math.min(item.attempts,6)),item.event_id);
   }
   await this.scheduleNotifications();
  }
@@ -89,8 +106,13 @@ export class TrustInbox {
     const now=Date.now(),status=input.author==='team'?'in_progress':item.status==='resolved'?'new':item.status;
     this.ctx.storage.transactionSync(()=>{
      this.sql.exec('INSERT INTO trust_messages (case_id,author,body,created_at) VALUES (?,?,?,?)',item.id,input.author,input.message,now);
+     if(input.author==='team'&&item.receipt_id&&contactEmail(item.contact)){
+      const messageId=this.row('SELECT last_insert_rowid() AS id').id;
+      this.sql.exec('INSERT INTO trust_reply_notifications (message_id,case_id,created_at,next_attempt) VALUES (?,?,?,?)',messageId,item.id,now,now);
+     }
      this.sql.exec('UPDATE trust_cases SET updated_at=?,status=? WHERE id=?',now,status,item.id);
     });
+    await this.scheduleNotifications().catch(()=>{});
     return this.json({conversation:this.view(this.row('SELECT * FROM trust_cases WHERE id=?',item.id),input.author==='team')});
    }
    if(operation==='/delete'){
@@ -99,6 +121,7 @@ export class TrustInbox {
     if(item.status!=='resolved')return this.json({error:'Smazat lze pouze vyřešený podnět. Nejprve jej označte jako Uzavřeno.'},409);
     this.ctx.storage.transactionSync(()=>{
      this.sql.exec('DELETE FROM trust_notifications WHERE case_id=?',input.id);
+     this.sql.exec('DELETE FROM trust_reply_notifications WHERE case_id=?',input.id);
      this.sql.exec('DELETE FROM trust_messages WHERE case_id=?',input.id);
      this.sql.exec('DELETE FROM trust_cases WHERE id=?',input.id);
     });
