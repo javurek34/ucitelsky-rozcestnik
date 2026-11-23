@@ -96,3 +96,22 @@ test('chyba e-mailu nebrání uložení a fronta přežije restart a zopakuje po
  restart();database.exec('UPDATE trust_notifications SET next_attempt=0');await alarm();assert.equal(calls,2);assert.ok(database.prepare('SELECT sent_at FROM trust_notifications').get().sent_at);
  assert.equal((await worker.fetch(request('/conversation',{code:result.code},cookie),env)).status,200);
 });
+
+test('jen pověřený tým smí potvrzením smazat uzavřený podnět včetně konverzace a upozornění',async t=>{
+ const {env,database,restart}=setup(t),cookie=await schoolCookie(env),result=await create(env,cookie),team=await teamCookie(env,cookie);
+ const endpoint='/admin/cases/'+result.id+'/delete';
+ assert.equal((await worker.fetch(request(endpoint,{confirm:true},cookie),env)).status,401);
+ assert.equal((await worker.fetch(request(endpoint,{confirm:true},team,{Origin:'https://other.example'}),env)).status,403);
+ assert.equal((await worker.fetch(request(endpoint,{confirm:true},team),env)).status,409);
+ await worker.fetch(request('/admin/cases/'+result.id+'/status',{status:'resolved'},team),env);
+ assert.equal((await worker.fetch(request(endpoint,{},team),env)).status,400);
+ // A teacher's new reply reopens the case, even if an admin still sees an old closed view.
+ await worker.fetch(request('/conversation/reply',{code:result.code,message:'Ještě potřebuji pomoc.'},cookie),env);
+ assert.equal((await worker.fetch(request(endpoint,{confirm:true},team),env)).status,409);
+ await worker.fetch(request('/admin/cases/'+result.id+'/status',{status:'resolved'},team),env);
+ assert.equal((await worker.fetch(request(endpoint,{confirm:true},team),env)).status,200);
+ for(const table of ['trust_cases','trust_messages','trust_notifications'])assert.equal(database.prepare('SELECT COUNT(*) AS n FROM '+table).get().n,0);
+ restart();assert.equal((await worker.fetch(request('/conversation',{code:result.code},cookie),env)).status,404);
+ assert.equal((await worker.fetch(request('/admin/cases/'+result.id,undefined,team),env)).status,404);
+ assert.equal((await worker.fetch(request(endpoint,{confirm:true},team),env)).status,404);
+});

@@ -96,6 +96,13 @@ nemůže mít vlastní technické záznamy přístupů. Neslibujte absolutní an
 vůči poskytovateli hostingu nebo správci jeho účtu. Přístupové kódy a obsah
 podnětů se z aplikace nevypisují do logů.
 
+Pověřený tým může podnět ve stavu **Uzavřeno** trvale smazat tlačítkem
+**Smazat vyřešený podnět**. Před smazáním musí akci potvrdit. Server znovu
+ověří stav; znovu otevřený podnět smazat nelze. Smaže se podnět, celá
+konverzace a čekající upozornění. Původní přístupový kód přestane fungovat.
+Smazání v aplikaci nelze vrátit; případné zálohy poskytovatele mají vlastní
+životnost. Již předaný e-mail poskytovateli nelze vzít zpět.
+
 Zprávy se automaticky nemažou podle data. Pravidlo skrývání akcí v Aktuálně
 se na schránku nevztahuje. Tato verze nemá přílohy, automatické přeposílání
 ani veřejný seznam podnětů.

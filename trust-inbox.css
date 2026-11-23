@@ -100,3 +100,6 @@
 #schranka-duvery-dialog :is(input:not([type=radio]):not([type=checkbox]),textarea,select){border-color:#8994ad}
 
 :root[data-theme=dark] #schranka-duvery-dialog :is(.trust-readers,.trust-choice) svg{color:#F5F5F7}
+
+#schranka-duvery-dialog .trust-delete{color:#bc162c;border-color:currentColor}
+:root[data-theme=dark] #schranka-duvery-dialog .trust-delete{color:#ff9caa}

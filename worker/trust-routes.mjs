@@ -91,9 +91,10 @@ export async function handleTrustRequest(request,env){
    if(!['all','new','in_progress','resolved'].includes(status)||!Number.isSafeInteger(offset)||offset<0||offset>1000000)return reply({error:'Neplatný filtr.'},400);
    return stored(env,'list',{status,offset});
   }
-  const match=route.match(/^\/admin\/cases\/([0-9a-f-]{36})(?:\/(reply|status))?$/i);
+  const match=route.match(/^\/admin\/cases\/([0-9a-f-]{36})(?:\/(reply|status|delete))?$/i);
   if(match&&uuid(match[1])){
    const id=match[1];if(!match[2]&&method==='GET')return stored(env,'case',{id});
+   if(match[2]==='delete'&&method==='POST'){if(input.confirm!==true)return reply({error:'Smazání podnětu je nutné potvrdit.'},400);return stored(env,'delete',{id});}
    if(match[2]==='reply'&&method==='POST'){const message=text(input.message,1,4000);if(!message)return reply({error:'Napište odpověď o délce 1 až 4 000 znaků.'},400);return stored(env,'reply',{id,message,author:'team'});}
    if(match[2]==='status'&&method==='POST'){if(!['new','in_progress','resolved'].includes(input.status))return reply({error:'Neplatný stav zprávy.'},400);return stored(env,'status',{id,status:input.status});}
   }

@@ -91,6 +91,17 @@ export class TrustInbox {
     });
     return this.json({conversation:this.view(this.row('SELECT * FROM trust_cases WHERE id=?',item.id))});
    }
+   if(operation==='/delete'){
+    const item=this.row('SELECT status FROM trust_cases WHERE id=?',input.id);
+    if(!item)return this.json({error:'Podnět už neexistuje.'},404);
+    if(item.status!=='resolved')return this.json({error:'Smazat lze pouze vyřešený podnět. Nejprve jej označte jako Uzavřeno.'},409);
+    this.ctx.storage.transactionSync(()=>{
+     this.sql.exec('DELETE FROM trust_notifications WHERE case_id=?',input.id);
+     this.sql.exec('DELETE FROM trust_messages WHERE case_id=?',input.id);
+     this.sql.exec('DELETE FROM trust_cases WHERE id=?',input.id);
+    });
+    return this.json({ok:true});
+   }
    if(operation==='/status'){
     this.sql.exec('UPDATE trust_cases SET status=?,updated_at=? WHERE id=?',input.status,Date.now(),input.id);
     const item=this.row('SELECT * FROM trust_cases WHERE id=?',input.id);
