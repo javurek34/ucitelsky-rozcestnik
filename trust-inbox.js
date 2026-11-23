@@ -19,7 +19,7 @@
      <fieldset class="trust-section"><legend><span class="trust-step">04</span> Koho chcete zapojit?</legend><p class="trust-muted">Vyberte, s kým si přejete hledat řešení. Můžete zvolit oba nebo výběr nechat otevřený.</p><label class="trust-option"><input type="checkbox" name="participants" value="leadership"><span><strong>Vedení školy</strong><small>Společný rozhovor a domluva dalšího postupu.</small></span></label><label class="trust-option"><input type="checkbox" name="participants" value="spp"><span><strong>Školní poradenské pracoviště</strong><small>Podpora, konzultace nebo pomoc při řešení konfliktu.</small></span></label><p class="trust-fine">Tato volba vyjadřuje vaše přání pro další postup. Zprávy přijímá společný pověřený tým uvedený výše.</p></fieldset>
     </div>
     <section class="trust-section"><h3>Chcete nám zanechat kontakt? <small>nepovinné</small></h3><label class="trust-field"><span>Jméno, e-mail nebo jiný způsob, jak se domluvit</span><input name="contact" maxlength="200" placeholder="Můžete nechat prázdné"></label><p class="trust-fine">Pro domluvu setkání se kontakt může hodit. Pokud ho neuvedete, můžete se domluvit později ve svém vlákně.</p></section>
-    <div class="trust-submit-row"><p>Po odeslání získáte soukromý kód. Uschovejte si ho pro přečtení odpovědi a další zprávy.</p><button type="submit" class="primary" disabled>Odeslat zprávu</button></div><p class="trust-form-error" role="alert" hidden></p>
+    <div class="trust-submit-row"><p>Po odeslání získáte soukromý kód. Uschovejte si ho pro přečtení odpovědi a další zprávy.</p><button type="submit" class="primary" disabled>Odeslat zprávu</button></div><p class="trust-form-error" role="alert" hidden></p><p class="trust-submit-status trust-service-status" role="status" hidden></p>
    </form>
    <section id="trust-receipt" class="trust-section trust-receipt" hidden aria-labelledby="trust-receipt-title"><span class="trust-eyebrow">ZPRÁVA JE ULOŽENÁ</span><h3 id="trust-receipt-title" tabindex="-1">Děkujeme, že jste napsali.</h3><p>Toto je váš soukromý kód. Odpověď si s ním můžete přečíst zde ve schránce a případně doplnit další zprávu.</p><code class="trust-access-code" id="trust-access-code"></code><div class="trust-actions"><button type="button" class="secondary-action" id="trust-copy-code">Zkopírovat kód</button><button type="button" class="primary" id="trust-open-receipt">Otevřít moje vlákno</button></div><p class="trust-fine">Kód nikomu nepředávejte. Kdo ho zná, může číst vaše vlákno a psát do něj. Kód nelze obnovit. Pokud jste zanechali kontakt, tým se s vámi může domluvit i jinou cestou.</p><p id="trust-copy-status" role="status"></p></section>
   </div>
@@ -61,8 +61,9 @@
  $('#trust-show-admin').addEventListener('click',()=>setTab('admin'));$('#trust-back-from-admin').addEventListener('click',()=>setTab('new'));
  async function service(){
   const notice=$('.trust-service-status');
-  try{const state=await api('/status');ready=state.ready;error(notice,ready?'':'Schránka se připravuje. Zprávu zatím neodesílejte; formulář se zpřístupní po nastavení přístupu pověřeného týmu.');}
-  catch(e){if(e.name==='AbortError')return;ready=false;error(notice,'Schránku se nepodařilo připojit. Zadaný text zůstane ve formuláři; zkuste to prosím později.');}
+  const showStatus=message=>{error(notice,message);error($('.trust-submit-status'),message);};
+  try{const state=await api('/status');ready=state.ready;showStatus(ready?'':(state.message||'Schránka se připravuje. Správce musí dokončit její nastavení.'));}
+  catch(e){if(e.name==='AbortError')return;ready=false;showStatus(e.status===401?'Přihlášení do rozcestníku vypršelo. Pro odeslání se znovu přihlaste. Před obnovením stránky si zkopírujte rozepsaný text.':'Schránku se nepodařilo připojit. Zadaný text zůstane ve formuláři; zkuste to prosím později.');}
   $$('#trust-create-form button[type=submit],#trust-lookup-form button[type=submit],#trust-admin-login-form button[type=submit]').forEach(button=>button.disabled=!ready);
  }
  // Observe the open attribute: older Safari versions do not emit dialog toggle events.

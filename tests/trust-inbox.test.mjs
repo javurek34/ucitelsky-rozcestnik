@@ -22,7 +22,7 @@ test('schránka vyžaduje školní přihlášení a zůstává uzavřená bez sa
  const {env}=setup(t);assert.equal((await worker.fetch(request('/status'),env)).status,401);
  const cookie=await schoolCookie(env);
  for(const override of [{TRUST_ADMIN_PASSWORD:undefined},{TRUST_ADMIN_PASSWORD:schoolPassword},{TRUST_INBOX:undefined}]){
-  const config={...env,...override};const state=await worker.fetch(request('/status',undefined,cookie),config);assert.equal((await state.json()).ready,false);
+  const config={...env,...override};const state=await worker.fetch(request('/status',undefined,cookie),config);const status=await state.json();assert.equal(status.ready,false);assert.ok(status.message);assert.ok(!JSON.stringify(status).includes(schoolPassword));
   assert.equal((await worker.fetch(request('/create',draft(),cookie),config)).status,503);
  }
 });

@@ -9,7 +9,13 @@ const decode=value=>Uint8Array.from(atob(value.replace(/-/g,'+').replace(/_/g,'/
 const sha=async value=>encode(await crypto.subtle.digest('SHA-256',encoder.encode(value)));
 const reply=(data,status=200,extra={})=>new Response(JSON.stringify(data),{status,headers:{...headers,...extra}});
 export const clearTrustAdminCookie=()=>`${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict`;
-const configured=env=>Boolean(env.TRUST_INBOX&&env.TRUST_RATE_LIMITER&&typeof env.TRUST_ADMIN_PASSWORD==='string'&&env.TRUST_ADMIN_PASSWORD.length>=16&&env.TRUST_ADMIN_PASSWORD!==env.SITE_PASSWORD);
+function unavailableReason(env){
+ if(!env.TRUST_INBOX)return 'Správce musí připojit úložiště schránky v Cloudflare.';
+ if(!env.TRUST_RATE_LIMITER)return 'Správce musí dokončit nastavení ochrany schránky v Cloudflare.';
+ if(typeof env.TRUST_ADMIN_PASSWORD!=='string'||env.TRUST_ADMIN_PASSWORD.length<16||env.TRUST_ADMIN_PASSWORD===env.SITE_PASSWORD)return 'Správce musí nastavit samostatné heslo pro pověřený tým schránky (alespoň 16 znaků, jiné než heslo rozcestníku).';
+ return '';
+}
+const configured=env=>!unavailableReason(env);
 async function key(env,purpose){
  const material=await crypto.subtle.digest('SHA-256',encoder.encode(env.SESSION_SECRET+'\0'+purpose+(purpose==='session'?'\0'+env.TRUST_ADMIN_PASSWORD:'')));
  return crypto.subtle.importKey('raw',material,{name:'HMAC',hash:'SHA-256'},false,['sign','verify']);
@@ -49,7 +55,7 @@ async function stored(env,operation,input){
 export async function handleTrustRequest(request,env){
  const url=new URL(request.url);if(!url.pathname.startsWith(PREFIX+'/'))return null;
  const route=url.pathname.slice(PREFIX.length),method=request.method;
- if(route==='/status'&&method==='GET')return reply({ready:configured(env),admin:configured(env)&&await adminSession(request,env)});
+ if(route==='/status'&&method==='GET')return reply({ready:configured(env),admin:configured(env)&&await adminSession(request,env),message:unavailableReason(env)});
  if(!configured(env))return reply({error:'Schránka se právě připravuje. Zatím sem žádné zprávy neodesílejte.'},503);
  if(!['GET','POST'].includes(method))return reply({error:'Nepovolený požadavek.'},405,{Allow:'GET, POST'});
  if(method==='POST'){
