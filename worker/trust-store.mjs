@@ -15,12 +15,14 @@ export class TrustInbox {
   )`);
   this.sql.exec('CREATE INDEX IF NOT EXISTS trust_messages_case ON trust_messages(case_id,id)');
   this.sql.exec('CREATE INDEX IF NOT EXISTS trust_cases_updated ON trust_cases(updated_at DESC)');
+  if(!this.sql.exec('PRAGMA table_info(trust_cases)').toArray().some(column=>column.name==='receipt_id'))this.sql.exec('ALTER TABLE trust_cases ADD COLUMN receipt_id TEXT');
   this.sql.exec(`CREATE TABLE IF NOT EXISTS trust_notifications (case_id TEXT PRIMARY KEY, created_at INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, next_attempt INTEGER NOT NULL, sent_at INTEGER)`);
  }
  row(sql,...args){return this.sql.exec(sql,...args).toArray()[0]||null;}
- view(row){
+ view(row,admin=false){
   if(!row)return null;
-  const {code_hash,submission_hash,...record}=row;
+  const {code_hash,submission_hash,receipt_id,...record}=row;
+  if(admin)record.receipt_id=receipt_id||null;
   record.participants=JSON.parse(record.participants);
   record.messages=this.sql.exec('SELECT id,author,body,created_at FROM trust_messages WHERE case_id=? ORDER BY id',row.id).toArray();
   return record;
@@ -57,7 +59,7 @@ export class TrustInbox {
     if(existing){await this.scheduleNotifications().catch(()=>{});return this.json({id:existing.id},200);}
     const id=crypto.randomUUID(),now=Date.now();
     this.ctx.storage.transactionSync(()=>{
-     this.sql.exec('INSERT INTO trust_cases (id,code_hash,submission_hash,kind,subject,body,preference,participants,contact,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)',id,input.codeHash,input.submissionHash,input.kind,input.subject,input.message,input.preference,JSON.stringify(input.participants),input.contact,now,now);
+     this.sql.exec('INSERT INTO trust_cases (id,code_hash,submission_hash,kind,subject,body,preference,participants,contact,created_at,updated_at,receipt_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',id,input.codeHash,input.submissionHash,input.kind,input.subject,input.message,input.preference,JSON.stringify(input.participants),input.contact,now,now,input.receiptId||null);
      this.sql.exec('INSERT INTO trust_messages (case_id,author,body,created_at) VALUES (?,?,?,?)',id,'teacher',input.message,now);
      this.sql.exec('INSERT INTO trust_notifications (case_id,created_at,next_attempt) VALUES (?,?,?)',id,now,now);
     });
@@ -71,7 +73,7 @@ export class TrustInbox {
    }
    if(operation==='/case'){
     const item=this.row('SELECT * FROM trust_cases WHERE id=?',input.id);
-    return item?this.json({conversation:this.view(item)}):this.json({error:'Zpráva nebyla nalezena.'},404);
+    return item?this.json({conversation:this.view(item,true)}):this.json({error:'Zpráva nebyla nalezena.'},404);
    }
    if(operation==='/list'){
     const status=input.status||'all',offset=input.offset||0;
@@ -89,7 +91,7 @@ export class TrustInbox {
      this.sql.exec('INSERT INTO trust_messages (case_id,author,body,created_at) VALUES (?,?,?,?)',item.id,input.author,input.message,now);
      this.sql.exec('UPDATE trust_cases SET updated_at=?,status=? WHERE id=?',now,status,item.id);
     });
-    return this.json({conversation:this.view(this.row('SELECT * FROM trust_cases WHERE id=?',item.id))});
+    return this.json({conversation:this.view(this.row('SELECT * FROM trust_cases WHERE id=?',item.id),input.author==='team')});
    }
    if(operation==='/delete'){
     const item=this.row('SELECT status FROM trust_cases WHERE id=?',input.id);
@@ -105,7 +107,7 @@ export class TrustInbox {
    if(operation==='/status'){
     this.sql.exec('UPDATE trust_cases SET status=?,updated_at=? WHERE id=?',input.status,Date.now(),input.id);
     const item=this.row('SELECT * FROM trust_cases WHERE id=?',input.id);
-    return item?this.json({conversation:this.view(item)}):this.json({error:'Zpráva nebyla nalezena.'},404);
+    return item?this.json({conversation:this.view(item,true)}):this.json({error:'Zpráva nebyla nalezena.'},404);
    }
    return this.json({error:'Not found'},404);
   }catch{

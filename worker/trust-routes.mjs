@@ -50,7 +50,12 @@ async function accessCode(env,submissionId){
 async function stored(env,operation,input){
  const stub=env.TRUST_INBOX.get(env.TRUST_INBOX.idFromName('kaplickeho-teacher-trust'));
  const response=await stub.fetch(new Request('https://trust.internal/'+operation,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(input)}));
- return reply(await response.json(),response.status);
+ const result=await response.json();
+ if(result.conversation&&Object.hasOwn(result.conversation,'receipt_id')){
+  const receiptId=result.conversation.receipt_id;delete result.conversation.receipt_id;
+  result.conversation.accessCode=receiptId?(await accessCode(env,receiptId)).match(/.{4}/g).join('-'):null;
+ }
+ return reply(result,response.status);
 }
 export async function handleTrustRequest(request,env){
  const url=new URL(request.url);if(!url.pathname.startsWith(PREFIX+'/'))return null;
@@ -76,7 +81,7 @@ export async function handleTrustRequest(request,env){
   if(route==='/create'&&method==='POST'){
    const message=text(input.message,10,6000),subject=text(input.subject,0,120),contact=text(input.contact,0,200);
    if(!message||subject===null||contact===null||!['advice','concern','conflict'].includes(input.kind)||!['written','meeting','unsure'].includes(input.preference)||!uuid(input.submissionId)||!Array.isArray(input.participants)||input.participants.length>2||!input.participants.every(p=>['leadership','spp'].includes(p)))return reply({error:'Zkontrolujte prosím vyplněné údaje. Zpráva má mít alespoň 10 a nejvýše 6 000 znaků.'},400);
-   const raw=await accessCode(env,input.submissionId),response=await stored(env,'create',{kind:input.kind,subject:subject||({advice:'Žádost o radu',concern:'Podnět k řešení',conflict:'Pomoc s konfliktem'}[input.kind]),message,preference:input.preference,participants:[...new Set(input.participants)],contact,submissionHash:await sha(input.submissionId),codeHash:await sha(raw)});
+   const raw=await accessCode(env,input.submissionId),response=await stored(env,'create',{kind:input.kind,subject:subject||({advice:'Žádost o radu',concern:'Podnět k řešení',conflict:'Pomoc s konfliktem'}[input.kind]),message,preference:input.preference,participants:[...new Set(input.participants)],contact,submissionHash:await sha(input.submissionId),codeHash:await sha(raw),receiptId:input.submissionId});
    const result=await response.json();if(response.ok)return reply({id:result.id,code:raw.match(/.{4}/g).join('-')},response.status);return reply(result,response.status);
   }
   if(['/conversation','/conversation/reply'].includes(route)&&method==='POST'){

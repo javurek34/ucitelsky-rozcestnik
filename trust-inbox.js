@@ -3,7 +3,7 @@
  const dialog=document.createElement('dialog');dialog.id='schranka-duvery-dialog';dialog.className='content-dialog';dialog.setAttribute('aria-labelledby','schranka-duvery-title');
  dialog.innerHTML=`<div class="content-header"><h2 id="schranka-duvery-title" tabindex="-1">Schránka důvěry pro učitele</h2><button type="button" class="icon-button" id="close-schranka-duvery" aria-label="Zavřít schránku důvěry"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
  <div class="content-body trust-body">
-  <div class="trust-intro"><span class="trust-eyebrow">PROSTOR PRO TO, CO VÁS TRÁPÍ</span><h3>Nemusíte na to být sami.</h3><p>Potřebujete radu, chcete upozornit na problém nebo hledáte cestu z konfliktu? Napište nám, co by vám pomohlo. Můžete zůstat bez uvedení jména a v rozhovoru pokračovat přes soukromý kód.</p><p class="trust-readers"><svg aria-hidden="true"><use href="#i-shield"/></svg><span>Podněty čte vedení školy a určení členové ŠPP. Přístup mají oddělený od běžného rozcestníku.</span></p></div>
+  <div class="trust-intro"><span class="trust-eyebrow">PROSTOR PRO TO, CO VÁS TRÁPÍ</span><h3>Nemusíte na to být sami.</h3><p>Potřebujete radu, chcete upozornit na problém nebo hledáte cestu z konfliktu? Napište nám, co by vám pomohlo. Můžete zůstat bez uvedení jména a v rozhovoru pokračovat přes soukromý kód.</p><p class="trust-readers"><svg aria-hidden="true"><use href="#i-shield"/></svg><span>Podněty čte vedení školy a určení členové ŠPP. Přístup mají oddělený od běžného rozcestníku. U nových podnětů vidí také soukromý přístupový kód.</span></p></div>
   <div class="trust-tabs" role="tablist" aria-label="Schránka důvěry"><button type="button" id="trust-tab-new" role="tab" aria-selected="true" aria-controls="trust-new" data-trust-tab="new">Napsat zprávu</button><button type="button" id="trust-tab-conversation" role="tab" aria-selected="false" aria-controls="trust-conversation" tabindex="-1" data-trust-tab="conversation">Mám přístupový kód</button></div>
   <p class="trust-service-status" role="status" hidden></p>
   <div id="trust-new" role="tabpanel" aria-labelledby="trust-tab-new">
@@ -95,6 +95,12 @@
  function renderThread(panel,record,admin){
   panel.replaceChildren();const top=element('div','trust-thread-header');top.append(element('span','trust-eyebrow',kindLabels[record.kind]),element('span','trust-status trust-status-'+record.status,statuses[record.status]));panel.append(top,element('h3','',record.subject));
   const facts=element('dl','trust-facts');for(const [term,value] of [['Přání pro další postup',preferences[record.preference]],['Koho si přejete zapojit',record.participants.length?record.participants.map(p=>names[p]).join(', '):'Výběr zatím otevřený'],['Dobrovolný kontakt',record.contact||'Neuveden']]){facts.append(element('dt','',term),element('dd','',value));}panel.append(facts);
+  if(admin){
+   const codeBox=element('div','trust-section'),caption=element('strong','','Soukromý přístupový kód');codeBox.append(caption);
+   if(record.accessCode){const code=element('code','trust-access-code',record.accessCode);codeBox.append(code);}
+   else codeBox.append(element('p','trust-muted','U tohoto staršího podnětu nebyl kód uložen pro zobrazení správci. Původní kód odesílatele zůstává platný.'));
+   panel.append(codeBox);
+  }
   if(admin){const controls=element('div','trust-status-controls'),label=element('label','','Stav podnětu'),select=element('select');Object.entries(statuses).forEach(([value,title])=>{const option=element('option','',title);option.value=value;select.append(option);});select.value=record.status;label.append(select);const save=element('button','secondary-action','Uložit stav');save.type='button';const out=element('p','trust-form-error');out.setAttribute('role','alert');out.hidden=true;save.addEventListener('click',async()=>{busy(save,true,'Ukládám…');try{const result=await api('/admin/cases/'+record.id+'/status',{status:select.value});renderThread(panel,result.conversation,true);await loadCases(true);}catch(e){if(e.name!=='AbortError')error(out,e.message);}finally{busy(save,false);}});controls.append(label,save,out);panel.append(controls);
    if(record.status==='resolved'){
     const remove=element('button','secondary-action trust-delete','Smazat vyřešený podnět');remove.type='button';

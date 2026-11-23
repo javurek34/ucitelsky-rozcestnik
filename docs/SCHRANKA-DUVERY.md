@@ -34,7 +34,10 @@ vlákna a další anonymní komunikaci. Kód se nevkládá do URL ani se automat
 neukládá do localStorage. Odesílatel si ho musí uschovat. Kdo zná kód, může
 číst dané vlákno a psát do něj; jde tedy o přístupové tajemství. Bez kódu
 nelze anonymního odesílatele dohledat podle jména. Kód se v databázi uchovává
-jen jako hash. Opakování totožného odeslání po výpadku spojení nevytváří
+jako hash. U nových podnětů se navíc uchovává identifikátor pro jeho
+opětovné odvození se serverovým tajemstvím: pověřený tým vidí kód v detailu
+podnětu, nikoli v seznamu nebo e-mailu. U starších podnětů bez tohoto
+identifikátoru kód zpětně zobrazit nelze. Opakování totožného odeslání po výpadku spojení nevytváří
 novou zprávu; při chybě se text ve formuláři zachová.
 
 Pověřený tým zvolí dole **Vstup pro pověřený tým**, přihlásí se odděleným

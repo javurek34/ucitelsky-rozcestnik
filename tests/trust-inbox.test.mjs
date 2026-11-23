@@ -115,3 +115,19 @@ test('jen pověřený tým smí potvrzením smazat uzavřený podnět včetně k
  assert.equal((await worker.fetch(request('/admin/cases/'+result.id,undefined,team),env)).status,404);
  assert.equal((await worker.fetch(request(endpoint,{confirm:true},team),env)).status,404);
 });
+
+test('kód vidí jen správci v detailu a zůstává stejný po restartu a změně jejich hesla',async t=>{
+ const {env,database,restart}=setup(t),cookie=await schoolCookie(env),result=await create(env,cookie),team=await teamCookie(env,cookie);
+ const detail=async()=> (await (await worker.fetch(request('/admin/cases/'+result.id,undefined,team),env)).json()).conversation;
+ assert.equal((await detail()).accessCode,result.code);assert.ok(!Object.hasOwn(await detail(),'receipt_id'));
+ const personal=(await (await worker.fetch(request('/conversation',{code:result.code},cookie),env)).json()).conversation;
+ assert.ok(!Object.hasOwn(personal,'accessCode'));assert.ok(!Object.hasOwn(personal,'receipt_id'));
+ assert.ok(!JSON.stringify(await (await worker.fetch(request('/admin/cases',undefined,team),env)).json()).includes(result.code));
+ restart();assert.equal((await detail()).accessCode,result.code);
+ const rotated={...env,TRUST_ADMIN_PASSWORD:'another-long-admin-password-for-test'};
+ const login=await worker.fetch(request('/admin/login',{password:rotated.TRUST_ADMIN_PASSWORD},cookie),rotated);
+ const rotatedCookie=cookie+'; '+login.headers.get('Set-Cookie').split(';')[0];
+ assert.equal((await (await worker.fetch(request('/admin/cases/'+result.id,undefined,rotatedCookie),rotated)).json()).conversation.accessCode,result.code);
+ database.exec('UPDATE trust_cases SET receipt_id=NULL');restart();assert.equal((await detail()).accessCode,null);
+ assert.equal((await worker.fetch(request('/conversation',{code:result.code},cookie),env)).status,200);
+});
