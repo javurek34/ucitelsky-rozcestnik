@@ -43,7 +43,7 @@ export default {
  async fetch(request,env){
   const url=new URL(request.url),method=request.method;
   // Public personal homepage: exact allowlist, independent of the private school area.
-  const personalAssets={'/':'/personal/','/personal/site.css':'/personal/site.css','/personal/mark.svg':'/personal/mark.svg','/personal/hero.webp':'/personal/hero.webp','/personal/portrait-smoke.svg':'/personal/portrait-smoke.svg'};
+  const personalAssets={'/':'/personal/','/personal/site.css':'/personal/site.css','/personal/mark.svg':'/personal/mark.svg','/personal/hero.webp':'/personal/hero.webp','/personal/portrait-smoke.svg':'/personal/portrait-smoke.svg','/personal/portrait-brush.webp':'/personal/portrait-brush.webp'};
   if(Object.hasOwn(personalAssets,url.pathname)){
    if(!['GET','HEAD'].includes(method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
    const target=new URL(url);target.pathname=personalAssets[url.pathname];

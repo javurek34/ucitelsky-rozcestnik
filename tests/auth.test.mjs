@@ -99,7 +99,7 @@ test('static asset redirects retain the application prefix',async()=>{
 
 test('personal homepage is public while school assets and trust APIs stay protected',async()=>{
  const seen=[];const env=environment({SITE_PASSWORD:undefined,ASSETS:{fetch:async request=>{seen.push(new URL(request.url).pathname);return new Response('PERSONAL_PAGE');}}});
- for(const path of ['/','/?from=home','/personal/site.css','/personal/hero.webp','/personal/mark.svg']){
+ for(const path of ['/','/?from=home','/personal/site.css','/personal/hero.webp','/personal/mark.svg','/personal/portrait-brush.webp']){
   const response=await worker.fetch(new Request(origin+path),env);assert.equal(response.status,200);assert.equal(await response.text(),'PERSONAL_PAGE');
  }
  assert.equal(seen[0],'/personal/');
