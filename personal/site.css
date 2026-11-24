@@ -15,3 +15,5 @@
 .wordmark-first::before,.wordmark-last::before{content:attr(data-text);position:absolute;inset:0;pointer-events:none;color:#111114;opacity:.5;filter:blur(2.8px);transform:translateX(-4px);text-shadow:-4px 0 3px #11111466,-8px 0 6px #11111438;z-index:-1}
 .wordmark-first{font-weight:400}.wordmark-dot{color:inherit}.wordmark-stroke{display:none}
 @media(max-width:600px){.wordmark-first::before,.wordmark-last::before{filter:blur(1.8px);transform:translateX(-2px);text-shadow:-3px 0 3px #11111455,-5px 0 5px #11111426}}
+
+.wordmark{text-transform:uppercase;font-size:clamp(29px,4.7vw,54px);letter-spacing:-.035em}@media(max-width:600px){.wordmark{font-size:clamp(25px,7.3vw,42px)}}
