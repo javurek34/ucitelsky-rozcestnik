@@ -15,6 +15,8 @@ async function copyAssets(directory,relative='assets'){
  }
 }
 await copyAssets(join(root,'assets'));
+await mkdir(join(output,'personal'),{recursive:true});
+for(const name of ['index.html','site.css','mark.svg','hero.webp'])await copyFile(join(root,'personal',name),join(output,'personal',name));
 const logout='<form class="protected-logout" action="/kapli/__auth/logout" method="post"><button class="secondary-action" type="submit">Odhlásit</button></form>';
 let index=await readFile(join(output,'index.html'),'utf8');
 index=index.replace('<head>','<head><base href="/kapli/">').replaceAll('href="/assets/icons/','href="/kapli/assets/icons/');

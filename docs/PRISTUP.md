@@ -1,6 +1,6 @@
 # Přístup společným heslem
 
-Rozcestník je dostupný na `https://javurek.online/kapli/`. Kořen domény i staré adresy se přesměrují pod `/kapli/`; odkazy na podstránky přes `#` zůstávají funkční. Přihlášení a odhlášení používají `/kapli/__auth/login` a `/kapli/__auth/logout`.
+Rozcestník je dostupný na `https://javurek.online/kapli/`. Na kořeni domény je veřejný osobní web Lukáše Javůrka s odkazem do rozcestníku. Staré adresy souborů rozcestníku se přesměrují pod `/kapli/`; odkazy na podstránky používají `/kapli/#…`. Veřejné jsou pouze přesně povolené soubory osobní stránky v `personal/`, nikoli školní obsah. Přihlášení a odhlášení používají `/kapli/__auth/login` a `/kapli/__auth/logout`.
 
 Připravená varianta používá Cloudflare Workers. Každý požadavek na HTML, skript i obrázek nejprve ověří server. Samotná přihlašovací obrazovka v JavaScriptu by veřejný statický web neochránila.
 

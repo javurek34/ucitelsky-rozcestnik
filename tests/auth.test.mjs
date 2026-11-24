@@ -74,9 +74,9 @@ test('only the two exact branding icon paths are public and login includes their
  const login=await worker.fetch(new Request(base+'/'),env);assert.match(await login.text(),/rel="icon"/);assert.match(login.headers.get('Content-Security-Policy'),/img-src 'self'/);
 });
 
-test('root and legacy URLs redirect under /kapli without dropping query parameters',async()=>{
+test('legacy school URLs redirect under /kapli without dropping query parameters',async()=>{
  const env=environment();
- for(const [path,expected] of [['/','/kapli/'],['/kapli','/kapli/'],['/?from=old','/kapli/?from=old'],['/app.js?v=1','/kapli/app.js?v=1'],['/__auth/login','/kapli/__auth/login']]){
+ for(const [path,expected] of [['/kapli','/kapli/'],['/app.js?v=1','/kapli/app.js?v=1'],['/__auth/login','/kapli/__auth/login']]){
   const response=await worker.fetch(new Request(origin+path),env);assert.equal(response.status,303);assert.equal(response.headers.get('Location'),expected);
  }
  const post=await worker.fetch(new Request(origin+'/__auth/login',{method:'POST',body:'test'}),env);assert.equal(post.status,307);assert.equal(post.headers.get('Location'),'/kapli/__auth/login');
@@ -94,4 +94,20 @@ test('static asset redirects retain the application prefix',async()=>{
  const env=environment({ASSETS:{fetch:async()=>new Response(null,{status:307,headers:{Location:'/?canonical=1'}})}});
  const cookie=await cookieFor(env);const response=await worker.fetch(new Request(base+'/index.html',{headers:{Cookie:cookie}}),env);
  assert.equal(response.headers.get('Location'),'/kapli/?canonical=1');
+});
+
+
+test('personal homepage is public while school assets and trust APIs stay protected',async()=>{
+ const seen=[];const env=environment({SITE_PASSWORD:undefined,ASSETS:{fetch:async request=>{seen.push(new URL(request.url).pathname);return new Response('PERSONAL_PAGE');}}});
+ for(const path of ['/','/?from=home','/personal/site.css','/personal/hero.webp','/personal/mark.svg']){
+  const response=await worker.fetch(new Request(origin+path),env);assert.equal(response.status,200);assert.equal(await response.text(),'PERSONAL_PAGE');
+ }
+ assert.equal(seen[0],'/personal/');
+ for(const path of ['/kapli/','/kapli/app.js','/kapli/api/schranka/status','/personal/../app.js'])assert.equal((await worker.fetch(new Request(origin+path),env)).status,503);
+ const configuredEnv=environment();
+ assert.equal((await worker.fetch(new Request(base+'/app.js'),configuredEnv)).status,303);
+ assert.equal((await worker.fetch(new Request(base+'/api/schranka/status'),configuredEnv)).status,401);
+ const head=await worker.fetch(new Request(origin+'/',{method:'HEAD'}),env);assert.equal(await head.text(),'');
+ assert.equal((await worker.fetch(new Request(origin+'/',{method:'POST'}),env)).status,405);
+ const homepage=await readFile(new URL('../personal/index.html',import.meta.url),'utf8');assert.match(homepage,/href="\/kapli\/"/);assert.match(homepage,/Rozcestník pro učitele/);
 });
