@@ -49,7 +49,7 @@ export default {
    const target=new URL(url);target.pathname=personalAssets[url.pathname];
    const asset=await env.ASSETS.fetch(new Request(target,request));const headers=new Headers(asset.headers);
    headers.set('Cache-Control','public, max-age=300');headers.set('X-Content-Type-Options','nosniff');
-   headers.delete('X-Robots-Tag');headers.set('Content-Security-Policy',"default-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'");
+   headers.delete('X-Robots-Tag');headers.set('Content-Security-Policy',"default-src 'self'; style-src 'self' https://use.typekit.net https://p.typekit.net; font-src 'self' https://use.typekit.net; img-src 'self' https://p.typekit.net; base-uri 'none'; frame-ancestors 'none'; form-action 'none'");
    return new Response(method==='HEAD'?null:asset.body,{status:asset.status,headers});
   }
   // No configuration means no access, including assets and preview URLs.
