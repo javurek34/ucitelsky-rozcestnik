@@ -26,3 +26,12 @@
 /* Let the portrait lead the page instead of fitting it into the remaining viewport. */
 .illustration{transform:none;object-fit:contain;object-position:center}
 @media(max-width:600px){main{width:calc(100% - 20px)}.portrait-frame{aspect-ratio:3/2}.illustration{object-position:center}.school-link{width:calc(100% - 12px)}}
+
+.brand-lockup{display:flex;align-items:center;justify-content:center;gap:22px;max-width:100%;padding-inline:8px}.brand-symbol{width:90px;height:auto;flex-shrink:0}.brand-lockup .wordmark{margin:0}@media(max-width:680px){.brand-lockup{flex-direction:column;gap:14px}.brand-symbol{width:68px}.brand-lockup .wordmark{margin:0}}
+
+/* In-register optical defocus: no offset, extrusion, or drop shadows. */
+.wordmark{position:relative;display:block;font-weight:700;letter-spacing:-.045em;line-height:1.2;isolation:isolate}
+.wordmark-core,.wordmark-optical{display:block;white-space:nowrap;font:inherit;letter-spacing:inherit}
+.wordmark-core{-webkit-mask-image:linear-gradient(to right,#0002 0%,#0007 14%,#000e 40%,#000 65%);mask-image:linear-gradient(to right,#0002 0%,#0007 14%,#000e 40%,#000 65%)}
+.wordmark-optical{position:absolute;inset:0;pointer-events:none;filter:blur(2.8px);-webkit-mask-image:linear-gradient(to right,#000 0%,#000e 20%,#0006 44%,transparent 75%);mask-image:linear-gradient(to right,#000 0%,#000e 20%,#0006 44%,transparent 75%);transform:none;text-shadow:none}
+@media(max-width:600px){.wordmark-optical{filter:blur(1.6px)}}

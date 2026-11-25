@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="20" fill="#172644"/><text x="13" y="45" font-family="Arial,sans-serif" font-weight="700" font-size="42" letter-spacing="-3" fill="white">lj.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 100 1000 1050" role="img" aria-labelledby="title desc">
+<title id="title">Lukáš Javůrek – javor, technologie a vzdělávání</title><desc id="desc">Otevřený javorový list s pomyslnou levou částí, dvěma technologickými uzly a otevřenou knihou. Jednobarevná webová aproximace PANTONE Reflex Blue U.</desc>
+<g fill="#3E479B">
+<path d="M721 138C658 178 646 224 646 265L660 245C669 312 742 345 762 436L763 480C782 447 802 429 824 420C811 483 856 567 801 641C904 612 957 555 1030 563C997 657 994 760 854 812C909 821 968 870 1003 949C920 914 830 912 748 937C685 956 641 978 611 1002C647 946 696 906 761 890C842 871 929 879 985 929C973 873 929 828 854 812C1016 788 1020 635 1125 510C1026 493 924 566 801 641C860 578 823 492 882 366C838 368 804 395 779 430C784 330 644 248 721 138Z"/>
+<path d="M645 477C684 586 652 620 623 675C681 622 730 631 758 572L768 578C741 648 658 647 620 710C566 798 607 873 618 936C631 1007 560 1125 497 1118C552 1090 597 989 590 940C583 870 568 794 534 763C503 738 470 735 451 711L459 703C489 728 525 729 553 760C564 771 572 785 579 799C563 712 657 606 645 477Z"/>
+<path d="M215 959C309 851 467 868 590 966L594 987C479 889 320 917 215 959Z"/>
+<path d="M328 864C431 815 526 852 586 942C499 862 417 851 328 864Z"/>
+<path d="M626 943C704 835 826 816 894 850C780 830 698 869 626 943Z"/>
+</g>
+<g fill="none" stroke="#3E479B" stroke-width="13"><circle cx="451" cy="690" r="24"/><circle cx="768" cy="557" r="24"/></g>
+</svg>
