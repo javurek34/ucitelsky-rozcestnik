@@ -24,5 +24,5 @@
 .portrait-frame{-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
 
 /* Let the portrait lead the page instead of fitting it into the remaining viewport. */
-.illustration{transform:scale(1.12);transform-origin:50% 42%}
-@media(max-width:600px){main{width:calc(100% - 20px)}.portrait-frame{aspect-ratio:5/4}.illustration{object-position:50% 42%}.school-link{width:calc(100% - 12px)}}
+.illustration{transform:none;object-fit:contain;object-position:center}
+@media(max-width:600px){main{width:calc(100% - 20px)}.portrait-frame{aspect-ratio:3/2}.illustration{object-position:center}.school-link{width:calc(100% - 12px)}}
