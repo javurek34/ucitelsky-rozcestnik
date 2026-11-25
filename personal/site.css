@@ -37,5 +37,5 @@
 @media(max-width:600px){.wordmark-optical{filter:blur(1.6px)}}
 
 .wordmark{letter-spacing:-.075em}
-.wordmark .name-thin{font-weight:100}.wordmark .name-extrabold{font-weight:800}
+.wordmark .name-regular{font-weight:400}.wordmark .name-bold{font-weight:700}
 @media(max-width:680px){.brand-lockup{flex-direction:row;gap:12px;padding-inline:4px}.brand-symbol{width:48px}.brand-lockup .wordmark{font-size:clamp(18px,5.8vw,38px)}}
